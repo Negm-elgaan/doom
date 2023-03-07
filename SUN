@@ -1,1 +1,22 @@
-GAMED
+ #include <iostream>
+
+using namespace std;
+
+int main()
+{
+   long long x,i=0,n,a=-1;
+   cin>>x;
+   long long arr[x];
+   for(i=0; i<x; i++){
+    cin>>arr[i];
+   }
+   cin>>n;
+   for(i=0; i<x; i++){
+    if(n==arr[i]){
+            a=i;
+        break;
+
+    }
+   }cout<<a;
+    return 0;
+}
