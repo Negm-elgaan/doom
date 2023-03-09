@@ -1,1 +1,25 @@
-waiting for orders
+// See https://aka.ms/new-console-template for more information
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+namespace Assignment
+{
+    class Vowel
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("enter the character:");
+            char x = Convert.ToChar(Console.ReadLine());
+            if (x == 'a' || x == 'A' || x == 'e' || x == 'E' || x == 'i' || x == 'I' || x == 'U' || x == 'u' || x == 'o' || x == 'O')
+            {
+                Console.WriteLine("character is vowel");
+            }
+            else
+            {
+                Console.WriteLine("Character is not vowel");
+            }
+        }
+    }
+}
