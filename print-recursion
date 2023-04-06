@@ -1,0 +1,19 @@
+#include <iostream>
+using namespace std;
+
+void recursion(int n)
+{
+    if(n==0)
+    {
+        return ;
+    }
+    cout<<"I love Recursion\n";
+     recursion(n-1);
+}
+int main()
+{
+    int a;
+    cin>>a;
+    recursion(a);
+    return 0;
+}
