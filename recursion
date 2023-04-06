@@ -1,0 +1,27 @@
+#include <iostream>
+// add:simple recursion function
+using namespace std;
+int add(int a)
+{
+if(a==0)//condition for recursion function to be able to recurse
+{
+return 0;
+}
+return a + add(a-1);
+}
+int fact(int a)
+{
+    if(a==1)
+    {
+        return 1;
+    }
+    return a * fact(a-1);
+}
+int main()
+{
+    int a;
+    cin>>a;
+    cout<<add(a)<<endl<<fact(a);
+    return 0;
+}
+
