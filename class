@@ -1,0 +1,15 @@
+#include <bits/stdc++.h>
+using namespace std;
+class id{
+    public:
+int age;
+string firstname;
+string lastname;
+int standard;
+void take(){
+ cin>>age>>firstname>>lastname>>standard;
+}
+void give(){
+cout<<age<<","<<firstname<<","<<lastname<<","<<standard;
+}
+};
