@@ -1,0 +1,29 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+int main()
+{
+    int n,sum=0,a=0;
+    cin>>n;
+    int s[n];
+    for (int i = 0 ; i < n ; i++)
+    {
+        for (int j = 0 ; j < 3 ; j++)
+        {
+            cin>>s[i];
+            sum+=s[i];
+        }
+        if (sum >= 2)
+        {
+            a++;
+            sum = 0;
+        }
+        else
+            sum = 0;
+
+    }
+    cout <<a<< endl;
+    return 0;
+}
+
