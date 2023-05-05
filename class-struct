@@ -1,0 +1,58 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+class horse
+{
+public:
+    string name,type;
+    int sizee,age;
+    horse()
+    {
+        cout<<"enter name of horse\n";
+        cin>>name;
+        cout<<"enter type of horse\n";
+        cin>>type;
+        cout<<"enter size of horse\n";
+        cin>>sizee;
+        cout<<"enter age of horse\n";
+        cin>>age;
+    }
+    void output()
+    {
+        cout<<name<<endl<<type<<endl<<sizee<<endl<<age<<endl;
+    }
+};
+struct id
+{
+string fname,lname;
+int age,phone;
+};
+class car
+{
+public:
+    string name,type;
+    int price;
+    void display()
+    {
+        cout<<name<<endl<<type<<endl<<price<<endl;
+    }
+};
+int main()
+{
+    id u;
+    u.age = 19;
+    u.fname = "Omar";
+    u.lname = "Negm";
+    u.phone = 10234;
+    car bmw;
+    bmw.name = "galeya";
+    bmw.type = "Bmw";
+    bmw.price = 1000000;
+    bmw.display();
+    cout<<u.age<<endl<<u.fname<<endl<<u.lname<<endl<<u.phone<<endl;;
+horse *s = new horse();
+s->output();
+delete s;
+    return 0;
+}
+
