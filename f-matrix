@@ -1,0 +1,21 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+int main()
+{
+    short n,d1 = 0,d2 = 0,i,j;
+    cin>>n;
+    short a[n][n];
+    for (i = 0 ; i < n ; i++)
+    {
+        for (j = 0 ; j < n ; j++)
+        {
+            cin>>a[i][j];
+        }
+        d1 = d1 + a[i][i];
+        d2 = d2 + a[i][n-(i+1)];
+    }
+    cout<<abs(d1-d2);
+    return 0;
+}
