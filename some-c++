@@ -1,0 +1,92 @@
+#include <iostream>
+#include <string>
+using namespace std;
+enum mark {fail = 49 , pass = 50};
+void readnumbers(int &x, int &y, int &z)
+{
+    cout<<"Enter first number: \n";
+    cin>>x;
+    cout<<"Enter second number: \n";
+    cin>>y;
+    cout<<"Enter third number: \n";
+    cin>>z;
+}
+float avg(int x, int y, int z)
+{
+ return (float)(x+y+z)/3;
+}
+int sum(int x, int y, int z)
+{
+    return x+y+z;
+}
+int readmark()
+{
+    int m1;
+    cout<<"Enter mark: \n";
+    cin>>m1;
+    return m1;
+}
+mark checker(int x)
+{
+    if (x < 50)
+        return mark :: fail;
+    else
+        return mark :: pass;
+}
+void printmark (mark m1)
+{
+    if (m1 == mark :: fail)
+        cout<<"Fail\n";
+    else
+        cout<<"Pass\n";
+}
+int readnumber()
+{
+    int num;
+    cout<<"Enter number:\n";
+    cin>>num;
+    return num;
+}
+float calchalfnum(int num)
+{
+    return (float)num/2;
+}
+void printresult(int num)
+{
+    string result = "Half of " + to_string(num) + " is " + to_string(calchalfnum(num));
+    cout<<endl<<result<<endl;
+}
+struct fullnameinput
+{
+    string firstname;
+    string lastname;
+};
+fullnameinput readinfo()
+{
+    fullnameinput info;
+    cout<<"Enter your first name\n";
+    cin>>info.firstname;
+    cout<<"Enter your last name\n";
+    cin>>info.lastname;
+    return info;
+}
+string getfullname(fullnameinput info)
+{
+    string fullname;
+    fullname = info.firstname + " " + info.lastname;
+    return fullname;
+}
+void print(string name)
+{
+    cout<<name;
+}
+int main()
+{
+    //printmark(checker(readmark()));
+  int x,y,z;
+  readnumbers(x,y,z);
+  cout<<avg(x,y,z);
+  //cout<<sum(x,y,z);
+    return 0;
+}
+
