@@ -1,0 +1,37 @@
+#include <bits/stdc++.h>    `
+
+using namespace std;
+
+class Triangle
+{
+    public:
+    void intro()
+    {
+        cout<<"I am a triangle\n";
+    }
+};
+class Icosceles : public Triangle
+{
+    public:
+    void introo()
+    {
+        cout<<"I am an isosceles triangle\n";
+    }
+};
+class Equilateral : public Icosceles
+{
+public:
+    void introoo()
+    {
+        cout<<"I am an eguilateral triangle\n";
+    }
+};
+int main()
+{
+    Equilateral t1;
+    t1.introoo();
+    t1.introo();
+    t1.intro();
+    return 0;
+}
+
