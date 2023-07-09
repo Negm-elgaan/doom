@@ -1,0 +1,30 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+int main()
+{
+    short x,y,i,a = 0;
+    cin>>x>>y;
+    short arr[x];
+    for (i = 1 ; i <= x ; i++)
+    {
+        cin>>arr[i];
+    }
+    for (i = 1 ; i <= x ; i++)
+    {
+        if (i == y)
+        {
+            y = arr[i];
+            break;
+        }
+    }
+    for (i = 1 ; i <= x ; i++)
+    {
+        if (arr[i] >= y && arr[i] > 0)
+            a++;
+    }
+    cout<<a;
+    return 0;
+}
+
