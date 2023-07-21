@@ -1,0 +1,26 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+int main()
+{
+    int t;
+    cin>>t;
+    char s;
+    for (int i = 0 ; i < t ; i++)
+    {
+      for(int j = 0 ; j < 8 ; j++)
+      {
+        for(int h = 0 ; h < 8 ; h++)
+        {
+            cin>>s;
+            if(s != '.')
+                cout<<s;
+        }
+        
+      }
+      cout<<"\n";
+    }
+    return 0;
+}
+
