@@ -1,0 +1,45 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+int main()
+{
+    short x,z = 0;
+    cin>>x;
+    short f[x];
+    for (short i = 0 ; i < x ; i++)
+    {
+        cin>>f[i];
+    }
+    for (short i = 0 ; i < x ; i++)
+    {
+        if (i != (x-1))
+        {
+
+        if (f[i] > f[i+1])
+        {
+            z = f[i];
+            f[i] = f[i+1];
+            f[i+1] = z;
+        }
+         for (short i = 0 ; i < x ; i++)
+    {
+        if (i != (x-1))
+        {
+
+        if (f[i] > f[i+1])
+        {
+            z = f[i];
+            f[i] = f[i+1];
+            f[i+1] = z;
+        }
+        }
+    }
+
+    }
+    }
+    for (short i = 0 ; i < x ; i++)
+        cout<<f[i]<<" ";
+    return 0;
+}
+
