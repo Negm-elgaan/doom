@@ -1,0 +1,53 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+int main()
+{
+    long long x,y = x,z = 2;
+    cin>>x;
+    /*for (long long i = 0 ; i < y; i++)
+    {
+        if (x == 2 || x == 1)
+        {
+            cout<<"YES\n";
+            return 0;
+        }
+        else if (x > 2)
+        {
+            if (x % 2 == 0)
+                x /= 2;
+            else
+            {
+                cout<<"NO\n";
+                return 0;
+            }
+        }
+        else if (x < 2)
+        {
+            cout<<"NO\n";
+            return 0;
+        }*/
+        for (long long i = 0 ; i < y; i++)
+        {
+            if (x == 2 || x == 1)
+            {
+                cout<<"YES\n";
+                return 0;
+            }
+            if (z > x)
+            {
+                cout<<"NO\n";
+                return 0;
+            }
+            else if (z == x)
+            {
+                cout<<"YES\n";
+                return 0;
+            }
+            else
+                z *= 2;
+        }
+    return 0;
+}
+
