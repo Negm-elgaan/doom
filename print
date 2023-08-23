@@ -1,0 +1,21 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+short print(short x)
+{
+    for (short i = 1 ; i <= x ; i++)
+    {
+        if (i == x)
+            return x;
+        else
+            cout<<i<<" ";
+    }
+}
+int main()
+{
+    short x;
+    cin>>x;
+   cout<<print(x);
+    return 0;
+}
+
