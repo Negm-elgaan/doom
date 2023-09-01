@@ -1,0 +1,30 @@
+#include <iostream>
+
+using namespace std;
+int readpositivenum(string message)
+{
+    int num = 0;
+    do
+    {
+        cout << message << endl;
+        cin>>num;
+    }
+    while (num < 0);
+    return num;
+}
+int sumofdigits(int num)
+{
+    int sum = 0 ;
+    while (num > 0)
+    {
+        sum += num % 10;
+        num /= 10;
+    }
+    return sum;
+}
+int main()
+{
+    cout << "The sum of digits is : " << sumofdigits(readpositivenum("Please enter a positive number"));
+    return 0;
+}
+
