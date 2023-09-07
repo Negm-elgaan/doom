@@ -1,0 +1,34 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+int readpositivenumber(string message)
+{
+    int num = 0 ;
+    do
+    {
+        cout << message << endl;
+        cin>>num;
+    }
+    while(num < 0);
+    return num;
+}
+int frequency(int x,int y)
+{
+    int a = 0 , rem = 0;
+    while (y > 0)
+    {
+        rem = y % 10 ;
+        y /= 10 ;
+        if (rem == x)
+            a++;
+    }
+    return a ;
+}
+int main()
+{
+    int digit = readpositivenumber("Please enter digit to check") ;
+    short number = readpositivenumber("Please enter number");
+    cout << "The frequency is: " <<frequency(number,digit);
+    return 0;
+}
+
