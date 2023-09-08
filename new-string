@@ -1,0 +1,22 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+int main()
+{
+    string s , t ;
+    cin>>s>>t;
+    int a = 0 , b = 0 ;
+    for (int i = 0 ; s[i] != '\0' ; i++)
+    {
+            a++;
+    }
+    for (int j = 0 ; t[j] != '\0' ; j++)
+    {
+        b++;
+    }
+    cout << a << " " << b << endl;
+    cout << s << " " << t << endl;
+    return 0;
+}
+
