@@ -1,0 +1,40 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+int readpostivenum(string message)
+{
+    int num = 0 ;
+    do
+    {
+        cout << message << endl;
+        cin>>num;
+    }
+    while (num < 0);
+    return num;
+}
+int frequency(int y)
+{
+    int a = 0 , b = 0 , c = 0 , rem = 0 , x = y;
+    for (int i = 0 ; i < 10 ; i++)
+    {
+        while (y > 0)
+        {
+            rem = y % 10 ;
+            y /= 10 ;
+            if (i == rem)
+                a++;
+        }
+        if (a > 0)
+        {
+            cout << "Digit " << i << " frequency is : " << a << endl ;
+        }
+        y = x ;
+        a = 0 ;
+    }
+}
+int main()
+{
+    frequency(readpostivenum("Please enter number: "));
+    return 0;
+}
+
