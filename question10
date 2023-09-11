@@ -1,0 +1,41 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+int readpositivenum(string message)
+{
+    int num = 0 ;
+    do
+    {
+        cout << message << endl ;
+        cin >> num ;
+    }
+    while (num < 0);
+    return num;
+}
+int reversenum(int num)
+{
+    int remiander = 0 , reversednum = 0 ;
+    while (num > 0)
+    {
+        remiander = num % 10 ;
+        reversednum = remiander + reversednum * 10 ;
+        num /= 10 ;
+    }
+    return reversednum ;
+}
+void PrintDigits(int Number)
+{
+    int  Remainder = 0;
+    while (Number > 0)
+        {
+            Remainder = Number % 10;
+            Number = Number / 10;
+            cout << Remainder << endl;
+        }
+}
+int main()
+{
+    PrintDigits(reversenum(readpositivenum("Please enter a number : ")));
+    return 0;
+}
+
