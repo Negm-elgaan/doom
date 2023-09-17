@@ -1,0 +1,30 @@
+#include <iostream>
+
+using namespace std;
+int readpositivenum(string message)
+{
+    int num = 0 ;
+    do
+    {
+        cout << message << endl ;
+        cin >> num ;
+    }
+    while (num < 0);
+    return num;
+}
+void printinverse(int num)
+{
+    cout << "\n" ;
+    for (int i = 1 ; i <= num ; i++)
+    {
+        for (int j = 0 ; j < i ; j++)
+            cout << i ;
+        cout << "\n" ;
+    }
+}
+int main()
+{
+    printinverse(readpositivenum("Enter a Number: "));
+    return 0;
+}
+
