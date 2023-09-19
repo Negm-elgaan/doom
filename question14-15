@@ -1,0 +1,40 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+int readpositivenum(string message)
+{
+    int num = 0 ;
+    do
+    {
+        cout << message << endl ;
+        cin >> num ;
+    }
+    while (num < 0);
+    return num;
+}
+int printinvertedchar(int num)
+{
+    for (char i = 64 + (num) ; i > 64 ; i--)
+    {
+        for (int j = 0 ; j < num ; j++)
+            cout << i ;
+        cout << "\n";
+        num-- ;
+    }
+}
+int printchar(int num)
+{
+    for (int i = 65 ; i < 65 + num ; i++)
+    {
+        for (int j = 0 ; j < i - 65 + 1 ; j++)
+            cout << char(i) ;
+        cout << "\n";
+    }
+}
+int main()
+{
+    printchar(readpositivenum("Please enter a number: "));
+    printinvertedchar(readpositivenum("Please enter a number: "));
+    return 0;
+}
+
