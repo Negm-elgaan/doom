@@ -1,0 +1,104 @@
+#include <iostream>
+#include <cstdlib>
+#include <time.h>
+#include <bits/stdc++.h>
+using namespace std;
+int RandomNumber(int From, int To)
+{
+    //Function to generate a random number
+    int randNum = rand() % (To - From + 1) + From;
+    return randNum;
+}
+enum enCharType { SamallLetter = 1, CapitalLetter = 2, SpecialCharacter = 3, Digit = 4 };
+char GetRandomCharacter(enCharType CharType)
+{
+    switch (CharType)
+    {
+        case enCharType::SamallLetter:
+        {
+            return char(RandomNumber(97, 122));
+            break;
+        }
+        case enCharType::CapitalLetter:
+        {
+            return char(RandomNumber(65, 90));
+            break;
+        }
+        case enCharType::SpecialCharacter:
+        {
+            return char(RandomNumber(33, 47));
+            break;
+        }
+        case enCharType::Digit:
+        {
+            return char(RandomNumber(48, 57));
+            break;
+        }
+    }
+}
+string GenerateWord(enCharType CharType, short Length)
+{
+    string Word;
+    for (int i = 1; i <= Length; i++)
+    {
+        Word = Word + GetRandomCharacter(CharType);
+    }
+    return Word;
+}
+string  GenerateKey()
+{
+    string Key = "";
+    Key = GenerateWord(enCharType::CapitalLetter,4) + "-";
+    Key = Key + GenerateWord(enCharType::CapitalLetter, 4) + "-";
+    Key = Key + GenerateWord(enCharType::CapitalLetter, 4) + "-";
+    Key = Key + GenerateWord(enCharType::CapitalLetter, 4) ;
+    return Key;
+}
+void GenerateKeys(short NumberOfKeys)
+{
+    for (int i = 1; i <= NumberOfKeys; i++)
+        {
+            cout << "Key [" << i << "] : ";
+            cout << GenerateKey() << endl;
+        }
+}
+int readpositivenum(string message)
+{
+    int num = 0 ;
+    do
+    {
+        cout << message << endl ;
+        cin >> num ;
+    }
+    while (num < 0);
+    return num;
+}
+char RandomNumber2(int From, int To)
+{
+    //Function to generate a random number
+    int randNum = rand() % (To - From + 1) + From;
+    return randNum;
+}
+string GenKeys(int num)
+{
+    string key = "";
+    for (int i = 1 ; i <= num ; i++)
+    {
+        for (int j = 1 ; j < 20 ; j++)
+        {
+            if (j >= 5 && j % 5 == 0)
+                key += '-' ;
+            else
+            key += RandomNumber2(65,90);
+        }
+        cout << "Key[" << i << "]: " << key << endl;
+        key = "" ;
+    }
+}
+int main()
+{
+    srand((unsigned)time(NULL));
+    GenKeys(readpositivenum("Please enter number of keys: ")) ;
+    return 0;
+}
+
