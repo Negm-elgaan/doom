@@ -1,0 +1,77 @@
+#include <iostream>
+
+using namespace std;
+int readpositivenum(string message)
+{
+    int num = 0 ;
+    do
+    {
+        cout << message << endl ;
+        cin >> num ;
+    }
+    while (num < 0);
+    return num;
+}
+void ReadArray(int arr[100], int& arrLength)
+{
+    cout << "\nEnter number of elements:\n";
+    cin >> arrLength;
+    cout << "\nEnter array elements: \n";
+    for (int i = 0; i < arrLength; i++)
+    {
+        cout << "Element [" << i + 1 << "] : ";
+        cin >> arr[i];
+    }
+    cout << endl;
+}
+void PrintArray(int arr[100], int arrLength)
+{
+    for (int i = 0; i < arrLength; i++)
+        cout << arr[i] << " ";
+        cout << "\n";
+}
+int TimesRepeated(int Number, int arr[100], int arrLength)
+{
+    int counter = 0;
+    for (int i = 0; i <= arrLength - 1; i++)
+        {
+            if (Number == arr[i])
+                {
+                counter++;
+                }
+        }
+    return counter;
+}
+int arrmaker(int n)
+{
+    int f[n] ;
+    for (int i = 1 ; i <= n ; i++)
+    {
+        cout << "Element[" << i << "]:" ;
+        cin >> f[i] ;
+    }
+    int x = readpositivenum("Enter number you want to check"),a = 0;
+    cout << "Orginal array : " ;
+    for (int i = 1 ; i <= n ; i++)
+    {
+        cout << f[i] << " " ;
+        if (f[i] == x)
+            a++ ;
+    }
+    cout << endl ;
+    cout << x << " is repeated " << a << " time(s)";
+}
+int main()
+{
+    int arr[100], arrLength, NumberToCheck;
+    ReadArray(arr, arrLength);
+    NumberToCheck = readpositivenum("Enter the number you want to check: ");
+    cout << "\nOriginal array: ";
+    PrintArray(arr, arrLength);
+    cout << "\nNumber " << NumberToCheck;
+    cout << " is repeated ";
+    cout << TimesRepeated(NumberToCheck, arr, arrLength) << " time(s)\n";
+    arrmaker(readpositivenum("Enter a number"));
+    return 0;
+}
+
