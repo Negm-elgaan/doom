@@ -1,0 +1,33 @@
+#include <iostream>
+#include <stdlib.h>
+#include <time.h>
+using namespace std;
+int RandomNumber(int From, int To)
+{
+    //Function to generate a random number
+    int randNum = rand() % (To - From + 1) + From;
+    return randNum;
+}
+void ReadArray(int arr[100], int& arrLength)
+{
+    cout << "Enter number of elements:\n";
+    cin >> arrLength;
+    for (int i = 0; i < arrLength; i++)
+        arr[i] = RandomNumber(1,100) ;
+}
+void PrintArray(int arr[100], int arrLength)
+{
+    cout << "Array Elements: ";
+    for (int i = 0; i < arrLength; i++)
+            cout << arr[i] << " ";
+    cout << "\n";
+}
+int main()
+{
+    srand((unsigned)time(NULL));
+    int arr[100], arrLength;
+    ReadArray(arr, arrLength);
+    PrintArray(arr, arrLength);
+    return 0;
+}
+`
