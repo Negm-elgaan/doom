@@ -1,0 +1,126 @@
+#include <iostream>
+#include <stdlib.h>
+#include <cstdlib>
+#include <time.h>
+#include <limits.h>
+#include <math.h>
+
+using namespace std;
+
+enum enPrimNotPrime { Prime = 1, NotPrime = 2 };
+enPrimNotPrime CheckPrime(int Number)
+{
+    int M = round(Number / 2);
+    for (int Counter = 2; Counter <= M; Counter++)
+        {
+            if (Number % Counter == 0)
+             return enPrimNotPrime::NotPrime;
+        }
+    return enPrimNotPrime::Prime;
+}
+int RandomNumber(int From, int To)
+{
+    //Function to generate a random number
+    int randNum = rand() % (To - From + 1) + From;
+    return randNum;
+}
+void ReadArray(int arr[100], int& arrLength)
+{
+    cout << "Enter number of elements:\n";
+    cin >> arrLength;
+    for (int i = 0; i < arrLength; i++)
+        arr[i] = RandomNumber(1,100) ;
+}
+void CopyOnlyPrimeNumbers(int arrSource[100], int arrDestination[100], int arrLength, int& arr2Lenght)
+{
+    int Counter = 0;
+    for (int i = 0; i < arrLength; i++)
+        {
+            if (CheckPrime(arrSource[i]) == enPrimNotPrime::Prime)
+                {
+                    arrDestination[Counter] = arrSource[i];
+                    Counter++;
+                }
+        }
+    arr2Lenght = Counter;
+}
+void PrintArray(int arr[100], int arrLength)
+{
+    for (int i = 0; i < arrLength; i++)
+            cout << arr[i] << " ";
+    cout << "\n";
+}
+int Sum(int arr[100],int arrLength)
+{
+    int sum = 0 ;
+    for (int i = 0 ; i < arrLength ; i++)
+        sum += arr[i];
+    return sum ;
+}
+float Avg(int arr[100],int arrLength)
+{
+    return (float) Sum(arr, arrLength) /arrLength;
+}
+void newarr(int arr[100],int arrLength,int arr2[100])
+{
+    for (int i = 0 ; i < arrLength ; i++)
+        arr2[i] = arr[i];
+}
+int primearr(int arr[100],int arrLength,int arr3[100])
+{
+    int a = 0;
+    cout << "Prime array : ";
+    for (int i = 0 ; i < arrLength ; i++)
+    {
+        for (int j = 2 ; j < arr[i] ; j++)
+            {
+                if (arr[i] == 2 || arr[i] == 3)
+                {
+                    arr3[i] = arr[i] ;
+                    break ;
+                }
+                if (arr[i] % j == 0)
+                    a++ ;
+            }
+            if (a == 0)
+            {
+                arr3[i] = arr[i] ;
+                cout << arr3[i] << " " ;
+            }
+
+            a = 0 ;
+    }
+    cout << endl;
+}
+int sum2arr(int arr[100], int arr2[100], int arr3[100] ,int arrlength)
+{
+    for (int i = 0 ; i < arrlength ; i++)
+        arr3[i] = arr[i] + arr2[i];
+}
+int main()
+{
+    srand((unsigned)time(NULL));
+    int arr[100], arrLength,arr2[100],arr3[100],arr2Length = 0;
+    ReadArray(arr, arrLength);
+    newarr(arr, arrLength, arr2);
+    cout << "Array 1 Elements: " << endl;
+    PrintArray(arr, arrLength);
+    cout << "Array 2 Elements after copy: "<< endl;
+    PrintArray(arr2, arrLength);
+    CopyOnlyPrimeNumbers(arr,arr2,arrLength,arr2Length);
+    cout << "Prime numbers in Array : " << endl;
+    PrintArray(arr2, arr2Length);
+    primearr(arr , arrLength, arr3);
+    cout << "Sum of all numbers is : " << Sum(arr, arrLength) << endl;
+    sum2arr(arr,arr2,arr3,arrLength);
+    cout << "array 1 elements:" << endl;
+    PrintArray(arr,arrLength);
+    cout << "array 2 elements:" << endl;
+    PrintArray(arr2,arrLength);
+    cout<< "sum of array 1 and 2 elements:" << endl ;
+    PrintArray(arr3,arrLength);
+    cout << "The average is: " << Avg(arr, arrLength) << endl;
+
+    return 0;
+}
+

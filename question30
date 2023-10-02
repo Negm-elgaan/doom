@@ -1,0 +1,57 @@
+#include <iostream>
+#include <stdlib.h>
+#include <cstdlib>
+#include <time.h>
+#include <limits.h>
+
+using namespace std;
+
+int readpositivenum(string message)
+{
+    int num = 0 ;
+    do
+    {
+        cout << message << endl ;
+        cin >> num ;
+    }
+    while (num < 0);
+    return num;
+}
+int RandomNumber(int From, int To)
+{
+    //Function to generate a random number
+    int randNum = rand() % (To - From + 1) + From;
+    return randNum;
+}
+void ReadArray(int arr[100], int arrLength)
+{
+    for (int i = 0; i < arrLength; i++)
+        arr[i] = RandomNumber(1,100) ;
+}
+void PrintArray(int arr[100], int arrLength)
+{
+    for (int i = 0; i < arrLength; i++)
+            cout << arr[i] << " ";
+    cout << "\n";
+}
+int sum2arr(int arr[100], int arr2[100], int arr3[100] ,int arrlength)
+{
+    for (int i = 0 ; i < arrlength ; i++)
+        arr3[i] = arr[i] + arr2[i];
+}
+int main()
+{
+    srand((unsigned)time(NULL));
+    int arr[100], arrLength = readpositivenum("Enter number of elements: "),arr2[100],arr3[100];
+    ReadArray(arr, arrLength);
+    ReadArray(arr2, arrLength);
+    sum2arr(arr,arr2,arr3,arrLength);
+    cout << "array 1 elements:" << endl;
+    PrintArray(arr,arrLength);
+    cout << "array 2 elements:" << endl;
+    PrintArray(arr2,arrLength);
+    cout<< "sum of array 1 and 2 elements:" << endl ;
+    PrintArray(arr3,arrLength);
+    return 0;
+}
+
