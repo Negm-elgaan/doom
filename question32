@@ -1,0 +1,63 @@
+#include <iostream>
+#include <stdlib.h>
+#include <cstdlib>
+#include <time.h>
+#include <limits.h>
+
+using namespace std;
+void Swap(int& A, int& B)
+{
+    int Temp;
+    Temp = A;
+    A = B;
+    B = Temp;
+}
+int readpositivenum(string message)
+{
+    int num = 0 ;
+    do
+    {
+        cout << message << endl ;
+        cin >> num ;
+    }
+    while (num < 0);
+    return num;
+}
+int RandomNumber(int From, int To)
+{
+    //Function to generate a random number
+    int randNum = rand() % (To - From + 1) + From;
+    return randNum;
+}
+void ReadArray(int arr[100], int arrLength)
+{
+    for (int i = 1; i <= arrLength; i++)
+        arr[i] = i ;
+}
+void PrintArray(int arr[100], int arrLength)
+{
+    for (int i = 1; i <= arrLength; i++)
+            cout << arr[i] << " ";
+    cout << "\n";
+}
+void ShuffleArray(int arr[100], int arrLength)
+{
+    for (int i = 0; i < arrLength; i++)
+        {
+        Swap(arr[RandomNumber(1, arrLength)], arr[RandomNumber(1, arrLength)]);
+        }
+}
+
+int main()
+{
+    srand((unsigned)time(NULL));
+    int arr[100],arrLength = readpositivenum("Enter array length");
+    ReadArray(arr,arrLength);
+    cout << "\nArray elements before shuffle:\n";
+    PrintArray(arr, arrLength);
+    ShuffleArray(arr, arrLength);
+    cout << "\nArray elements after shuffle:\n";
+    PrintArray(arr, arrLength);
+    return 0;
+}
+
