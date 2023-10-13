@@ -1,0 +1,194 @@
+#include <iostream>
+#include <cstdlib>
+#include <time.h>
+#include <math.h>
+#include  <bits/stdc++.h>
+
+using namespace std;
+
+enum enPrimNotPrime {prime = 1 , notprime = 2};
+enum palindrome {palin = 1 , notpaline = -1};
+int RandomNumber(int From, int To)
+{
+    //Function to generate a random number
+    int randNum = rand() % (To - From + 1) + From;
+    return randNum;
+}
+enPrimNotPrime CheckPrime(int Number)
+{
+    int M = round(Number / 2);
+    for (int Counter = 2; Counter <= M; Counter++)
+        {
+            if (Number % Counter == 0)
+             return enPrimNotPrime::notprime;
+        }
+    return enPrimNotPrime::prime;
+}
+int readpositivenum(string message)
+{
+    int num = 0 ;
+    do
+    {
+        cout << message << endl ;
+        cin >> num ;
+    }
+    while (num < 0);
+    return num;
+}
+void ReadArray(int arr[100], int arrLength)
+{
+    for (int i = 0; i < arrLength; i++)
+        arr[i] = RandomNumber(1,100) ;
+}
+void PrintArray(int arr[100], int arrLength)
+{
+    cout << "Array Elements: ";
+    for (int i = 0; i < arrLength; i++)
+            cout << arr[i] << " ";
+    cout << "\n";
+}
+void AddArrayElement(int arr[100],int arr2[100],int &arrsize)
+{
+     //its a new element so we need to add the length by 1
+     arr2[arrsize] = arr[arrsize] ;
+
+}
+void ReadArray2(int arr[100], int arrLength)
+{
+    for (int i = 0; i < arrLength; i++)
+        cin >> arr[i] ;
+}
+void AddArrayElement(int Number, int arr[100], int& arrLength)
+{ //its a new element so we need to add the length by 1
+    arrLength++;
+    arr[arrLength - 1] = Number;
+}
+void AddOddArrayElement(int Number, int arr[100], int& arrLength)
+{ //its a new element so we need to add the length by 1
+    if (Number % 2 != 0)
+    {
+        arrLength++;
+        arr[arrLength - 1] = Number;
+    }
+}
+void CopyArrayUsingAddArrayElementPrime(int arrSource[100], int arrDestination[100], int arrLength, int& arrDestinationLength)
+{
+    for (int i = 0; i < arrLength; i++)
+        if (CheckPrime(arrSource[i]) == enPrimNotPrime::prime)
+            {
+                AddArrayElement(arrSource[i], arrDestination, arrDestinationLength);
+            }
+}
+void CopyArrayUsingAddArrayElement(int arrSource[100], int arrDestination[100], int arrLength, int& arrDestinationLength)
+{
+    for (int i = 0 ; i < arrLength; i++)
+        AddArrayElement(arrSource[i], arrDestination, arrDestinationLength);
+}
+void Copypalin(int arrSource[100], int arrDestination[100], int arrLength, int& arrDestinationLength)
+{
+    for (int i = arrLength - 1 ; i >= 0 ; i--)
+        AddArrayElement(arrSource[i], arrDestination, arrDestinationLength);
+}
+palindrome ppp(int arrSource[100], int arrDestination[100], int arrlength)
+{
+    for (int i = 0 ; i < arrlength ; i++)
+        if (arrSource[i] != arrDestination[i])
+            return palindrome :: notpaline ;
+    return palindrome :: palin ;
+}
+void printpalin(palindrome p)
+{
+    if (p == palindrome :: palin )
+        cout << "Yes array is palindrome\n";
+    else
+        cout << "No array is not palindrome\n";
+}
+void CopyArrayUsingAddArrayElement2(int arrSource[100], int arrDestination[100], int arrLength, int& arrDestinationLength)
+{
+    for (int i = 0; i < arrLength; i++)
+        AddOddArrayElement(arrSource[i], arrDestination, arrDestinationLength);
+}
+bool searching(int arr[100],int arrLength,int num)
+{
+    if (arrLength == 0)
+        return true ;
+    for (int i = 0 ; i < arrLength ; i++)
+        if (num == arr[i])
+        {
+            return false;
+        }
+    return true ;
+}
+short FindNumberPositionInArray(int Number, int arr[100], int arrLength)
+{
+    for (int i = 0; i < arrLength; i++)
+        {
+        if (arr[i] == Number)
+        return i;//return the index
+        }
+        //if you reached here, this means the number is not found
+        return -1;
+}
+bool IsNumberInArray(int Number, int arr[100], int arrLength)
+{
+    return FindNumberPositionInArray(Number, arr, arrLength) != -1;
+}
+
+void CopyArrayUsingAddArrayDistinctElement(int arrSource[100], int arrDestination[100], int arrLength, int& arrDestinationLength)
+{
+    for (int i = 0; i < arrLength; i++)
+        if (searching(arrDestination,arrDestinationLength,arrSource[i]))
+            AddArrayElement(arrSource[i],arrDestination,arrDestinationLength);
+}
+void InputUserNumbersInArray(int arr[100], int& arrLength,int arr2[100],int &AddMore)
+{
+    do
+        {
+        AddArrayElement(arr, arr2,AddMore);
+        AddMore++;
+        }
+    while (AddMore < arrLength);
+}
+void CopyDistinctNumbersToArray(int arrSource[100], int arrDestination[100], int SourceLength, int& DestinationLength)
+{
+    for (int i = 0; i < SourceLength; i++)
+        {
+            if (!IsNumberInArray(arrSource[i], arrDestination, DestinationLength))
+            {
+                AddArrayElement(arrSource[i], arrDestination, DestinationLength);
+            }
+        };
+}
+bool IsPalindromeArray(int arr[100], int Length)
+{
+    for (int i = 0; i < Length; i++)
+        {
+            if (arr[i] != arr[Length - i - 1])
+                {
+                    return false;
+                }
+        };
+returntrue;
+}
+
+int main()
+{
+    srand((unsigned)time(NULL));
+    int arr[100],arr2[100],arrLength = readpositivenum("Enter array length: "),Addmore = 0 ;
+    /*ReadArray(arr,arrLength);
+    PrintArray(arr,arrLength);
+    InputUserNumbersInArray(arr,arrLength,arr2,Addmore);
+    PrintArray(arr2,Addmore);*/
+    /*ReadArray(arr,arrLength);
+    CopyArrayUsingAddArrayElement(arr, arr2, arrLength, Addmore);
+    PrintArray(arr2, Addmore);*/
+    ReadArray2(arr,arrLength);
+    PrintArray(arr,arrLength);
+    Copypalin(arr,arr2,arrLength,Addmore);
+    printpalin(ppp(arr,arr2,arrLength));
+    for (int i = 0 ; i < Addmore ; i++)
+        cout << arr2[i] << endl ;
+
+    return 0;
+}
+
