@@ -1,0 +1,62 @@
+#include <iostream>
+#include <cstdlib>
+#include <time.h>
+#include <math.h>
+
+using namespace std;
+
+enum OddorEven {Odd = 1 , Even = 2};
+OddorEven check(int number)
+{
+    if (number % 2 == 0)
+        return OddorEven :: Even ;
+    else
+        return OddorEven :: Odd ;
+}
+int countOdd(int arr[100], int arrLength)
+{
+    int counter  = 0 ;
+    for (int  i = 0 ; i < arrLength ; i++)
+        if (check(arr[i]) == OddorEven :: Odd)
+            counter++;
+    return counter ;
+}
+int RandomNumber(int From, int To)
+{
+    //Function to generate a random number
+    int randNum = rand() % (To - From + 1) + From;
+    return randNum;
+}
+int readpositivenum(string message)
+{
+    int num = 0 ;
+    do
+    {
+        cout << message << endl ;
+        cin >> num ;
+    }
+    while (num < 0);
+    return num;
+}
+void ReadArray(int arr[100], int arrLength)
+{
+    for (int i = 0; i < arrLength; i++)
+        arr[i] = RandomNumber(1,100) ;
+}
+void PrintArray(int arr[100], int arrLength)
+{
+    cout << "Array Elements: ";
+    for (int i = 0; i < arrLength; i++)
+            cout << arr[i] << " ";
+    cout << "\n";
+}
+int main()
+{
+    srand((unsigned)time(NULL));
+    int arr[100],arrLength = readpositivenum("Enter array length: ");
+    ReadArray(arr,arrLength);
+    PrintArray(arr,arrLength);
+    cout << "Odd numbers count is : " << countOdd(arr,arrLength) ;
+    return 0;
+}
+
