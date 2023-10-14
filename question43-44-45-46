@@ -1,0 +1,107 @@
+#include <iostream>
+#include <cstdlib>
+#include <time.h>
+#include <math.h>
+#include <objbase.h>
+#include <bits/stdc++.h>
+using namespace std;
+
+enum OddorEven {Odd = 1 , Even = 2};
+OddorEven check(int number)
+{
+    if (number % 2 == 0)
+        return OddorEven :: Even ;
+    else
+        return OddorEven :: Odd ;
+}
+int countOdd(int arr[100], int arrLength)
+{
+    int counter  = 0 ;
+    for (int  i = 0 ; i < arrLength ; i++)
+        if (check(arr[i]) == OddorEven :: Odd)
+            counter++;
+    return counter ;
+}
+int countEven(int arr[100], int arrLength)
+{
+    int counter  = 0 ;
+    for (int  i = 0 ; i < arrLength ; i++)
+        if (check(arr[i]) == OddorEven :: Even)
+            counter++;
+    return counter ;
+}
+int RandomNumber(int From, int To)
+{
+    //Function to generate a random number
+    int randNum = rand() % (To - From + 1) + From;
+    return randNum;
+}
+int readpositivenum(string message)
+{
+    int num = 0 ;
+    do
+    {
+        cout << message << endl ;
+        cin >> num ;
+    }
+    while (num < 0);
+    return num;
+}
+void ReadArray(int arr[100], int arrLength)
+{
+    for (int i = 0; i < arrLength; i++)
+        arr[i] = RandomNumber(-100,100) ;
+}
+void PrintArray(int arr[100], int arrLength)
+{
+    cout << "Array Elements: ";
+    for (int i = 0; i < arrLength; i++)
+            cout << arr[i] << " ";
+    cout << "\n";
+}
+int CountPositive(int arr[100], int arrLength)
+{
+    int counter = 0 ;
+    for (int i = 0 ; i < arrLength ; i++)
+        if (arr[i] > 0)
+            counter++ ;
+    return counter ;
+}
+int CountNegative(int arr[100], int arrLength)
+{
+    int counter = 0 ;
+    for (int i = 0 ; i < arrLength ; i++)
+        if (arr[i] < 0)
+            counter++ ;
+    return counter ;
+}
+float myABS(float a)
+{
+    if (a < 0)
+        return a * -1 ;
+    return a ;
+}
+float  ReadNumber()
+{
+    float Number;
+    cout << "Please enter a number?\n";
+    cin >> Number;
+    return Number;
+}
+int main()
+{
+    srand((unsigned)time(NULL));
+    int arr[100],arrLength = readpositivenum("Enter array length: ");
+    ReadArray(arr,arrLength);
+    PrintArray(arr,arrLength);
+    cout << "Odd numbers count is : " << countOdd(arr,arrLength) << endl ;
+    cout << "Even numbers count is : " << countEven(arr,arrLength) << endl ;
+    cout << "Positive numbers count is : " << CountPositive(arr,arrLength) << endl ;
+    cout << "Negative numbers count is : " << CountNegative(arr,arrLength) << endl ;
+    int a = ReadNumber() ;
+    cout << "My Abs result : " << myABS(a) << endl ;
+    cout << "C++ abs :" << abs(a) << endl ;
+
+    return 0;
+}
+
