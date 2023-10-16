@@ -1,0 +1,78 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+float  ReadNumber()
+{
+    float Number;
+    cout << "Please enter a number?\n";
+    cin >> Number;
+    return Number;
+}
+float GetFractionPart(float Number)
+{
+      return Number - int(Number);
+}
+float myround(float Number)
+{
+        int IntPart;
+        IntPart = int(Number);
+        float FractionsPart = GetFractionPart(Number);
+        if (abs(FractionsPart) >= .5)
+        {
+            if (Number > 0)
+                return ++IntPart;
+            else
+                return --IntPart;
+        }
+        else
+        {
+            return IntPart;
+        }
+
+}
+int myfloor(float Number)
+{
+    int x = Number ;
+    if (Number > 0)
+        return int(Number);
+    else if (Number < 0 && Number < x)
+        return int(Number) - 1;
+    return int(Number);
+}
+int myCeil(float Number)
+{
+    int x = Number ;
+    if (Number > 0 && Number > x)
+        return int(Number) + 1;
+    else
+        return int(Number);
+}
+int MyCeil(float Number)
+{
+    if (abs(GetFractionPart(Number)) > 0)
+    if (Number > 0)
+    return int(Number) + 1;
+    else
+        return int(Number);
+    else return Number;
+}
+float Mysqrt(float Number)
+{
+    return pow(Number, 0.5);
+}
+int main()
+{
+    float x = ReadNumber() ;
+    cout << "my Round Result : " << myround(x) << endl ;
+    cout << "C++ round : " << round(x) << endl ;
+    cout << "My floor result : " << myfloor(x) << endl;
+    cout << "C++ floor : " << floor(x) << endl ;
+    cout <<"My Ceil result : " << myCeil(x) << endl ;
+    cout << "C++ ceil : " << ceil(x) << endl ;
+    cout <<"My sqrt result : " << Mysqrt(x) << endl ;
+    cout << "C++ sqrt : " << sqrt(x) << endl ;
+
+
+    return 0;
+}
+
