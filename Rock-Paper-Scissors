@@ -1,0 +1,160 @@
+#include <iostream>
+#include <cstdlib>
+#include <time.h>
+#include <stdlib.h>
+
+using namespace std;
+
+enum rockpapersissor {rock = 1 , paper = 2 , sissor = 3};
+
+int RandomNumber(int From, int To)
+{
+    //Function to generate a random number
+    int randNum = rand() % (To - From + 1) + From;
+    return randNum;
+}
+int readpositivenum(string message)
+{
+    int num = 0 ;
+    do
+    {
+        cout << message << endl ;
+        cin >> num ;
+    }
+    while (num < 0 && num > 3);
+    return num;
+}
+rockpapersissor checknumber(int number)
+{
+        switch (number)
+        {
+            case 1 :
+                return rockpapersissor :: rock ;
+                break ;
+            case 2 :
+                return rockpapersissor :: paper ;
+                break ;
+            case 3 :
+                return rockpapersissor :: sissor ;
+                break ;
+        }
+}
+void game()
+{
+    cout << "\t\t|| ROCK || PAPER || SISSOR ||\n\n\n";
+    cout << "Rock = 1 , Paper = 2 , Sissor = 3\n";
+    bool c = true ;
+    do
+    {
+        int numberofrounds = readpositivenum("How many rounds do you want to play ?"),playercounter = 0 ,computercounter = 0;
+        for (int i = 1 ; i <= numberofrounds ; i++)
+        {
+            cout << "Round[" << i << "] begins : \n\n";
+            int player = readpositivenum("Enter a number from 1 to 3"),computer = RandomNumber(1,3) ;
+            checknumber(player);
+            checknumber(computer);
+            if (player == rock)
+            {
+                if (computer == sissor)
+                {
+                    cout << " __________Round[" << i << "]__________ \n" ;
+                    playercounter++ ;
+                    cout << "You: Rock\nComputer: Sissor\n" << "You : " << playercounter << "\nComputer : " << computercounter << "\n";
+                    system("Color 2f") ;
+                    cout << " ____________________________ \n" ;
+                }
+                else if (computer == paper)
+                {
+                    cout << " __________Round[" << i << "]__________ \n" ;
+                    computercounter++ ;
+                    cout << "\a" << "You: Rock\nComputer: Paper\n" << "You : " << playercounter << "\nComputer : " << computercounter << "\n";;
+                    system("Color 4f");
+                    cout << " ____________________________ \n" ;
+                }
+                else
+                {
+                    cout << " __________Round[" << i << "]__________ \n" ;
+                    cout << "You: Rock\nComputer: Rock\n" << "Draw!\n" << "You : " << playercounter << "\nComputer : " << computercounter << "\n";
+                    system("Color 6f");
+                    cout << " ____________________________ \n" ;
+                }
+            }
+            else if (player == paper)
+            {
+                if (computer == rock)
+                {
+                    cout << " __________Round[" << i << "]__________ \n" ;
+                    playercounter++ ;
+                    cout << "You: Paper\nComputer: Rock\n" << "You : " << playercounter << "\nComputer : " << computercounter << "\n";
+                    system("Color 2f") ;
+                    cout << " ____________________________ \n" ;
+                }
+                else if (computer == sissor)
+                {
+                    cout << " __________Round[" << i << "]__________ \n" ;
+                    computercounter++ ;
+                    cout << "\aYou: Paper\nComputer: Sissor\n" << "You : " << playercounter << "\nComputer : " << computercounter << "\n";
+                    system("Color 4f") ;
+                    cout << " ____________________________ \n" ;
+                }
+                else
+                {
+                    cout << " __________Round[" << i << "]__________ \n" ;
+                    cout << "You: Paper\nComputer: Sissor\n" << "Draw\n" << "You : " << playercounter << "\nComputer : " << computercounter << "\n";
+                    system("Color 6f") ;
+                    cout << " ____________________________ \n" ;
+                }
+            }
+            else
+            {
+                if (computer == paper)
+                {
+                    cout << " __________Round[" << i << "]__________ \n" ;
+                    playercounter++ ;
+                    cout << "You: Sissor\nComputer: Paper\n" << "You : " << playercounter << "\nComputer : " << computercounter << "\n";
+                    system("Color 2f") ;
+                    cout << " ____________________________ \n" ;
+                }
+                else if (computer == rock)
+                {
+                    cout << " __________Round[" << i << "]__________ \n" ;
+                    computercounter++ ;
+                    cout << "\a" << "You: Sissor\nComputer: Rock\n" << "You : " << playercounter << "\nComputer : " << computercounter << "\n";
+                    system("Color 4f") ;
+                    cout << " ____________________________ \n" ;
+                }
+                else
+                {
+                    cout << " __________Round[" << i << "]__________ \n" ;
+                    cout << "You: Sissor\nComputer: Sissor\n" << " Draw! " << "You : " << playercounter << "\nComputer : " << computercounter << "\n";
+                    system("Color 6f") ;
+                    cout << " ____________________________ \n" ;
+                }
+            }
+        }
+        cout << " \t\t\t________________________________________\n\n\n ";
+        cout << " \t\t\t          *** G a m e O v e r *** \n\n\n " ;
+        cout << " \t\t\t________________________________________\n\n " ;
+        cout << " \t\t\t______________[Game results]____________\n\n";
+        cout << "Game rounds : " << numberofrounds << endl ;
+        cout << "You : " << playercounter << endl;
+        cout << "Computer : " << computercounter << endl;
+        cout <<"Final winner : ";
+        if (playercounter > computercounter)
+            cout << " You!\n" << system("Color 2f");
+        else if (computercounter > playercounter)
+            cout << "Computer!\n" << system("Color 4f");
+        else
+            cout << "Draw!\n" << system("Color 6f");
+        cout << "do you want to play again? \n Yes: 1 , No : 0 \n";
+        cin >> c ;
+    }
+    while (c == true);
+}
+int main()
+{
+    srand((unsigned)time(NULL));
+    game();
+    return 0;
+}
+
