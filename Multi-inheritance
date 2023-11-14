@@ -1,0 +1,55 @@
+#include <iostream>
+
+using namespace std;
+
+// simple example on multi inheritance in C++
+class father
+{
+    protected:
+        int age;
+        string name ;
+        string eyecolor ;
+};
+class mother
+{
+    protected:
+        int age1;
+        string name1;
+        string haircolor;
+};
+class son : protected mother , protected father
+{
+    string gender ;
+    public:
+        son()
+        {
+            int a ;
+            string n , h, e , g ;
+            cout << "Enter your name : \n" ;
+            cin >> n ;
+            cout << "Enter your gender : \n" ;
+            cin >> g ;
+            cout << "Enter your haircolor : \n" ;
+            cin >> h ;
+            cout << "Enter your age : \n" ;
+            cin >> a ;
+            cout << "Enter your eyecolor : \n" ;
+            cin >> e ;
+            age = a ;
+            name = n ;
+            haircolor = h ;
+            eyecolor = e ;
+            gender = g ;
+        }
+        void dsiplay()
+        {
+            cout << name << endl << gender << endl << haircolor << endl << age << endl << eyecolor ;
+        }
+};
+int main()
+{
+    son s1 = son();
+    s1.dsiplay();
+    return 0;
+}
+
