@@ -1,0 +1,32 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+void readnum(vector <int> &);
+void printvector(vector <int> &);
+int main()
+{
+    vector <int> v1 ;
+    readnum(v1);
+    printvector(v1);
+    return 0;
+}
+void readnum(vector <int> &v1)
+{
+    int n = 0 ;
+    char d = 'Y';
+    cout << "Please enter as many numbers as you like.\n\n";
+    while (d == 'y' || d == 'Y')
+    {
+        cout << "Enter the number you want to add\n\n";
+        cin >> n ;
+        v1.push_back(n) ;
+        cout << "do you want to add a number? y/n? " ;
+        cin >> d ;
+    }
+}
+void printvector(vector <int> &v1)
+{
+    for (int & num : v1)
+        cout << num << endl ;
+}
+
