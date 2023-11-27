@@ -1,0 +1,71 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+void readnum(vector <int> &);
+void printvector(vector <int> &);
+struct stemployee
+{
+    string firstname;
+    string lastname;
+    int salary;
+};
+void readnum(vector <stemployee> &v1)
+{
+    stemployee tempemployee ;
+    char d = 'y' ;
+    cout<< "Please enter as many number of employees as you like.\n\n";
+    while (d == 'y' || d == 'Y')
+    {
+        cout << "Enter the first name of employee you want to add\n\n";
+        cin >> tempemployee.firstname;
+        cout << "Enter the last name of employee you want to add\n\n";
+        cin >> tempemployee.lastname;
+        cout << "Enter his/her salary: ";
+        cin >> tempemployee.salary;
+        v1.push_back(tempemployee);
+        cout << "do you want to add another employee? y/n? " ;
+        cin >> d ;
+    }
+
+}
+void printvector(vector <stemployee> &v1)
+{
+    for (stemployee & num : v1)
+    {
+        cout << "First name : " << num.firstname << endl;
+        cout << "Last name : " << num.lastname << endl;
+        cout << "Salary : " << num.salary << endl;
+    }
+}
+
+
+int main()
+{
+    /*vector <int> v1 ;
+    readnum(v1);
+    printvector(v1);*/
+    vector <stemployee> v1 ;
+    readnum(v1);
+    printvector(v1);
+    return 0;
+}
+void readnum(vector <int> &v1)
+{
+    int n = 0 ;
+    char d = 'Y';
+    cout << "Please enter as many numbers as you like.\n\n";
+    while (d == 'y' || d == 'Y')
+    {
+        cout << "Enter the number you want to add\n\n";
+        cin >> n ;
+        v1.push_back(n) ;
+        cout << "do you want to add a number? y/n? " ;
+        cin >> d ;
+    }
+}
+void printvector(vector <int> &v1)
+{
+    for (int & num : v1)
+        cout << num << endl ;
+}
+
