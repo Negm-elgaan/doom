@@ -1,0 +1,61 @@
+#include <iostream>
+#include <cstdlib>
+#include <time.h>
+#include <iomanip>
+using namespace std;
+int RandomNumber(int , int );
+void randomarr(int [3][3]);
+void printarr(int [3][3]);
+void FillMatrixWithRandomNumbers(int arr[3][3], short Rows, short Cols)
+{
+    for (short i = 0; i < Rows; i++)
+        {
+            for (short j = 0; j < Cols; j++)
+                {
+                    arr[i][j] = RandomNumber(1, 100);
+                }
+        }
+}
+void PrintMatrix(int arr[3][3], short Rows, short Cols)
+{
+    for (short i = 0; i < Rows; i++)
+        {
+            for (short j = 0; j < Cols; j++)
+                {
+                    cout << setw(3) << arr[i][j] << "     ";
+                }
+                    cout << "\n";
+        }
+}
+int main()
+{
+    srand((unsigned)time(NULL));
+    int arr[3][3];
+    randomarr(arr);
+    printarr(arr);
+    return 0;
+}
+int RandomNumber(int From, int To)
+{
+    //Function to generate a random number
+    int randNum = rand() % (To - From + 1) + From;
+    return randNum;
+}
+void randomarr(int arr[3][3])
+{
+
+    for (int i = 0 ; i < 3 ; i++)
+        for (int  j = 0 ; j < 3 ; j++)
+            arr[i][j] = RandomNumber(0,100);
+}
+void printarr(int arr[3][3])
+{
+    cout  << "The following is a 3x3 random matrix:\n";
+    for (int i = 0 ; i < 3 ; i++)
+        {
+        for (int  j = 0 ; j < 3 ; j++)
+            cout << arr[i][j] << " " ;
+        cout << endl;
+        }
+}
+
