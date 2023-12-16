@@ -1,0 +1,61 @@
+#include <iostream>
+#include <iomanip>
+using namespace std;
+void fillmatrixwithorderednumbers(int [3][3] , short , short );
+void printmatrix(int [3][3] , short , short );
+void transpose(int [3][3] , short , short );
+void TransposeMatrix(int [3][3] , int [3][3] , short , short);
+int main()
+{
+    int arr1[3][3],arrtransposed;
+    fillmatrixwithorderednumbers(arr1,3,3);
+    cout << "The following is a 3x3 ordered matrix:\n";
+    printmatrix(arr1,3,3);
+    cout << "The following is the transpose of the matrix:\n";
+    transpose(arr1,3,3);
+    printmatrix(arr1,3,3);
+    return 0;
+}
+void fillmatrixwithorderednumbers(int arr[3][3] , short Rows , short Cols)
+{
+    int counter  = 1 ;
+    for (int i = 0 ; i < Rows ; i++)
+        for (int j = 0 ; j < Cols ; j++)
+            {
+                arr[i][j] = counter ;
+                counter++ ;
+            }
+}
+void printmatrix(int arr[3][3] , short Rows , short Cols)
+{
+    for (int i = 0 ; i < Rows ; i++)
+    {
+        for (int j = 0 ; j < Cols ; j++)
+            cout << arr[i][j] << "    " ;
+        cout << endl ;
+    }
+}
+void transpose(int arr1[3][3] , short Rows , short Cols )
+{
+    int temp = 0 ;
+    for (int i = 0 ; i < Rows ; i++)
+    {
+        for (int j = 0 ; j < Cols ; j++)
+        {
+            temp = arr1[i + i][j + i] ;
+            arr1[i + i][j + i] = arr1[j + i][i + i] ;
+            arr1[j + i][i + i] = temp ;
+        }
+    }
+}
+void TransposeMatrix(int arr[3][3], int arrTransposed[3][3], short Rows, short Cols)
+{
+    for (short i = 0; i < Rows; i++)
+        {
+            for (short j = 0; j < Cols; j++)
+            {
+                arrTransposed[i][j] = arr[j][i];
+            }
+        }
+}
+
