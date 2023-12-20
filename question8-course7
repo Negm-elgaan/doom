@@ -1,0 +1,56 @@
+#include <iostream>
+#include <cstdlib>
+#include <time.h>
+#include <cstdio>
+using namespace std;
+int RandomNumber(int , int );
+void FillMatrixWithRandomNumbers(int [3][3], short , short );
+void printmatrix(int [3][3] , short , short );
+void arrmult(int [3][3] , int [3][3] , int [3][3] , short , short);
+int main()
+{
+    srand((unsigned)time(NULL));
+    int arr1[3][3],arr2[3][3],arr3[3][3];
+    cout << "Matrix1:\n";
+    FillMatrixWithRandomNumbers(arr1,3,3);
+    printmatrix(arr1,3,3);
+    cout << "Matrix2:\n";
+    FillMatrixWithRandomNumbers(arr2,3,3);
+    printmatrix(arr2,3,3);
+    cout << "Results:\n";
+    arrmult(arr1,arr2,arr3,3,3);
+    printmatrix(arr3,3,3);
+    return 0;
+}
+int RandomNumber(int From, int To)
+{
+    //Function to generate a random number
+    int randNum = rand() % (To - From + 1) + From;
+    return randNum;
+}
+void FillMatrixWithRandomNumbers(int arr[3][3], short Rows, short Cols)
+{
+    for (short i = 0; i < Rows; i++)
+        {
+            for (short j = 0; j < Cols; j++)
+                {
+                    arr[i][j] = RandomNumber(1, 10);
+                }
+        }
+}
+void printmatrix(int arr[3][3] , short Rows , short Cols)
+{
+    for (int i = 0 ; i < Rows ; i++)
+    {
+        for (int j = 0 ; j < Cols ; j++)
+            printf("%0*d    ",2,arr[i][j] );
+        cout << endl ;
+    }
+}
+void arrmult(int arr1[3][3] , int arr2[3][3] , int arr3[3][3] , short Rows , short Cols)
+{
+    for (int i = 0 ; i < Rows ; i++)
+        for (int j = 0 ; j < Cols ; j++)
+            arr3[i][j] = arr1[i][j] * arr2[i][j] ;
+}
+
