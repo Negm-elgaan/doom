@@ -12,18 +12,20 @@ int matrixsum(int [3][3] , short , short);
 bool checkmatrixequality(int [3][3] , int [3][3] , short , short );
 void printequilty(int [3][3] , int [3][3] , short , short );
 bool AreEqualMatrices(int [3][3] , int [3][3] , short , short );
-bool CheckidentityMatrix(int [3][3] , short , short);
+bool CheckidentityMatrix(int [3][3] , short , short );
 void printidentity(int [3][3] , short , short);
+bool checkscalarmatrix(int [3][3] , short , short );
+int numbercounterinmatrix(int [3][3] , short , short , int );
 int main()
 {
     srand((unsigned)time(NULL));
-    int arr1[3][3],arr2[3][3];
+    int arr1[3][3],arr2[3][3],n = 0;
     for (int i = 0 ; i < 3 ; i++)
     {
         for (int j = 0 ; j < 3 ; j++)
             {
                 cin >> arr1[i][j];
-                cin >> arr2[i][j];
+                //cin >> arr2[i][j];
             }
     }
 
@@ -31,11 +33,17 @@ int main()
     //FillMatrixWithRandomNumbers(arr2,3,3);
     cout << "Matrix 1: \n";
     printmatrix(arr1,3,3);
-    cout << "Matrix 2: \n";
-    printmatrix(arr2,3,3);
+    //cout << "Matrix 2: \n";
+    //printmatrix(arr2,3,3);
     //printequilty(arr1,arr2,3,3);
+    if (checkscalarmatrix(arr1,3,3))
+        cout << "Yes the matrix is scalar\n";
+    else
+        cout << "No the matrix isn't scalar\n";
     printidentity(arr1,3,3);
-    printidentity(arr2,3,3);
+    //printidentity(arr2,3,3);
+    cin >> n ;
+    cout << "The number " << n << " is repeated : " << numbercounterinmatrix(arr1,3,3,n) << " times\n";
     return 0;
 }
 int RandomNumber(int From, int To)
@@ -109,12 +117,10 @@ bool CheckidentityMatrix(int Matrix1[3][3] , short Rows , short Cols)
     for (int i = 0 ; i < Rows ; i++)
         for (int j = 0 ; j < Cols ; j++)
         {
-                if (j == i)
-                    if (Matrix1[i][j] != 1)
-                        return false;
-                else if (j != i)
-                    if (Matrix1[i][j] != 0)
-                        return false ;
+                if (j == i && Matrix1[i][j] != 1)
+                    return false;
+                else if (j != i && Matrix1[i][j] != 0)
+                    return false ;
         }
     return true;
 
@@ -125,6 +131,28 @@ void printidentity(int Matrix1[3][3] , short Rows , short Cols)
         cout << "YES : Matrix is identity\n";
     else
         cout << "NO : Matrix is not identity\n";
+}
+bool checkscalarmatrix(int matrix[3][3] , short Rows , short Cols)
+{
+    int checker = matrix[0][0];
+    for (int i = 0 ; i < Rows ; i++)
+        for (int j = 0 ; j < Cols ; j++)
+        {
+            if(i == j && matrix[i][j] != checker)
+                return false ;
+            else if (i != j && matrix[i][j] != 0)
+                return false ;
+        }
+    return true ;
+}
+int numbercounterinmatrix(int matrix[3][3] , short Rows , short Cols , int num)
+{
+    int counter = 0 ;
+    for (int i = 0 ; i < Rows ; i++)
+        for (int j = 0 ; j < Cols ; j++)
+            if (matrix[i][j] == num)
+                counter++;
+    return counter ;
 }
 
 
