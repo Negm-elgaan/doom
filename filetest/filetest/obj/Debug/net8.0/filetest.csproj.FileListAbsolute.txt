@@ -1,0 +1,14 @@
+C:\Users\omarh\source\repos\filetest\filetest\bin\Debug\net8.0\filetest.exe
+C:\Users\omarh\source\repos\filetest\filetest\bin\Debug\net8.0\filetest.deps.json
+C:\Users\omarh\source\repos\filetest\filetest\bin\Debug\net8.0\filetest.runtimeconfig.json
+C:\Users\omarh\source\repos\filetest\filetest\bin\Debug\net8.0\filetest.dll
+C:\Users\omarh\source\repos\filetest\filetest\bin\Debug\net8.0\filetest.pdb
+C:\Users\omarh\source\repos\filetest\filetest\obj\Debug\net8.0\filetest.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\omarh\source\repos\filetest\filetest\obj\Debug\net8.0\filetest.AssemblyInfoInputs.cache
+C:\Users\omarh\source\repos\filetest\filetest\obj\Debug\net8.0\filetest.AssemblyInfo.cs
+C:\Users\omarh\source\repos\filetest\filetest\obj\Debug\net8.0\filetest.csproj.CoreCompileInputs.cache
+C:\Users\omarh\source\repos\filetest\filetest\obj\Debug\net8.0\filetest.dll
+C:\Users\omarh\source\repos\filetest\filetest\obj\Debug\net8.0\refint\filetest.dll
+C:\Users\omarh\source\repos\filetest\filetest\obj\Debug\net8.0\filetest.pdb
+C:\Users\omarh\source\repos\filetest\filetest\obj\Debug\net8.0\filetest.genruntimeconfig.cache
+C:\Users\omarh\source\repos\filetest\filetest\obj\Debug\net8.0\ref\filetest.dll
