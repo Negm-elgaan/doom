@@ -1,0 +1,14 @@
+C:\Users\omarh\source\repos\FileCopy\FileCopy\bin\Debug\net8.0\FileCopy.exe
+C:\Users\omarh\source\repos\FileCopy\FileCopy\bin\Debug\net8.0\FileCopy.deps.json
+C:\Users\omarh\source\repos\FileCopy\FileCopy\bin\Debug\net8.0\FileCopy.runtimeconfig.json
+C:\Users\omarh\source\repos\FileCopy\FileCopy\bin\Debug\net8.0\FileCopy.dll
+C:\Users\omarh\source\repos\FileCopy\FileCopy\bin\Debug\net8.0\FileCopy.pdb
+C:\Users\omarh\source\repos\FileCopy\FileCopy\obj\Debug\net8.0\FileCopy.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\omarh\source\repos\FileCopy\FileCopy\obj\Debug\net8.0\FileCopy.AssemblyInfoInputs.cache
+C:\Users\omarh\source\repos\FileCopy\FileCopy\obj\Debug\net8.0\FileCopy.AssemblyInfo.cs
+C:\Users\omarh\source\repos\FileCopy\FileCopy\obj\Debug\net8.0\FileCopy.csproj.CoreCompileInputs.cache
+C:\Users\omarh\source\repos\FileCopy\FileCopy\obj\Debug\net8.0\FileCopy.dll
+C:\Users\omarh\source\repos\FileCopy\FileCopy\obj\Debug\net8.0\refint\FileCopy.dll
+C:\Users\omarh\source\repos\FileCopy\FileCopy\obj\Debug\net8.0\FileCopy.pdb
+C:\Users\omarh\source\repos\FileCopy\FileCopy\obj\Debug\net8.0\FileCopy.genruntimeconfig.cache
+C:\Users\omarh\source\repos\FileCopy\FileCopy\obj\Debug\net8.0\ref\FileCopy.dll
