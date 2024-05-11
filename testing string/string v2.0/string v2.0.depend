@@ -1,0 +1,7 @@
+# depslib dependency file v1.0
+1715458980 source:c:\users\omarh\doom\testing string\string v2.0\main.cpp
+	<iostream>
+	<iomanip>
+	<string>
+	<string.h>
+

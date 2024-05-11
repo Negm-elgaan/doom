@@ -125,7 +125,7 @@ class String
             }
             return ;
 		}
-		void DeleteChar(char c)
+		char* DeleteChar(char c)
 		{
 		    int j = 0 , m = n , x = 0;
 		    for (int i = 0 ; i < n ; i++)
@@ -145,6 +145,26 @@ class String
                 }
             }
             n -= x ;
+            return ptr;
+		}
+		void trim()
+		{
+		    ptr = DeleteChar(32);
+		    ptr = DeleteChar(9);
+		    ptr = DeleteChar(10);
+		    ptr = DeleteChar(13);
+		    ptr = DeleteChar(12);
+		    ptr = DeleteChar(11);
+		}
+		void StringReverse()
+		{
+		    char temp = NULL;
+		    for (int i = 0 ; i < n/2 ; i++)
+            {
+                temp = ptr[i];
+                ptr[i] = ptr[n - i - 1];
+                ptr[n - i - 1] = temp;
+            }
 		}
     private :
         static bool compare(String s1 , String s2)
@@ -186,6 +206,10 @@ int main()
 {
     String s1;
     s1.value();
+    s1.print();
+    s1.StringReverse();
+    s1.print();
+    s1.trim();
     s1.print();
     s1.DeleteChar('d');
     s1.print();
