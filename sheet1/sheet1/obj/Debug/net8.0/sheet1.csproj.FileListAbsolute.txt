@@ -1,0 +1,14 @@
+C:\Users\omarh\source\repos\sheet1\sheet1\obj\Debug\net8.0\sheet1.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\omarh\source\repos\sheet1\sheet1\obj\Debug\net8.0\sheet1.AssemblyInfoInputs.cache
+C:\Users\omarh\source\repos\sheet1\sheet1\obj\Debug\net8.0\sheet1.AssemblyInfo.cs
+C:\Users\omarh\source\repos\sheet1\sheet1\obj\Debug\net8.0\sheet1.csproj.CoreCompileInputs.cache
+C:\Users\omarh\source\repos\sheet1\sheet1\bin\Debug\net8.0\sheet1.exe
+C:\Users\omarh\source\repos\sheet1\sheet1\bin\Debug\net8.0\sheet1.deps.json
+C:\Users\omarh\source\repos\sheet1\sheet1\bin\Debug\net8.0\sheet1.runtimeconfig.json
+C:\Users\omarh\source\repos\sheet1\sheet1\bin\Debug\net8.0\sheet1.dll
+C:\Users\omarh\source\repos\sheet1\sheet1\bin\Debug\net8.0\sheet1.pdb
+C:\Users\omarh\source\repos\sheet1\sheet1\obj\Debug\net8.0\sheet1.dll
+C:\Users\omarh\source\repos\sheet1\sheet1\obj\Debug\net8.0\refint\sheet1.dll
+C:\Users\omarh\source\repos\sheet1\sheet1\obj\Debug\net8.0\sheet1.pdb
+C:\Users\omarh\source\repos\sheet1\sheet1\obj\Debug\net8.0\sheet1.genruntimeconfig.cache
+C:\Users\omarh\source\repos\sheet1\sheet1\obj\Debug\net8.0\ref\sheet1.dll
