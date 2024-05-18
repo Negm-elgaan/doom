@@ -223,6 +223,29 @@ class String
                     }
                 }
 		}
+		void Insert(char *ptr3 , int loc)
+		{
+		    int x = 0 , y = 0;
+		    for (int i = 0 ; ptr3[i] != NULL  ; i++)
+            {
+                x++;
+                n++;
+            }
+            for (int i = n - 1 ; i >= 0 ; i--)
+            {
+                ptr[i] = ptr[i - x];
+                if (loc == i)
+                {
+                    for(int j = i ; j < (i + x) ; j++)
+                    {
+                        ptr[j] = ptr3[y];
+                        y++;
+                    }
+                    return ;
+                }
+            }
+
+		}
     private :
         static bool compare(String s1 , String s2)
         {
@@ -260,10 +283,16 @@ class String
 };
 int main()
 {
-    int n = 0;
+    int n = 5;
+    char *ptr ;
+    ptr = new char [n];
+    for (int i = 0 ; i < n ; i++)
+        cin >> *(ptr + i);
     String s1;
     s1.value();
-    s1.Insert('f',2);
+    s1.Insert(ptr,5);
+    s1.print();
+    s1.Insert('f',5);
     //n = s1.ToInteger();
     //cout <<"after turning to int "<< n << endl;
     s1.print();
@@ -291,5 +320,6 @@ int main()
     String s2;
     s2.value();
     s1.compare1(s2);
+    delete []ptr;
     return 0;
 }
