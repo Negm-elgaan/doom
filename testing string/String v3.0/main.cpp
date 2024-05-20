@@ -16,6 +16,10 @@ class String
 		    cin >> n ;
 
 		}
+		String(int num)
+		{
+		    n = num ;
+		}
 		void value()
 		{
 		    ptr = new char[n];
@@ -113,8 +117,8 @@ class String
 		}
 		void clearstr()
 		{
-		    for (int i = 0 ; i < n ; i++)
-                ptr[n] = NULL;
+		    delete [] ptr ;
+            ptr = new char[n];
 		}
 		void Replace(char c , char d)
 		{
@@ -168,11 +172,14 @@ class String
 		}
 		int ToInteger()
 		{
-		    int x = 0 , f = 0;
+		    int x = 0 , f = 0 , y = 0;
 		    for (int i = 0 ; i < n ; i++)
             {
                 switch(ptr[i])
                 {
+                    case '-':
+                        y = 1;
+                        break;
                     case '0':
                         f = 0;
                         break;
@@ -208,8 +215,11 @@ class String
                 }
                 x = x * 10 + f;
             }
+            if (y > 0)
+                x *= -1;
             return x;
 		}
+		friend String ToString(int num);
 		void Insert(char c , int loc)
 		{
 		    n++;
@@ -281,21 +291,92 @@ class String
             delete [] ptr;
         }
 };
+String ToString(int num)
+{
+    String s1(0);
+    int x = 0 , y = 0 , c = 0 , i = 0;
+    if (num < 0)
+    {
+        c++;
+        num *= -1;
+    }
+    while (num != 0)
+    {
+        x = x * 10 + num % 10 ;
+        num /= 10 ;
+        y++;
+    }
+    s1.n = y ;
+    if (c > 0)
+    {
+        s1.ptr[0] = '-';
+        i++;
+        s1.n++;
+    }
+    while (x != 0)
+    {
+        switch (x % 10)
+        {
+            case 0:
+                s1.ptr[i] = '0';
+                break;
+            case 1:
+                s1.ptr[i] = '1';
+                break;
+            case 2:
+                s1.ptr[i] = '2';
+                break;
+            case 3:
+                s1.ptr[i] = '3';
+                break;
+            case 4:
+                s1.ptr[i] = '4';
+                break;
+            case 5:
+                s1.ptr[i] = '5';
+                break;
+            case 6:
+                s1.ptr[i] = '6';
+                break;
+            case 7:
+                s1.ptr[i] = '7';
+                break;
+            case 8:
+                s1.ptr[i] = '8';
+                break;
+            case 9:
+                s1.ptr[i] = '9';
+                break;
+        }
+        i++;
+        x /= 10;
+    }
+    return s1;
+}
 int main()
 {
-    int n = 5;
-    char *ptr ;
+    int n = 0;
+    /*char *ptr ;
     ptr = new char [n];
     for (int i = 0 ; i < n ; i++)
-        cin >> *(ptr + i);
+        cin >> *(ptr + i);*/
     String s1;
     s1.value();
-    s1.Insert(ptr,5);
+    //s1.Insert(ptr,5);
     s1.print();
-    s1.Insert('f',5);
-    //n = s1.ToInteger();
-    //cout <<"after turning to int "<< n << endl;
+    s1.clearstr();
     s1.print();
+    s1.value();
+    s1.print();
+    //s1.Insert('f',5);
+    n = s1.ToInteger();
+    cout <<"after turning to int "<< n << endl;
+    String s4(0);
+    s4 = ToString(n);
+    s4.print();
+    s4.append();
+    s4.print();
+    /*s1.print();
     s1.StringReverse();
     s1.print();
     s1.trim();
@@ -320,6 +401,6 @@ int main()
     String s2;
     s2.value();
     s1.compare1(s2);
-    delete []ptr;
+//    delete []ptr;*/
     return 0;
 }
