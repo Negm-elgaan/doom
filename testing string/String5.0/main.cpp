@@ -3,7 +3,7 @@
 #include <string>
 #include <string.h>
 //this is string class version 5.0 :-)
-//most of logical problems have been solved but not all of them unforunatly :-( but with ISA it will be solved Trust Allah :-)
+//most of logical problems have been solved but not all of them unforunatly :-( but some functions are now faster and more effiecnt and ISA the remaining problems will be solved Trust Allah :-)
 using namespace std;
 class String
 {
@@ -14,20 +14,29 @@ public:
     {
         cout << "Enter size (NOTE : Entering a number of characters more than the allocated size will lead to the extra characters outside of boundary of size to be lost!!)\n";
         cin >> n;
-
+        ptr = new char[n];
+        ptr[n] = '\0';
     }
     String(int num)
     {
         n = num;
+        ptr = new char[n];
+        ptr[n] = '\0';
     }
     void value(char* ptrr, int s)
     {
-        n = s;
-        ptr = new char[n];
-        for (int i = 0; ptrr[i] != '\0'; i++)
+        if (s > n)
         {
-            ptr[i] = ptrr[i];
+            char* temp = new char [s];
+            for (int i = 0; i < s ; i++)
+            {
+                temp[i] = ptrr[i];
+            }
+            delete []ptr;
+            n = s;
+            ptr = temp;
         }
+        ptr[n] = '\0';
         return;
     }
     void value(char* ptrr)
@@ -36,7 +45,6 @@ public:
         {
             n++;
         }
-        ptr = new char[n];
         for (int i = 0; ptrr[i] != NULL; i++)
         {
             ptr[i] = ptrr[i];
@@ -45,16 +53,15 @@ public:
     }
     void value()
     {
-        ptr = new char[n];
         cin.ignore();
         for (int i = 0; i < n; i++)
         {
             cin.get(ptr[i]);
         }
+        return ;
     }
     void append()
     {
-
         n++;
         char* temp = new char[n];
         for (int i = 0; ptr[i] != NULL; i++)
@@ -63,6 +70,7 @@ public:
         ptr = temp;
         cin.ignore();
         cin.get(ptr[n - 1]);
+        return ;
     }
     void extend()
     {
@@ -175,24 +183,23 @@ public:
     }
     char* DeleteChar(char c)
     {
-        int j = 0, m = n, x = 0;
+        int x = 0 , j = 0;
+        char* temp;
+        for (int i = 0; i < n; i++)
+            if (ptr[i] == c)
+                x++;
+        n -= x;
+        temp = new char[n];
         for (int i = 0; i < n; i++)
         {
-            if (ptr[i] == c)
+            if (ptr[i] != c)
             {
-                ptr[i] = NULL;
-                j = i;
-                while (j < m)
-                {
-                    ptr[j] = ptr[j + 1];
-                    j++;
-                }
-                m--;
-                x++;
-                i = 0;
+                temp[j] = ptr[i] ;
+                j++;
             }
         }
-        n -= x;
+        delete []ptr;
+        ptr = temp;
         return ptr;
     }
     void trim()
@@ -355,31 +362,45 @@ public:
         }
         return;
     }
-    ~String()
+    char* getstr()
     {
-        printf("\nobject destroyed\n");
-        delete[] ptr;
+        return ptr;
     }
-};
-bool compare(String s1, String s2)
-{
-    int strlen1 = s1.getlength();
-    for (int i = 0; i < strlen1; i++)
-    {
-        cout << s1.ptr[i];
-    }
-    int strlen2 = s2.getlength();
-    if (strlen1 != strlen2)
-    {
-        return false;
-    }
-    for (int i = 0; i < strlen1; i++)
-        if (s1.ptr[i] != s2.ptr[i])
+    private :
+        static bool compare(String s1 , String s2)
         {
-            return false;
+            char *ptr1  = s1.getstr();
+            char *ptr2 = s2.getstr();
+            int strlen1 = s1.getlength();
+            int strlen2 = s2.getlength();
+            if (strlen1 != strlen2)
+            {
+                delete []ptr1;
+                delete []ptr2;
+                return false;
+            }
+            for (int i = 0 ; i < strlen1 ; i++)
+                if (*(ptr1 + i) != *(ptr2 +i))
+                {
+                    delete []ptr1;
+                    delete []ptr2;
+                    return false;
+                }
+            delete []ptr1;
+            delete []ptr2;
+            return true;
         }
-    return true;
-}
+    public :
+        void compare1(String s2)
+        {
+            cout << compare(*this,s2);
+        }
+        ~String()
+        {
+            printf("\nobject destroyed\n");
+            delete [] ptr;
+        }
+};
 String ToString(int num)
 {
     String s1(0);
@@ -453,6 +474,7 @@ int main()
     String s1;
     s1.value();
     s1.print();
+    s1.Strcat(ptr1,ptr2,5,5);
     /*String s2;
     s2.value();
     cout << compare(s1,s2);*/
