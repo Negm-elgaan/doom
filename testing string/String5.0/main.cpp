@@ -53,7 +53,6 @@ public:
     }
     void value()
     {
-        cin.sync();
         cin.ignore();
         for (int i = 0; i < n; i++)
         {
@@ -321,6 +320,32 @@ public:
             }
         }
     }
+    int CountWords(char delimeter)
+    {
+        int Counter = 1;
+        for (int i = 0 ; i < n ; i++)
+        {
+            if (ptr[i] == delimeter)
+                Counter++;
+        }
+        return Counter;
+    }
+    int CountCapital()
+    {
+        int c = 0 ;
+        for (int i = 0 ; i < n  ; i++)
+            if (ptr[i] >= 65 && ptr[i] <= 90)
+                c++;
+        return c ;
+    }
+    int CountSmall()
+    {
+        int c = 0 ;
+        for (int i = 0 ; i < n ; i++)
+            if (ptr[i] >= 97 && ptr[i] <= 122)
+                c++;
+        return c ;
+    }
     void Strcat(char* ptr1, char* ptr2, int size1, int size2)
     {
         int x = 0, y = 0 , z = n;
@@ -473,6 +498,7 @@ int main()
         cin >> ptr2[i];
     String s1;
     s1.value();
+    //cout << s1.CountWords(' ') <<endl;
     s1.to_lower();
     s1.print();
     s1.to_upper();
