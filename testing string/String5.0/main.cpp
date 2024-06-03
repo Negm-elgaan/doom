@@ -391,6 +391,24 @@ public:
     {
         return ptr;
     }
+    char* SubStr(int index, int Size)
+    {
+        int j = 0;
+        char* temp = new char[Size];
+        for (int i = 0; i < n; i++)
+        {
+            if (i >= index && j < Size)
+            {
+                temp[j] = ptr[i];
+                cout << temp[j] << endl;
+                j++;
+            }
+            if (j == Size)
+                break;
+        }
+        temp[Size] = '\0';
+        return temp;
+}
 private:
     static bool compare(String s1, String s2)
     {
