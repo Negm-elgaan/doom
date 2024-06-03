@@ -15,28 +15,28 @@ public:
         cout << "Enter size (NOTE : Entering a number of characters more than the allocated size will lead to the extra characters outside of boundary of size to be lost!!)\n";
         cin >> n;
         ptr = new char[n];
-        ptr[n] = '\0';
+        //ptr[n] = '\0';
     }
     String(int num)
     {
         n = num;
         ptr = new char[n];
-        ptr[n] = '\0';
+        //ptr[n] = '\0';
     }
     void value(char* ptrr, int s)
     {
         if (s > n)
         {
-            char* temp = new char [s];
-            for (int i = 0; i < s ; i++)
+            char* temp = new char[s];
+            for (int i = 0; i < s; i++)
             {
                 temp[i] = ptrr[i];
             }
-            delete []ptr;
+            delete[]ptr;
             n = s;
             ptr = temp;
         }
-        ptr[n] = '\0';
+        //ptr[n] = '\0';
         return;
     }
     void value(char* ptrr)
@@ -53,12 +53,13 @@ public:
     }
     void value()
     {
+        cin.sync();
         cin.ignore();
         for (int i = 0; i < n; i++)
         {
             cin.get(ptr[i]);
         }
-        return ;
+        return;
     }
     void append()
     {
@@ -70,7 +71,7 @@ public:
         ptr = temp;
         cin.ignore();
         cin.get(ptr[n - 1]);
-        return ;
+        return;
     }
     void extend()
     {
@@ -90,7 +91,7 @@ public:
         delete[] ptr;
         ptr = temp;
         cin.ignore();
-        for (int j = n - x ; j < n; j++)
+        for (int j = n - x; j < n; j++)
             cin.get(ptr[j]);
         return;
     }
@@ -121,7 +122,7 @@ public:
     }
     void to_lower()
     {
-        for (int i = 0; ptr[i] != NULL; i++)
+        for (int i = 0; i < n ; i++)
         {
             if (ptr[i] >= 65 && ptr[i] <= 90)
                 ptr[i] += 32;
@@ -129,7 +130,7 @@ public:
     }
     void to_upper()
     {
-        for (int i = 0; ptr[i] != NULL; i++)
+        for (int i = 0; i < n ; i++)
         {
             if (ptr[i] >= 97 && ptr[i] <= 122)
                 ptr[i] -= 32;
@@ -155,7 +156,7 @@ public:
     }
     char AT(int index)
     {
-        for (int i = 0; ptr[i] != NULL; i++)
+        for (int i = 0; i < n ; i++)
             if (i == index)
                 return ptr[i];
         return '\0';
@@ -183,22 +184,22 @@ public:
     }
     char* DeleteChar(char c)
     {
-        int x = 0 , j = 0;
+        int x = 0, j = 0;
         char* temp;
         for (int i = 0; i < n; i++)
             if (ptr[i] == c)
                 x++;
         n -= x;
         temp = new char[n];
-        for (int i = 0; i < n; i++)
+        for (int i = 0; i < n + x; i++)
         {
-            if (ptr[i] != c)
+            if (ptr[i] != c && j < n)
             {
-                temp[j] = ptr[i] ;
+                temp[j] = ptr[i];
                 j++;
             }
         }
-        delete []ptr;
+        delete[]ptr;
         ptr = temp;
         return ptr;
     }
@@ -271,14 +272,13 @@ public:
         return x;
     }
     friend String ToString(int num);
-    friend bool compare(String s1, String s2);
     void Insert(char c, int loc)
     {
         n++;
         if (loc > n || loc < 0)
             return;
         char* temp = new char[n];
-        for (int i = 0; ptr[i] != NULL; i++)
+        for (int i = 0; i < n - 1 ; i++)
             temp[i] = ptr[i];
         delete[] ptr;
         ptr = temp;
@@ -292,9 +292,9 @@ public:
             }
         }
     }
-    void Insert(char* ptr3, int loc , int ss)
+    void Insert(char* ptr3, int loc, int ss)
     {
-        int x = 0, y = 0;
+        int x = 0, y = 0 , z = n;
         for (int i = 0; i < ss; i++)
         {
             x++;
@@ -303,7 +303,7 @@ public:
         if (loc > n || loc < 0)
             return;
         char* temp = new char[n];
-        for (int i = 0; ptr[i] != NULL; i++)
+        for (int i = 0; i < z; i++)
             temp[i] = ptr[i];
         delete[] ptr;
         ptr = temp;
@@ -321,9 +321,9 @@ public:
             }
         }
     }
-    void Strcat(char* ptr1, char* ptr2 ,int size1 , int size2)
+    void Strcat(char* ptr1, char* ptr2, int size1, int size2)
     {
-        int x = 0, y = 0;
+        int x = 0, y = 0 , z = n;
         for (int i = 0; i < size1; i++)
         {
             x++;
@@ -335,7 +335,7 @@ public:
             n++;
         }
         char* temp = new char[n];
-        for (int i = 0; ptr[i] != NULL; i++)
+        for (int i = 0; i < z ; i++)
             temp[i] = ptr[i];
         delete[] ptr;
         ptr = temp;
@@ -352,11 +352,11 @@ public:
             return;
         }
         cout << n << endl;
-        for (int i = 0; i < size1 ; i++)
+        for (int i = 0; i < size1; i++)
         {
-            ptr[n- x - y + i] = ptr1[i];
+            ptr[n - x - y + i] = ptr1[i];
         }
-        for (int i = 0; i < size2 ; i++)
+        for (int i = 0; i < size2; i++)
         {
             ptr[n - y + i] = ptr2[i];
         }
@@ -366,40 +366,40 @@ public:
     {
         return ptr;
     }
-    private :
-        static bool compare(String s1 , String s2)
+private:
+    static bool compare(String s1, String s2)
+    {
+        char* ptr1 = s1.getstr();
+        char* ptr2 = s2.getstr();
+        int strlen1 = s1.getlength();
+        int strlen2 = s2.getlength();
+        if (strlen1 != strlen2)
         {
-            char *ptr1  = s1.getstr();
-            char *ptr2 = s2.getstr();
-            int strlen1 = s1.getlength();
-            int strlen2 = s2.getlength();
-            if (strlen1 != strlen2)
+            delete[]ptr1;
+            delete[]ptr2;
+            return false;
+        }
+        for (int i = 0; i < strlen1; i++)
+            if (*(ptr1 + i) != *(ptr2 + i))
             {
-                delete []ptr1;
-                delete []ptr2;
+                delete[]ptr1;
+                delete[]ptr2;
                 return false;
             }
-            for (int i = 0 ; i < strlen1 ; i++)
-                if (*(ptr1 + i) != *(ptr2 +i))
-                {
-                    delete []ptr1;
-                    delete []ptr2;
-                    return false;
-                }
-            delete []ptr1;
-            delete []ptr2;
-            return true;
-        }
-    public :
-        void compare1(String s2)
-        {
-            cout << compare(*this,s2);
-        }
-        ~String()
-        {
-            printf("\nobject destroyed\n");
-            delete [] ptr;
-        }
+        delete[]ptr1;
+        delete[]ptr2;
+        return true;
+    }
+public:
+    void compare1(String s2)
+    {
+        cout << compare(*this, s2);
+    }
+    ~String()
+    {
+        printf("\nobject destroyed\n");
+        delete[] ptr;
+    }
 };
 String ToString(int num)
 {
@@ -473,8 +473,12 @@ int main()
         cin >> ptr2[i];
     String s1;
     s1.value();
+    s1.to_lower();
     s1.print();
-    s1.Strcat(ptr1,ptr2,5,5);
+    s1.to_upper();
+    s1.print();
+    s1.Insert(ptr1, 3, 5);
+    s1.Strcat(ptr1, ptr2, 5, 5);
     /*String s2;
     s2.value();
     cout << compare(s1,s2);*/
@@ -483,15 +487,17 @@ int main()
     //s2.value(s1.SubStr(3, 4));
     //s2.print();
     cout << s1.AT(3) << endl;
-    s1.Insert(ptr1,0,5);
+    s1.Insert('3', 6);
     s1.append();
     s1.print();
     s1.extend();
     s1.print();
+    s1.DeleteChar('3');
+    s1.print();
     s1.clearstr();
-    cout << s1.isempty();
+    cout << s1.isempty() << endl;
     s1.value();
-    cout << s1.getlength() << endl  ;
+    cout << s1.getlength() << endl;
     s1.StringReverse();
     s1.print();
     s1.Replace('c', 'd');
@@ -499,7 +505,7 @@ int main()
     s1.trim();
     s1.value();
     s1.print();
-    s1.Insert('f',5);
+    s1.Insert('f', 5);
     s1.print();
     /*n = s1.ToInteger();
     cout <<"after turning to int "<< n << endl;
