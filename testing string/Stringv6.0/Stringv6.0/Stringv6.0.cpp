@@ -15,6 +15,7 @@ class String
     int WordsCount = 1;
     int CapitalCount = 0;
     int SmallCount = 0;
+    int SpecialCount = 0;
     char* ptr;
 public:
     String()
@@ -372,17 +373,31 @@ public:
             }
         return c;
     }
+    int CountSpecial()
+    {
+        int s = 0;
+        for (int i = 0; i < n; i++)
+            if (!(ptr[i] >= 97 && ptr[i] <= 122) && !(ptr[i] >= 65 && ptr[i] <= 90) && !(ptr[i] >= 48 && ptr[i] <= 57))
+            {
+                s++;
+                SpecialCount++;
+            }
+        return s;
+    }
     void CountAll(char delimeter = ' ')
     {
         thread T1(&String::CountWords, this, delimeter);
         thread T2(&String::CountCapital, this);
         thread T3(&String::CountSmall, this);
+        thread T4(&String::CountSpecial, this);
         T1.join();
         T2.join();
         T3.join();
+        T4.join();
         cout << "Words Count: " << WordsCount << endl;
         cout << "Captial Count:" << CapitalCount << endl;
         cout << "Small Count: " << SmallCount << endl;
+        cout << "Special Count: " << SpecialCount << endl;
        
         return;
     }
