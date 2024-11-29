@@ -7,6 +7,7 @@ using namespace std;
 
 int Div(int x, int y)
 {
+	cin >> y;
 	while (true)
 	{
 		try
@@ -15,12 +16,13 @@ int Div(int x, int y)
 				throw y;
 			break;
 		}
-		catch (int y)
+		catch (int& y)
 		{
 			cout << "Cannot divide by 0!\n";
 			cout << "Pleae enter another number to divide by: ";
+			cin >> y;
 		}
-		cin >> y;
+		
 	}
 	return x / y;
 }
