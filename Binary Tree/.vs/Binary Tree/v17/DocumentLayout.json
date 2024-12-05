@@ -1,0 +1,62 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\omarh\\doom\\Binary Tree\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{66FE4446-BCA4-4953-AC81-7FF6F67B5FAB}|Binary Tree\\Binary Tree.vcxproj|C:\\Users\\omarh\\doom\\Binary Tree\\Binary Tree\\clsBinaryTree.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{66FE4446-BCA4-4953-AC81-7FF6F67B5FAB}|Binary Tree\\Binary Tree.vcxproj|solutionrelative:Binary Tree\\clsBinaryTree.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{66FE4446-BCA4-4953-AC81-7FF6F67B5FAB}|Binary Tree\\Binary Tree.vcxproj|C:\\Users\\omarh\\doom\\Binary Tree\\Binary Tree\\Binary Tree.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{66FE4446-BCA4-4953-AC81-7FF6F67B5FAB}|Binary Tree\\Binary Tree.vcxproj|solutionrelative:Binary Tree\\Binary Tree.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "clsBinaryTree.h",
+              "DocumentMoniker": "C:\\Users\\omarh\\doom\\Binary Tree\\Binary Tree\\clsBinaryTree.h",
+              "RelativeDocumentMoniker": "Binary Tree\\clsBinaryTree.h",
+              "ToolTip": "C:\\Users\\omarh\\doom\\Binary Tree\\Binary Tree\\clsBinaryTree.h",
+              "RelativeToolTip": "Binary Tree\\clsBinaryTree.h",
+              "ViewState": "AQIAADcAAAAAAAAAAAAAAEUAAAALAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-11-30T11:12:46.414Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Binary Tree.cpp",
+              "DocumentMoniker": "C:\\Users\\omarh\\doom\\Binary Tree\\Binary Tree\\Binary Tree.cpp",
+              "RelativeDocumentMoniker": "Binary Tree\\Binary Tree.cpp",
+              "ToolTip": "C:\\Users\\omarh\\doom\\Binary Tree\\Binary Tree\\Binary Tree.cpp",
+              "RelativeToolTip": "Binary Tree\\Binary Tree.cpp",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA8AAAAcAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-11-30T11:12:31.886Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
