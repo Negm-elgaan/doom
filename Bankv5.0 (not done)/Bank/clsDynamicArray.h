@@ -11,7 +11,8 @@ private:
 	T* _TempArray;
 	T* _RevArray;
 public:
-	clsDynamicArray(int Size)
+
+	clsDynamicArray(int Size = 1)
 	{
 		if (Size < 0)
 			Size = 0;

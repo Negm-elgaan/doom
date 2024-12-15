@@ -8,6 +8,7 @@ using namespace std;
 class clsFindLoanClientScreen : public clsScreen
 {
     private:
+
         static void _PrintLoanClientLine(clsLoanClient LoanClient)
         {
 

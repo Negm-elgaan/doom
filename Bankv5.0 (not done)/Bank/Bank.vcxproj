@@ -161,7 +161,9 @@
     <ClInclude Include="clsPerson.h" />
     <ClInclude Include="clsRegisterScreen.h" />
     <ClInclude Include="clsScreen.h" />
+    <ClInclude Include="clsShowAllMainMenueScreens.h" />
     <ClInclude Include="clsString.h" />
+    <ClInclude Include="clsAddNewLoanClientScreen.h" />
     <ClInclude Include="clsTakeLoanScreen.h" />
     <ClInclude Include="clsTotalBalancesScreen.h" />
     <ClInclude Include="clsTransactionsScreen.h" />

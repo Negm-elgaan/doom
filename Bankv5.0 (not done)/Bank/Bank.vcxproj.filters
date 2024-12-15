@@ -140,7 +140,7 @@
     <ClInclude Include="clsFindLoanClientScreen.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="clsTakeLoanScreen.h">
+    <ClInclude Include="clsAddNewLoanClientScreen.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="clsDynamicArray.h">
@@ -150,6 +150,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="clsMyQueue.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="clsShowAllMainMenueScreens.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="clsTakeLoanScreen.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

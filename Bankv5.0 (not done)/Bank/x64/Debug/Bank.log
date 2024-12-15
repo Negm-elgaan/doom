@@ -67,12 +67,15 @@ C:\Users\omarh\Bank\Bankv4.0 with OOP\Bank\clsTotalBalancesScreen.h(59,82): warn
 C:\Users\omarh\Bank\Bankv4.0 with OOP\Bank\clsTransferScreen.h(50,4): warning C4091: 'static ': ignored on left of 'clsTransferScreen::stTransferLogRecord' when no variable is declared
   (compiling source file 'Bank.cpp')
   
-C:\Users\omarh\Bank\Bankv4.0 with OOP\Bank\clsLoanClient.h(207,16): warning C4240: nonstandard extension used: access to 'clsLoanClient::stLoanLogRecord' now defined to be 'public', previously it was defined to be 'private'
+C:\Users\omarh\Bank\Bankv4.0 with OOP\Bank\clsLoanClient.h(259,16): warning C4240: nonstandard extension used: access to 'clsLoanClient::stLoanLogRecord' now defined to be 'public', previously it was defined to be 'private'
   (compiling source file 'Bank.cpp')
-  C:\Users\omarh\Bank\Bankv4.0 with OOP\Bank\clsLoanClient.h(158,16):
+  C:\Users\omarh\Bank\Bankv4.0 with OOP\Bank\clsLoanClient.h(203,16):
   see declaration of 'clsLoanClient::stLoanLogRecord'
   
-C:\Users\omarh\Bank\Bankv4.0 with OOP\Bank\clsLoanClient.h(583,22): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\omarh\Bank\Bankv4.0 with OOP\Bank\clsLoanClient.h(671,22): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+  (compiling source file 'Bank.cpp')
+  
+C:\Users\omarh\Bank\Bankv4.0 with OOP\Bank\clsAddNewLoanClientScreen.h(50,19): warning C4101: 'InterestRate': unreferenced local variable
   (compiling source file 'Bank.cpp')
   
 C:\Users\omarh\Bank\Bankv4.0 with OOP\Bank\clsCurrency.h(27,17): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
@@ -86,6 +89,6 @@ C:\Users\omarh\Bank\Bankv4.0 with OOP\Bank\clsCurrencyCalculatorScreen.h(45,34):
   
 C:\Users\omarh\Bank\Bankv4.0 with OOP\Bank\Bank.cpp(32,62): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
 C:\Users\omarh\Bank\Bankv4.0 with OOP\Bank\Bank.cpp(126,56): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-C:\Users\omarh\Bank\Bankv4.0 with OOP\Bank\clsBankClient.h(390,1): warning C4715: 'clsBankClient::Save': not all control paths return a value
 C:\Users\omarh\Bank\Bankv4.0 with OOP\Bank\clsUser.h(367,1): warning C4715: 'clsUser::Save': not all control paths return a value
-  Bank.vcxproj -> C:\Users\omarh\Bank\Bankv4.0 with OOP\x64\Debug\Bank.exe
+C:\Users\omarh\Bank\Bankv4.0 with OOP\Bank\clsBankClient.h(390,1): warning C4715: 'clsBankClient::Save': not all control paths return a value
+C:\Users\omarh\Bank\Bankv4.0 with OOP\Bank\clsLoanClient.h(53,1): error C4716: 'clsLoanClient::clsLoan::_ConvertLineToClsLoanObject': must return a value

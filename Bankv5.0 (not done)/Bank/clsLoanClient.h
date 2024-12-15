@@ -13,44 +13,198 @@ class clsLoanClient
 		enMode _Mode;
 		string _AccountNumber;
 		string _FullName;
-		double _Loan;
-        double _LoanWithInterest;
-		string _LoanBeginDate;
-        string _LoanEndDate;
-        double _InterestRate = 1.14;
-        int _Months;
+        string _Phone;
+        class clsLoan
+        {
+            double _Loan;
+            double _LoanWithInterest;
+            string _LoanBeginDate;
+            string _LoanEndDate;
+            double _InterestRate = 1.14;
+            int _Months;
+            public:
+
+                clsLoan()
+                {
+                    _Loan = 0;
+                    _LoanWithInterest = 0;
+                    _LoanBeginDate = "";
+                    _LoanEndDate = "";
+                    _InterestRate = 1.14;
+                    _Months = 0;
+                    return;
+                }
+
+                clsLoan(double Loan, string LoanBeginDate, string LoanEndDate, double InterestRate)
+                {
+                    _Loan = Loan;
+                    _LoanWithInterest = _Loan;
+                    _LoanBeginDate = LoanBeginDate;
+                    _LoanEndDate = LoanEndDate;
+                    _InterestRate = InterestRate;
+                    _Months = 0;
+                    return;
+                }
+
+                static string _ConvertClsLoanObjectToLine(clsLoan LoanObject , string separator = "*//*")
+                {
+                    string Line = "";
+                    Line += to_string(LoanObject.Loan);
+                    Line += separator;
+                    Line += to_string(LoanObject._LoanWithInterest);
+                    Line += separator;
+                    Line += LoanObject.BeginDate;
+                    Line += separator;
+                    Line += LoanObject.EndDate;
+                    Line += to_string(LoanObject.InterestRate);
+                    Line += to_string(LoanObject._Months);
+                    return Line;
+                }
+
+                static clsLoan _ConvertLineToClsLoanObject(string Line , string separator = "*//*")
+                {
+                    vector <string> vLoanData = clsString::Split(Line,separator);
+                    return clsLoan(stod(vLoanData[0])  , vLoanData[2] , vLoanData[3] , stod(vLoanData[4]));
+                }
+
+                int CheckIFToApplyInterest()
+                {
+                    clsDate CurrentDate = clsDate::GetSystemDate();
+                    clsDate BeginDate(_LoanBeginDate);
+                    int Days = clsDate::GetDifferenceInDays(BeginDate, CurrentDate);
+                    return Days / 30 == 0 ? 1 : Days / 30;
+                }
+
+                double GetCurrentLoan()
+                {
+                    _Months = CheckIFToApplyInterest();
+                    _LoanWithInterest = _InterestRate * _Loan * _Months;
+                    return _LoanWithInterest;
+                }
+
+                void SetLoanBeginDate(string LoanBeginDate)
+                {
+                    _LoanBeginDate = LoanBeginDate;
+                }
+
+                string LoanBeginDate()
+                {
+                    return _LoanBeginDate;
+                }
+
+                __declspec(property(get = LoanBeginDate, put = SetLoanBeginDate)) string BeginDate;
+
+                void SetLoanEndDate(string LoanEndDate)
+                {
+                    _LoanEndDate = LoanEndDate;
+                }
+
+                string LoanEndDate()
+                {
+                    return _LoanEndDate;
+                }
+
+                __declspec(property(get = LoanEndDate, put = SetLoanEndDate)) string EndDate;
+
+                void SetInterestRate(double InterestRate)
+                {
+                    _InterestRate = InterestRate;
+                }
+
+                double GetInterestRate()
+                {
+                    return _InterestRate;
+                }
+
+                __declspec(property(get = GetInterestRate, put = SetInterestRate)) double InterestRate;
+
+                void SetLoan(double loan)
+                {
+                    _Loan = loan;
+                }
+
+                double GetLoan()
+                {
+                    return _Loan;
+                }
+
+                __declspec(property(get = GetLoan, put = SetLoan)) double Loan;
+
+                double GetIntialLoan()
+                {
+                    return _Loan;
+                }
+
+                int GetMonths()
+                {
+                    return _Months;
+                }
+
+
+        };
+        int _NumOfLoans = 0;
+        clsDynamicArray <clsLoan> _LoanList; //pointer list of different loans to same account with same or different interest rate
 		bool _MarkedForDelete = false;
+
+
+        
 
         static clsLoanClient _ConvertLinetoLoanClientObject(string Line, string Seperator = "#//#")
         {
             vector<string> vLoanClientData;
             vLoanClientData = clsString::Split(Line, Seperator);
 
-            return clsLoanClient(enMode::UpdateMode, vLoanClientData[0], vLoanClientData[1], stod(vLoanClientData[2]),
-                stod(vLoanClientData[3]), vLoanClientData[4] , vLoanClientData[5],stod(vLoanClientData[6]));
+            return clsLoanClient(enMode::UpdateMode, vLoanClientData[0], vLoanClientData[1], vLoanClientData[2],
+                clsLoan::_ConvertLineToClsLoanObject(vLoanClientData[3])); // Data is missing
 
         }
 
-        static clsLoanClient _ConvertBankClientObjectToLoanClientObject(clsBankClient BankClient , double Loan , string BeginDate , string EndDate , double InterestRate = 1.14)
+        /*static clsLoanClient _ConvertLinetoLoanClientObject(string Line, string Seperator = "#//#")
         {
-            return clsLoanClient(enMode::AddNewMode, BankClient.AccountNumber(), BankClient.FullName(), Loan, 0, BeginDate, EndDate, InterestRate);
+            vector<string> vLoanClientData;
+            vLoanClientData = clsString::Split(Line, Seperator);
+
+            return clsLoanClient(enMode::UpdateMode, vLoanClientData[0], vLoanClientData[1], stod(vLoanClientData[2]),
+                stod(vLoanClientData[3]), vLoanClientData[4] , vLoanClientData[5],stod(vLoanClientData[6]) , vLoanClientData[7] , clsLoan::_ConvertLineToClsLoanObject(vLoanClientData[8]));
+
+        }*/
+
+        static clsLoanClient _ConvertBankClientObjectToLoanClientObject(clsBankClient BankClient , double Loan = 0 , string BeginDate = "", string EndDate = "", double InterestRate = 1.14)
+        {
+            return clsLoanClient(enMode::AddNewMode, BankClient.AccountNumber(), BankClient.FullName(),  BankClient.Phone);
         }
+
+        /*static clsLoanClient _ConvertBankClientObjectToLoanClientObject(clsBankClient BankClient , double Loan = 0 , string BeginDate = "", string EndDate = "", double InterestRate = 1.14)
+        {
+            return clsLoanClient(enMode::AddNewMode, BankClient.AccountNumber(), BankClient.FullName(), Loan, 0, BeginDate, EndDate, InterestRate , BankClient.Phone);
+        }*/
 
         static clsLoanClient _GetEmptyClientObject()
         {
-            return clsLoanClient(enMode::EmptyMode, "", "", 0 , 0 , "", "" ,0);
+            return clsLoanClient(enMode::EmptyMode, "", "", "");
         }
+
+        /*static clsLoanClient _GetEmptyClientObject()
+        {
+            return clsLoanClient(enMode::EmptyMode, "", "", 0 , 0 , "", "" ,0 , "");
+        }*/
+
         static string _ConvertLoanClientObjectToLine(clsLoanClient LoanClient, string Seperator = "#//#")
         {
 
             string stClientRecord = "";
             stClientRecord += LoanClient._AccountNumber + Seperator;
             stClientRecord += LoanClient._FullName + Seperator;
-            stClientRecord += to_string(LoanClient._Loan);
-            stClientRecord += to_string(LoanClient.GetCurrentLoan());
-            stClientRecord += LoanClient._LoanBeginDate + Seperator;
-            stClientRecord += LoanClient._LoanEndDate + Seperator;
-            stClientRecord += to_string(LoanClient._InterestRate);
+            stClientRecord += LoanClient._Phone + Seperator;
+            //stClientRecord += to_string(LoanClient._Loan);
+            //stClientRecord += to_string(LoanClient.GetCurrentLoan());
+            //stClientRecord += LoanClient._LoanBeginDate + Seperator;
+            //stClientRecord += LoanClient._LoanEndDate + Seperator;
+            //stClientRecord += to_string(LoanClient._InterestRate);
+            for (int i = 0; i < LoanClient._LoanList.Size(); i++)
+            {
+                stClientRecord += LoanClient._LoanList.Getitem(i)._ConvertClsLoanObjectToLine(LoanClient._LoanList.Getitem(i));
+            }
 
             return stClientRecord;
 
@@ -157,7 +311,7 @@ class clsLoanClient
         }
         struct stLoanLogRecord;
 
-        static stLoanLogRecord _ConvertLoanLogLineToRecord(string Line, string Seperator = "#//#")
+       /*not done */ static stLoanLogRecord _ConvertLoanLogLineToRecord(string Line, string Seperator = "#//#")
         {
             stLoanLogRecord LoanLogRecord;
 
@@ -171,7 +325,7 @@ class clsLoanClient
 
         }
 
-        string _PrepareLoanLogRecord(float Amount,
+       /*not done*/ string _PrepareLoanLogRecord(float Amount,
             string UserName, string Seperator = "#//#")
         {
             string LoanLogRecord = "";
@@ -183,25 +337,38 @@ class clsLoanClient
             return LoanLogRecord;
         }
 
-        int CheckIFToApplyInterest()
-        {
-            clsDate CurrentDate = clsDate::GetSystemDate();
-            clsDate BeginDate(_LoanBeginDate);
-            int Days = clsDate::GetDifferenceInDays(BeginDate, CurrentDate);
-            return Days / 30 == 0 ? 1 : Days / 30 ;
-        }
+       
     public:
-        clsLoanClient(enMode mode , string AccountNumber , string Name , double Loan  , double LoanWithInterest, string LoanBeginDate , string LoanEndDate , double InterestRate)
+
+        clsLoanClient(enMode mode , string AccountNumber , string Name , string Phone , clsLoan LoanObject = clsLoan())
         {
             _Mode = mode;
             _AccountNumber = AccountNumber;
             _FullName = Name;
-            _Loan = Loan;
+            /*_Loan = Loan;
             _LoanWithInterest = LoanWithInterest;
             _LoanBeginDate = LoanBeginDate;
             _LoanEndDate = LoanEndDate;
-            _InterestRate = InterestRate;
-            _LoanWithInterest = GetCurrentLoan();
+            _InterestRate = InterestRate;*/
+            _Phone = Phone;
+            //_LoanWithInterest = GetCurrentLoan();
+            _LoanList.InsertAtBeginning(LoanObject);
+        }
+
+        clsLoanClient(enMode mode, string AccountNumber, string Name, string Phone, double Loan, double LoanWithInterest, string LoanBeginDate, string LoanEndDate, double InterestRate = 1.14)
+        {
+            _Mode = mode;
+            _AccountNumber = AccountNumber;
+            _FullName = Name;
+            _Phone = Phone;
+            clsLoan LoanObject(Loan, LoanBeginDate, LoanEndDate, InterestRate);
+            _LoanList.InsertAtBeginning(LoanObject);
+            return;
+        }
+
+        static clsLoanClient BankClientToLoanClient(clsBankClient BankClient)
+        {
+            return _ConvertBankClientObjectToLoanClientObject(BankClient);
         }
 
         struct stLoanLogRecord
@@ -246,75 +413,30 @@ class clsLoanClient
 
         __declspec(property(get = GetFullName, put = SetFullName)) string FullName;
 
-        void SetLoanBeginDate(string LoanBeginDate)
-        {
-            _LoanBeginDate = LoanBeginDate;
-        }
-
-        string LoanBeginDate()
-        {
-            return _LoanBeginDate;
-        }
-
-        __declspec(property(get = LoanBeginDate, put = SetLoanBeginDate)) string BeginDate;
-
-        void SetLoanEndDate(string LoanEndDate)
-        {
-            _LoanEndDate = LoanEndDate;
-        }
-
-        string LoanEndDate()
-        {
-            return _LoanEndDate;
-        }
-
-        __declspec(property(get = LoanEndDate, put = SetLoanEndDate)) string EndDate;
+       
         
-        void SetInterestRate(double InterestRate)
+
+        void SetPhoneNumber(string Phone)
         {
-            _InterestRate = InterestRate;
+            _Phone = Phone;
         }
 
-        double GetInterestRate()
+        string GetPhoneNumber()
         {
-            return _InterestRate;
+            return _Phone;
         }
 
-        __declspec(property(get = GetInterestRate, put = SetInterestRate)) double InterestRate;
+        __declspec(property(get = GetPhoneNumber, put = SetPhoneNumber)) string Phone;
 
-        void SetLoan(double loan)
+       /*not done*/ clsDynamicArray <thread> SetAll1(string AccountNumber, string FullName, string PhoneNumber ,  string LoanBeginDate, string LoanEndDate, double Loan, double InterestRate)
         {
-            _Loan = loan;
-        }
-
-        double GetLoan()
-        {
-            return _Loan;
-        }
-
-        __declspec(property(get = GetLoan, put = SetLoan)) double Loan;
-
-        double GetIntialLoan()
-        {
-            return _Loan;
-        }
-
-        double GetCurrentLoan()
-        {
-            _Months = CheckIFToApplyInterest();
-            _LoanWithInterest = _InterestRate * _Loan * _Months;
-            return _LoanWithInterest;
-        }
-
-        clsDynamicArray <thread> SetAll(string AccountNumber , string FullName , string LoanBeginDate , string LoanEndDate , double Loan , double InterestRate)
-        {
-            clsDynamicArray <thread> DyArTh(6);
+            clsDynamicArray <thread> DyArTh(3);
             DyArTh.SetItem(0, std::move(thread(&clsLoanClient::SetAccountNumber, this, AccountNumber)));
             DyArTh.SetItem(1, std::move(thread(&clsLoanClient::SetFullName, this, FullName)));
-            DyArTh.SetItem(2, std::move(thread(&clsLoanClient::SetLoanBeginDate, this, LoanBeginDate)));
-            DyArTh.SetItem(3, std::move(thread(&clsLoanClient::SetLoanEndDate, this, LoanEndDate)));
+            DyArTh.SetItem(2, std::move(thread(&clsLoanClient::SetPhoneNumber, this, PhoneNumber)));
+            /*DyArTh.SetItem(3, std::move(thread(&clsLoanClient::SetLoanEndDate, this, LoanEndDate)));
             DyArTh.SetItem(4, std::move(thread(&clsLoanClient::SetLoan, this, Loan)));
-            DyArTh.SetItem(5, std::move(thread(&clsLoanClient::SetInterestRate, this, InterestRate)));
+            DyArTh.SetItem(5, std::move(thread(&clsLoanClient::SetInterestRate, this, InterestRate)));*/
 
 
             for (thread& i : DyArTh)
@@ -325,16 +447,40 @@ class clsLoanClient
             return DyArTh;
         }
 
+        vector <thread> SetAll2(string AccountNumber, string FullName, string PhoneNumber ,string LoanBeginDate, string LoanEndDate, double Loan, double InterestRate)
+        {
+            vector <thread> VTh;
+            VTh.push_back(thread(&clsLoanClient::SetAccountNumber, this, AccountNumber));
+            VTh.push_back(thread(&clsLoanClient::SetFullName, this, FullName));
+            VTh.push_back(thread(&clsLoanClient::SetPhoneNumber, this, PhoneNumber));
+            /*VTh.push_back(thread(&clsLoanClient::SetLoanEndDate, this, LoanEndDate));
+            VTh.push_back(thread(&clsLoanClient::SetLoan, this, Loan));
+            VTh.push_back(thread(&clsLoanClient::SetInterestRate, this, InterestRate));*/
+
+
+            for (thread& i : VTh)
+            {
+                i.join();
+            }
+
+            return VTh;
+        }
+
+        thread* SetAll3(string AccountNumber, string FullName, string LoanBeginDate, string LoanEndDate, double Loan, double InterestRate , int Size = 0)
+        {
+            thread* ptrThread = new thread[Size];
+        }
+
         void Print()
         {
             cout << "\nloan Client Card:";
             cout << "\n___________________";
             cout << "\nAccountNumber   : " << AccountNumber;
             cout << "\nFull Name   : " << FullName;
-            cout << "\nLoan   :" << Loan;
-            cout << "\nLoan Begin Date       : " << LoanBeginDate();
+            cout << "\nPhone   :" << Phone;
+            /*cout << "\nLoan Begin Date       : " << LoanBeginDate();
             cout << "\nLoan End Date       : " << LoanEndDate();
-            cout << "\nBalance     : " << InterestRate << "%";
+            cout << "\nBalance     : " << InterestRate << "%";*/
             cout << "\n___________________\n";
         }
 
@@ -446,7 +592,7 @@ class clsLoanClient
         }
         static clsLoanClient GetAddNewClientObject(string AccountNumber)
         {
-            return clsLoanClient(enMode::AddNewMode, AccountNumber, "", 0 , 0 ,"", "", 0);
+            return clsLoanClient(enMode::AddNewMode, AccountNumber, "" , "" );
         }
         static bool IsClientExist(string AccountNumber)
         {
@@ -497,8 +643,24 @@ class clsLoanClient
 
         }*/
 
+        void PrintClientLoan()
+        {
+            _LoanList.PrintList();
+        }
 
-        static double GetTotalLoans()
+        double GetClientTotalLoans()
+        {
+            double TotalLoans = 0;
+
+            for (int i = 0; i < _LoanList.Size(); i++)
+            {
+                TotalLoans += _LoanList.Getitem(i).GetLoan();
+            }
+
+            return TotalLoans;
+        }
+
+        /*not done */static double GetTotalLoans()
         {
             vector <clsLoanClient> vClients = clsLoanClient::GetLoanClientsList();
 
@@ -507,7 +669,7 @@ class clsLoanClient
             for (clsLoanClient Client : vClients)
             {
 
-                TotalBalances += Client.GetCurrentLoan();
+                TotalBalances += Client.GetClientTotalLoans();
             }
 
             return TotalBalances;
@@ -578,7 +740,9 @@ class clsLoanClient
             }
 
         }*/
-        void ProcessCalculations(vector<clsLoanClient>& clients)
+
+
+       /*not done*/ /*void ProcessCalculations(vector<clsLoanClient>& clients)
         {
             int size = clients.size();
             if (size % 4 != 0) return; // Skip if not divisible by 4
@@ -613,7 +777,7 @@ class clsLoanClient
             {
                 t.join();  // Wait for all threads to complete
             }
-        }
+        }*/
 
 
         static vector <clsLoanClient> GetLoansList()
@@ -628,4 +792,5 @@ class clsLoanClient
 };
 //loan is not probably handled
 //loanClient is not done
+
 

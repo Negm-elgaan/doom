@@ -8,10 +8,11 @@ int main()
     clsBinaryTree <int> BinaryTree;
     
     BinaryTree.Insert(4);
-    BinaryTree.Insert(3);
+    BinaryTree.Insert(2);
     BinaryTree.Insert(5);
-    BinaryTree.Insert(6);
+    BinaryTree.Insert(8);
     BinaryTree.Insert(7);
+    BinaryTree.Insert(3);
     BinaryTree.printLeft();
     BinaryTree.printRight();
     cout << "hi";

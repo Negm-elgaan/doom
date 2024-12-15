@@ -9,6 +9,7 @@ template <class T> class clsBinaryTree
 		static class Node
 		{
 			public:
+				void* DataPtr;
 				T Data;
 				Node* Right;
 				Node* Left;
@@ -89,10 +90,13 @@ template <class T> class clsBinaryTree
 		void printLeft()
 		{
 			Node* Temp = ParentNode;
-
+			cout << Temp->Data << " ";
+			Temp = Temp->Left;
 			while (Temp != NULL)
 			{
 				cout << Temp->Data << " ";
+				if (Temp->Right != NULL)
+					cout << Temp->Right->Data << " ";
 				Temp = Temp->Left;
 			}
 
@@ -105,16 +109,24 @@ template <class T> class clsBinaryTree
 		{
 
 			Node* Temp = ParentNode;
-
+			cout << Temp->Data << " ";
+			Temp = Temp->Right;
 			while (Temp != NULL)
 			{
 				cout << Temp->Data << " ";
+				if (Temp->Left != NULL)
+					cout  << Temp->Left->Data << " ";
 				Temp = Temp->Right;
 			}
 
 			cout << endl;
 
 			return;
+		}
+
+		void print()
+		{
+
 		}
 };
 

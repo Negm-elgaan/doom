@@ -1,14 +1,14 @@
 ﻿  Binary Tree.cpp
-C:\Users\omarh\doom\Binary Tree\Binary Tree\clsBinaryTree.h(15,4): warning C4091: 'static ': ignored on left of 'clsBinaryTree<T>::Node' when no variable is declared
+C:\Users\omarh\doom\Binary Tree\Binary Tree\clsBinaryTree.h(16,4): warning C4091: 'static ': ignored on left of 'clsBinaryTree<T>::Node' when no variable is declared
   (compiling source file 'Binary%20Tree.cpp')
-  C:\Users\omarh\doom\Binary Tree\Binary Tree\clsBinaryTree.h(15,4):
+  C:\Users\omarh\doom\Binary Tree\Binary Tree\clsBinaryTree.h(16,4):
   the template instantiation context (the oldest one first) is
   	C:\Users\omarh\doom\Binary Tree\Binary Tree\clsBinaryTree.h(6,26):
   	while compiling class template 'clsBinaryTree'
   
-C:\Users\omarh\doom\Binary Tree\Binary Tree\clsBinaryTree.h(15,4): warning C4091: 'static ': ignored on left of 'clsBinaryTree<int>::Node' when no variable is declared
+C:\Users\omarh\doom\Binary Tree\Binary Tree\clsBinaryTree.h(16,4): warning C4091: 'static ': ignored on left of 'clsBinaryTree<int>::Node' when no variable is declared
   (compiling source file 'Binary%20Tree.cpp')
-  C:\Users\omarh\doom\Binary Tree\Binary Tree\clsBinaryTree.h(15,4):
+  C:\Users\omarh\doom\Binary Tree\Binary Tree\clsBinaryTree.h(16,4):
   the template instantiation context (the oldest one first) is
   	C:\Users\omarh\doom\Binary Tree\Binary Tree\Binary Tree.cpp(8,25):
   	see reference to class template instantiation 'clsBinaryTree<int>' being compiled

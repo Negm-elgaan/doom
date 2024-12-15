@@ -12,6 +12,7 @@
 #include <fstream>
 #include "clsListLoansScreen.h"
 #include "clsFindLoanClientScreen.h"
+#include "clsAddNewLoanClientScreen.h"
 
 using namespace std;
 
@@ -21,17 +22,18 @@ class clsLoanScreen: protected clsScreen
 	{
 		eLoanList = 1 ,
 		eFindLoan = 2 ,
-		eTakeLoan = 3 ,
-		eRepayLoan = 4 ,
-		eUpdateInterestRate = 5 ,
-		eTotalBalanceInBank = 6 ,
-		eLoanLogRecord = 7 ,
-		eShowMainMenue = 8
+        eAddClient = 3 ,
+		eTakeLoan = 4 ,
+		eRepayLoan = 5 ,
+		eUpdateInterestRate = 6 ,
+		eTotalBalanceInBank = 7 ,
+		eLoanLogRecord = 8 ,
+		eShowMainMenue = 9
 	};
     static short ReadLoanMenueOption()
     {
-        cout << setw(37) << left << "" << "Choose what do you want to do? [1 to 8]? ";
-        short Choice = clsInputValidate::ReadShortNumberBetween(1, 8, "Enter Number between 1 to 8 ");
+        cout << setw(37) << left << "" << "Choose what do you want to do? [1 to 9]? ";
+        short Choice = clsInputValidate::ReadShortNumberBetween(1, 9, "Enter Number between 1 to 9 ");
         return Choice;
     }
 
@@ -44,6 +46,11 @@ class clsLoanScreen: protected clsScreen
     static void _ShowFindLoanClientScreen()
     {
         clsFindLoanClientScreen::ShowFindLoanClientScreen();
+    }
+
+    static void _ShowAddNewLoanClientScreen()
+    {
+        clsAddNewClientScreen::ShowAddNewClientScreen();
     }
 
     static void _ShowTakeLoanScreen()
@@ -100,6 +107,14 @@ class clsLoanScreen: protected clsScreen
         {
             system("cls");
             _ShowFindLoanClientScreen();
+            _GoBackToLoanMenue();
+            break;
+        }
+
+        case enLoanScreenMenueOption::eAddClient:
+        {
+            system("cls");
+            _ShowAddNewLoanClientScreen();
             _GoBackToLoanMenue();
             break;
         }
@@ -166,12 +181,13 @@ class clsLoanScreen: protected clsScreen
 			cout << setw(37) << left << "" << "===========================================\n";
 			cout << setw(37) << left << "" << "\t[1] List Loans.\n";
 			cout << setw(37) << left << "" << "\t[2] Find Loan By Client.\n";
-			cout << setw(37) << left << "" << "\t[3] Take Loan.\n";
-			cout << setw(37) << left << "" << "\t[4] Repay Loan.\n";
-			cout << setw(37) << left << "" << "\t[5] Update Interest Rate.\n";
-			cout << setw(37) << left << "" << "\t[6] Total Balances.\n";
-			cout << setw(37) << left << "" << "\t[7] Loan Log.\n";
-			cout << setw(37) << left << "" << "\t[8] Main Menue.\n";
+            cout << setw(37) << left << "" << "\t[3] Add New Client.\n";
+			cout << setw(37) << left << "" << "\t[4] Take Loan.\n";
+			cout << setw(37) << left << "" << "\t[5] Repay Loan.\n";
+			cout << setw(37) << left << "" << "\t[6] Update Interest Rate.\n";
+			cout << setw(37) << left << "" << "\t[7] Total Balances.\n";
+			cout << setw(37) << left << "" << "\t[8] Loan Log.\n";
+			cout << setw(37) << left << "" << "\t[9] Main Menue.\n";
 			cout << setw(37) << left << "" << "===========================================\n";
 
 			_PerformLoanMenueOption((enLoanScreenMenueOption)ReadLoanMenueOption());
