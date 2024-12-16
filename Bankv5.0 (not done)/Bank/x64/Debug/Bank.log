@@ -1,94 +1,180 @@
 ﻿  Bank.cpp
-C:\Users\omarh\Bank\Bankv4.0 with OOP\Bank\clsString.h(43,25): warning C4267: 'return': conversion from 'size_t' to 'short', possible loss of data
+C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsString.h(43,25): warning C4267: 'return': conversion from 'size_t' to 'short', possible loss of data
   (compiling source file 'Bank.cpp')
   
-C:\Users\omarh\Bank\Bankv4.0 with OOP\Bank\clsString.h(48,29): warning C4267: 'return': conversion from 'size_t' to 'short', possible loss of data
+C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsString.h(48,29): warning C4267: 'return': conversion from 'size_t' to 'short', possible loss of data
   (compiling source file 'Bank.cpp')
   
-C:\Users\omarh\Bank\Bankv4.0 with OOP\Bank\clsString.h(60,30): warning C4267: '=': conversion from 'size_t' to 'short', possible loss of data
+C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsString.h(60,30): warning C4267: '=': conversion from 'size_t' to 'short', possible loss of data
   (compiling source file 'Bank.cpp')
   
-C:\Users\omarh\Bank\Bankv4.0 with OOP\Bank\clsString.h(197,29): warning C4267: 'return': conversion from 'size_t' to 'short', possible loss of data
+C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsString.h(197,29): warning C4267: 'return': conversion from 'size_t' to 'short', possible loss of data
   (compiling source file 'Bank.cpp')
   
-C:\Users\omarh\Bank\Bankv4.0 with OOP\Bank\clsString.h(328,30): warning C4267: '=': conversion from 'size_t' to 'short', possible loss of data
+C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsString.h(328,30): warning C4267: '=': conversion from 'size_t' to 'short', possible loss of data
   (compiling source file 'Bank.cpp')
   
-C:\Users\omarh\Bank\Bankv4.0 with OOP\Bank\clsString.h(376,22): warning C4267: 'initializing': conversion from 'size_t' to 'short', possible loss of data
+C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsString.h(376,22): warning C4267: 'initializing': conversion from 'size_t' to 'short', possible loss of data
   (compiling source file 'Bank.cpp')
   
-C:\Users\omarh\Bank\Bankv4.0 with OOP\Bank\clsdate.h(21,24): warning C4267: '=': conversion from 'size_t' to 'short', possible loss of data
+C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsdate.h(21,24): warning C4267: '=': conversion from 'size_t' to 'short', possible loss of data
   (compiling source file 'Bank.cpp')
   
-C:\Users\omarh\Bank\Bankv4.0 with OOP\Bank\clsBankClient.h(206,12): warning C4240: nonstandard extension used: access to 'clsBankClient::stTrnsferLogRecord' now defined to be 'public', previously it was defined to be 'private'
+C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsBankClient.h(206,12): warning C4240: nonstandard extension used: access to 'clsBankClient::stTrnsferLogRecord' now defined to be 'public', previously it was defined to be 'private'
   (compiling source file 'Bank.cpp')
-  C:\Users\omarh\Bank\Bankv4.0 with OOP\Bank\clsBankClient.h(153,12):
+  C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsBankClient.h(153,12):
   see declaration of 'clsBankClient::stTrnsferLogRecord'
   
-C:\Users\omarh\Bank\Bankv4.0 with OOP\Bank\clsBankClient.h(32,65): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsBankClient.h(32,65): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
   (compiling source file 'Bank.cpp')
   
-C:\Users\omarh\Bank\Bankv4.0 with OOP\Bank\clsBankClient.h(163,39): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsBankClient.h(163,39): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
   (compiling source file 'Bank.cpp')
   
-C:\Users\omarh\Bank\Bankv4.0 with OOP\Bank\clsBankClient.h(164,48): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsBankClient.h(164,48): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
   (compiling source file 'Bank.cpp')
   
-C:\Users\omarh\Bank\Bankv4.0 with OOP\Bank\clsBankClient.h(165,49): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsBankClient.h(165,49): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
   (compiling source file 'Bank.cpp')
   
-C:\Users\omarh\Bank\Bankv4.0 with OOP\Bank\clsBankClient.h(446,32): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
+C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsBankClient.h(446,32): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
   (compiling source file 'Bank.cpp')
   
-C:\Users\omarh\Bank\Bankv4.0 with OOP\Bank\clsBankClient.h(458,36): warning C4244: '-=': conversion from 'double' to 'float', possible loss of data
+C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsBankClient.h(458,36): warning C4244: '-=': conversion from 'double' to 'float', possible loss of data
   (compiling source file 'Bank.cpp')
   
-C:\Users\omarh\Bank\Bankv4.0 with OOP\Bank\clsInputValidate.h(297,22): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsInputValidate.h(297,22): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
   (compiling source file 'Bank.cpp')
   
-C:\Users\omarh\Bank\Bankv4.0 with OOP\Bank\clsInputValidate.h(301,35): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsInputValidate.h(301,35): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
   (compiling source file 'Bank.cpp')
   
-C:\Users\omarh\Bank\Bankv4.0 with OOP\Bank\clsUtil.h(64,5): warning C4102: 'defualt': unreferenced label
+C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsUtil.h(64,5): warning C4102: 'defualt': unreferenced label
   (compiling source file 'Bank.cpp')
   
-C:\Users\omarh\Bank\Bankv4.0 with OOP\Bank\clsUser.h(444,6): warning C4091: 'static ': ignored on left of 'clsUser::stLoginRegisterRecord' when no variable is declared
+C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsUser.h(444,6): warning C4091: 'static ': ignored on left of 'clsUser::stLoginRegisterRecord' when no variable is declared
   (compiling source file 'Bank.cpp')
   
-C:\Users\omarh\Bank\Bankv4.0 with OOP\Bank\clsAddNewClientScreen.h(30,66): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsAddNewClientScreen.h(30,66): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
   (compiling source file 'Bank.cpp')
   
-C:\Users\omarh\Bank\Bankv4.0 with OOP\Bank\clsUpdateClientScreen.h(47,66): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsUpdateClientScreen.h(47,66): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
   (compiling source file 'Bank.cpp')
   
-C:\Users\omarh\Bank\Bankv4.0 with OOP\Bank\clsTotalBalancesScreen.h(59,82): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsTotalBalancesScreen.h(59,82): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
   (compiling source file 'Bank.cpp')
   
-C:\Users\omarh\Bank\Bankv4.0 with OOP\Bank\clsTransferScreen.h(50,4): warning C4091: 'static ': ignored on left of 'clsTransferScreen::stTransferLogRecord' when no variable is declared
+C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsTransferScreen.h(50,4): warning C4091: 'static ': ignored on left of 'clsTransferScreen::stTransferLogRecord' when no variable is declared
   (compiling source file 'Bank.cpp')
   
-C:\Users\omarh\Bank\Bankv4.0 with OOP\Bank\clsLoanClient.h(259,16): warning C4240: nonstandard extension used: access to 'clsLoanClient::stLoanLogRecord' now defined to be 'public', previously it was defined to be 'private'
+C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsLoanClient.h(375,16): warning C4240: nonstandard extension used: access to 'clsLoanClient::stLoanLogRecord' now defined to be 'public', previously it was defined to be 'private'
   (compiling source file 'Bank.cpp')
-  C:\Users\omarh\Bank\Bankv4.0 with OOP\Bank\clsLoanClient.h(203,16):
+  C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsLoanClient.h(313,16):
   see declaration of 'clsLoanClient::stLoanLogRecord'
   
-C:\Users\omarh\Bank\Bankv4.0 with OOP\Bank\clsLoanClient.h(671,22): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsListLoansScreen.h(19,56): error C2039: 'Loan': is not a member of 'clsLoanClient'
+  (compiling source file 'Bank.cpp')
+  C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsLoanClient.h(9,7):
+  see declaration of 'clsLoanClient'
+  
+C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsListLoansScreen.h(20,56): error C2039: 'GetCurrentLoan': is not a member of 'clsLoanClient'
+  (compiling source file 'Bank.cpp')
+  C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsLoanClient.h(9,7):
+  see declaration of 'clsLoanClient'
+  
+C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsListLoansScreen.h(21,56): error C2039: 'LoanBeginDate': is not a member of 'clsLoanClient'
+  (compiling source file 'Bank.cpp')
+  C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsLoanClient.h(9,7):
+  see declaration of 'clsLoanClient'
+  
+C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsListLoansScreen.h(22,56): error C2039: 'LoanEndDate': is not a member of 'clsLoanClient'
+  (compiling source file 'Bank.cpp')
+  C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsLoanClient.h(9,7):
+  see declaration of 'clsLoanClient'
+  
+C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsFindLoanClientScreen.h(17,60): error C2039: 'Loan': is not a member of 'clsLoanClient'
+  (compiling source file 'Bank.cpp')
+  C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsLoanClient.h(9,7):
+  see declaration of 'clsLoanClient'
+  
+C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsFindLoanClientScreen.h(18,60): error C2039: 'GetCurrentLoan': is not a member of 'clsLoanClient'
+  (compiling source file 'Bank.cpp')
+  C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsLoanClient.h(9,7):
+  see declaration of 'clsLoanClient'
+  
+C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsFindLoanClientScreen.h(19,60): error C2039: 'LoanBeginDate': is not a member of 'clsLoanClient'
+  (compiling source file 'Bank.cpp')
+  C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsLoanClient.h(9,7):
+  see declaration of 'clsLoanClient'
+  
+C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsFindLoanClientScreen.h(20,60): error C2039: 'LoanEndDate': is not a member of 'clsLoanClient'
+  (compiling source file 'Bank.cpp')
+  C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsLoanClient.h(9,7):
+  see declaration of 'clsLoanClient'
+  
+C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsAddNewLoanClientScreen.h(35,11): error C2039: 'Loan': is not a member of 'clsLoanClient'
+  (compiling source file 'Bank.cpp')
+  C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsLoanClient.h(9,7):
+  see declaration of 'clsLoanClient'
+  
+C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsAddNewLoanClientScreen.h(38,11): error C2039: 'EndDate': is not a member of 'clsLoanClient'
+  (compiling source file 'Bank.cpp')
+  C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsLoanClient.h(9,7):
+  see declaration of 'clsLoanClient'
+  
+C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsAddNewLoanClientScreen.h(41,11): error C2039: 'InterestRate': is not a member of 'clsLoanClient'
+  (compiling source file 'Bank.cpp')
+  C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsLoanClient.h(9,7):
+  see declaration of 'clsLoanClient'
+  
+C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsAddNewLoanClientScreen.h(46,17): error C2039: 'InterestRate': is not a member of 'clsLoanClient'
+  (compiling source file 'Bank.cpp')
+  C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsLoanClient.h(9,7):
+  see declaration of 'clsLoanClient'
+  
+C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsAddNewLoanClientScreen.h(46,45): error C2039: 'InterestRate': is not a member of 'clsLoanClient'
+  (compiling source file 'Bank.cpp')
+  C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsLoanClient.h(9,7):
+  see declaration of 'clsLoanClient'
+  
+C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsAddNewLoanClientScreen.h(47,20): error C2039: 'InterestRate': is not a member of 'clsLoanClient'
+  (compiling source file 'Bank.cpp')
+  C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsLoanClient.h(9,7):
+  see declaration of 'clsLoanClient'
+  
+C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsAddNewLoanClientScreen.h(54,12): error C2039: 'InterestRate': is not a member of 'clsLoanClient'
+  (compiling source file 'Bank.cpp')
+  C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsLoanClient.h(9,7):
+  see declaration of 'clsLoanClient'
+  
+C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsAddNewLoanClientScreen.h(63,51): error C2039: 'Loan': is not a member of 'clsLoanClient'
+  (compiling source file 'Bank.cpp')
+  C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsLoanClient.h(9,7):
+  see declaration of 'clsLoanClient'
+  
+C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsAddNewLoanClientScreen.h(64,51): error C2039: 'GetCurrentLoan': is not a member of 'clsLoanClient'
+  (compiling source file 'Bank.cpp')
+  C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsLoanClient.h(9,7):
+  see declaration of 'clsLoanClient'
+  
+C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsAddNewLoanClientScreen.h(65,51): error C2039: 'LoanBeginDate': is not a member of 'clsLoanClient'
+  (compiling source file 'Bank.cpp')
+  C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsLoanClient.h(9,7):
+  see declaration of 'clsLoanClient'
+  
+C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsAddNewLoanClientScreen.h(66,51): error C2039: 'LoanEndDate': is not a member of 'clsLoanClient'
+  (compiling source file 'Bank.cpp')
+  C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsLoanClient.h(9,7):
+  see declaration of 'clsLoanClient'
+  
+C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsCurrency.h(27,17): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
   (compiling source file 'Bank.cpp')
   
-C:\Users\omarh\Bank\Bankv4.0 with OOP\Bank\clsAddNewLoanClientScreen.h(50,19): warning C4101: 'InterestRate': unreferenced local variable
+C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsCurrencyCalculatorScreen.h(25,51): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
   (compiling source file 'Bank.cpp')
   
-C:\Users\omarh\Bank\Bankv4.0 with OOP\Bank\clsCurrency.h(27,17): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsCurrencyCalculatorScreen.h(45,34): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
   (compiling source file 'Bank.cpp')
   
-C:\Users\omarh\Bank\Bankv4.0 with OOP\Bank\clsCurrencyCalculatorScreen.h(25,51): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-  (compiling source file 'Bank.cpp')
-  
-C:\Users\omarh\Bank\Bankv4.0 with OOP\Bank\clsCurrencyCalculatorScreen.h(45,34): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-  (compiling source file 'Bank.cpp')
-  
-C:\Users\omarh\Bank\Bankv4.0 with OOP\Bank\Bank.cpp(32,62): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-C:\Users\omarh\Bank\Bankv4.0 with OOP\Bank\Bank.cpp(126,56): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-C:\Users\omarh\Bank\Bankv4.0 with OOP\Bank\clsUser.h(367,1): warning C4715: 'clsUser::Save': not all control paths return a value
-C:\Users\omarh\Bank\Bankv4.0 with OOP\Bank\clsBankClient.h(390,1): warning C4715: 'clsBankClient::Save': not all control paths return a value
-C:\Users\omarh\Bank\Bankv4.0 with OOP\Bank\clsLoanClient.h(53,1): error C4716: 'clsLoanClient::clsLoan::_ConvertLineToClsLoanObject': must return a value
+C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\Bank.cpp(32,62): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\Bank.cpp(126,56): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data

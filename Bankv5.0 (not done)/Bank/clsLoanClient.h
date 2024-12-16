@@ -14,6 +14,7 @@ class clsLoanClient
 		string _AccountNumber;
 		string _FullName;
         string _Phone;
+        int _CreditScore;
         class clsLoan
         {
             double _Loan;
@@ -411,11 +412,8 @@ class clsLoanClient
             return _FullName;
         }
 
-        __declspec(property(get = GetFullName, put = SetFullName)) string FullName;
-
-       
+        __declspec(property(get = GetFullName, put = SetFullName)) string FullName;  
         
-
         void SetPhoneNumber(string Phone)
         {
             _Phone = Phone;
@@ -428,7 +426,36 @@ class clsLoanClient
 
         __declspec(property(get = GetPhoneNumber, put = SetPhoneNumber)) string Phone;
 
-       /*not done*/ clsDynamicArray <thread> SetAll1(string AccountNumber, string FullName, string PhoneNumber ,  string LoanBeginDate, string LoanEndDate, double Loan, double InterestRate)
+        int GetCreditScore()
+        {
+            return _CreditScore;
+        }
+
+        clsDynamicArray <thread> SetAll(string AccountNumber, string FullName, string PhoneNumber)
+        {
+            clsDynamicArray <thread> DyArTh(3);
+            DyArTh.SetItem(0, std::move(thread(&clsLoanClient::SetAccountNumber, this, AccountNumber)));
+            DyArTh.SetItem(1, std::move(thread(&clsLoanClient::SetFullName, this, FullName)));
+            DyArTh.SetItem(2, std::move(thread(&clsLoanClient::SetPhoneNumber, this, PhoneNumber)));
+            for (thread& i : DyArTh)
+            {
+                i.join();
+            }
+
+            return DyArTh;
+        }
+
+        clsDynamicArray <thread> SetAll(clsDynamicArray <string> StDyArr)
+        {
+
+        }
+
+        clsDynamicArray <thread> SetAll(clsDynamicArray <string> StDyArr, double Loan, double InterestRate)
+        {
+
+        }
+
+       /*not done*/ clsDynamicArray <thread> SetAll(string AccountNumber, string FullName, string PhoneNumber ,  string LoanBeginDate, string LoanEndDate, double Loan, double InterestRate)
         {
             clsDynamicArray <thread> DyArTh(3);
             DyArTh.SetItem(0, std::move(thread(&clsLoanClient::SetAccountNumber, this, AccountNumber)));
