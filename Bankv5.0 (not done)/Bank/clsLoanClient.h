@@ -78,8 +78,12 @@ class clsLoanClient
 
                 double GetCurrentLoan()
                 {
+                    _LoanWithInterest = _Loan;
                     _Months = CheckIFToApplyInterest();
-                    _LoanWithInterest = _InterestRate * _Loan * _Months;
+                    for (int i = 0; i < _Months; i++)
+                    {
+                        _LoanWithInterest *= _InterestRate;
+                    }
                     return _LoanWithInterest;
                 }
 
@@ -225,7 +229,13 @@ class clsLoanClient
 
         }
 
-
+        void ProcessLoanList()
+        {
+            for (int i = 0; i < _LoanList.Size(); i++)
+            {
+                _LoanList.Getitem(i).GetCurrentLoan();
+            }
+        }
 
         static  vector <clsLoanClient> _LoadLoanClientsDataFromFile()
         {

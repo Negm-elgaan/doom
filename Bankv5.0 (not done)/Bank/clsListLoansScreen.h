@@ -16,10 +16,10 @@ class clsListLoansScreen : protected clsScreen
 
         cout << setw(8) << left << "" << "| " << setw(30) << left << LoanClient.AccountNumber;
         cout << "| " << setw(12) << left << LoanClient.FullName;
-        cout << "| " << setw(40) << left << LoanClient.Loan;
-        cout << "| " << setw(40) << left << LoanClient.GetCurrentLoan();
-        cout << "| " << setw(20) << left << LoanClient.LoanBeginDate();
-        cout << "| " << setw(20) << left << LoanClient.LoanEndDate(); 
+        cout << "| " << setw(40) << left << LoanClient.AccountNumber;
+        cout << "| " << setw(40) << left << LoanClient.Phone;
+        //cout << "| " << setw(20) << left << LoanClient
+        cout << "| " << setw(20) << left << LoanClient.GetCreditScore(); 
     }
     public:
         static void ShowClientsList()

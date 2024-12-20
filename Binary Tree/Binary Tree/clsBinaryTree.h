@@ -13,6 +13,7 @@ template <class T> class clsBinaryTree
 				T Data;
 				Node* Right;
 				Node* Left;
+				Node* Prev;
 		};
 
 		int _Size = 0;
@@ -23,6 +24,7 @@ template <class T> class clsBinaryTree
 	public:
 		
 		clsBinaryTree::Node* ParentNode = NULL;
+		clsBinaryTree::Node* Temp1 = ParentNode;
 		//clsBinaryTree::Node* CurrentLeftNode = NULL;
 		//clsBinaryTree::Node* CurrentRightNode = NULL;
 
@@ -52,6 +54,7 @@ template <class T> class clsBinaryTree
 				ParentNode->Data = Data;
 				ParentNode->Left = NULL;
 				ParentNode->Right = NULL;
+				ParentNode->Prev = NULL;
 				//CurrentLeftNode = ParentNode;
 				//CurrentRightNode = ParentNode;
 				return;
@@ -81,6 +84,7 @@ template <class T> class clsBinaryTree
 			}
 
 			NewNode->Data > TempNode->Data ? TempNode->Right = NewNode : TempNode->Left = NewNode;
+			TempNode->Right == NULL ? TempNode->Left->Prev = TempNode : TempNode->Right->Prev = TempNode;
 
 			return;
 
@@ -88,6 +92,65 @@ template <class T> class clsBinaryTree
 		}
 
 		void printLeft()
+		{
+			Node* Temp = ParentNode;
+			cout << Temp->Data << " ";
+			Temp = Temp->Left;
+			while (Temp != NULL)
+			{
+				cout << Temp->Data << " ";
+				if (Temp->Right != NULL)
+					cout << Temp->Right->Data << " ";
+				Temp = Temp->Left;
+			}
+
+			//cout << Temp->Data;
+			//Temp = Temp->Right;
+			//cout << Temp->Data;
+			//cout << Temp->Left->Data << " ";
+			//cout << Temp->Right->Data;
+			/*while (Temp != NULL)
+			{
+				cout << Temp->Data << " ";
+				if (Temp->Left != NULL)
+					cout << Temp->Left->Data << " ";
+				Temp = Temp->Right;
+			}*/
+
+
+			cout << endl;
+
+			return;
+		}
+
+		void printRight()
+		{
+
+			Node* Temp = ParentNode;
+			cout << Temp->Data << " ";
+			Temp = Temp->Right;
+			while (Temp->Right != NULL)
+			{
+				cout << Temp->Data << " ";
+				if (Temp->Left != NULL)
+					cout  << Temp->Left->Data << " ";
+				Temp = Temp->Right;
+			}
+
+			Temp = Temp->Prev;
+			Temp = Temp->Left;
+
+			while (Temp != NULL)
+			{ 
+				cout << Temp->Data << " ";
+				if (Temp->Left != NULL)
+					cout << Temp->Left->Data << " ";
+				Temp = Temp->Right;
+			}
+
+			return;
+		}
+		/*void printLeft()
 		{
 			Node* Temp = ParentNode;
 			cout << Temp->Data << " ";
@@ -122,10 +185,18 @@ template <class T> class clsBinaryTree
 			cout << endl;
 
 			return;
-		}
-
-		void print()
+		}*/
+		void print(Node* Temp = ParentNode)
 		{
+			if (Temp->Left == NULL)
+			{
+				if (Temp->Right == NULL)
+
+				return;
+			}
+
+			print(Temp->Left);
+
 
 		}
 };
