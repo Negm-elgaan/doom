@@ -14,7 +14,7 @@ class clsLoanClient
 		string _AccountNumber;
 		string _FullName;
         string _Phone;
-        int _CreditScore;
+        int _CreditScore = 0;
         class clsLoan
         {
             double _Loan;
@@ -165,8 +165,10 @@ class clsLoanClient
         clsDynamicArray <clsLoan> _LoanList; //pointer list of different loans to same account with same or different interest rate
 		bool _MarkedForDelete = false;
 
-
-        
+        bool CheckCreditScore()
+        {
+            return _CreditScore >= -120;
+        }
 
         static clsLoanClient _ConvertLinetoLoanClientObject(string Line, string Seperator = "#//#")
         {
@@ -837,6 +839,29 @@ class clsLoanClient
         clsLoanClient BTOL(clsBankClient BankClient)
         {
             return _ConvertBankClientObjectToLoanClientObject(BankClient);
+        }
+
+        bool TakeNewLoan(double Loan , string LoanBeginDate , string LoanEndDate , double InterestRate)
+        {
+            if (CheckCreditScore())
+            {
+                _LoanList.Resize(_LoanList.Size() + 1);
+                clsLoan LoanObject(Loan, LoanBeginDate, LoanEndDate, InterestRate);
+                _LoanList.InsertAtEnd(LoanObject);
+                return true;
+            }
+
+            return false;
+        }
+
+        bool RepayPartOfLoan()
+        {
+
+        }
+
+        bool RepayFullLoan()
+        {
+
         }
 };
 //loan is not probably handled
