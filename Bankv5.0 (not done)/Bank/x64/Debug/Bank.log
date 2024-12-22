@@ -67,33 +67,10 @@ C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsTotalBalancesScreen.h(59,82): wa
 C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsTransferScreen.h(50,4): warning C4091: 'static ': ignored on left of 'clsTransferScreen::stTransferLogRecord' when no variable is declared
   (compiling source file 'Bank.cpp')
   
-C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsLoanClient.h(402,16): warning C4240: nonstandard extension used: access to 'clsLoanClient::stLoanLogRecord' now defined to be 'public', previously it was defined to be 'private'
+C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsLoanClient.h(425,16): warning C4240: nonstandard extension used: access to 'clsLoanClient::stLoanLogRecord' now defined to be 'public', previously it was defined to be 'private'
   (compiling source file 'Bank.cpp')
-  C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsLoanClient.h(324,16):
+  C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsLoanClient.h(347,16):
   see declaration of 'clsLoanClient::stLoanLogRecord'
-  
-C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsLoanClient.h(153,17): error C2143: syntax error: missing ';' before '}'
-  (compiling source file 'Bank.cpp')
-  
-C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsListLoansScreen.h(19,56): error C2039: 'Loan': is not a member of 'clsLoanClient'
-  (compiling source file 'Bank.cpp')
-  C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsLoanClient.h(9,7):
-  see declaration of 'clsLoanClient'
-  
-C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsListLoansScreen.h(20,56): error C2039: 'GetCurrentLoan': is not a member of 'clsLoanClient'
-  (compiling source file 'Bank.cpp')
-  C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsLoanClient.h(9,7):
-  see declaration of 'clsLoanClient'
-  
-C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsListLoansScreen.h(21,56): error C2039: 'LoanBeginDate': is not a member of 'clsLoanClient'
-  (compiling source file 'Bank.cpp')
-  C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsLoanClient.h(9,7):
-  see declaration of 'clsLoanClient'
-  
-C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsListLoansScreen.h(22,56): error C2039: 'LoanEndDate': is not a member of 'clsLoanClient'
-  (compiling source file 'Bank.cpp')
-  C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsLoanClient.h(9,7):
-  see declaration of 'clsLoanClient'
   
 C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsFindLoanClientScreen.h(17,60): error C2039: 'Loan': is not a member of 'clsLoanClient'
   (compiling source file 'Bank.cpp')

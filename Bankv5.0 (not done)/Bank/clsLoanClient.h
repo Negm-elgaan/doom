@@ -15,6 +15,18 @@ class clsLoanClient
 		string _FullName;
         string _Phone;
         int _CreditScore = 0;
+        void* Vptr; // will store memory address of union
+        union _UnEncryptedData
+        {
+            //We will Encrypt All Data Here
+            struct stEncryptedData
+            {
+                string EnAccountNumber;
+                string EnDplFullName;
+                string EnDplPhone;
+                int EnDplCreditScore = 0;
+            };
+        };
         class clsLoan
         {
             double _Loan;

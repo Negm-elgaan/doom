@@ -18,7 +18,7 @@ private:
     string _UserName;
     string _Password;
     int _Permissions;
-
+ 
     bool _MarkedForDelete = false;
 
     static string EncryptText(string Password, short EncryptionKey)
