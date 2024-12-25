@@ -10,22 +10,6 @@ int main()
 {
     clsBinaryTree <int> BinaryTree;
     
-    /*BinaryTree.Insert(4);
-    BinaryTree.Insert(2);
-    BinaryTree.Insert(5);
-    BinaryTree.Insert(8);
-    BinaryTree.Insert(7);
-    BinaryTree.Insert(3);*/
-    /*BinaryTree.Insert(10);
-    BinaryTree.Insert(5);
-    BinaryTree.Insert(20);
-    BinaryTree.Insert(3);
-    BinaryTree.Insert(7);
-    BinaryTree.Insert(15);
-    //BinaryTree.Insert();
-    BinaryTree.Insert(4);
-    BinaryTree.Insert(6);
-    BinaryTree.Insert(2);*/
     BinaryTree.Insert(50);
     BinaryTree.Insert(30);
     BinaryTree.Insert(70);
@@ -38,8 +22,11 @@ int main()
     BinaryTree.Insert(55);
     BinaryTree.Insert(65);
     BinaryTree.Insert(53);
-    BinaryTree.printLeft();
-    BinaryTree.printRight();
+    BinaryTree.Print();
+    int x = BinaryTree.search(53);
+    cout << x << endl;
+    //BinaryTree.printRight();
+    //BinaryTree.print();
     cout << "hi";
     
 }

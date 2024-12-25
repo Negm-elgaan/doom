@@ -1,0 +1,16 @@
+﻿  Map.cpp
+C:\Users\omarh\doom\Map\Map\clsBinaryTree.h(24,3): warning C4091: 'static ': ignored on left of 'clsBinaryTree<Key,Value,Value2,Value3,Value4,Value5>::Node' when no variable is declared
+  (compiling source file 'Map.cpp')
+  C:\Users\omarh\doom\Map\Map\clsBinaryTree.h(24,3):
+  the template instantiation context (the oldest one first) is
+  	C:\Users\omarh\doom\Map\Map\clsBinaryTree.h(8,268):
+  	while compiling class template 'clsBinaryTree'
+  
+C:\Users\omarh\doom\Map\Map\clsBinaryTree.h(24,3): warning C4091: 'static ': ignored on left of 'clsBinaryTree<int,int,char,double,bool,std::string>::Node' when no variable is declared
+  (compiling source file 'Map.cpp')
+  C:\Users\omarh\doom\Map\Map\clsBinaryTree.h(24,3):
+  the template instantiation context (the oldest one first) is
+  	C:\Users\omarh\doom\Map\Map\Map.cpp(8,25):
+  	see reference to class template instantiation 'clsBinaryTree<int,int,char,double,bool,std::string>' being compiled
+  
+  Map.vcxproj -> C:\Users\omarh\doom\Map\x64\Debug\Map.exe

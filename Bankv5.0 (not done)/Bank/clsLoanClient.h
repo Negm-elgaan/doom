@@ -15,30 +15,21 @@ class clsLoanClient
 		string _FullName;
         string _Phone;
         int _CreditScore = 0;
-        void* Vptr; // will store memory address of union
-        union _UnEncryptedData
-        {
-            //We will Encrypt All Data Here
-            struct stEncryptedData
-            {
-                string EnAccountNumber;
-                string EnDplFullName;
-                string EnDplPhone;
-                int EnDplCreditScore = 0;
-            };
-        };
         class clsLoan
         {
+            //enum enLoanMode
+            //enMode _Mode;
             double _Loan;
             double _LoanWithInterest;
             string _LoanBeginDate;
             string _LoanEndDate;
             double _InterestRate = 1.14;
             int _Months;
+            string _ID;
             public:
-
+                //enum enLoanMode { EmptyMode = 0, UpdateMode = 1, AddNewMode = 2 };
                 clsLoan()
-                {
+                {                  
                     _Loan = 0;
                     _LoanWithInterest = 0;
                     _LoanBeginDate = "";
@@ -48,8 +39,9 @@ class clsLoanClient
                     return;
                 }
 
-                clsLoan(double Loan, string LoanBeginDate, string LoanEndDate, double InterestRate)
+                clsLoan(/*enMode Mode,*/ double Loan, string LoanBeginDate, string LoanEndDate, double InterestRate)
                 {
+                    //_Mode = Mode;
                     _Loan = Loan;
                     _LoanWithInterest = _Loan;
                     _LoanBeginDate = LoanBeginDate;
@@ -74,10 +66,15 @@ class clsLoanClient
                     return Line;
                 }
 
+                static clsLoan GetEmptyLoanObject()
+                {
+                    return clsLoan(/**enMode::EmptyMode,*/ 0, "", "", 0);
+                }
+
                 static clsLoan _ConvertLineToClsLoanObject(string Line , string separator = "*//*")
                 {
                     vector <string> vLoanData = clsString::Split(Line,separator);
-                    return clsLoan(stod(vLoanData[0])  , vLoanData[2] , vLoanData[3] , stod(vLoanData[4]));
+                    return clsLoan(/*enMode::UpdateMode,*/ stod(vLoanData[0]), vLoanData[2], vLoanData[3], stod(vLoanData[4]));
                 }
 
                 int CheckIFToApplyInterest()
@@ -147,10 +144,27 @@ class clsLoanClient
 
                 __declspec(property(get = GetLoan, put = SetLoan)) double Loan;
 
+                void SetID(string ID)
+                {
+                    _ID = ID;
+                }
+
+                string GetID()
+                {
+                    return _ID;
+                }
+
+                __declspec(property(get = GetID, put = SetID)) string ID;
+
                 int GetMonths()
                 {
                     return _Months;
                 }
+
+                /*bool IsEmpty()
+                {
+                    return (_Mode == enMode::EmptyMode);
+                }*/
 
                 clsDynamicArray <thread> SetAll(double Loan, string LoanBeginDate, string LoanEndDate, double InterestRate = 1.14)
                 {
@@ -410,13 +424,13 @@ class clsLoanClient
             _LoanList.InsertAtBeginning(LoanObject);
         }
 
-        clsLoanClient(enMode mode, string AccountNumber, string Name, string Phone, double Loan, double LoanWithInterest, string LoanBeginDate, string LoanEndDate, double InterestRate = 1.14)
+        clsLoanClient(enMode mode, string AccountNumber, string Name, string Phone, double Loan, double LoanWithInterest, string LoanBeginDate, string LoanEndDate, double InterestRate = 1.14 , enMode clsLoanMode)
         {
             _Mode = mode;
             _AccountNumber = AccountNumber;
             _FullName = Name;
             _Phone = Phone;
-            clsLoan LoanObject(Loan, LoanBeginDate, LoanEndDate, InterestRate);
+            clsLoan LoanObject(/*clsLoanMode,*/ Loan, LoanBeginDate, LoanEndDate, InterestRate);
             _LoanList.InsertAtBeginning(LoanObject);
             return;
         }
@@ -866,14 +880,43 @@ class clsLoanClient
             return false;
         }
 
-        bool RepayPartOfLoan()
+        /*not done*/bool RepayPartOfLoan(string ID, double amount)
         {
+            clsLoan LoanObject = FindLoanByLoanID(ID);
+            if (LoanObject.Loan == NULL)
+            LoanObject.Loan -= amount;
+            if (LoanObject.Loan <= 0)
+            {
+                _LoanList.DeleteItemAt(FindIndexByLoanID(ID));
+                return true;
+            }
 
         }
 
-        bool RepayFullLoan()
+        /*not done*/bool RepayFullLoan(string ID)
         {
+            _LoanList.DeleteItemAt(FindIndexByLoanID(ID));
+        }
 
+        int FindIndexByLoanID(string ID)
+        {
+            for (int i = 0; i < _LoanList.Size(); i++)
+            {
+                if (_LoanList.Getitem(i).ID == ID)
+                    return i;
+            }
+
+            return NULL;
+        }
+
+        clsLoan FindLoanByLoanID(string ID)
+        {
+            for (int i = 0; i < _LoanList.Size(); i++)
+            {
+                if (_LoanList.Getitem(i).ID == ID)
+                    return _LoanList.Getitem(i);
+            }
+            return clsLoan::GetEmptyLoanObject();
         }
 };
 //loan is not probably handled

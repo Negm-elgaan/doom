@@ -18,19 +18,57 @@ template <class T> class clsBinaryTree
 
 		int _Size = 0;
 		int _Levels = 0;
-		int _Height = 0;
-	
+		int _Height = -1;
+		void PrintHelper(Node* node)
+		{
+			if (node == NULL)
+				return;
+
+			// Traverse the left subtree
+			PrintHelper(node->Left);
+
+			// Print the data of the current node
+			cout << node->Data << " ";
+
+			// Traverse the right subtree
+			PrintHelper(node->Right);
+		}
+
+		Node* _Search(Node* node , T Data)
+		{
+			if (node == NULL)
+				return NULL;
+
+			if (node->Data = Data)
+				return node;
+			// Traverse the left subtree
+			PrintHelper(node->Left);
+
+			// Traverse the right subtree
+			PrintHelper(node->Right);
+		}
+
+		void DeleteHelper(Node* node)
+		{
+			if (node == NULL)
+				return;
+
+			// Recursively delete the left and right subtrees
+			DeleteHelper(node->Left);
+			DeleteHelper(node->Right);
+
+			// Delete the current node
+			delete node;
+		}
 
 	public:
 		
 		clsBinaryTree::Node* ParentNode = NULL;
 		clsBinaryTree::Node* Temp1 = ParentNode;
-		//clsBinaryTree::Node* CurrentLeftNode = NULL;
-		//clsBinaryTree::Node* CurrentRightNode = NULL;
 
 		clsBinaryTree()
 		{
-			_Size = 1;
+			_Size = 0;
 			_Levels = 1;
 			_Height = 1;
 		}
@@ -49,35 +87,17 @@ template <class T> class clsBinaryTree
 			if (ParentNode == NULL)
 			{
 				ParentNode = new Node();
-				//CurrentLeftNode = new Node();
-				//CurrentRightNode = new Node();
 				ParentNode->Data = Data;
 				ParentNode->Left = NULL;
 				ParentNode->Right = NULL;
 				ParentNode->Prev = NULL;
-				//CurrentLeftNode = ParentNode;
-				//CurrentRightNode = ParentNode;
+				Temp1 = ParentNode;
 				return;
 			}
 			Node* TempNode = ParentNode;
-			//cout << TempNode->Data << " " << ParentNode->Data;
 			Node* NewNode = new Node();
 			NewNode->Data = Data;
-			/*if (TempNode->Left != NULL && NewNode->Data < TempNode->Data)
-			{
-				TempNode->Left = NewNode;
-				return;
-			}
-			if (TempNode->Right != NULL && NewNode->Data > TempNode->Data)
-			{
-				TempNode->Right = NewNode;
-				return;
-			}
-			while (TempNode->Data != NULL || TempNode->Data != NULL)
-			{
-				NewNode->Data > TempNode->Data ? TempNode = TempNode->Right : TempNode = TempNode->Left;
-			}
-			NewNode->Data > TempNode->Data ? TempNode->Right = NewNode : TempNode->Left = NewNode;*/
+			
 			while (x)
 			{
 				NewNode->Data > TempNode->Data ? TempNode->Right == NULL ? x = false : TempNode = TempNode->Right : TempNode->Left == NULL ? x = false : TempNode = TempNode->Left;
@@ -85,119 +105,74 @@ template <class T> class clsBinaryTree
 
 			NewNode->Data > TempNode->Data ? TempNode->Right = NewNode : TempNode->Left = NewNode;
 			TempNode->Right == NULL ? TempNode->Left->Prev = TempNode : TempNode->Right->Prev = TempNode;
-
+			_Size++;
 			return;
 
 			
 		}
 
-		void printLeft()
+		void Print()
 		{
-			Node* Temp = ParentNode;
-			cout << Temp->Data << " ";
-			Temp = Temp->Left;
-			while (Temp != NULL)
-			{
-				cout << Temp->Data << " ";
-				if (Temp->Right != NULL)
-					cout << Temp->Right->Data << " ";
-				Temp = Temp->Left;
-			}
-
-			//cout << Temp->Data;
-			//Temp = Temp->Right;
-			//cout << Temp->Data;
-			//cout << Temp->Left->Data << " ";
-			//cout << Temp->Right->Data;
-			/*while (Temp != NULL)
-			{
-				cout << Temp->Data << " ";
-				if (Temp->Left != NULL)
-					cout << Temp->Left->Data << " ";
-				Temp = Temp->Right;
-			}*/
-
-
-			cout << endl;
-
-			return;
+			PrintHelper(ParentNode);
 		}
 
-		void printRight()
+		int NumberOfNodes()
 		{
-
-			Node* Temp = ParentNode;
-			cout << Temp->Data << " ";
-			Temp = Temp->Right;
-			while (Temp->Right != NULL)
-			{
-				cout << Temp->Data << " ";
-				if (Temp->Left != NULL)
-					cout  << Temp->Left->Data << " ";
-				Temp = Temp->Right;
-			}
-
-			Temp = Temp->Prev;
-			Temp = Temp->Left;
-
-			while (Temp != NULL)
-			{ 
-				cout << Temp->Data << " ";
-				if (Temp->Left != NULL)
-					cout << Temp->Left->Data << " ";
-				Temp = Temp->Right;
-			}
-
-			return;
-		}
-		/*void printLeft()
-		{
-			Node* Temp = ParentNode;
-			cout << Temp->Data << " ";
-			Temp = Temp->Left;
-			while (Temp != NULL)
-			{
-				cout << Temp->Data << " ";
-				if (Temp->Right != NULL)
-					cout << Temp->Right->Data << " ";
-				Temp = Temp->Left;
-			}
-
-			cout << endl;
-
-			return;
+			return _Size;
 		}
 
-		void printRight()
+		T search(T Data)
 		{
+			Node* node = _Search(ParentNode, Data);
+			return node->Data;
+		}
 
-			Node* Temp = ParentNode;
-			cout << Temp->Data << " ";
-			Temp = Temp->Right;
-			while (Temp != NULL)
+		/*bool DeleteLeaf(T Data)
+		{
+			if (ParentNode == NULL)
+				return false;
+			Node* node = _Search(ParentNode, Data);
+			if (node == NULL)
+				return false;
+			if (node->Right != NULL && node->Left != NULL)
 			{
-				cout << Temp->Data << " ";
-				if (Temp->Left != NULL)
-					cout  << Temp->Left->Data << " ";
-				Temp = Temp->Right;
+				if (node->Right->Data > node->Left->Data)
+				{
+					node->Right->Prev = node->Prev;
+					node->Left->Prev = node->Right;
+					if (node->Right->Left)
+					node = NULL;
+					return true;
+				}
+				node->Left->Prev = node->Prev;
+				node->Right->Prev = node->Leftt;
+				node = NULL;
+				return true;
 			}
 
-			cout << endl;
+			if (node->Right != NULL)
+			{
+				node->Right->Prev = node->Prev;
+				node = NULL;
+				return true;
+			}
 
-			return;
+			if (node->Left != NULL)
+			{
+				node->Left->Prev = node->Prev;
+				node = NULL;
+				return true;
+			}
+
+			node = NULL;
+			return true;
 		}*/
-		void print(Node* Temp = ParentNode)
+
+		~clsBinaryTree()
 		{
-			if (Temp->Left == NULL)
-			{
-				if (Temp->Right == NULL)
-
-				return;
-			}
-
-			print(Temp->Left);
-
-
+			delete ParentNode;
+			delete Temp1;
 		}
+		
 };
 
