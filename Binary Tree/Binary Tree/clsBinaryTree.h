@@ -34,18 +34,21 @@ template <class T> class clsBinaryTree
 			PrintHelper(node->Right);
 		}
 
-		Node* _Search(Node* node , T Data)
+		Node* _Search(T Data)
 		{
+			Node* node = ParentNode;
+
 			if (node == NULL)
 				return NULL;
 
-			if (node->Data = Data)
-				return node;
-			// Traverse the left subtree
-			PrintHelper(node->Left);
-
-			// Traverse the right subtree
-			PrintHelper(node->Right);
+			while (node != NULL)
+			{
+				if (node->Data == Data)
+						return node;
+				node->Data > Data ? node = node->Left : node = node->Right;
+			}
+			
+			return NULL;
 		}
 
 		void DeleteHelper(Node* node)
@@ -123,7 +126,8 @@ template <class T> class clsBinaryTree
 
 		T search(T Data)
 		{
-			Node* node = _Search(ParentNode, Data);
+			Node* node = _Search(Data);
+
 			return node->Data;
 		}
 
@@ -171,7 +175,6 @@ template <class T> class clsBinaryTree
 		~clsBinaryTree()
 		{
 			delete ParentNode;
-			delete Temp1;
 		}
 		
 };

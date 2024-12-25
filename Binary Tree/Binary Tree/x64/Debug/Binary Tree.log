@@ -13,5 +13,4 @@ C:\Users\omarh\doom\Binary Tree\Binary Tree\clsBinaryTree.h(17,4): warning C4091
   	C:\Users\omarh\doom\Binary Tree\Binary Tree\Binary Tree.cpp(11,25):
   	see reference to class template instantiation 'clsBinaryTree<int>' being compiled
   
-C:\Users\omarh\doom\Binary Tree\Binary Tree\clsBinaryTree.h(51,1): warning C4715: 'clsBinaryTree<int>::_Search': not all control paths return a value
   Binary Tree.vcxproj -> C:\Users\omarh\doom\Binary Tree\x64\Debug\Binary Tree.exe

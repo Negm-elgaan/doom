@@ -39,18 +39,21 @@ private:
 		PrintHelper(node->Right);
 	}
 
-	Node* _Search(Node* node, Key KeyValue ,Value Data = NULL, Value2 Data2 = NULL , Value3 Data3 = NULL , Value4 Data4 = NULL , Value5 = NULL)
+	Node* _Search(Key KeyValue ,Value Data = NULL, Value2 Data2 = NULL , Value3 Data3 = NULL , Value4 Data4 = NULL , Value5 = NULL)
 	{
+		Node* node = ParentNode;
+
 		if (node == NULL)
 			return NULL;
 
-		if (node->KeyValue == KeyValue)
-			return node;
-		// Traverse the left subtree
-		PrintHelper(node->Left);
+		while (node != NULL)
+		{
+			if (node->KeyValue == KeyValue)
+				return node;
+			node->KeyValue > KeyValue ? node = node->Left : node = node->Right;
+		}
 
-		// Traverse the right subtree
-		PrintHelper(node->Right);
+		return NULL;
 	}
 
 	void DeleteHelper(Node* node)
