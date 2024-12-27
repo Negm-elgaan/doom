@@ -130,9 +130,8 @@
     <ClCompile Include="Map.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="clsBinaryTree.h" />
-    <ClInclude Include="clsDynamicArray.h" />
     <ClInclude Include="clsMap.h" />
+    <ClInclude Include="clsDynamicArray.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
