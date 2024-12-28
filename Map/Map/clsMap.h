@@ -134,6 +134,11 @@ public:
 		return;
 	}
 
+	void Insert(...)
+	{
+
+	}
+
 	void Insert(Key KeyValue , Value Data = Value(), Value2 Data2 = Value2(), Value3 Data3 = Value3(), Value4 Data4 = Value4(), Value5 Data5 = Value5())
 	{
 		bool x = true;
