@@ -1,16 +1,150 @@
 ﻿  Map.cpp
-C:\Users\omarh\doom\Map\Map\clsMap.h(23,3): warning C4091: 'static ': ignored on left of 'clsMap<Key,Value,Value2,Value3,Value4,Value5>::Node' when no variable is declared
+C:\Users\omarh\doom\Map\Map\clsMap.h(8,1): error C3747: missing default template parameter: parameter 7
   (compiling source file 'Map.cpp')
-  C:\Users\omarh\doom\Map\Map\clsMap.h(23,3):
+  
+C:\Users\omarh\doom\Map\Map\clsMap.h(24,3): warning C4091: 'static ': ignored on left of 'clsMap<Key,Value,Value2,Value3,Value4,Value5,T,value6>::Node' when no variable is declared
+  (compiling source file 'Map.cpp')
+  C:\Users\omarh\doom\Map\Map\clsMap.h(24,3):
   the template instantiation context (the oldest one first) is
-  	C:\Users\omarh\doom\Map\Map\clsMap.h(7,268):
+  	C:\Users\omarh\doom\Map\Map\clsMap.h(8,309):
   	while compiling class template 'clsMap'
   
-C:\Users\omarh\doom\Map\Map\clsMap.h(23,3): warning C4091: 'static ': ignored on left of 'clsMap<int,int,char,double,bool,std::string>::Node' when no variable is declared
-  (compiling source file 'Map.cpp')
-  C:\Users\omarh\doom\Map\Map\clsMap.h(23,3):
-  the template instantiation context (the oldest one first) is
-  	C:\Users\omarh\doom\Map\Map\Map.cpp(10,15):
-  	see reference to class template instantiation 'clsMap<int,int,char,double,bool,std::string>' being compiled
+C:\Users\omarh\doom\Map\Map\Map.cpp(10,5): error C2976: 'clsMap': too few template arguments
+  C:\Users\omarh\doom\Map\Map\clsMap.h(8,309):
+  see declaration of 'clsMap'
   
-  Map.vcxproj -> C:\Users\omarh\doom\Map\x64\Debug\Map.exe
+C:\Users\omarh\doom\Map\Map\Map.cpp(10,15): error C2133: 'BinaryTree': unknown size
+C:\Users\omarh\doom\Map\Map\Map.cpp(10,15): error C2512: 'clsMap': no appropriate default constructor available
+  C:\Users\omarh\doom\Map\Map\clsMap.h(8,309):
+  see declaration of 'clsMap'
+  
+C:\Users\omarh\doom\Map\Map\Map.cpp(11,15): error C2662: 'void clsMap<Key,Value,Value2,Value3,Value4,Value5,T,value6>::Insert(Key,Value,Value2,Value3,Value4,Value5)': cannot convert 'this' pointer from 'clsMap' to 'clsMap<Key,Value,Value2,Value3,Value4,Value5,T,value6> &'
+  C:\Users\omarh\doom\Map\Map\Map.cpp(11,5):
+  Reason: cannot convert from 'clsMap' to 'clsMap<Key,Value,Value2,Value3,Value4,Value5,T,value6>'
+  C:\Users\omarh\doom\Map\Map\Map.cpp(11,5):
+  Conversion requires a second user-defined-conversion operator or constructor
+  C:\Users\omarh\doom\Map\Map\clsMap.h(137,7):
+  see declaration of 'clsMap<Key,Value,Value2,Value3,Value4,Value5,T,value6>::Insert'
+  C:\Users\omarh\doom\Map\Map\Map.cpp(11,15):
+  while trying to match the argument list '(int, int, char, double, bool, const char [5])'
+  
+C:\Users\omarh\doom\Map\Map\Map.cpp(12,15): error C2662: 'void clsMap<Key,Value,Value2,Value3,Value4,Value5,T,value6>::Insert(Key,Value,Value2,Value3,Value4,Value5)': cannot convert 'this' pointer from 'clsMap' to 'clsMap<Key,Value,Value2,Value3,Value4,Value5,T,value6> &'
+  C:\Users\omarh\doom\Map\Map\Map.cpp(12,5):
+  Reason: cannot convert from 'clsMap' to 'clsMap<Key,Value,Value2,Value3,Value4,Value5,T,value6>'
+  C:\Users\omarh\doom\Map\Map\Map.cpp(12,5):
+  Conversion requires a second user-defined-conversion operator or constructor
+  C:\Users\omarh\doom\Map\Map\clsMap.h(137,7):
+  see declaration of 'clsMap<Key,Value,Value2,Value3,Value4,Value5,T,value6>::Insert'
+  C:\Users\omarh\doom\Map\Map\Map.cpp(12,15):
+  while trying to match the argument list '(int, int, char, double, bool, const char [5])'
+  
+C:\Users\omarh\doom\Map\Map\Map.cpp(13,15): error C2662: 'void clsMap<Key,Value,Value2,Value3,Value4,Value5,T,value6>::Insert(Key,Value,Value2,Value3,Value4,Value5)': cannot convert 'this' pointer from 'clsMap' to 'clsMap<Key,Value,Value2,Value3,Value4,Value5,T,value6> &'
+  C:\Users\omarh\doom\Map\Map\Map.cpp(13,5):
+  Reason: cannot convert from 'clsMap' to 'clsMap<Key,Value,Value2,Value3,Value4,Value5,T,value6>'
+  C:\Users\omarh\doom\Map\Map\Map.cpp(13,5):
+  Conversion requires a second user-defined-conversion operator or constructor
+  C:\Users\omarh\doom\Map\Map\clsMap.h(137,7):
+  see declaration of 'clsMap<Key,Value,Value2,Value3,Value4,Value5,T,value6>::Insert'
+  C:\Users\omarh\doom\Map\Map\Map.cpp(13,15):
+  while trying to match the argument list '(int, int, char, double, bool, const char [4])'
+  
+C:\Users\omarh\doom\Map\Map\Map.cpp(14,15): error C2662: 'void clsMap<Key,Value,Value2,Value3,Value4,Value5,T,value6>::Insert(Key,Value,Value2,Value3,Value4,Value5)': cannot convert 'this' pointer from 'clsMap' to 'clsMap<Key,Value,Value2,Value3,Value4,Value5,T,value6> &'
+  C:\Users\omarh\doom\Map\Map\Map.cpp(14,5):
+  Reason: cannot convert from 'clsMap' to 'clsMap<Key,Value,Value2,Value3,Value4,Value5,T,value6>'
+  C:\Users\omarh\doom\Map\Map\Map.cpp(14,5):
+  Conversion requires a second user-defined-conversion operator or constructor
+  C:\Users\omarh\doom\Map\Map\clsMap.h(137,7):
+  see declaration of 'clsMap<Key,Value,Value2,Value3,Value4,Value5,T,value6>::Insert'
+  C:\Users\omarh\doom\Map\Map\Map.cpp(14,15):
+  while trying to match the argument list '(int, int, char, double, bool, const char [6])'
+  
+C:\Users\omarh\doom\Map\Map\Map.cpp(15,15): error C2662: 'void clsMap<Key,Value,Value2,Value3,Value4,Value5,T,value6>::Insert(Key,Value,Value2,Value3,Value4,Value5)': cannot convert 'this' pointer from 'clsMap' to 'clsMap<Key,Value,Value2,Value3,Value4,Value5,T,value6> &'
+  C:\Users\omarh\doom\Map\Map\Map.cpp(15,5):
+  Reason: cannot convert from 'clsMap' to 'clsMap<Key,Value,Value2,Value3,Value4,Value5,T,value6>'
+  C:\Users\omarh\doom\Map\Map\Map.cpp(15,5):
+  Conversion requires a second user-defined-conversion operator or constructor
+  C:\Users\omarh\doom\Map\Map\clsMap.h(137,7):
+  see declaration of 'clsMap<Key,Value,Value2,Value3,Value4,Value5,T,value6>::Insert'
+  C:\Users\omarh\doom\Map\Map\Map.cpp(15,15):
+  while trying to match the argument list '(int, int, char, double, bool, const char [6])'
+  
+C:\Users\omarh\doom\Map\Map\Map.cpp(16,15): error C2662: 'void clsMap<Key,Value,Value2,Value3,Value4,Value5,T,value6>::Insert(Key,Value,Value2,Value3,Value4,Value5)': cannot convert 'this' pointer from 'clsMap' to 'clsMap<Key,Value,Value2,Value3,Value4,Value5,T,value6> &'
+  C:\Users\omarh\doom\Map\Map\Map.cpp(16,5):
+  Reason: cannot convert from 'clsMap' to 'clsMap<Key,Value,Value2,Value3,Value4,Value5,T,value6>'
+  C:\Users\omarh\doom\Map\Map\Map.cpp(16,5):
+  Conversion requires a second user-defined-conversion operator or constructor
+  C:\Users\omarh\doom\Map\Map\clsMap.h(137,7):
+  see declaration of 'clsMap<Key,Value,Value2,Value3,Value4,Value5,T,value6>::Insert'
+  C:\Users\omarh\doom\Map\Map\Map.cpp(16,15):
+  while trying to match the argument list '(int, int, char, double, bool, const char [5])'
+  
+C:\Users\omarh\doom\Map\Map\Map.cpp(17,15): error C2662: 'void clsMap<Key,Value,Value2,Value3,Value4,Value5,T,value6>::Insert(Key,Value,Value2,Value3,Value4,Value5)': cannot convert 'this' pointer from 'clsMap' to 'clsMap<Key,Value,Value2,Value3,Value4,Value5,T,value6> &'
+  C:\Users\omarh\doom\Map\Map\Map.cpp(17,5):
+  Reason: cannot convert from 'clsMap' to 'clsMap<Key,Value,Value2,Value3,Value4,Value5,T,value6>'
+  C:\Users\omarh\doom\Map\Map\Map.cpp(17,5):
+  Conversion requires a second user-defined-conversion operator or constructor
+  C:\Users\omarh\doom\Map\Map\clsMap.h(137,7):
+  see declaration of 'clsMap<Key,Value,Value2,Value3,Value4,Value5,T,value6>::Insert'
+  C:\Users\omarh\doom\Map\Map\Map.cpp(17,15):
+  while trying to match the argument list '(int, int, char, double, bool, const char [4])'
+  
+C:\Users\omarh\doom\Map\Map\Map.cpp(18,15): error C2662: 'void clsMap<Key,Value,Value2,Value3,Value4,Value5,T,value6>::Insert(Key,Value,Value2,Value3,Value4,Value5)': cannot convert 'this' pointer from 'clsMap' to 'clsMap<Key,Value,Value2,Value3,Value4,Value5,T,value6> &'
+  C:\Users\omarh\doom\Map\Map\Map.cpp(18,5):
+  Reason: cannot convert from 'clsMap' to 'clsMap<Key,Value,Value2,Value3,Value4,Value5,T,value6>'
+  C:\Users\omarh\doom\Map\Map\Map.cpp(18,5):
+  Conversion requires a second user-defined-conversion operator or constructor
+  C:\Users\omarh\doom\Map\Map\clsMap.h(137,7):
+  see declaration of 'clsMap<Key,Value,Value2,Value3,Value4,Value5,T,value6>::Insert'
+  C:\Users\omarh\doom\Map\Map\Map.cpp(18,15):
+  while trying to match the argument list '(int, int, char, double, bool, const char [7])'
+  
+C:\Users\omarh\doom\Map\Map\Map.cpp(19,15): error C2662: 'void clsMap<Key,Value,Value2,Value3,Value4,Value5,T,value6>::Insert(Key,Value,Value2,Value3,Value4,Value5)': cannot convert 'this' pointer from 'clsMap' to 'clsMap<Key,Value,Value2,Value3,Value4,Value5,T,value6> &'
+  C:\Users\omarh\doom\Map\Map\Map.cpp(19,5):
+  Reason: cannot convert from 'clsMap' to 'clsMap<Key,Value,Value2,Value3,Value4,Value5,T,value6>'
+  C:\Users\omarh\doom\Map\Map\Map.cpp(19,5):
+  Conversion requires a second user-defined-conversion operator or constructor
+  C:\Users\omarh\doom\Map\Map\clsMap.h(137,7):
+  see declaration of 'clsMap<Key,Value,Value2,Value3,Value4,Value5,T,value6>::Insert'
+  C:\Users\omarh\doom\Map\Map\Map.cpp(19,15):
+  while trying to match the argument list '(int, int, char, double, bool, const char [7])'
+  
+C:\Users\omarh\doom\Map\Map\Map.cpp(20,15): error C2662: 'void clsMap<Key,Value,Value2,Value3,Value4,Value5,T,value6>::Insert(Key,Value,Value2,Value3,Value4,Value5)': cannot convert 'this' pointer from 'clsMap' to 'clsMap<Key,Value,Value2,Value3,Value4,Value5,T,value6> &'
+  C:\Users\omarh\doom\Map\Map\Map.cpp(20,5):
+  Reason: cannot convert from 'clsMap' to 'clsMap<Key,Value,Value2,Value3,Value4,Value5,T,value6>'
+  C:\Users\omarh\doom\Map\Map\Map.cpp(20,5):
+  Conversion requires a second user-defined-conversion operator or constructor
+  C:\Users\omarh\doom\Map\Map\clsMap.h(137,7):
+  see declaration of 'clsMap<Key,Value,Value2,Value3,Value4,Value5,T,value6>::Insert'
+  C:\Users\omarh\doom\Map\Map\Map.cpp(20,15):
+  while trying to match the argument list '(int, int, char, double, bool, const char [4])'
+  
+C:\Users\omarh\doom\Map\Map\Map.cpp(21,15): error C2662: 'void clsMap<Key,Value,Value2,Value3,Value4,Value5,T,value6>::Insert(Key,Value,Value2,Value3,Value4,Value5)': cannot convert 'this' pointer from 'clsMap' to 'clsMap<Key,Value,Value2,Value3,Value4,Value5,T,value6> &'
+  C:\Users\omarh\doom\Map\Map\Map.cpp(21,5):
+  Reason: cannot convert from 'clsMap' to 'clsMap<Key,Value,Value2,Value3,Value4,Value5,T,value6>'
+  C:\Users\omarh\doom\Map\Map\Map.cpp(21,5):
+  Conversion requires a second user-defined-conversion operator or constructor
+  C:\Users\omarh\doom\Map\Map\clsMap.h(137,7):
+  see declaration of 'clsMap<Key,Value,Value2,Value3,Value4,Value5,T,value6>::Insert'
+  C:\Users\omarh\doom\Map\Map\Map.cpp(21,15):
+  while trying to match the argument list '(int, int, char, double, bool, const char [5])'
+  
+C:\Users\omarh\doom\Map\Map\Map.cpp(22,15): error C2662: 'void clsMap<Key,Value,Value2,Value3,Value4,Value5,T,value6>::Insert(Key,Value,Value2,Value3,Value4,Value5)': cannot convert 'this' pointer from 'clsMap' to 'clsMap<Key,Value,Value2,Value3,Value4,Value5,T,value6> &'
+  C:\Users\omarh\doom\Map\Map\Map.cpp(22,5):
+  Reason: cannot convert from 'clsMap' to 'clsMap<Key,Value,Value2,Value3,Value4,Value5,T,value6>'
+  C:\Users\omarh\doom\Map\Map\Map.cpp(22,5):
+  Conversion requires a second user-defined-conversion operator or constructor
+  C:\Users\omarh\doom\Map\Map\clsMap.h(137,7):
+  see declaration of 'clsMap<Key,Value,Value2,Value3,Value4,Value5,T,value6>::Insert'
+  C:\Users\omarh\doom\Map\Map\Map.cpp(22,15):
+  while trying to match the argument list '(int, int, char, double, bool, const char [6])'
+  
+C:\Users\omarh\doom\Map\Map\Map.cpp(36,15): error C2662: 'void clsMap<Key,Value,Value2,Value3,Value4,Value5,T,value6>::PrintPostOrder(void)': cannot convert 'this' pointer from 'clsMap' to 'clsMap<Key,Value,Value2,Value3,Value4,Value5,T,value6> &'
+  C:\Users\omarh\doom\Map\Map\Map.cpp(36,5):
+  Reason: cannot convert from 'clsMap' to 'clsMap<Key,Value,Value2,Value3,Value4,Value5,T,value6>'
+  C:\Users\omarh\doom\Map\Map\Map.cpp(36,5):
+  Conversion requires a second user-defined-conversion operator or constructor
+  C:\Users\omarh\doom\Map\Map\clsMap.h(192,7):
+  see declaration of 'clsMap<Key,Value,Value2,Value3,Value4,Value5,T,value6>::PrintPostOrder'
+  C:\Users\omarh\doom\Map\Map\Map.cpp(36,15):
+  while trying to match the argument list '()'
+  
