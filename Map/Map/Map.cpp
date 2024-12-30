@@ -21,6 +21,8 @@ int main()
     BinaryTree.Insert(55, 26, 'I', 13.456, false, "Ian");
     BinaryTree.Insert(65, 27, 'J', 14.789, true, "Jack");
     BinaryTree.Insert(53, 30, 'K', 12.345, false, "Katie");
+    BinaryTree.PrintByInsertionOrder();
+    BinaryTree.Remove(10);
     //BinaryTree.Insert(50, 21, 'O', 13.333333, true, "Omar");   // Example 1: Key 50, different values for the other parameters
     //BinaryTree.Insert(30, 10, 'A', 7.5, false, "Alice");       // Example 2: Key 30, different values for the other parameters
     //BinaryTree.Insert(70, 35, 'B', 10.1, true, "Bob");         // Example 3: Key 70, different values for the other parameters
@@ -33,7 +35,7 @@ int main()
     //BinaryTree.Insert(55, 60, 'I', 14.2, false, "Ian");       // Example 10: Key 55, different values for the other parameters
     //BinaryTree.Insert(65, 45, 'J', 16.1, true, "Jack");       // Example 11: Key 65, different values for the other parameters
     //BinaryTree.Insert(53, 55, 'K', 13.9, false, "Katie");     // Example 12: Key 53, different values for the other parameters
-
+    cout << endl << endl;
     BinaryTree.PrintPostOrder();
     return 0;
 }

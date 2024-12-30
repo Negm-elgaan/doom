@@ -11,6 +11,14 @@ private:
 	T* _TempArray;
 	T* _RevArray;
 public:
+
+	clsDynamicArray()
+	{
+		_Size = 1;
+		_PtrArray = new T[_Size];
+		_RevArray = new T[_Size];
+	}
+
 	clsDynamicArray(int Size)
 	{
 		if (Size < 0)

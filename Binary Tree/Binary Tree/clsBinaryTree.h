@@ -51,6 +51,8 @@ template <class T> class clsBinaryTree
 			return NULL;
 		}
 
+
+
 		void DeleteHelper(Node* node)
 		{
 			if (node == NULL)

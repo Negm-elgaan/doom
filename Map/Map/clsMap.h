@@ -2,33 +2,37 @@
 #include <iostream>
 #include <thread>
 #include <cstdarg>
+#include <vector>
 #include "clsDynamicArray.h"
-//#include "Cell.h"
 
 using namespace std;
 
 template <class Key = int , class Value = int , class Value2 = char , class Value3 = double , class Value4 = bool , class Value5 = string /*, class Value6 = int*, class Value7 = char*, class Value8 = double*, class Value9 = bool*, class Value10 = string * */ > class clsMap
 {
 private:
+
 	static class Node
 	{
-	public:
-		void* DataPtr;
-		Key KeyValue;
-		Value Data;
-		Value2 Data2;
-		Value3 Data3;
-		Value4 Data4;
-		Value5 Data5;
-		Node* Right;
-		Node* Left;
-		Node* Prev;
+		public:
+		//void* DataPtr;
+			Key KeyValue;
+			Value Data;
+			Value2 Data2;
+			Value3 Data3;
+			Value4 Data4;
+			Value5 Data5;
+			Node* Right;
+			Node* Left;
+			Node* Prev;
 	};
 
 	int _Size = 0;
 	int _Levels = 0;
 	int _Height = -1;
+	vector <Node*> _vList;
 	clsDynamicArray <va_list> List;
+	clsDynamicArray <Node*> _List;
+
 	void PrintHelperIn(Node* node)
 	{
 		if (node == NULL)
@@ -87,7 +91,7 @@ private:
 		cout << "Key : " << node->KeyValue << " { " << node->Data << " , " << node->Data2 << " , " << node->Data3 << " , " << node->Data4 << " , " << node->Data5 << " }" << endl;
 	}
 
-	Node* _Search(Key KeyValue ,Value Data = NULL, Value2 Data2 = NULL , Value3 Data3 = NULL , Value4 Data4 = NULL , Value5 = NULL)
+	Node* _Search(Key KeyValue /*, Value Data = NULL, Value2 Data2 = NULL, Value3 Data3 = NULL, Value4 Data4 = NULL, Value5 = NULL*/)
 	{
 		Node* node = ParentNode;
 
@@ -122,14 +126,14 @@ public:
 	clsMap::Node* ParentNode = NULL;
 	clsMap::Node* Temp1 = ParentNode;
 
-	clsMap(): List(0)
+	clsMap()
 	{
-		_Size = 0;
+		_Size = 1;
 		_Levels = 1;
 		_Height = 1;
 	}
 
-	clsMap(int Size, int levels, int Height) : List(0)
+	clsMap(int Size, int levels, int Height)
 	{
 		_Size = Size;
 		_Levels = levels;
@@ -141,42 +145,6 @@ public:
 	{
 
 	}
-
-	/*bool Remove(Key KeyValue)
-	{
-		Node* node = ParentNode;
-
-		if (node == NULL)
-			return NULL;
-
-		while (node != NULL)
-		{
-			if (node->KeyValue == KeyValue)
-			{
-				if (node->Right == NULL && node->Left == NULL)
-				{
-					node->Prev->Right == node ? node->Prev->Right = NULL : node->Prev->Left = NULL;
-					delete node;
-				}
-
-				else if (node->Right != NULL && node->Left == NULL)
-				{
-					node->Prev->Right == node ? node->Prev->Right = node->Right : node->Prev->Left = node->Right;
-				}
-
-				else if (node->Right == NULL && node->Left != NULL)
-				{
-					node->Prev->Right == node ? node->Prev->Right = node->Left : node->Prev->Left = node->Left;
-				}
-
-				return true;
-
-			}
-			node->KeyValue > KeyValue ? node = node->Left : node = node->Right;
-		}
-
-		return false;
-	}*/
 
 	void Insert(Key KeyValue , Value Data = Value(), Value2 Data2 = Value2(), Value3 Data3 = Value3(), Value4 Data4 = Value4(), Value5 Data5 = Value5())
 	{
@@ -194,8 +162,10 @@ public:
 			ParentNode->Right = NULL;
 			ParentNode->Prev = NULL;
 			Temp1 = ParentNode;
+			_vList.push_back(ParentNode);
 			return;
 		}
+		
 		Node* TempNode = ParentNode;
 		Node* NewNode = new Node();
 		NewNode->KeyValue = KeyValue;
@@ -218,6 +188,7 @@ public:
 		NewNode->KeyValue > TempNode->KeyValue ? TempNode->Right = NewNode : TempNode->Left = NewNode;
 		TempNode->Right == NULL ? TempNode->Left->Prev = TempNode : TempNode->Right->Prev = TempNode;
 		_Size++;
+		_vList.push_back(NewNode);
 		return;
 
 
@@ -238,57 +209,77 @@ public:
 		PrintHelperPost(ParentNode);
 	}
 
+	void PrintByInsertionOrder()
+	{
+		for (Node* node : _vList)
+		{
+			cout << "Key : " << node->KeyValue << " { " << node->Data << " , " << node->Data2 << " , " << node->Data3 << " , " << node->Data4 << " , " << node->Data5 << " }" << endl;
+		}
+	}
+
 	int NumberOfNodes()
 	{
 		return _Size;
 	}
 
-	/*Value search(Value Data)
-	{
-		Node* node = _Search(ParentNode, Data);
-		return node->Data;
-	}*/
-
-	/*bool DeleteLeaf(T Data)
+	bool Remove(Key Data)
 	{
 		if (ParentNode == NULL)
 			return false;
-		Node* node = _Search(ParentNode, Data);
+
+		Node* node = _Search(Data);
+			
 		if (node == NULL)
 			return false;
-		if (node->Right != NULL && node->Left != NULL)
+
+		if (node->Right == NULL && node->Left == NULL)
 		{
-			if (node->Right->Data > node->Left->Data)
-			{
-				node->Right->Prev = node->Prev;
-				node->Left->Prev = node->Right;
-				if (node->Right->Left)
-				node = NULL;
-				return true;
-			}
-			node->Left->Prev = node->Prev;
-			node->Right->Prev = node->Leftt;
-			node = NULL;
+			node->Prev->Right == node ? node->Prev->Right = NULL : node->Prev->Left = NULL;
+			delete node;
+			_Size--;
 			return true;
+		}
+
+		if (node->Right == NULL && node->Left != NULL)
+		{
+			node->Prev->Right == node ? node->Prev->Right = node->Left : node->Prev->Left = node->Left;
+			delete node;
+			_Size--;
+			return true;
+		}
+
+		if (node->Right != NULL && node->Left == NULL)
+		{
+			node->Prev->Right == node ? node->Prev->Right = node->Right : node->Prev->Left = node->Right;
+			delete node;
+			_Size--;
+			return true;
+		}
+
+		Node* Temp = node;
+		node = node->Right;
+			
+		while (node->Left != NULL)
+		{
+			node = node->Left;
 		}
 
 		if (node->Right != NULL)
 		{
-			node->Right->Prev = node->Prev;
-			node = NULL;
-			return true;
+			node->Prev->Left = node->Right;
+			Temp->Data = node->Data;
 		}
 
-		if (node->Left != NULL)
+		else 
 		{
-			node->Left->Prev = node->Prev;
-			node = NULL;
-			return true;
+			node->Prev->Left = NULL;
+			Temp->Data = node->Data;
 		}
 
-		node = NULL;
+		delete node;
+		_Size--;
 		return true;
-	}*/
+	}
 
 	~clsMap()
 	{
