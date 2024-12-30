@@ -23,11 +23,16 @@ int main()
     BinaryTree.Insert(65);
     BinaryTree.Insert(53);
     BinaryTree.Print();
+    cout << endl;
+    BinaryTree.Remove(50);
+    BinaryTree.Insert(50);
+    BinaryTree.Print();
+    cout << endl << BinaryTree.ParentNode->Data << " " << BinaryTree.ParentNode->Left->Data;
     int x = BinaryTree.search(53);
-    cout << x << endl;
+    //cout << x << endl;
     //BinaryTree.printRight();
     //BinaryTree.print();
-    cout << "hi";
+    //cout << "hi";
     
 }
 

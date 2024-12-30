@@ -1,16 +1,27 @@
 ﻿  Map.cpp
-C:\Users\omarh\doom\Map\Map\clsMap.h(24,3): warning C4091: 'static ': ignored on left of 'clsMap<Key,Value,Value2,Value3,Value4,Value5>::Node' when no variable is declared
+C:\Users\omarh\doom\Map\Map\clsMap.h(26,3): warning C4091: 'static ': ignored on left of 'clsMap<Key,Value,Value2,Value3,Value4,Value5>::Node' when no variable is declared
   (compiling source file 'Map.cpp')
-  C:\Users\omarh\doom\Map\Map\clsMap.h(24,3):
+  C:\Users\omarh\doom\Map\Map\clsMap.h(26,3):
   the template instantiation context (the oldest one first) is
-  	C:\Users\omarh\doom\Map\Map\clsMap.h(8,268):
+  	C:\Users\omarh\doom\Map\Map\clsMap.h(10,268):
   	while compiling class template 'clsMap'
   
-C:\Users\omarh\doom\Map\Map\clsMap.h(24,3): warning C4091: 'static ': ignored on left of 'clsMap<int,int,char,double,bool,std::string>::Node' when no variable is declared
+C:\Users\omarh\doom\Map\Map\clsMap.h(28,10): error C3646: 'Arguments': unknown override specifier
   (compiling source file 'Map.cpp')
-  C:\Users\omarh\doom\Map\Map\clsMap.h(24,3):
+  
+C:\Users\omarh\doom\Map\Map\clsMap.h(28,1): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+  (compiling source file 'Map.cpp')
+  
+C:\Users\omarh\doom\Map\Map\clsMap.h(126,12): error C3861: 'List': identifier not found
+  (compiling source file 'Map.cpp')
+  
+C:\Users\omarh\doom\Map\Map\clsMap.h(133,45): error C3861: 'List': identifier not found
+  (compiling source file 'Map.cpp')
+  
+C:\Users\omarh\doom\Map\Map\clsMap.h(26,3): warning C4091: 'static ': ignored on left of 'clsMap<int,int,char,double,bool,std::string>::Node' when no variable is declared
+  (compiling source file 'Map.cpp')
+  C:\Users\omarh\doom\Map\Map\clsMap.h(26,3):
   the template instantiation context (the oldest one first) is
-  	C:\Users\omarh\doom\Map\Map\Map.cpp(10,15):
+  	C:\Users\omarh\doom\Map\Map\Map.cpp(11,15):
   	see reference to class template instantiation 'clsMap<int,int,char,double,bool,std::string>' being compiled
   
-  Map.vcxproj -> C:\Users\omarh\doom\Map\x64\Debug\Map.exe

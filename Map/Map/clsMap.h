@@ -1,7 +1,9 @@
 #pragma once
 #include <iostream>
 #include <thread>
+#include <cstdarg>
 #include "clsDynamicArray.h"
+//#include "Cell.h"
 
 using namespace std;
 
@@ -26,6 +28,7 @@ private:
 	int _Size = 0;
 	int _Levels = 0;
 	int _Height = -1;
+	clsDynamicArray <va_list> List;
 	void PrintHelperIn(Node* node)
 	{
 		if (node == NULL)
@@ -119,14 +122,14 @@ public:
 	clsMap::Node* ParentNode = NULL;
 	clsMap::Node* Temp1 = ParentNode;
 
-	clsMap()
+	clsMap(): List(0)
 	{
 		_Size = 0;
 		_Levels = 1;
 		_Height = 1;
 	}
 
-	clsMap(int Size, int levels, int Height)
+	clsMap(int Size, int levels, int Height) : List(0)
 	{
 		_Size = Size;
 		_Levels = levels;
@@ -138,6 +141,42 @@ public:
 	{
 
 	}
+
+	/*bool Remove(Key KeyValue)
+	{
+		Node* node = ParentNode;
+
+		if (node == NULL)
+			return NULL;
+
+		while (node != NULL)
+		{
+			if (node->KeyValue == KeyValue)
+			{
+				if (node->Right == NULL && node->Left == NULL)
+				{
+					node->Prev->Right == node ? node->Prev->Right = NULL : node->Prev->Left = NULL;
+					delete node;
+				}
+
+				else if (node->Right != NULL && node->Left == NULL)
+				{
+					node->Prev->Right == node ? node->Prev->Right = node->Right : node->Prev->Left = node->Right;
+				}
+
+				else if (node->Right == NULL && node->Left != NULL)
+				{
+					node->Prev->Right == node ? node->Prev->Right = node->Left : node->Prev->Left = node->Left;
+				}
+
+				return true;
+
+			}
+			node->KeyValue > KeyValue ? node = node->Left : node = node->Right;
+		}
+
+		return false;
+	}*/
 
 	void Insert(Key KeyValue , Value Data = Value(), Value2 Data2 = Value2(), Value3 Data3 = Value3(), Value4 Data4 = Value4(), Value5 Data5 = Value5())
 	{

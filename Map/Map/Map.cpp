@@ -3,10 +3,11 @@
 
 #include <iostream>
 #include "clsMap.h"
-//#include "clsDynamicArray.h"
+#include "clsDynamicArray.h"
 
 int main()
 {
+    clsDynamicArray <int> lister(9);
     clsMap <> BinaryTree;
     BinaryTree.Insert(50, 21, 'O', 13.333, true, "Omar");
     BinaryTree.Insert(30, 22, 'A', 12.45, false, "Alex");

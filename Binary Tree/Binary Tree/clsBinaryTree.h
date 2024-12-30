@@ -131,46 +131,64 @@ template <class T> class clsBinaryTree
 			return node->Data;
 		}
 
-		/*bool DeleteLeaf(T Data)
+		bool Remove(T Data)
 		{
 			if (ParentNode == NULL)
 				return false;
-			Node* node = _Search(ParentNode, Data);
+
+			Node* node = _Search(Data);
+			
 			if (node == NULL)
 				return false;
-			if (node->Right != NULL && node->Left != NULL)
+
+			if (node->Right == NULL && node->Left == NULL)
 			{
-				if (node->Right->Data > node->Left->Data)
-				{
-					node->Right->Prev = node->Prev;
-					node->Left->Prev = node->Right;
-					if (node->Right->Left)
-					node = NULL;
-					return true;
-				}
-				node->Left->Prev = node->Prev;
-				node->Right->Prev = node->Leftt;
-				node = NULL;
+				node->Prev->Right == node ? node->Prev->Right = NULL : node->Prev->Left = NULL;
+				delete node;
+				_Size--;
 				return true;
+			}
+
+			if (node->Right == NULL && node->Left != NULL)
+			{
+				node->Prev->Right == node ? node->Prev->Right = node->Left : node->Prev->Left = node->Left;
+				delete node;
+				_Size--;
+				return true;
+			}
+
+			if (node->Right != NULL && node->Left == NULL)
+			{
+				node->Prev->Right == node ? node->Prev->Right = node->Right : node->Prev->Left = node->Right;
+				delete node;
+				_Size--;
+				return true;
+			}
+
+			Node* Temp = node;
+			node = node->Right;
+			
+			while (node->Left != NULL)
+			{
+				node = node->Left;
 			}
 
 			if (node->Right != NULL)
 			{
-				node->Right->Prev = node->Prev;
-				node = NULL;
-				return true;
+				node->Prev->Left = node->Right;
+				Temp->Data = node->Data;
 			}
 
-			if (node->Left != NULL)
+			else 
 			{
-				node->Left->Prev = node->Prev;
-				node = NULL;
-				return true;
+				node->Prev->Left = NULL;
+				Temp->Data = node->Data;
 			}
 
-			node = NULL;
+			delete node;
+			_Size--;
 			return true;
-		}*/
+		}
 
 		~clsBinaryTree()
 		{
