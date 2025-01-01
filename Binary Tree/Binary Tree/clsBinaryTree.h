@@ -18,7 +18,8 @@ template <class T> class clsBinaryTree
 
 		int _Size = 0;
 		int _Levels = 0;
-		int _Height = -1;
+		int _Height = 0;
+		int _Temp = -1;
 		void PrintHelper(Node* node)
 		{
 			if (node == NULL)
@@ -66,6 +67,24 @@ template <class T> class clsBinaryTree
 			delete node;
 		}
 
+		void _GetHeight(Node* node)
+		{
+			if (node == NULL)
+			{
+				if (_Temp > _Height)
+					_Height = _Temp;
+
+				_Temp = 0;
+
+				return;
+			}
+			_Temp++;
+
+			_GetHeight(node->Left);
+			
+			_GetHeight(node->Right);
+		}
+
 	public:
 		
 		clsBinaryTree::Node* ParentNode = NULL;
@@ -75,7 +94,7 @@ template <class T> class clsBinaryTree
 		{
 			_Size = 0;
 			_Levels = 1;
-			_Height = 1;
+			_Height = 0;
 		}
 
 		clsBinaryTree(int Size, int levels , int Height)
@@ -190,6 +209,12 @@ template <class T> class clsBinaryTree
 			delete node;
 			_Size--;
 			return true;
+		}
+
+		int Height()
+		{
+			_GetHeight(ParentNode);
+			return _Height;
 		}
 
 		~clsBinaryTree()

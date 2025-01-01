@@ -8,6 +8,14 @@ using namespace std;
 
 int main()
 {
+    clsBinaryTree <int> BST;
+    BST.Insert(50);
+    BST.Insert(30);
+    BST.Insert(20);
+    BST.Insert(10);
+    BST.Print();
+    cout << BST.Height();
+    cout << endl << endl;
     clsBinaryTree <int> BinaryTree;
     
     BinaryTree.Insert(50);
@@ -23,6 +31,7 @@ int main()
     BinaryTree.Insert(65);
     BinaryTree.Insert(53);
     BinaryTree.Print();
+    cout << BinaryTree.Height();
     cout << endl;
     BinaryTree.Remove(50);
     BinaryTree.Insert(50);

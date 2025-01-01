@@ -59,6 +59,16 @@ public:
 		return;
 	}
 
+	int Print()
+	{
+		for (int i = 0; i < _Size; i++)
+		{
+			cout << _PtrArray[i] << " ";
+		}
+
+		return 1;
+	}
+
 	void Resize(int NewSize = 0)
 	{
 		if (NewSize == _Size)

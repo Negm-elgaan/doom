@@ -7,7 +7,7 @@
 
 using namespace std;
 
-template <class Key = int , class Value = int , class Value2 = char , class Value3 = double , class Value4 = bool , class Value5 = string /*, class Value6 = int*, class Value7 = char*, class Value8 = double*, class Value9 = bool*, class Value10 = string * */ > class clsMap
+template <class Key = int , class Value = int , class Value2 = char , class Value3 = double , class Value4 = bool , class Value5 = string , class Value6 = clsDynamicArray <int> , class Value7 = clsDynamicArray <string> , class Value8 = clsDynamicArray <char> , class Value9 = clsDynamicArray <double> , class... Value10 /*, class Value7 = char*, class Value8 = double*, class Value9 = bool*, class Value10 = string * */ > class clsMap
 {
 private:
 
@@ -21,6 +21,11 @@ private:
 			Value3 Data3;
 			Value4 Data4;
 			Value5 Data5;
+			Value6 Data6;
+			Value7 Data7;
+			Value8 Data8;
+			Value9 Data9;
+			//Value10 Data10;
 			Node* Right;
 			Node* Left;
 			Node* Prev;
@@ -28,10 +33,30 @@ private:
 
 	int _Size = 0;
 	int _Levels = 0;
-	int _Height = -1;
+	int _Height = 0;
+	int _Temp = 0;
+
 	vector <Node*> _vList;
 	clsDynamicArray <va_list> List;
 	clsDynamicArray <Node*> _List;
+
+	void _GetHeight(Node* node)
+	{
+		if (node == NULL)
+		{
+			if (_Temp > _Height)
+				_Height = _Temp;
+
+			_Temp = 0;
+
+			return;
+		}
+		_Temp++;
+
+		_GetHeight(node->Left);
+
+		_GetHeight(node->Right);
+	}
 
 	void PrintHelperIn(Node* node)
 	{
@@ -279,6 +304,12 @@ public:
 		delete node;
 		_Size--;
 		return true;
+	}
+
+	int Height()
+	{
+		_GetHeight(ParentNode);
+		return _Height;
 	}
 
 	~clsMap()

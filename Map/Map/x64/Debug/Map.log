@@ -1,16 +1,23 @@
 ﻿  Map.cpp
-C:\Users\omarh\doom\Map\Map\clsMap.h(26,3): warning C4091: 'static ': ignored on left of 'clsMap<Key,Value,Value2,Value3,Value4,Value5>::Node' when no variable is declared
+C:\Users\omarh\doom\Map\Map\clsMap.h(32,3): warning C4091: 'static ': ignored on left of 'clsMap<Key,Value,Value2,Value3,Value4,Value5,Value6,Value7,Value8,Value9,Value10...>::Node' when no variable is declared
   (compiling source file 'Map.cpp')
-  C:\Users\omarh\doom\Map\Map\clsMap.h(26,3):
+  C:\Users\omarh\doom\Map\Map\clsMap.h(32,3):
   the template instantiation context (the oldest one first) is
-  	C:\Users\omarh\doom\Map\Map\clsMap.h(10,268):
+  	C:\Users\omarh\doom\Map\Map\clsMap.h(10,429):
   	while compiling class template 'clsMap'
   
-C:\Users\omarh\doom\Map\Map\clsMap.h(26,3): warning C4091: 'static ': ignored on left of 'clsMap<int,int,char,double,bool,std::string>::Node' when no variable is declared
+C:\Users\omarh\doom\Map\Map\clsMap.h(32,3): warning C4091: 'static ': ignored on left of 'clsMap<int,int,char,double,bool,std::string,clsDynamicArray<int>,clsDynamicArray<std::string>,clsDynamicArray<char>,clsDynamicArray<double>>::Node' when no variable is declared
   (compiling source file 'Map.cpp')
-  C:\Users\omarh\doom\Map\Map\clsMap.h(26,3):
+  C:\Users\omarh\doom\Map\Map\clsMap.h(32,3):
   the template instantiation context (the oldest one first) is
-  	C:\Users\omarh\doom\Map\Map\Map.cpp(11,15):
-  	see reference to class template instantiation 'clsMap<int,int,char,double,bool,std::string>' being compiled
+  	C:\Users\omarh\doom\Map\Map\Map.cpp(27,15):
+  	see reference to class template instantiation 'clsMap<int,int,char,double,bool,std::string,clsDynamicArray<int>,clsDynamicArray<std::string>,clsDynamicArray<char>,clsDynamicArray<double>>' being compiled
+  
+C:\Users\omarh\doom\Map\Map\clsMap.h(32,3): warning C4091: 'static ': ignored on left of 'clsMap<int,int,char,double,bool,std::string,float,clsDynamicArray<std::string>,clsDynamicArray<char>,clsDynamicArray<double>>::Node' when no variable is declared
+  (compiling source file 'Map.cpp')
+  C:\Users\omarh\doom\Map\Map\clsMap.h(32,3):
+  the template instantiation context (the oldest one first) is
+  	C:\Users\omarh\doom\Map\Map\Map.cpp(59,58):
+  	see reference to class template instantiation 'clsMap<int,int,char,double,bool,std::string,float,clsDynamicArray<std::string>,clsDynamicArray<char>,clsDynamicArray<double>>' being compiled
   
   Map.vcxproj -> C:\Users\omarh\doom\Map\x64\Debug\Map.exe

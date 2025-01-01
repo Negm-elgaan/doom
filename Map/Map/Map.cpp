@@ -8,6 +8,22 @@
 int main()
 {
     clsDynamicArray <int> lister(9);
+    lister.SetItem(0, 1);
+    lister.SetItem(1, 2);
+    lister.SetItem(2, 3);
+    lister.SetItem(3, 4);
+    lister.SetItem(4, 5);
+    lister.SetItem(5, 6);
+    lister.SetItem(6, 7);
+    lister.SetItem(7, 8);
+    lister.SetItem(8, 9);
+    int* ptr;
+    ptr = new int[5];
+    ptr[0] = 0;
+    ptr[1] = 1;
+    ptr[2] = 2;
+    ptr[3] = 3;
+    ptr[4] = 4;
     clsMap <> BinaryTree;
     BinaryTree.Insert(50, 21, 'O', 13.333, true, "Omar");
     BinaryTree.Insert(30, 22, 'A', 12.45, false, "Alex");
@@ -21,8 +37,11 @@ int main()
     BinaryTree.Insert(55, 26, 'I', 13.456, false, "Ian");
     BinaryTree.Insert(65, 27, 'J', 14.789, true, "Jack");
     BinaryTree.Insert(53, 30, 'K', 12.345, false, "Katie");
+    BinaryTree.PrintPreOrder();
+    cout << endl << endl;
+    cout << BinaryTree.Height() << endl << endl;
     BinaryTree.PrintByInsertionOrder();
-    BinaryTree.Remove(10);
+    //BinaryTree.Remove(10);
     //BinaryTree.Insert(50, 21, 'O', 13.333333, true, "Omar");   // Example 1: Key 50, different values for the other parameters
     //BinaryTree.Insert(30, 10, 'A', 7.5, false, "Alice");       // Example 2: Key 30, different values for the other parameters
     //BinaryTree.Insert(70, 35, 'B', 10.1, true, "Bob");         // Example 3: Key 70, different values for the other parameters
@@ -37,6 +56,7 @@ int main()
     //BinaryTree.Insert(53, 55, 'K', 13.9, false, "Katie");     // Example 12: Key 53, different values for the other parameters
     cout << endl << endl;
     BinaryTree.PrintPostOrder();
+    clsMap <int, int, char, double, bool, string, float> Map;
     return 0;
 }
 
