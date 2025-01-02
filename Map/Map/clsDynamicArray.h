@@ -12,12 +12,29 @@ private:
 	T* _RevArray;
 public:
 
-	clsDynamicArray()
+	clsDynamicArray(bool Input = false)
+	{
+		if (Input)
+		{
+			cout << "\nEnter Size of Array\n";
+			cin >> _Size;
+			_PtrArray = new T[_Size];
+			_RevArray = new T[_Size];
+			return;
+		}
+
+		_Size = 1;
+		_PtrArray = new T[_Size];
+		_RevArray = new T[_Size];
+
+	}
+
+	/*clsDynamicArray()
 	{
 		_Size = 1;
 		_PtrArray = new T[_Size];
 		_RevArray = new T[_Size];
-	}
+	}*/
 
 	clsDynamicArray(int Size)
 	{
@@ -299,6 +316,12 @@ public:
 
 
 	}*/
+
+	template<typename... Args>
+	bool SetItem(int index, Args&&... args)
+	{
+		return true;
+	}
 
 	~clsDynamicArray()
 	{

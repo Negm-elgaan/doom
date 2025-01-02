@@ -13,8 +13,10 @@ private:
 
 	static class Node
 	{
+		
 		public:
 		//void* DataPtr;
+			clsDynamicArray <va_list> List;
 			Key KeyValue;
 			Value Data;
 			Value2 Data2;
@@ -33,11 +35,14 @@ private:
 
 	int _Size = 0;
 	int _Levels = 0;
+	int _LeftHeight = 0;
+	int _RightHeight = 0;
 	int _Height = 0;
 	int _Temp = 0;
 
+	vector <Node*> _SortedList;
 	vector <Node*> _vList;
-	clsDynamicArray <va_list> List;
+	
 	clsDynamicArray <Node*> _List;
 
 	void _GetHeight(Node* node)
@@ -56,7 +61,76 @@ private:
 		_GetHeight(node->Left);
 
 		_GetHeight(node->Right);
+
+		_Temp = 0;
 	}
+
+	//void _GetHeightLeft(Node* node)
+	//{
+	//	if (node == NULL)
+	//	{
+	//		if (_Temp > _LeftHeight)
+	//			_LeftHeight = _Temp;
+
+	//		_Temp = 0;
+
+	//		return;
+	//	}
+	//	_Temp++;
+
+	//	_GetHeightLeft(node->Left);
+
+	//	_Temp = 0;
+	//}
+
+	//void _GetHeightRight(Node* node)
+	//{
+	//	if (node == NULL)
+	//	{
+	//		if (_Temp > _RightHeight)
+	//			_RightHeight = _Temp;
+
+	//		_Temp = 0;
+
+	//		return;
+	//	}
+	//	_Temp++;
+
+	//	_GetHeightRight(node->Right);
+
+	//	_Temp = 0;
+	//}
+
+	//void _ReBalance(Node* node)
+	//{
+
+	//	for (int i = 0; i < _SortedList.size() / 2; i++)
+	//	{
+	//		//cout << _SortedList[i];
+	//		node = _SortedList[(_SortedList.size() - i) / 2];
+	//		Insert(node->KeyValue, node->Data , node->Data2 , node->Data3 , node->Data4 , node->Data5 , true);
+	//		//PrintInOrder();
+	//	}
+	//	
+	//	for (int i = 0; i < _SortedList.size() / 2; i++)
+	//	{
+	//		//cout << _SortedList[i];
+	//		node = _SortedList[(_SortedList.size() + i) / 2];
+	//		Insert(node->KeyValue, node->Data, node->Data2, node->Data3, node->Data4, node->Data5 , true);
+	//	}
+	//}
+
+	//void _GetIn(Node* node)
+	//{
+	//	if (node == NULL)
+	//		return;
+
+	//	_GetIn(node->Left);
+
+	//	_SortedList.push_back(node);
+
+	//	_GetIn(node->Right);
+	//}
 
 	void PrintHelperIn(Node* node)
 	{
@@ -133,6 +207,22 @@ private:
 		return NULL;
 	}
 
+	/*void _ClearHelper(Node* node)
+	{
+		if (node == NULL)
+			return;
+
+		_ClearHelper(node->Left);
+		_ClearHelper(node->Right);
+
+		node->KeyValue = 0;
+		node->Data = 0;
+		node->Data2 = '\0';
+		node->Data3 = 0;
+		node->Data4 = NULL;
+		node->Data5 = '\0';
+	}*/
+
 	void DeleteHelper(Node* node)
 	{
 		if (node == NULL)
@@ -166,12 +256,13 @@ public:
 		return;
 	}
 
-	void Insert(...)
+
+	/*template <typename... Args>void Insert(Key Value , Args...args)
 	{
+		ParentNode->List.SetItem(0, std::forward<Args>(args)...);
+	}*/
 
-	}
-
-	void Insert(Key KeyValue , Value Data = Value(), Value2 Data2 = Value2(), Value3 Data3 = Value3(), Value4 Data4 = Value4(), Value5 Data5 = Value5())
+	void Insert(Key KeyValue , Value Data = Value(), Value2 Data2 = Value2(), Value3 Data3 = Value3(), Value4 Data4 = Value4(), Value5 Data5 = Value5() , bool duplicate = false)
 	{
 		bool x = true;
 		if (ParentNode == NULL)
@@ -199,10 +290,10 @@ public:
 		NewNode->Data3 = Data3;
 		NewNode->Data4 = Data4;
 		NewNode->Data5 = Data5;
-
+		//cout << duplicate << endl;
 		while (x)
 		{
-			if (NewNode->KeyValue == TempNode->KeyValue)
+			if (NewNode->KeyValue == TempNode->KeyValue  && duplicate == false)
 			{
 				cout << "Key already exists!\n";
 				return;
@@ -214,6 +305,14 @@ public:
 		TempNode->Right == NULL ? TempNode->Left->Prev = TempNode : TempNode->Right->Prev = TempNode;
 		_Size++;
 		_vList.push_back(NewNode);
+
+		/*if (_RightHeight - _LeftHeight != 0)
+		{
+			_GetIn(ParentNode);
+			Clear();
+			_ReBalance(ParentNode);
+		}*/
+
 		return;
 
 
@@ -245,6 +344,21 @@ public:
 	int NumberOfNodes()
 	{
 		return _Size;
+	}
+
+	void Clear()
+	{
+		DeleteHelper(ParentNode);
+		ParentNode = new Node();
+		ParentNode->KeyValue = NULL;
+		ParentNode->Data = NULL;
+		ParentNode->Data2 = NULL;
+		ParentNode->Data3 = NULL;
+		ParentNode->Data4 = NULL;
+		ParentNode->Data5 = '\0';
+		ParentNode->Left = NULL;
+		ParentNode->Right = NULL;
+		ParentNode->Prev = NULL;
 	}
 
 	bool Remove(Key Data)
@@ -306,11 +420,36 @@ public:
 		return true;
 	}
 
+	bool ContainsKey(Key Value)
+	{
+		//function to check if key exists
+
+	}
+
 	int Height()
 	{
 		_GetHeight(ParentNode);
 		return _Height;
 	}
+
+	/*void ReBalance()
+	{
+		_GetHeightLeft(ParentNode);
+		_GetHeightRight(ParentNode);
+		cout << _LeftHeight << " " << _RightHeight << endl;
+		if (_RightHeight - _LeftHeight != 0)
+		{
+			_GetIn(ParentNode);
+			Clear();
+			_ReBalance(ParentNode);
+		}
+		_LeftHeight = 0;
+		_RightHeight = 0;
+		cout << endl;
+		_GetHeightLeft(ParentNode);
+		_GetHeightRight(ParentNode);
+		cout << _LeftHeight << " " << _RightHeight << endl;
+	}*/
 
 	~clsMap()
 	{

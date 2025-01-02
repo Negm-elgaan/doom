@@ -9,13 +9,24 @@ using namespace std;
 int main()
 {
     clsBinaryTree <int> BST;
-    BST.Insert(50);
-    BST.Insert(30);
-    BST.Insert(20);
-    BST.Insert(10);
-    BST.Print();
-    cout << BST.Height();
-    cout << endl << endl;
+    //BST.Insert(50);
+  //BST.Insert(30);
+  //  BST.Insert(20);
+  //  BST.Insert(40);
+  //  BST.Insert(10);
+  //  BST.Insert(25);
+  //  /*BST.Insert(10);
+  //  BST.Insert(5);
+  //  BST.Insert(20);
+  //  BST.Insert(3);
+  //  BST.Insert(8);*/
+  //  BST.Print();
+  //  cout << endl << endl;
+  //  BST.ReBalance();
+  //  cout << endl << endl;
+  //  BST.Print();
+  //  //cout << BST.Height();
+  //  cout << endl << endl;
     clsBinaryTree <int> BinaryTree;
     
     BinaryTree.Insert(50);
@@ -31,13 +42,31 @@ int main()
     BinaryTree.Insert(65);
     BinaryTree.Insert(53);
     BinaryTree.Print();
-    cout << BinaryTree.Height();
+    cout << endl << endl;
+    //BinaryTree.ReBalance();
+    BinaryTree.Clear();
+    BinaryTree.Print();
+    BinaryTree.Insert(50);
+    BinaryTree.Insert(30);
+    BinaryTree.Insert(70);
+    BinaryTree.Insert(20);
+    BinaryTree.Insert(40);
+    BinaryTree.Insert(10);
+    BinaryTree.Insert(25);
+    BinaryTree.Insert(60);
+    BinaryTree.Insert(80);
+    BinaryTree.Insert(55);
+    BinaryTree.Insert(65);
+    BinaryTree.Insert(53);
+    cout << endl << endl;
+    BinaryTree.Print();
+   /* cout << BinaryTree.Height();
     cout << endl;
     BinaryTree.Remove(50);
     BinaryTree.Insert(50);
     BinaryTree.Print();
     cout << endl << BinaryTree.ParentNode->Data << " " << BinaryTree.ParentNode->Left->Data;
-    int x = BinaryTree.search(53);
+    int x = BinaryTree.search(53);*/
     //cout << x << endl;
     //BinaryTree.printRight();
     //BinaryTree.print();

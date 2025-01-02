@@ -1,5 +1,8 @@
 #pragma once
 #include <iostream>
+#include <vector>
+#include <algorithm>
+#include <math.h>
 
 using namespace std;
 
@@ -18,9 +21,151 @@ template <class T> class clsBinaryTree
 
 		int _Size = 0;
 		int _Levels = 0;
+		int _LeftHeight = 0;
+		int _RightHeight = 0;
 		int _Height = 0;
-		int _Temp = -1;
-		void PrintHelper(Node* node)
+		int _Temp = 0;
+		vector <int> _SortedList;
+
+		void _GetHeightLeft(Node* node)
+		{
+			if (node == NULL)
+			{
+				if (_Temp > _LeftHeight)
+					_LeftHeight = _Temp;
+
+				_Temp = 0;
+
+				return;
+			}
+			_Temp++;
+
+			_GetHeightLeft(node->Left);
+
+			_Temp = 0;
+		}
+
+		void _GetHeightRight(Node* node)
+		{
+			if (node == NULL)
+			{
+				if (_Temp > _RightHeight)
+					_RightHeight = _Temp;
+
+				_Temp = 0;
+
+				return;
+			}
+			_Temp++;
+
+			_GetHeightRight(node->Right);
+
+			_Temp = 0;
+		}
+
+		//void _ReBalance()
+		//{
+		//	Node* node = new Node();
+		//	//cout << "size " << _SortedList.size() << endl;
+		//	for (int i = 0; i < _SortedList.size(); i++)
+		//	{
+		//		node->Data = _SortedList[i];
+		//		cout << node->Data << " ";
+		//	}
+
+		//	cout << endl;
+
+		//	for (int i = 0; i <= _SortedList.size() ; i++)
+		//	{
+		//		//cout << _SortedList[i];
+		//		//cout << (_SortedList.size() - i) / 2 << " ";
+		//		//cout << node->Data << " ";
+
+		//		if (i > (_SortedList.size() / 2 + 2))
+		//			break;
+		//		node->Data = _SortedList[(_SortedList.size() - i) / 2];
+		//		//cout << node->Data << " ";
+		//		Insert(node->Data);
+		//		//PrintInOrder();
+		//	}
+		//	//cout << " 2nd ";
+		//	for (int i = 0; i <= _SortedList.size(); i++)
+		//	{
+		//		//cout << _SortedList[i];
+		//		//cout << node->Data << " ";
+		//		//cout << (_SortedList.size() + i) / 2 << " ";
+		//		if (i >( _SortedList.size() / 2) + 1)
+		//			break;
+		//		node->Data = _SortedList[(_SortedList.size() + i) / 2];
+		//		//cout << node->Data << " ";
+		//		Insert(node->Data);
+		//	}
+		//}
+
+		void PrintHelperPre(Node* node)
+		{
+			if (node == NULL)
+				return;
+
+			cout << node->Data << " " ;
+			PrintHelperPre(node->Left);
+			/*thread T1(&clsMap::PrintHelper, this, node->Left);*/
+			// Print the data of the current node
+
+
+			// Traverse the right subtree
+			PrintHelperPre(node->Right);
+			/*thread T2(&clsMap::PrintHelper, this, node->Right);
+			T1.join();
+			T2.join();*/
+			//cout << endl;
+		}
+
+		void PrintHelperPost(Node* node)
+		{
+			if (node == NULL)
+				return;
+
+
+			// Traverse the left subtree
+			PrintHelperPost(node->Left);
+			/*thread T1(&clsMap::PrintHelper, this, node->Left);*/
+			// Print the data of the current node
+
+
+			// Traverse the right subtree
+			PrintHelperPost(node->Right);
+			/*thread T2(&clsMap::PrintHelper, this, node->Right);
+			T1.join();
+			T2.join();*/
+
+			cout << node->Data << " ";
+		}
+
+		void _GetIn(Node* node)
+		{
+			if (node == NULL)
+				return;
+
+			_GetIn(node->Left);
+
+			_SortedList.push_back(node->Data);
+
+			_GetIn(node->Right);
+		}
+
+		void _ClearHelper(Node* node)
+		{
+			if (node == NULL)
+				return;
+
+			_ClearHelper(node->Left);
+			_ClearHelper(node->Right);
+
+			delete node;
+		}
+
+		void PrintInHelper(Node* node)
 		{
 			if (node == NULL)
 				return;
@@ -108,6 +253,9 @@ template <class T> class clsBinaryTree
 		void Insert(T Data)
 		{
 			bool x = true;
+
+			
+
 			if (ParentNode == NULL)
 			{
 				ParentNode = new Node();
@@ -118,12 +266,28 @@ template <class T> class clsBinaryTree
 				Temp1 = ParentNode;
 				return;
 			}
+
+			if (ParentNode->Data == NULL && ParentNode != NULL)
+			{
+				ParentNode->Data = Data;
+				ParentNode->Left = NULL;
+				ParentNode->Right = NULL;
+				ParentNode->Prev = NULL;
+				Temp1 = ParentNode;
+				return;
+			}
+
 			Node* TempNode = ParentNode;
 			Node* NewNode = new Node();
 			NewNode->Data = Data;
-			
+			//cout << NewNode->Data << " " << TempNode->Data << endl;
 			while (x)
 			{
+				if (NewNode->Data == TempNode->Data)
+				{
+					cout << "Key already exists!\n";
+					return;
+				}
 				NewNode->Data > TempNode->Data ? TempNode->Right == NULL ? x = false : TempNode = TempNode->Right : TempNode->Left == NULL ? x = false : TempNode = TempNode->Left;
 			}
 
@@ -137,7 +301,11 @@ template <class T> class clsBinaryTree
 
 		void Print()
 		{
-			PrintHelper(ParentNode);
+			//PrintTreeStructure(ParentNode);
+			//PrintHelper(ParentNode);
+			PrintHelperPost(ParentNode);
+			cout << endl;
+			//PrintHelperPre(ParentNode);
 		}
 
 		int NumberOfNodes()
@@ -215,6 +383,38 @@ template <class T> class clsBinaryTree
 		{
 			_GetHeight(ParentNode);
 			return _Height;
+		}
+
+		/*void ReBalance()
+		{
+			cout << endl;
+			_GetHeightLeft(ParentNode);
+			_GetHeightRight(ParentNode);
+			cout << _LeftHeight << " " << _RightHeight << endl;
+			if (abs(_RightHeight - _LeftHeight) > 0)
+			{
+				_GetIn(ParentNode);
+				sort(_SortedList.begin(), _SortedList.end());
+				Clear();
+				Print();
+				_ReBalance();
+			}
+			_LeftHeight = 0;
+			_RightHeight = 0;
+			cout << endl;
+			_GetHeightLeft(ParentNode);
+			_GetHeightRight(ParentNode);
+			cout << _LeftHeight << " " << _RightHeight << endl;
+		}*/
+
+		void Clear()
+		{
+			_ClearHelper(ParentNode);
+			ParentNode = new Node();
+			ParentNode->Data = NULL;
+			ParentNode->Left = NULL;
+			ParentNode->Right = NULL;
+			ParentNode->Prev = NULL;
 		}
 
 		~clsBinaryTree()
