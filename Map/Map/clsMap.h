@@ -229,8 +229,10 @@ private:
 			return;
 
 		// Recursively delete the left and right subtrees
-		DeleteHelper(node->Left);
-		DeleteHelper(node->Right);
+		thread T1(&clsMap::DeleteHelper , this , node->Left);
+		thread T2 (&clsMap::DeleteHelper ,this , node->Right);
+		T1.join();
+		T2.join();
 
 		// Delete the current node
 		delete node;
@@ -257,10 +259,10 @@ public:
 	}
 
 
-	/*template <typename... Args>void Insert(Key Value , Args...args)
+	template <typename... Args>void Insert2(Key Value , Args...args)
 	{
 		ParentNode->List.SetItem(0, std::forward<Args>(args)...);
-	}*/
+	}
 
 	void Insert(Key KeyValue , Value Data = Value(), Value2 Data2 = Value2(), Value3 Data3 = Value3(), Value4 Data4 = Value4(), Value5 Data5 = Value5() , bool duplicate = false)
 	{
@@ -349,16 +351,7 @@ public:
 	void Clear()
 	{
 		DeleteHelper(ParentNode);
-		ParentNode = new Node();
-		ParentNode->KeyValue = NULL;
-		ParentNode->Data = NULL;
-		ParentNode->Data2 = NULL;
-		ParentNode->Data3 = NULL;
-		ParentNode->Data4 = NULL;
-		ParentNode->Data5 = '\0';
-		ParentNode->Left = NULL;
-		ParentNode->Right = NULL;
-		ParentNode->Prev = NULL;
+		ParentNode = NULL;
 	}
 
 	bool Remove(Key Data)
@@ -423,13 +416,32 @@ public:
 	bool ContainsKey(Key Value)
 	{
 		//function to check if key exists
+		Node* node = _Search(Value);
 
+		return node != NULL;
 	}
 
 	int Height()
 	{
 		_GetHeight(ParentNode);
 		return _Height;
+	}
+
+	bool IsEmpty()
+	{
+		return ParentNode == NULL;
+	}
+
+	bool Update(Key Value)
+	{
+		Node* node = _Search(Value);
+
+		if (node == NULL)
+			return false;
+
+		cin >> node->Data >> node->Data2 >> node->Data3 >> node->Data4 >> node->Data4 >> node->Data5;
+
+		return true;
 	}
 
 	/*void ReBalance()
