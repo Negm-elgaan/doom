@@ -67,12 +67,12 @@ C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsTotalBalancesScreen.h(59,82): wa
 C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsTransferScreen.h(50,4): warning C4091: 'static ': ignored on left of 'clsTransferScreen::stTransferLogRecord' when no variable is declared
   (compiling source file 'Bank.cpp')
   
-C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsLoanClient.h(427,22): error C2548: 'clsLoanClient::clsLoanClient': missing default argument for parameter 10
+C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsLoanClient.h(28,89): warning C4091: 'static ': ignored on left of 'clsLoanClient::clsLoan::enLoanMode' when no variable is declared
   (compiling source file 'Bank.cpp')
   
-C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsLoanClient.h(443,16): warning C4240: nonstandard extension used: access to 'clsLoanClient::stLoanLogRecord' now defined to be 'public', previously it was defined to be 'private'
+C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsLoanClient.h(459,16): warning C4240: nonstandard extension used: access to 'clsLoanClient::stLoanLogRecord' now defined to be 'public', previously it was defined to be 'private'
   (compiling source file 'Bank.cpp')
-  C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsLoanClient.h(365,16):
+  C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsLoanClient.h(381,16):
   see declaration of 'clsLoanClient::stLoanLogRecord'
   
 C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsFindLoanClientScreen.h(17,60): error C2039: 'Loan': is not a member of 'clsLoanClient'

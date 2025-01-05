@@ -17,8 +17,6 @@ class clsLoanClient
         int _CreditScore = 0;
         class clsLoan
         {
-            //enum enLoanMode
-            //enMode _Mode;
             double _Loan;
             double _LoanWithInterest;
             string _LoanBeginDate;
@@ -27,7 +25,8 @@ class clsLoanClient
             int _Months;
             string _ID;
             public:
-                //enum enLoanMode { EmptyMode = 0, UpdateMode = 1, AddNewMode = 2 };
+                static enum enLoanMode { EmptyMode = 0, UpdateMode = 1, AddNewMode = 2 };
+                enLoanMode _Mode;
                 clsLoan()
                 {                  
                     _Loan = 0;
@@ -42,6 +41,18 @@ class clsLoanClient
                 clsLoan(/*enMode Mode,*/ double Loan, string LoanBeginDate, string LoanEndDate, double InterestRate)
                 {
                     //_Mode = Mode;
+                    _Loan = Loan;
+                    _LoanWithInterest = _Loan;
+                    _LoanBeginDate = LoanBeginDate;
+                    _LoanEndDate = LoanEndDate;
+                    _InterestRate = InterestRate;
+                    _Months = 0;
+                    return;
+                }
+
+                clsLoan(enLoanMode Mode, double Loan, string LoanBeginDate, string LoanEndDate, double InterestRate)
+                {
+                    _Mode = Mode;
                     _Loan = Loan;
                     _LoanWithInterest = _Loan;
                     _LoanBeginDate = LoanBeginDate;
@@ -161,10 +172,10 @@ class clsLoanClient
                     return _Months;
                 }
 
-                /*bool IsEmpty()
+                bool IsEmpty()
                 {
                     return (_Mode == enMode::EmptyMode);
-                }*/
+                }
 
                 clsDynamicArray <thread> SetAll(double Loan, string LoanBeginDate, string LoanEndDate, double InterestRate = 1.14)
                 {
@@ -190,6 +201,11 @@ class clsLoanClient
         int _NumOfLoans = 0;
         clsDynamicArray <clsLoan> _LoanList; //pointer list of different loans to same account with same or different interest rate
 		bool _MarkedForDelete = false;
+
+        bool _RepayFullLoan(string ID)
+        {
+            return _LoanList.DeleteItemAt(FindIndexByLoanID(ID));
+        }
 
         bool CheckCreditScore()
         {
@@ -424,13 +440,13 @@ class clsLoanClient
             _LoanList.InsertAtBeginning(LoanObject);
         }
 
-        clsLoanClient(enMode mode, string AccountNumber, string Name, string Phone, double Loan, double LoanWithInterest, string LoanBeginDate, string LoanEndDate, double InterestRate = 1.14 , enMode clsLoanMode)
+        clsLoanClient(enMode mode, string AccountNumber, string Name, string Phone, double Loan, double LoanWithInterest, string LoanBeginDate, string LoanEndDate, clsLoan::enLoanMode clsLoanMode , double InterestRate = 1.14)
         {
             _Mode = mode;
             _AccountNumber = AccountNumber;
             _FullName = Name;
             _Phone = Phone;
-            clsLoan LoanObject(/*clsLoanMode,*/ Loan, LoanBeginDate, LoanEndDate, InterestRate);
+            clsLoan LoanObject(clsLoanMode , Loan, LoanBeginDate, LoanEndDate, InterestRate);
             _LoanList.InsertAtBeginning(LoanObject);
             return;
         }
@@ -874,6 +890,7 @@ class clsLoanClient
                 _LoanList.Resize(_LoanList.Size() + 1);
                 clsLoan LoanObject(Loan, LoanBeginDate, LoanEndDate, InterestRate);
                 _LoanList.InsertAtEnd(LoanObject);
+                _CreditScore -= 30;
                 return true;
             }
 
@@ -895,7 +912,23 @@ class clsLoanClient
 
         /*not done*/bool RepayFullLoan(string ID)
         {
-            _LoanList.DeleteItemAt(FindIndexByLoanID(ID));
+            if (_RepayFullLoan(ID))
+            {
+                _CreditScore += 60;
+                return true;
+            }
+
+            return false;
+        }
+
+        bool RepayFullLoan(int index)
+        {
+            return _LoanList.DeleteItemAt(index);
+        }
+
+        void RepayAllLoans()
+        {
+            _LoanList.Clear();
         }
 
         int FindIndexByLoanID(string ID)
