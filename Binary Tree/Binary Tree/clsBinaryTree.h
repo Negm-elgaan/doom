@@ -19,6 +19,8 @@ template <class T> class clsBinaryTree
 				Node* Prev;
 		};
 
+		int _Max = 0;
+		int _Min = 0;
 		int _Size = 0;
 		int _Levels = 0;
 		int _LeftHeight = 0;
@@ -292,9 +294,17 @@ template <class T> class clsBinaryTree
 				ParentNode->Right = NULL;
 				ParentNode->Prev = NULL;
 				Temp1 = ParentNode;
+				_Max = Data;
+				_Min = Data;
 				//cout << endl << ParentNode->Data << " ";
 				return;
 			}
+
+			if (Data > _Max)
+				_Max = Data;
+
+			if (Data < _Min)
+				_Min = Data;
 
 			Node* TempNode = ParentNode;
 			Node* NewNode = new Node();
@@ -420,6 +430,16 @@ template <class T> class clsBinaryTree
 			_ClearHelper(ParentNode);
 			ParentNode = NULL;
 			_Size = 0;
+		}
+
+		int Min()
+		{
+			return _Min;
+		}
+
+		int Max()
+		{
+			return _Max;
 		}
 
 		~clsBinaryTree()
