@@ -3,6 +3,7 @@
 #include <thread>
 #include <cstdarg>
 #include <vector>
+#include <algorithm>
 #include "clsDynamicArray.h"
 
 using namespace std;
@@ -65,6 +66,62 @@ private:
 		_Temp = 0;
 	}
 
+	void _ReBalance()
+	{
+		vector <int> small;
+		vector <int> large;
+		Node* node = new Node();
+
+		for (int i = 0; i < _SortedList.size() / 2; i++)
+		{
+			small.push_back(_SortedList[i]);
+		}
+
+		for (int i = _SortedList.size() / 2 + 1; i < _SortedList.size(); i++)
+		{
+			large.push_back(_SortedList[i]);
+		}
+
+		node->Data = _SortedList[_SortedList.size() / 2];
+		Insert(node->Data);
+
+		cout << endl;
+		int s = small.size();
+		int l = large.size();
+		for (int i = 0; i < s; i++)
+		{
+			node->Data = small[small.size() / 2];
+			Insert(node->Data);
+			small[small.size() - 1] = small[small.size() - 1] ^ small[small.size() / 2];
+			small[small.size() / 2] = small[small.size() - 1] ^ small[small.size() / 2];
+			small[small.size() - 1] = small[small.size() - 1] ^ small[small.size() / 2];
+			small.pop_back();
+		}
+
+		for (int i = 0; i < l; i++)
+		{
+			node->Data = large[large.size() / 2];
+			Insert(node->Data);
+			large[large.size() - 1] = large[large.size() - 1] ^ large[large.size() / 2];
+			large[large.size() / 2] = large[large.size() - 1] ^ large[large.size() / 2];
+			large[large.size() - 1] = large[large.size() - 1] ^ large[large.size() / 2];
+			large.pop_back();
+		}
+		delete node;
+	}
+
+	void _GetIn(Node* node)
+	{
+		if (node == NULL)
+			return;
+
+		_GetIn(node->Left);
+
+		_SortedList.push_back(node->Data);
+
+		_GetIn(node->Right);
+	}
+
 	//void _GetHeightLeft(Node* node)
 	//{
 	//	if (node == NULL)
@@ -99,37 +156,6 @@ private:
 	//	_GetHeightRight(node->Right);
 
 	//	_Temp = 0;
-	//}
-
-	//void _ReBalance(Node* node)
-	//{
-
-	//	for (int i = 0; i < _SortedList.size() / 2; i++)
-	//	{
-	//		//cout << _SortedList[i];
-	//		node = _SortedList[(_SortedList.size() - i) / 2];
-	//		Insert(node->KeyValue, node->Data , node->Data2 , node->Data3 , node->Data4 , node->Data5 , true);
-	//		//PrintInOrder();
-	//	}
-	//	
-	//	for (int i = 0; i < _SortedList.size() / 2; i++)
-	//	{
-	//		//cout << _SortedList[i];
-	//		node = _SortedList[(_SortedList.size() + i) / 2];
-	//		Insert(node->KeyValue, node->Data, node->Data2, node->Data3, node->Data4, node->Data5 , true);
-	//	}
-	//}
-
-	//void _GetIn(Node* node)
-	//{
-	//	if (node == NULL)
-	//		return;
-
-	//	_GetIn(node->Left);
-
-	//	_SortedList.push_back(node);
-
-	//	_GetIn(node->Right);
 	//}
 
 	void PrintHelperIn(Node* node)
@@ -206,22 +232,6 @@ private:
 
 		return NULL;
 	}
-
-	/*void _ClearHelper(Node* node)
-	{
-		if (node == NULL)
-			return;
-
-		_ClearHelper(node->Left);
-		_ClearHelper(node->Right);
-
-		node->KeyValue = 0;
-		node->Data = 0;
-		node->Data2 = '\0';
-		node->Data3 = 0;
-		node->Data4 = NULL;
-		node->Data5 = '\0';
-	}*/
 
 	void DeleteHelper(Node* node)
 	{
@@ -354,6 +364,15 @@ public:
 		_vList.~vector();
 		_vList = vector<Node*>();
 		ParentNode = NULL;
+		_Size = 0;
+	}
+
+	void ReBalance()
+	{
+		_GetIn(ParentNode);
+		sort(_SortedList.begin(), _SortedList.end());
+		Clear();
+		_ReBalance();
 	}
 
 	bool Remove(Key Data)
@@ -451,25 +470,6 @@ public:
 		for (Node* &I : _vList)
 			cout << I->KeyValue << " ";
 	}
-
-	/*void ReBalance()
-	{
-		_GetHeightLeft(ParentNode);
-		_GetHeightRight(ParentNode);
-		cout << _LeftHeight << " " << _RightHeight << endl;
-		if (_RightHeight - _LeftHeight != 0)
-		{
-			_GetIn(ParentNode);
-			Clear();
-			_ReBalance(ParentNode);
-		}
-		_LeftHeight = 0;
-		_RightHeight = 0;
-		cout << endl;
-		_GetHeightLeft(ParentNode);
-		_GetHeightRight(ParentNode);
-		cout << _LeftHeight << " " << _RightHeight << endl;
-	}*/
 
 	void Print()
 	{
