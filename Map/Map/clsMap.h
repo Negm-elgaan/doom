@@ -351,6 +351,8 @@ public:
 	void Clear()
 	{
 		DeleteHelper(ParentNode);
+		_vList.~vector();
+		_vList = vector<Node*>();
 		ParentNode = NULL;
 	}
 
@@ -444,6 +446,12 @@ public:
 		return true;
 	}
 
+	void PrintKeys()
+	{
+		for (Node* &I : _vList)
+			cout << I->KeyValue << " ";
+	}
+
 	/*void ReBalance()
 	{
 		_GetHeightLeft(ParentNode);
@@ -462,6 +470,14 @@ public:
 		_GetHeightRight(ParentNode);
 		cout << _LeftHeight << " " << _RightHeight << endl;
 	}*/
+
+	void Print()
+	{
+		PrintByInsertionOrder();
+		PrintInOrder();
+		PrintPostOrder();
+		PrintPreOrder();
+	}
 
 	~clsMap()
 	{
