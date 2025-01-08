@@ -40,6 +40,8 @@ private:
 	int _RightHeight = 0;
 	int _Height = 0;
 	int _Temp = 0;
+	int _MaxKeyValue = 0;
+	int _MinKeyValue = 0;
 
 	vector <Node*> _SortedList;
 	vector <Node*> _vList;
@@ -68,10 +70,10 @@ private:
 
 	void _ReBalance()
 	{
-		vector <int> small;
-		vector <int> large;
+		vector <Node*> small;
+		vector <Node*> large;
 		Node* node = new Node();
-
+		Node* TEMPO = new Node();
 		for (int i = 0; i < _SortedList.size() / 2; i++)
 		{
 			small.push_back(_SortedList[i]);
@@ -82,29 +84,35 @@ private:
 			large.push_back(_SortedList[i]);
 		}
 
-		node->Data = _SortedList[_SortedList.size() / 2];
-		Insert(node->Data);
+		node = _SortedList[_SortedList.size() / 2];
+		Insert(node);
 
 		cout << endl;
 		int s = small.size();
 		int l = large.size();
 		for (int i = 0; i < s; i++)
 		{
-			node->Data = small[small.size() / 2];
-			Insert(node->Data);
-			small[small.size() - 1] = small[small.size() - 1] ^ small[small.size() / 2];
+			node = small[small.size() / 2];
+			Insert(node);
+			TEMPO = small[small.size() - 1];
+			small[small.size() - 1] = small[small.size() / 2];
+			small[small.size() / 2] = TEMPO;
+			/*small[small.size() - 1] = small[small.size() - 1] ^ small[small.size() / 2];
 			small[small.size() / 2] = small[small.size() - 1] ^ small[small.size() / 2];
-			small[small.size() - 1] = small[small.size() - 1] ^ small[small.size() / 2];
+			small[small.size() - 1] = small[small.size() - 1] ^ small[small.size() / 2];*/
 			small.pop_back();
 		}
 
 		for (int i = 0; i < l; i++)
 		{
-			node->Data = large[large.size() / 2];
-			Insert(node->Data);
-			large[large.size() - 1] = large[large.size() - 1] ^ large[large.size() / 2];
+			node = large[large.size() / 2];
+			Insert(node);
+			TEMPO = large[large.size() - 1];
+			large[large.size() - 1] = large[large.size() / 2];
+			large[large.size() / 2] = TEMPO;
+			/*large[large.size() - 1] = large[large.size() - 1] ^ large[large.size() / 2];
 			large[large.size() / 2] = large[large.size() - 1] ^ large[large.size() / 2];
-			large[large.size() - 1] = large[large.size() - 1] ^ large[large.size() / 2];
+			large[large.size() - 1] = large[large.size() - 1] ^ large[large.size() / 2];*/
 			large.pop_back();
 		}
 		delete node;
@@ -274,6 +282,56 @@ public:
 		ParentNode->List.SetItem(0, std::forward<Args>(args)...);
 	}
 
+	void Insert(Node* node , bool duplicate = false)
+	{
+		bool x = true;
+
+		if (ParentNode == NULL)
+		{
+			ParentNode = new Node();
+			ParentNode->KeyValue = node->KeyValue;
+			ParentNode->Data = node->Data;
+			ParentNode->Data2 = node->Data2;
+			ParentNode->Data3 = node->Data3;
+			ParentNode->Data4 = node->Data4;
+			ParentNode->Data5 = node->Data5;
+			ParentNode->Left = NULL;
+			ParentNode->Right = NULL;
+			ParentNode->Prev = NULL;
+			Temp1 = ParentNode;
+			_MaxKeyValue = node->KeyValue;
+			_MinKeyValue = node->KeyValue;
+			_vList.push_back(ParentNode);
+		}
+
+		Node* TempNode = ParentNode;
+
+		while (x)
+		{
+			if (node->KeyValue == TempNode->KeyValue && duplicate == false)
+			{
+				cout << "Key already exists!\n";
+				return;
+			}
+			node->KeyValue > TempNode->KeyValue ? TempNode->Right == NULL ? x = false : TempNode = TempNode->Right : TempNode->Left == NULL ? x = false : TempNode = TempNode->Left;
+		}
+
+		node->KeyValue > TempNode->KeyValue ? TempNode->Right = node : TempNode->Left = node;
+		
+		TempNode->Right == NULL ? TempNode->Left->Prev = TempNode : TempNode->Right->Prev = TempNode;
+		
+		_Size++;
+
+		if (node->KeyValue < _MinKeyValue)
+			_MinKeyValue = node->KeyValue;
+
+		if (node->KeyValue > _MaxKeyValue)
+			_MaxKeyValue = node->KeyValue;
+
+		_vList.push_back(node);
+		return;
+	}
+
 	void Insert(Key KeyValue , Value Data = Value(), Value2 Data2 = Value2(), Value3 Data3 = Value3(), Value4 Data4 = Value4(), Value5 Data5 = Value5() , bool duplicate = false)
 	{
 		bool x = true;
@@ -302,7 +360,6 @@ public:
 		NewNode->Data3 = Data3;
 		NewNode->Data4 = Data4;
 		NewNode->Data5 = Data5;
-		//cout << duplicate << endl;
 		while (x)
 		{
 			if (NewNode->KeyValue == TempNode->KeyValue  && duplicate == false)
@@ -440,6 +497,23 @@ public:
 		Node* node = _Search(Value);
 
 		return node != NULL;
+	}
+
+	Node* Find(Key Value)
+	{
+		Node* node = _Search(Value);
+
+		return node;
+	}
+
+	int MinKeyValue()
+	{
+		return _MinKeyValue;
+	}
+
+	int MaxKeyValue()
+	{
+		return _MaxKeyValue;
 	}
 
 	int Height()
