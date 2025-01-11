@@ -47,6 +47,38 @@ public:
         //ptr[n] = '\0';
         return;
     }
+
+    String operator+(String x)
+    {
+       int size = this->n , j = 0;
+
+       char* Tempo = new char[size];
+
+       this->n += x.n;
+
+       for (int i = 0; i < size; i++)
+       {
+           Tempo[i] = ptr[i];
+       }
+
+       delete this->ptr;
+
+       ptr = new char[n];
+
+       for (int i = 0; i < size; i++)
+       {
+           ptr[i] = Tempo[i];
+       }
+
+       for (int i = size; i < this->n; i++)
+       {
+           ptr[i] = x.ptr[j];
+           j++;
+       }
+
+       return *this;
+    }
+
     void value(char* ptrr)
     {
         for (int i = 0; ptrr[i] != NULL; i++)
@@ -563,6 +595,21 @@ String ToString(int num)
 }
 int main()
 {
+    String Sl;
+    Sl.value();
+    Sl.print();
+    cout << endl << endl;
+    String SV;
+    SV.value();
+    SV.print();
+    cout << endl << endl;
+    String  SZ = Sl + SV;
+    SZ.print();
+    cout << endl << endl;
+   
+    SZ.print();
+    cout << endl << endl;
+    cout << endl << endl;
     /*char* ptr1 = new char[5];
     char* ptr2 = new char[5];
     for (int i = 0; i < 5; i++)

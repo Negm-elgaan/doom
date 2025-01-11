@@ -4,6 +4,7 @@
 #include <cstdarg>
 #include <vector>
 #include <algorithm>
+#include <math.h>
 #include "clsDynamicArray.h"
 
 using namespace std;
@@ -118,6 +119,11 @@ private:
 		delete node;
 	}
 
+	void _Rebalance2()
+	{
+
+	}
+
 	void _GetIn(Node* node)
 	{
 		if (node == NULL)
@@ -125,7 +131,7 @@ private:
 
 		_GetIn(node->Left);
 
-		_SortedList.push_back(node->Data);
+		_SortedList.push_back(node);
 
 		_GetIn(node->Right);
 	}
@@ -276,13 +282,36 @@ public:
 		return;
 	}
 
+	clsMap(clsMap&& obj)
+	{
+		ParentNode = obj.ParentNode;
+		obj.ParentNode = nullptr;
+	}
+
+	clsMap& operator+=(clsMap& obj)
+	{
+		for (Node* node : obj._vList)
+		{
+			this->Insert(node->KeyValue , node->Data  , node->Data2 , node->Data3 , node->Data4 , node->Data5);
+		}
+		return *this;
+	}
+
+	clsMap& operator+(clsMap& obj)
+	{
+		for (Node* node : obj._vList)
+		{
+			this->Insert(node->KeyValue, node->Data, node->Data2, node->Data3, node->Data4, node->Data5);
+		}
+		return *this;
+	}
 
 	template <typename... Args>void Insert2(Key Value , Args...args)
 	{
 		ParentNode->List.SetItem(0, std::forward<Args>(args)...);
 	}
 
-	void Insert(Node* node , bool duplicate = false)
+	/*Not Properly handled not done yet*/void Insert(Node* node, bool duplicate = false)
 	{
 		bool x = true;
 
@@ -329,6 +358,12 @@ public:
 			_MaxKeyValue = node->KeyValue;
 
 		_vList.push_back(node);
+
+		/*_GetHeight(ParentNode);
+
+		if (_Height > log(_Size))
+			ReBalance();*/
+
 		return;
 	}
 
@@ -381,6 +416,12 @@ public:
 			Clear();
 			_ReBalance(ParentNode);
 		}*/
+
+
+		/*_GetHeight(ParentNode);
+
+		if (_Height > log(_Size))
+			ReBalance();*/
 
 		return;
 

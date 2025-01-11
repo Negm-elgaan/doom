@@ -73,6 +73,29 @@ int main()
     BinaryTree.PrintInOrder();
     cout << BinaryTree.Height() << endl << endl;
     BinaryTree.PrintInOrder();
+
+    cout << endl << endl << endl;
+
+    /*clsMap <> Map = move(BinaryTree);
+    cout << "New Map:";
+    Map.PrintInOrder();
+    cout << endl << endl << endl;
+    cout << "Old Map:";
+    BinaryTree.PrintInOrder();*/
+
+    clsMap <> Map2 ;
+    Map2.Insert(15, 22, 'X', 10.5, true, "Xander");      // Example 1: Key 15, different values for the other parameters
+    Map2.Insert(18, 8, 'Y', 5.6, false, "Yvonne");       // Example 2: Key 18, different values for the other parameters
+    Map2.Insert(36, 11, 'Z', 3.4, true, "Zoe");          // Example 3: Key 36, different values for the other parameters
+    Map2.Insert(48, 33, 'W', 9.1, false, "William");     // Example 4: Key 48, different values for the other parameters
+    Map2.Insert(12, 19, 'V', 7.8, true, "Victoria");     // Example 5: Key 12, different values for the other parameters
+    Map2.Insert(29, 17, 'U', 6.3, false, "Uma");         // Example 6: Key 29, different values for the other parameters
+    Map2.Insert(41, 24, 'T', 8.9, true, "Tom");          // Example 7: Key 41, different values for the other parameters
+    Map2.Insert(32, 14, 'S', 12.0, false, "Sally");      // Example 8: Key 32, different values for the other parameters
+    Map2.Insert(77, 29, 'R', 13.2, true, "Riley");       // Example 9: Key 77, different values for the other parameters
+    Map2.Insert(51, 26, 'Q', 11.7, false, "Quinn");      // Example 10: Key 51, different values for the other parameters
+    BinaryTree += Map2;
+    BinaryTree.PrintInOrder();
     //BinaryTree.PrintPostOrder();
    /* clsMap <int,int,string,char,string,string,bool,float,double> Map;
     Map.Insert(1,100,"Hello" , 'O' , "Omar" , "Negm",1,3.14,17272.334);*/
