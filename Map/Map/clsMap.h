@@ -13,27 +13,7 @@ template <class Key = int , class Value = int , class Value2 = char , class Valu
 {
 private:
 
-	static class Node
-	{
-		
-		public:
-		//void* DataPtr;
-			clsDynamicArray <va_list> List;
-			Key KeyValue;
-			Value Data;
-			Value2 Data2;
-			Value3 Data3;
-			Value4 Data4;
-			Value5 Data5;
-			Value6 Data6;
-			Value7 Data7;
-			Value8 Data8;
-			Value9 Data9;
-			//Value10 Data10;
-			Node* Right;
-			Node* Left;
-			Node* Prev;
-	};
+	class Node;
 
 	int _Size = 0;
 	int _Levels = 0;
@@ -264,6 +244,28 @@ private:
 
 public:
 
+	static class Node
+	{
+
+	public:
+		//void* DataPtr;
+		clsDynamicArray <va_list> List;
+		Key KeyValue;
+		Value Data;
+		Value2 Data2;
+		Value3 Data3;
+		Value4 Data4;
+		Value5 Data5;
+		Value6 Data6;
+		Value7 Data7;
+		Value8 Data8;
+		Value9 Data9;
+		//Value10 Data10;
+		Node* Right;
+		Node* Left;
+		Node* Prev;
+	};
+
 	clsMap::Node* ParentNode = NULL;
 	clsMap::Node* Temp1 = ParentNode;
 
@@ -304,6 +306,16 @@ public:
 			this->Insert(node->KeyValue, node->Data, node->Data2, node->Data3, node->Data4, node->Data5);
 		}
 		return *this;
+	}
+
+	Node* operator[](Key KeyValue)
+	{
+		Node* node = _Search(KeyValue);
+		
+		if (node == NULL)
+			return NULL;
+
+		return node;
 	}
 
 	template <typename... Args>void Insert2(Key Value , Args...args)

@@ -17,16 +17,8 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 1,
           "Children": [
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
-            },
             {
               "$type": "Document",
               "DocumentIndex": 1,
@@ -37,8 +29,7 @@
               "RelativeToolTip": "..\\..\\..\\..\\..\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.39.33519\\crt\\src\\vcruntime\\delete_scalar.cpp",
               "ViewState": "AQIAABcAAAAAAAAAAAAawCUAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-01-09T04:34:02.897Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-09T04:34:02.897Z"
             },
             {
               "$type": "Document",
@@ -48,10 +39,18 @@
               "RelativeDocumentMoniker": "Stringv6.0\\Stringv6.0.cpp",
               "ToolTip": "C:\\Users\\omarh\\doom\\testing string\\Stringv6.0\\Stringv6.0\\Stringv6.0.cpp",
               "RelativeToolTip": "Stringv6.0\\Stringv6.0.cpp",
-              "ViewState": "AQIAAEoCAAAAAAAAAAAAAKwCAAAQAAAA",
+              "ViewState": "AQIAAAwCAAAAAAAAAAAAAKwCAAAQAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2024-10-10T08:56:32.087Z",
               "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
             }
           ]
         }

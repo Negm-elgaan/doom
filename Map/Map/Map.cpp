@@ -96,6 +96,7 @@ int main()
     Map2.Insert(51, 26, 'Q', 11.7, false, "Quinn");      // Example 10: Key 51, different values for the other parameters
     BinaryTree += Map2;
     BinaryTree.PrintInOrder();
+    cout << "Key : " << BinaryTree[50]->KeyValue << " { " << BinaryTree[50]->Data << " , " << BinaryTree[50]->Data2 << " , " << BinaryTree[50]->Data3 << " , " << BinaryTree[50]->Data4 << " , " << BinaryTree[50]->Data5 << " }" << endl;
     //BinaryTree.PrintPostOrder();
    /* clsMap <int,int,string,char,string,string,bool,float,double> Map;
     Map.Insert(1,100,"Hello" , 'O' , "Omar" , "Negm",1,3.14,17272.334);*/
