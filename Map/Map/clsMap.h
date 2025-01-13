@@ -290,6 +290,27 @@ public:
 		obj.ParentNode = nullptr;
 	}
 
+	clsMap& operator^=(int Number)
+	{
+		for (Node* node : this->_vList)
+		{
+			Key TTT = node->KeyValue;
+
+			for (int i = 0; i < Number - 1; i++)
+			{
+				node->KeyValue *= TTT;
+			}
+		}
+
+		return *this;
+	}
+
+	clsMap& operator<<(clsMap& obj)
+	{
+		obj.Print();
+		return obj;
+	}
+
 	clsMap& operator+=(clsMap& obj)
 	{
 		for (Node* node : obj._vList)
@@ -304,6 +325,19 @@ public:
 		for (Node* node : obj._vList)
 		{
 			this->Insert(node->KeyValue, node->Data, node->Data2, node->Data3, node->Data4, node->Data5);
+		}
+		return *this;
+	}
+
+	clsMap& operator-(clsMap& obj)
+	{
+		for (Node* node1 : obj._vList)
+		{
+			for (Node* node2 : this->_vList)
+			{
+				if (node1->KeyValue == node2->KeyValue)
+					this->Remove(node2->KeyValue);
+			}
 		}
 		return *this;
 	}
@@ -463,7 +497,7 @@ public:
 		}
 	}
 
-	int NumberOfNodes()
+	int Size()
 	{
 		return _Size;
 	}
@@ -600,9 +634,16 @@ public:
 
 	void Print()
 	{
+		cout << "Print By Insertion Order:\n";
 		PrintByInsertionOrder();
+		cout << endl << endl << endl;
+		cout << "Print InOrder:\n";
 		PrintInOrder();
+		cout << endl << endl << endl;
+		cout << "Print PostOrder:\n";
 		PrintPostOrder();
+		cout << endl << endl << endl;
+		cout << "Print PreOrder:\n";
 		PrintPreOrder();
 	}
 
