@@ -13,22 +13,16 @@ class BTree
 		{
 			private:
 
-				int NumOfKeysInNode = 0;
+				const int NumOfKeysInNode = 0;
 				int* ptr;
 				Node* Left;
 				Node* Right;
+				Node* Prev;
 			
 			public:
 
-				Node()
+				Node(int Number) : NumOfKeysInNode(Number)
 				{
-					cin >> NumOfKeysInNode;
-					ptr = new int[NumOfKeysInNode];
-				}
-
-				Node(int Number)
-				{
-					NumOfKeysInNode = Number;
 					ptr = new int[NumOfKeysInNode];
 				}
 		};

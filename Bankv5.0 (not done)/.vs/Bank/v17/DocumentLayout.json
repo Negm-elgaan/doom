@@ -290,9 +290,10 @@
               "RelativeDocumentMoniker": "Bank\\clsDynamicArray.h",
               "ToolTip": "C:\\Users\\omarh\\doom\\Bankv5.0 (not done)\\Bank\\clsDynamicArray.h",
               "RelativeToolTip": "Bank\\clsDynamicArray.h",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAAdAAAA",
+              "ViewState": "AQIAAI8AAAAAAAAAAAAhwKAAAAASAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-11-23T22:29:03.266Z"
+              "WhenOpened": "2024-11-23T22:29:03.266Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -374,7 +375,7 @@
               "RelativeDocumentMoniker": "Bank\\clsLoanClient.h",
               "ToolTip": "C:\\Users\\omarh\\doom\\Bankv5.0 (not done)\\Bank\\clsLoanClient.h",
               "RelativeToolTip": "Bank\\clsLoanClient.h",
-              "ViewState": "AQIAANEBAAAAAAAAAAAAAJgDAAAZAAAA",
+              "ViewState": "AQIAAMUAAAAAAAAAAAAAANMAAAAZAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2024-09-21T20:59:29.638Z",
               "EditorCaption": ""

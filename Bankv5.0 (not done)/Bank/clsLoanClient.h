@@ -204,7 +204,12 @@ class clsLoanClient
 
         bool _RepayFullLoan(string ID)
         {
-            return _LoanList.DeleteItemAt(FindIndexByLoanID(ID));
+            if (IsLoanExist(ID))
+            {
+                return _LoanList.DeleteItemAt(FindIndexByLoanID(ID));
+            }
+            
+            return false;
         }
 
         bool CheckCreditScore()
@@ -939,7 +944,7 @@ class clsLoanClient
                     return i;
             }
 
-            return NULL;
+            return 0;
         }
 
         clsLoan FindLoanByLoanID(string ID)
@@ -949,7 +954,19 @@ class clsLoanClient
                 if (_LoanList.Getitem(i).ID == ID)
                     return _LoanList.Getitem(i);
             }
+
             return clsLoan::GetEmptyLoanObject();
+        }
+
+        bool IsLoanExist(string ID)
+        {
+            for (int i = 0; i < _LoanList.Size(); i++)
+            {
+                if (_LoanList.Getitem(i).ID == ID)
+                    return true;
+            }
+
+            return false;
         }
 };
 //loan is not probably handled
