@@ -13,23 +13,23 @@ C:\Users\omarh\doom\Binary Tree\Binary Tree\clsBinaryTree.h(20,4): warning C4091
   	C:\Users\omarh\doom\Binary Tree\Binary Tree\Binary Tree.cpp(11,25):
   	see reference to class template instantiation 'clsBinaryTree<int>' being compiled
   
-C:\Users\omarh\doom\Binary Tree\Binary Tree\clsBinaryTree.h(78,15): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\omarh\doom\Binary Tree\Binary Tree\clsBinaryTree.h(80,15): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
   (compiling source file 'Binary%20Tree.cpp')
-  C:\Users\omarh\doom\Binary Tree\Binary Tree\clsBinaryTree.h(78,15):
+  C:\Users\omarh\doom\Binary Tree\Binary Tree\clsBinaryTree.h(80,15):
   the template instantiation context (the oldest one first) is
   	C:\Users\omarh\doom\Binary Tree\Binary Tree\Binary Tree.cpp(11,25):
   	see reference to class template instantiation 'clsBinaryTree<int>' being compiled
-  	C:\Users\omarh\doom\Binary Tree\Binary Tree\clsBinaryTree.h(67,8):
+  	C:\Users\omarh\doom\Binary Tree\Binary Tree\clsBinaryTree.h(69,8):
   	while compiling class template member function 'void clsBinaryTree<int>::_ReBalance(void)'
-  		C:\Users\omarh\doom\Binary Tree\Binary Tree\clsBinaryTree.h(415,14):
+  		C:\Users\omarh\doom\Binary Tree\Binary Tree\clsBinaryTree.h(431,14):
   		see the first reference to 'clsBinaryTree<int>::_ReBalance' in 'clsBinaryTree<int>::ReBalance'
   		C:\Users\omarh\doom\Binary Tree\Binary Tree\Binary Tree.cpp(28,18):
   		see the first reference to 'clsBinaryTree<int>::ReBalance' in 'main'
   
-C:\Users\omarh\doom\Binary Tree\Binary Tree\clsBinaryTree.h(87,10): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\omarh\doom\Binary Tree\Binary Tree\clsBinaryTree.h(89,10): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
   (compiling source file 'Binary%20Tree.cpp')
   
-C:\Users\omarh\doom\Binary Tree\Binary Tree\clsBinaryTree.h(88,10): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\omarh\doom\Binary Tree\Binary Tree\clsBinaryTree.h(90,10): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
   (compiling source file 'Binary%20Tree.cpp')
   
   Binary Tree.vcxproj -> C:\Users\omarh\doom\Binary Tree\x64\Debug\Binary Tree.exe

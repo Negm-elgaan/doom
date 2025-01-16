@@ -28,6 +28,7 @@ template <class T> class clsBinaryTree
 		int _Height = 0;
 		int _Temp = 0;
 		vector <int> _SortedList;
+		vector <int> _vlist;
 
 		void _GetHeightLeft(Node* node)
 		{
@@ -280,6 +281,14 @@ template <class T> class clsBinaryTree
 			return;
 		}
 
+		/*clsBinaryTree operator*(clsBinaryTree Tree)
+		{
+			for (int i = 0; i < Tree._SortedList(); i++)
+			{
+				
+			}
+		}*/
+
 		void Insert(T Data)
 		{
 			bool x = true;
@@ -297,6 +306,7 @@ template <class T> class clsBinaryTree
 				_Max = Data;
 				_Min = Data;
 				//cout << endl << ParentNode->Data << " ";
+				_vlist.push_back(Data);
 				return;
 			}
 
@@ -324,6 +334,13 @@ template <class T> class clsBinaryTree
 			_Size++;
 			//ReBalance();
 			//cout << NewNode->Data << " ";
+			_vlist.push_back(Data);
+			if (_Size > 3)
+			{
+				_GetHeight(ParentNode);
+				if (_Height == _Size)
+					ReBalance();
+			}
 			return;
 			
 		}
@@ -430,6 +447,7 @@ template <class T> class clsBinaryTree
 			_ClearHelper(ParentNode);
 			ParentNode = NULL;
 			_Size = 0;
+			_Height = 0;
 		}
 
 		int Min()

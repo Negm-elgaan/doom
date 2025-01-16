@@ -49,7 +49,7 @@ private:
 		_Temp = 0;
 	}
 
-	void _ReBalance()
+	/*not done*/void _ReBalance()
 	{
 		vector <Node*> small;
 		vector <Node*> large;
@@ -102,6 +102,11 @@ private:
 	void _Rebalance2()
 	{
 
+	}
+
+	void _GetIN(Node* node)
+	{
+		_SortedList = _vList;
 	}
 
 	void _GetIn(Node* node)
@@ -350,6 +355,24 @@ public:
 			{
 				if (node1->KeyValue == node2->KeyValue)
 					this->Remove(node2->KeyValue);
+			}
+		}
+		return *this;
+	}
+
+	clsMap& operator--()
+	{
+		this->Remove(_vList[_vList.size() - 1]);
+		return *this;
+	}
+
+	clsMap& operator*(clsMap& obj)
+	{
+		for (Node* node1 : obj._vList)
+		{
+			for (Node* node2 : this->_vList)
+			{
+				node2->KeyValue *= node1->KeyValue;
 			}
 		}
 		return *this;
