@@ -100,7 +100,9 @@ int main()
     BinaryTree << Map2;
     cout << endl << endl << endl;
     BinaryTree.PrintInOrder();
-
+    cout << endl << endl << BinaryTree.Size() << " " << Map2.Size();
+    int x = BinaryTree % Map2;
+    cout << endl << endl << x << endl << endl;
     cout << "Key : " << BinaryTree[50]->KeyValue << " { " << BinaryTree[50]->Data << " , " << BinaryTree[50]->Data2 << " , " << BinaryTree[50]->Data3 << " , " << BinaryTree[50]->Data4 << " , " << BinaryTree[50]->Data5 << " }" << endl;
     //BinaryTree.PrintPostOrder();
    /* clsMap <int,int,string,char,string,string,bool,float,double> Map;

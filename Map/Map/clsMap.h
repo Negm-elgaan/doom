@@ -342,6 +342,24 @@ public:
 		return *this;
 	}
 
+	clsMap& operator-=(clsMap& obj)
+	{
+		for (Node* node1 : obj._vList)
+		{
+			for (Node* node2 : this->_vList)
+			{
+				if (node1->KeyValue == node2->KeyValue)
+					this->Remove(node2->KeyValue);
+			}
+		}
+		return *this;
+	}
+
+	int operator%(clsMap& obj)
+	{
+		return this->_Size % obj._Size;
+	}
+
 	Node* operator[](Key KeyValue)
 	{
 		Node* node = _Search(KeyValue);

@@ -15,6 +15,17 @@ class clsLoanClient
 		string _FullName;
         string _Phone;
         int _CreditScore = 0;
+
+        union Login
+        {
+            string Password;
+            string Token; 
+            void RequestToken()
+            {
+
+            }
+        };
+
         class clsLoan
         {
             double _Loan;
@@ -840,80 +851,112 @@ class clsLoanClient
         }*/
 
 
-       /*not done*/ /*void ProcessCalculations(vector<clsLoanClient>& clients)
+        /*not done*/ /*void ProcessCalculations(vector<clsLoanClient>& clients)
+         {
+             int size = clients.size();
+             if (size % 4 != 0) return; // Skip if not divisible by 4
+
+             int chunk = size / 4;
+             vector<thread> threads;  // Vector to hold the threads
+
+             // Create and store threads for each chunk
+             for (int i = 0; i < chunk; i++)
+             {
+                 clsLoanClient C1 = clients[i];
+                 threads.push_back(thread(&clsLoanClient::GetCurrentLoan, C1));
+             }
+             for (int i = chunk; i < chunk * 2; i++)
+             {
+                 clsLoanClient C2 = clients[i];
+                 threads.push_back(thread(&clsLoanClient::GetCurrentLoan, C2));
+             }
+             for (int i = chunk * 2; i < chunk * 3; i++)
+             {
+                 clsLoanClient C3 = clients[i];
+                 threads.push_back(thread(&clsLoanClient::GetCurrentLoan, C3));
+             }
+             for (int i = chunk * 3; i < chunk * 4; i++)
+             {
+                 clsLoanClient C4 = clients[i];
+                 threads.push_back(thread(&clsLoanClient::GetCurrentLoan, C4));
+             }
+
+             // Join all threads
+             for (thread& t : threads)
+             {
+                 t.join();  // Wait for all threads to complete
+             }
+         }*/
+
+
+static vector <clsLoanClient> GetLoansList()
+{
+    return _LoadLoanClientsDataFromFile();
+}
+
+clsLoanClient BTOL(clsBankClient BankClient)
+{
+    return _ConvertBankClientObjectToLoanClientObject(BankClient);
+}
+
+bool TakeNewLoan(double Loan, string LoanBeginDate, string LoanEndDate, double InterestRate)
+{
+    if (CheckCreditScore())
+    {
+        _LoanList.Resize(_LoanList.Size() + 1);
+        clsLoan LoanObject(Loan, LoanBeginDate, LoanEndDate, InterestRate);
+        _LoanList.InsertAtEnd(LoanObject);
+        _CreditScore -= 30;
+        return true;
+    }
+
+    return false;
+}
+
+bool RepayPartOfLoan(string ID, double amount)
+{
+    for (int i = 0; i < _LoanList.Size(); i++)
+    {
+        if (_LoanList.Getitem(i).ID == ID)
         {
-            int size = clients.size();
-            if (size % 4 != 0) return; // Skip if not divisible by 4
+            int num = _LoanList.Getitem(i).Loan;
 
-            int chunk = size / 4;
-            vector<thread> threads;  // Vector to hold the threads
+            _LoanList.Getitem(i).Loan -= amount;
 
-            // Create and store threads for each chunk
-            for (int i = 0; i < chunk; i++)
-            {
-                clsLoanClient C1 = clients[i];
-                threads.push_back(thread(&clsLoanClient::GetCurrentLoan, C1));
-            }
-            for (int i = chunk; i < chunk * 2; i++)
-            {
-                clsLoanClient C2 = clients[i];
-                threads.push_back(thread(&clsLoanClient::GetCurrentLoan, C2));
-            }
-            for (int i = chunk * 2; i < chunk * 3; i++)
-            {
-                clsLoanClient C3 = clients[i];
-                threads.push_back(thread(&clsLoanClient::GetCurrentLoan, C3));
-            }
-            for (int i = chunk * 3; i < chunk * 4; i++)
-            {
-                clsLoanClient C4 = clients[i];
-                threads.push_back(thread(&clsLoanClient::GetCurrentLoan, C4));
-            }
-
-            // Join all threads
-            for (thread& t : threads)
-            {
-                t.join();  // Wait for all threads to complete
-            }
-        }*/
-
-
-        static vector <clsLoanClient> GetLoansList()
-        {
-            return _LoadLoanClientsDataFromFile();
-        }
-
-        clsLoanClient BTOL(clsBankClient BankClient)
-        {
-            return _ConvertBankClientObjectToLoanClientObject(BankClient);
-        }
-
-        bool TakeNewLoan(double Loan , string LoanBeginDate , string LoanEndDate , double InterestRate)
-        {
-            if (CheckCreditScore())
-            {
-                _LoanList.Resize(_LoanList.Size() + 1);
-                clsLoan LoanObject(Loan, LoanBeginDate, LoanEndDate, InterestRate);
-                _LoanList.InsertAtEnd(LoanObject);
-                _CreditScore -= 30;
-                return true;
-            }
-
-            return false;
-        }
-
-        /*not done*/bool RepayPartOfLoan(string ID, double amount)
-        {
-            clsLoan LoanObject = FindLoanByLoanID(ID);
-            if (LoanObject.Loan == NULL)
-            LoanObject.Loan -= amount;
-            if (LoanObject.Loan <= 0)
+            if (_LoanList.Getitem(i).Loan == 0)
             {
                 _LoanList.DeleteItemAt(FindIndexByLoanID(ID));
-                return true;
             }
 
+            else if (_LoanList.Getitem(i).Loan < 0)
+            {
+                _LoanList.DeleteItemAt(FindIndexByLoanID(ID));
+                amount -= num;
+
+                while (amount > 0)
+                {
+                    i++;
+                    if (_LoanList.Getitem(i).Loan > amount)
+                    {
+                        _LoanList.Getitem(i).Loan -= amount;
+                        return true;
+                    }
+
+                    if (_LoanList.Getitem(i).Loan == amount)
+                    {
+                        _LoanList.DeleteItemAt(i);
+                        return true;
+                    }
+
+                    amount -= _LoanList.Getitem(i).Loan;
+                    _LoanList.DeleteItemAt(i);
+                }
+             }
+                    return true;
         }
+    }
+            return false;
+}
 
         /*not done*/bool RepayFullLoan(string ID)
         {
@@ -928,7 +971,13 @@ class clsLoanClient
 
         bool RepayFullLoan(int index)
         {
-            return _LoanList.DeleteItemAt(index);
+            if (_LoanList.DeleteItemAt(index))
+            {
+                _CreditScore += 60;
+                return true;
+            }
+
+            return false;
         }
 
         void RepayAllLoans()
