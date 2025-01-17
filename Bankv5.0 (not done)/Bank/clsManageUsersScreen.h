@@ -8,7 +8,7 @@
 #include "clsDeleteUserScreen.h"
 #include "clsUpdateUserScreen.h"
 #include "clsFindUserScreen.h"
-
+#include "clsRequestTokenScreen.h"
 
 using namespace std;
 
@@ -18,7 +18,7 @@ class clsManageUsersScreen :protected clsScreen
 private:
     enum enManageUsersMenueOptions {
         eListUsers = 1, eAddNewUser = 2, eDeleteUser = 3,
-        eUpdateUser = 4, eFindUser = 5, eMainMenue = 6
+        eUpdateUser = 4, eFindUser = 5, eMainMenue = 6 , eRequestToken = 7
     };
 
     static short ReadManageUsersMenueOption()
@@ -63,6 +63,12 @@ private:
     {
         //cout << "\nFind User Screen Will Be Here.\n";
         clsFindUserScreen::ShowFindUserScreen();
+    }
+
+    static void _ShowRequestTokenScreen()
+    {
+        //cout << "\nRequest Token Screen Will be Here. \n";
+        clsRequestTokenScreen::ShowRequestTokenScreen();
     }
 
     static void _PerformManageUsersMenueOption(enManageUsersMenueOptions ManageUsersMenueOption)
@@ -145,7 +151,8 @@ public:
         cout << setw(37) << left << "" << "\t[3] Delete User.\n";
         cout << setw(37) << left << "" << "\t[4] Update User.\n";
         cout << setw(37) << left << "" << "\t[5] Find User.\n";
-        cout << setw(37) << left << "" << "\t[6] Main Menue.\n";
+        cout << setw(37) << left << "" << "\t[6] Request Token.\n";
+        cout << setw(37) << left << "" << "\t[7] Main Menue.\n";
         cout << setw(37) << left << "" << "===========================================\n";
 
         _PerformManageUsersMenueOption((enManageUsersMenueOptions)ReadManageUsersMenueOption());

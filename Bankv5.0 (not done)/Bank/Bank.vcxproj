@@ -160,6 +160,7 @@
     <ClInclude Include="clsMyQueue.h" />
     <ClInclude Include="clsPerson.h" />
     <ClInclude Include="clsRegisterScreen.h" />
+    <ClInclude Include="clsRequestTokenScreen.h" />
     <ClInclude Include="clsScreen.h" />
     <ClInclude Include="clsShowAllMainMenueScreens.h" />
     <ClInclude Include="clsString.h" />

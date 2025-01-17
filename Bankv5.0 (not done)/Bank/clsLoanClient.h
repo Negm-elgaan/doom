@@ -16,16 +16,6 @@ class clsLoanClient
         string _Phone;
         int _CreditScore = 0;
 
-        union Login
-        {
-            string Password;
-            string Token; 
-            void RequestToken()
-            {
-
-            }
-        };
-
         class clsLoan
         {
             double _Loan;

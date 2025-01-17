@@ -158,5 +158,8 @@
     <ClInclude Include="clsTakeLoanScreen.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="clsRequestTokenScreen.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

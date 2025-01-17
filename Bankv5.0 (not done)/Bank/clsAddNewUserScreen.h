@@ -129,6 +129,13 @@ private:
             Permissions += clsUser::enPermissions::pLoginRegister;
         }
 
+        cout << "\nRequest Token? y/n? ";
+        cin >> Answer;
+        if (Answer == 'y' || Answer == 'Y')
+        {
+            Permissions += clsUser::enPermissions::pRequestToken;
+        }
+
         return Permissions;
 
     }
