@@ -269,6 +269,10 @@ public:
 		Node* Right;
 		Node* Left;
 		Node* Prev;
+		template <class T> class Noder
+		{
+			T Data;
+		};
 	};
 
 	clsMap::Node* ParentNode = NULL;

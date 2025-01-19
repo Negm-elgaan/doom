@@ -9,7 +9,12 @@ class clsRequestTokenScreen : protected clsScreen
 
 		static void ShowRequestTokenScreen()
 		{
+			if (!CheckAccessRights(clsUser::enPermissions::pRequestToken))
+			{
+				return;
+			}
 
+			_DrawScreenHeader("\t  Request Token Screen");
 		}
 };
 
