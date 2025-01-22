@@ -269,10 +269,13 @@ public:
 		Node* Right;
 		Node* Left;
 		Node* Prev;
+		
 		template <class T> class Noder
 		{
-			T Data;
+			public:
+				T Data;
 		};
+
 	};
 
 	clsMap::Node* ParentNode = NULL;
@@ -349,6 +352,11 @@ public:
 			}
 		}
 		return *this;
+	}
+
+	bool operator>(clsMap& obj)
+	{
+		return this->Size > obj.Size;
 	}
 
 	clsMap& operator-=(clsMap& obj)
