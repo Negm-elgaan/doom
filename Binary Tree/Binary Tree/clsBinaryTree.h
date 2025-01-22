@@ -289,6 +289,14 @@ template <class T> class clsBinaryTree
 			}
 		}*/
 
+		clsBinaryTree& operator<<(clsBinaryTree& Tree)
+		{
+			Tree.Print();
+			return Tree;
+		}
+
+
+
 		void Insert(T Data)
 		{
 			bool x = true;

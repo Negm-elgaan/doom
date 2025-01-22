@@ -23,11 +23,12 @@ int main()
     BST.Insert(15);
     BST.Insert(20);
     cout << endl << endl;
-    BST.Print();
+    //BST.Print();
     //cout << endl << endl << "after balance\n\n";
     BST.ReBalance();
     cout << endl << endl << "after balance\n\n";
-    BST.Print();
+    //BST.Print();
+    BST << BST;
     //BST.Insert(50);
   //BST.Insert(30);
   //  BST.Insert(20);
