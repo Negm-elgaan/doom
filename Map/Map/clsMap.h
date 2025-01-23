@@ -9,7 +9,7 @@
 
 using namespace std;
 
-template <class Key = int , class Value = int , class Value2 = char , class Value3 = double , class Value4 = bool , class Value5 = string , class Value6 = clsDynamicArray <int> , class Value7 = clsDynamicArray <string> , class Value8 = clsDynamicArray <char> , class Value9 = clsDynamicArray <double> , class... Value10 /*, class Value7 = char*, class Value8 = double*, class Value9 = bool*, class Value10 = string * */ > class clsMap
+template <class Key = int, class Value = int, class Value2 = char, class Value3 = double, class Value4 = bool, class Value5 = string, class Value6 = clsDynamicArray <int>, class Value7 = clsDynamicArray <string>, class Value8 = clsDynamicArray <char>, class Value9 = clsDynamicArray <double>, class... Value10 /*, class Value7 = char*, class Value8 = double*, class Value9 = bool*, class Value10 = string * */ > class clsMap
 {
 private:
 
@@ -26,7 +26,7 @@ private:
 
 	vector <Node*> _SortedList;
 	vector <Node*> _vList;
-	
+
 	clsDynamicArray <Node*> _List;
 
 	void _GetHeight(Node* node)
@@ -185,7 +185,7 @@ private:
 		PrintHelperPre(node->Left);
 		/*thread T1(&clsMap::PrintHelper, this, node->Left);*/
 		// Print the data of the current node
-		
+
 
 		// Traverse the right subtree
 		PrintHelperPre(node->Right);
@@ -199,7 +199,7 @@ private:
 		if (node == NULL)
 			return;
 
-		
+
 		// Traverse the left subtree
 		PrintHelperPost(node->Left);
 		/*thread T1(&clsMap::PrintHelper, this, node->Left);*/
@@ -238,8 +238,8 @@ private:
 			return;
 
 		// Recursively delete the left and right subtrees
-		thread T1(&clsMap::DeleteHelper , this , node->Left);
-		thread T2 (&clsMap::DeleteHelper ,this , node->Right);
+		thread T1(&clsMap::DeleteHelper, this, node->Left);
+		thread T2(&clsMap::DeleteHelper, this, node->Right);
 		T1.join();
 		T2.join();
 
@@ -269,11 +269,11 @@ public:
 		Node* Right;
 		Node* Left;
 		Node* Prev;
-		
+
 		template <class T> class Noder
 		{
-			public:
-				T Data;
+		public:
+			T Data;
 		};
 
 	};
@@ -327,7 +327,7 @@ public:
 	{
 		for (Node* node : obj._vList)
 		{
-			this->Insert(node->KeyValue , node->Data  , node->Data2 , node->Data3 , node->Data4 , node->Data5);
+			this->Insert(node->KeyValue, node->Data, node->Data2, node->Data3, node->Data4, node->Data5);
 		}
 		return *this;
 	}
@@ -357,6 +357,13 @@ public:
 	bool operator>(clsMap& obj)
 	{
 		return this->Size > obj.Size;
+	}
+
+	clsMap& operator>>(clsMap& obj)
+	{
+		obj.Insert();
+
+		return obj;
 	}
 
 	clsMap& operator-=(clsMap& obj)
@@ -390,6 +397,11 @@ public:
 		return *this;
 	}
 
+	bool operator<(clsMap& obj)
+	{
+		return this->Size < obj.Size;
+	}
+
 	int operator%(clsMap& obj)
 	{
 		return this->_Size % obj._Size;
@@ -398,14 +410,14 @@ public:
 	Node* operator[](Key KeyValue)
 	{
 		Node* node = _Search(KeyValue);
-		
+
 		if (node == NULL)
 			return NULL;
 
 		return node;
 	}
 
-	template <typename... Args>void Insert2(Key Value , Args...args)
+	template <typename... Args>void Insert2(Key Value, Args...args)
 	{
 		ParentNode->List.SetItem(0, std::forward<Args>(args)...);
 	}
@@ -445,9 +457,9 @@ public:
 		}
 
 		node->KeyValue > TempNode->KeyValue ? TempNode->Right = node : TempNode->Left = node;
-		
+
 		TempNode->Right == NULL ? TempNode->Left->Prev = TempNode : TempNode->Right->Prev = TempNode;
-		
+
 		_Size++;
 
 		if (node->KeyValue < _MinKeyValue)
@@ -464,6 +476,66 @@ public:
 			ReBalance();*/
 
 		return;
+	}
+
+	void Insert(bool duplicate = false)
+	{
+		bool x = true;
+		if (ParentNode == NULL)
+		{
+			ParentNode = new Node();
+			cout << "\nEnter Key: ";
+			cin >> ParentNode->KeyValue;
+			cout << "\nEnter Data1: ";
+			cin >> ParentNode->Data;
+			cout << "\nEnter Data2: ";
+			cin >> ParentNode->Data2;
+			cout << "\nEnter Data3: ";
+			cin >> ParentNode->Data3;
+			cout << "\nEnter Data4: ";
+			cin >> ParentNode->Data3;
+			cout << "\nEnter Data5: ";
+			cin >> ParentNode->Data5;
+			ParentNode->Left = NULL;
+			ParentNode->Right = NULL;
+			ParentNode->Prev = NULL;
+			Temp1 = ParentNode;
+			_vList.push_back(ParentNode);
+			return;
+		}
+
+		Node* TempNode = ParentNode;
+		Node* NewNode = new Node();
+		cout << "\nEnter Key: ";
+		cin >> NewNode->KeyValue;
+		cout << "\nEnter Data1: ";
+		cin >> NewNode->Data;
+		cout << "\nEnter Data2: ";
+		cin >> NewNode->Data2;
+		cout << "\nEnter Data3: ";
+		cin >> NewNode->Data3;
+		cout << "\nEnter Data4: ";
+		cin >> NewNode->Data4;
+		cout << "\nEnter Data5: ";
+		cin >> NewNode->Data5;
+
+		while (x)
+		{
+			if (NewNode->KeyValue == TempNode->KeyValue && duplicate == false)
+			{
+				cout << "Key already exists!\n";
+				return;
+			}
+			NewNode->KeyValue > TempNode->KeyValue ? TempNode->Right == NULL ? x = false : TempNode = TempNode->Right : TempNode->Left == NULL ? x = false : TempNode = TempNode->Left;
+		}
+
+		NewNode->KeyValue > TempNode->KeyValue ? TempNode->Right = NewNode : TempNode->Left = NewNode;
+		TempNode->Right == NULL ? TempNode->Left->Prev = TempNode : TempNode->Right->Prev = TempNode;
+		_Size++;
+		_vList.push_back(NewNode);
+
+		return;
+
 	}
 
 	void Insert(Key KeyValue , Value Data = Value(), Value2 Data2 = Value2(), Value3 Data3 = Value3(), Value4 Data4 = Value4(), Value5 Data5 = Value5() , bool duplicate = false)

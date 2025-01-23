@@ -102,6 +102,9 @@ int main()
     cout << endl << endl << endl;
     BinaryTree << Map2;
     cout << endl << endl << endl;
+
+    BinaryTree >> BinaryTree;
+
     BinaryTree.PrintInOrder();
     cout << endl << endl << BinaryTree.Size() << " " << Map2.Size();
     int x = BinaryTree % Map2;
