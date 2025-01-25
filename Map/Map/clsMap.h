@@ -232,14 +232,27 @@ private:
 		return NULL;
 	}
 
-	void DeleteHelper(Node* node)
+	void DeleteHelper1(Node* node)
 	{
 		if (node == NULL)
 			return;
 
 		// Recursively delete the left and right subtrees
-		thread T1(&clsMap::DeleteHelper, this, node->Left);
-		thread T2(&clsMap::DeleteHelper, this, node->Right);
+		DeleteHelper1(node->Left);
+		DeleteHelper1(node->Right);
+
+		// Delete the current node
+		delete node;
+	}
+
+	void DeleteHelper2(Node* node)
+	{
+		if (node == NULL)
+			return;
+
+		// Recursively delete the left and right subtrees
+		thread T1(&clsMap::DeleteHelper2, this, node->Left);
+		thread T2(&clsMap::DeleteHelper2, this, node->Right);
 		T1.join();
 		T2.join();
 
@@ -364,6 +377,24 @@ public:
 		obj.Insert();
 
 		return obj;
+	}
+
+	/*clsMap& operator/(clsMap& obj)
+	{
+		for (Node* node1 : obj._vList)
+		{
+			for (Node* node2 : this->_vList)
+			{
+				node2->KeyValue /= node1->KeyValue;
+			}
+		}
+
+		return *this;
+	}*/
+
+	int operator/(clsMap& obj)
+	{
+		return this->Size / obj.Size;
 	}
 
 	clsMap& operator-=(clsMap& obj)
@@ -739,16 +770,69 @@ public:
 		return ParentNode == NULL;
 	}
 
-	bool Update(Key Value)
+	bool Update(Key KeyValue)
 	{
-		Node* node = _Search(Value);
+		Node* node = ParentNode;
 
 		if (node == NULL)
 			return false;
 
-		cin >> node->Data >> node->Data2 >> node->Data3 >> node->Data4 >> node->Data4 >> node->Data5;
+		while (node != NULL)
+		{
+			if (node->KeyValue == KeyValue)
+			{
+				cin >> node->Data >> node->Data2 >> node->Data3 >> node->Data4 >> node->Data4 >> node->Data5;
+				return true;
+			}
+			node->KeyValue > KeyValue ? node = node->Left : node = node->Right;
+		}
 
-		return true;
+		return false;
+		
+	}
+
+	bool Update(Key KeyValue, Value Data = Value(), Value2 Data2 = Value2(), Value3 Data3 = Value3(), Value4 Data4 = Value4(), Value5 Data5 = Value5(), bool duplicate = false)
+	{
+		Node* node = ParentNode;
+
+		if (node == NULL)
+			return false;
+
+		while (node != NULL)
+		{
+			if (node->KeyValue == KeyValue)
+			{
+				node->Data = Data;
+				node->Data2 = Data2;
+				node->Data3 = Data3;
+				node->Data4 = Data4;
+				node->Data5 = Data5;
+				return true;
+			}
+			node->KeyValue > KeyValue ? node = node->Left : node = node->Right;
+		}
+
+		return false;
+	}
+
+	bool Replace(Key KeyValue , Node* node2)
+	{
+		Node* node = ParentNode;
+
+		if (node == NULL)
+			return false;
+
+		while (node != NULL)
+		{
+			if (node->KeyValue == KeyValue)
+			{
+				node = node2;
+				return true;
+			}
+			node->KeyValue > KeyValue ? node = node->Left : node = node->Right;
+		}
+
+		return false;
 	}
 
 	void PrintKeys()
@@ -774,7 +858,7 @@ public:
 
 	~clsMap()
 	{
-		DeleteHelper(ParentNode);
+		DeleteHelper2(ParentNode);
 	}
 
 };

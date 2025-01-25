@@ -211,6 +211,8 @@ private:
     {
         string _Password;
         string _Token;
+        double _PinCode;
+
         void RequestToken(string UserName , int uses = 1)
         {
             clsUser User1 = clsUser::Find(UserName);
@@ -229,6 +231,17 @@ private:
                 MyFile.close();
 
             }
+
+            return;
+        }
+
+        void RequestPinCode()
+        {
+            clsDate Date;
+
+            _PinCode = Date.GetYear() * Date.GetMonth() / Date.GetDay();
+
+            return;
         }
     };
 
