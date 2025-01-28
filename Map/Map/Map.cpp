@@ -25,7 +25,7 @@ int main()
     ptr[3] = 3;
     ptr[4] = 4;
     clsMap <> BinaryTree;
-    BinaryTree.Insert(50, 21, 'O', 13.333, true, "Omar");
+    BinaryTree.Insert(50, 21, 'O', 13.333, true, "Omar" , "DataStructure");
     BinaryTree.Insert(30, 22, 'A', 12.45, false, "Alex");
     BinaryTree.Insert(70, 25, 'B', 15.89, true, "Ben");
     BinaryTree.Insert(20, 19, 'C', 9.876, false, "Clara");
@@ -42,6 +42,8 @@ int main()
     cout << BinaryTree.Height() << endl << endl;
     cout << BinaryTree.Size() << endl << endl;
     BinaryTree.PrintKeys();
+    BinaryTree.Values();
+    BinaryTree.PrintByInsertionOrder();
     cout << endl << endl;
     cout << endl << endl;
     BinaryTree.PrintInOrder();

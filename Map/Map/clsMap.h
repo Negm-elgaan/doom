@@ -9,7 +9,7 @@
 
 using namespace std;
 
-template <class Key = int, class Value = int, class Value2 = char, class Value3 = double, class Value4 = bool, class Value5 = string, class Value6 = clsDynamicArray <int>, class Value7 = clsDynamicArray <string>, class Value8 = clsDynamicArray <char>, class Value9 = clsDynamicArray <double>, class... Value10 /*, class Value7 = char*, class Value8 = double*, class Value9 = bool*, class Value10 = string * */ > class clsMap
+template <class Key = int, class Value = int, class Value2 = char, class Value3 = double, class Value4 = bool, class Value5 = string, class Value6 = clsDynamicArray <int>, class Value7 = clsDynamicArray <string>, class Value8 = clsDynamicArray <char>, class Value9 = clsDynamicArray <double> , class Value10 = const string* , class Value11 = const int*   , class Value12 = const char* , class Value13 = const double* , class... Value14 /*, class Value7 = char*, class Value8 = double*, class Value9 = bool*, class Value10 = string * */ > class clsMap
 {
 private:
 
@@ -278,7 +278,11 @@ public:
 		Value7 Data7;
 		Value8 Data8;
 		Value9 Data9;
-		//Value10 Data10;
+		Value10 Data10;
+		Value11 Data11;
+		Value12 Data12;
+		Value13 Data13;
+		//Value14 Data14;
 		Node* Right;
 		Node* Left;
 		Node* Prev;
@@ -569,7 +573,7 @@ public:
 
 	}
 
-	void Insert(Key KeyValue , Value Data = Value(), Value2 Data2 = Value2(), Value3 Data3 = Value3(), Value4 Data4 = Value4(), Value5 Data5 = Value5() , bool duplicate = false)
+	void Insert(Key KeyValue , Value Data = Value(), Value2 Data2 = Value2(), Value3 Data3 = Value3(), Value4 Data4 = Value4(), Value5 Data5 = Value5() , Value12 Data12 = Value12() , bool duplicate = false)
 	{
 		bool x = true;
 		if (ParentNode == NULL)
@@ -581,6 +585,7 @@ public:
 			ParentNode->Data3 = Data3;
 			ParentNode->Data4 = Data4;
 			ParentNode->Data5 = Data5;
+			ParentNode->Data12 = Data12;
 			ParentNode->Left = NULL;
 			ParentNode->Right = NULL;
 			ParentNode->Prev = NULL;
@@ -597,6 +602,7 @@ public:
 		NewNode->Data3 = Data3;
 		NewNode->Data4 = Data4;
 		NewNode->Data5 = Data5;
+		NewNode->Data12 = Data12;
 		while (x)
 		{
 			if (NewNode->KeyValue == TempNode->KeyValue  && duplicate == false)
@@ -649,7 +655,13 @@ public:
 	{
 		for (Node* node : _vList)
 		{
-			cout << "Key : " << node->KeyValue << " { " << node->Data << " , " << node->Data2 << " , " << node->Data3 << " , " << node->Data4 << " , " << node->Data5 << " }" << endl;
+			cout << "Key : " << node->KeyValue << " { " << node->Data << " , " << node->Data2 << " , " << node->Data3 << " , " << node->Data4 << " , " << node->Data5 << " , ";
+			if (node->Data12 != NULL)
+			{
+				for (int i = 0; node->Data12[i] != '\0'; i++)
+					cout << node->Data12[i];
+			}
+			cout << " }" << endl;
 		}
 	}
 
@@ -839,6 +851,12 @@ public:
 	{
 		for (Node* &I : _vList)
 			cout << I->KeyValue << " ";
+	}
+
+	void Values()
+	{
+		for (Node*& I : _vList)
+			cout << "{ " << I->Data << " , " << I->Data2 << " , " << I->Data3 << " , " << I->Data4 << " , " << I->Data5  << " }" << endl;
 	}
 
 	void Print()

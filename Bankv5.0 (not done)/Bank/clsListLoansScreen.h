@@ -11,6 +11,7 @@ using namespace std;
 
 class clsListLoansScreen : protected clsScreen
 {
+    clsLoanClient LoanClient;
     static void PrintLoanClientLine(clsLoanClient LoanClient)
     {
 

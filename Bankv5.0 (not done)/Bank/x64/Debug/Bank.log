@@ -52,10 +52,10 @@ C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsInputValidate.h(301,35): warning
 C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsUtil.h(64,5): warning C4102: 'defualt': unreferenced label
   (compiling source file 'Bank.cpp')
   
-C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsUser.h(218,5): warning C4624: 'clsUser::Login': destructor was implicitly defined as deleted
+C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsUser.h(246,5): warning C4624: 'clsUser::Login': destructor was implicitly defined as deleted
   (compiling source file 'Bank.cpp')
   
-C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsUser.h(454,6): warning C4091: 'static ': ignored on left of 'clsUser::stLoginRegisterRecord' when no variable is declared
+C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsUser.h(482,6): warning C4091: 'static ': ignored on left of 'clsUser::stLoginRegisterRecord' when no variable is declared
   (compiling source file 'Bank.cpp')
   
 C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsAddNewClientScreen.h(30,66): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
@@ -73,12 +73,12 @@ C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsTransferScreen.h(50,4): warning 
 C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsLoanClient.h(29,89): warning C4091: 'static ': ignored on left of 'clsLoanClient::clsLoan::enLoanMode' when no variable is declared
   (compiling source file 'Bank.cpp')
   
-C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsLoanClient.h(465,16): warning C4240: nonstandard extension used: access to 'clsLoanClient::stLoanLogRecord' now defined to be 'public', previously it was defined to be 'private'
+C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsLoanClient.h(483,16): warning C4240: nonstandard extension used: access to 'clsLoanClient::stLoanLogRecord' now defined to be 'public', previously it was defined to be 'private'
   (compiling source file 'Bank.cpp')
   C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsLoanClient.h(387,16):
   see declaration of 'clsLoanClient::stLoanLogRecord'
   
-C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsLoanClient.h(912,21): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsLoanClient.h(930,21): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
   (compiling source file 'Bank.cpp')
   
 C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsFindLoanClientScreen.h(17,60): error C2039: 'Loan': is not a member of 'clsLoanClient'

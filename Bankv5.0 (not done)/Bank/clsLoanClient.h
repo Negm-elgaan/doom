@@ -431,6 +431,24 @@ class clsLoanClient
        
     public:
 
+        clsLoanClient()
+        {
+            int input = 0;
+            cin >> input >> _AccountNumber >> _FullName >> _Phone;
+            switch (input)
+            {
+                case 0:
+                    _Mode = enMode::EmptyMode;
+                    break;
+                case 1:
+                    _Mode = enMode::AddNewMode;
+                    break;
+                case 2:
+                    _Mode = enMode::UpdateMode;
+                    break;
+            }
+        }
+
         clsLoanClient(enMode mode , string AccountNumber , string Name , string Phone , clsLoan LoanObject = clsLoan())
         {
             _Mode = mode;
@@ -969,6 +987,23 @@ bool RepayPartOfLoan(string ID, double amount)
 
             return false;
         }
+
+        bool RepayFullLoan()
+        {
+            int index = 0;
+
+            cin >> index;
+
+            if (_LoanList.DeleteItemAt(index))
+            {
+                _CreditScore += 60;
+                return true;
+            }
+
+            return false;
+        }
+
+        
 
         void RepayAllLoans()
         {
