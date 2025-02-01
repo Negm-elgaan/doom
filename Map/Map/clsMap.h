@@ -9,7 +9,7 @@
 
 using namespace std;
 
-template <class Key = int, class Value = int, class Value2 = char, class Value3 = double, class Value4 = bool, class Value5 = string, class Value6 = clsDynamicArray <int>, class Value7 = clsDynamicArray <string>, class Value8 = clsDynamicArray <char>, class Value9 = clsDynamicArray <double> , class Value10 = const string* , class Value11 = const int*   , class Value12 = const char* , class Value13 = const double* , class... Value14 /*, class Value7 = char*, class Value8 = double*, class Value9 = bool*, class Value10 = string * */ > class clsMap
+template <class Key = int, class Value = int, class Value2 = char, class Value3 = double, class Value4 = bool, class Value5 = string, class Value6 = clsDynamicArray <int>, class Value7 = clsDynamicArray <string>, class Value8 = clsDynamicArray <char>, class Value9 = clsDynamicArray <double> , class Value10 = const string* , class Value11 = const int*   , class Value12 = const char* , class Value13 = const double* , class Value14 = string* , class Value15 = int* , class Value16 = char* , class Value17 = double* , class... Value18 /*, class Value7 = char*, class Value8 = double*, class Value9 = bool*, class Value10 = string * */ > class clsMap
 {
 private:
 
@@ -857,6 +857,38 @@ public:
 	{
 		for (Node*& I : _vList)
 			cout << "{ " << I->Data << " , " << I->Data2 << " , " << I->Data3 << " , " << I->Data4 << " , " << I->Data5  << " }" << endl;
+	}
+
+	bool Swap(Key Key1, Key Key2)
+	{
+		Node* Node1 = _Search(Key1);
+
+		if (Node1 == NULL)
+			return false;
+
+		Node* Node2 = _Search(Key2);
+
+		if (Node2 == NULL)
+			return false;
+
+		Node* Temp = new Node();
+		Temp->Data = Node1->Data;
+		Temp->Data2 = Node1->Data2;
+		Temp->Data3 = Node1->Data3;
+		Temp->Data4 = Node1->Data4;
+		Temp->Data5 = Node1->Data5;
+		Node1->Data = Node2->Data;
+		Node1->Data2 = Node2->Data2;
+		Node1->Data3 = Node2->Data3;
+		Node1->Data4 = Node2->Data4;
+		Node1->Data5 = Node2->Data5;
+		Node2->Data = Temp->Data;
+		Node2->Data2 = Temp->Data2;
+		Node2->Data3 = Temp->Data3;
+		Node2->Data4 = Temp->Data4;
+		Node2->Data5 = Temp->Data5;
+
+		return true;
 	}
 
 	void Print()
