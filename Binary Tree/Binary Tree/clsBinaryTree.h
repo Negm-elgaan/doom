@@ -9,15 +9,7 @@ using namespace std;
 template <class T> class clsBinaryTree
 {
 	private:
-		static class Node
-		{
-			public:
-				void* DataPtr;
-				T Data;
-				Node* Right;
-				Node* Left;
-				Node* Prev;
-		};
+		class Node;
 
 		int _Max = 0;
 		int _Min = 0;
@@ -263,6 +255,16 @@ template <class T> class clsBinaryTree
 
 	public:
 		
+		static class Node
+		{
+		public:
+			void* DataPtr;
+			T Data;
+			Node* Right;
+			Node* Left;
+			Node* Prev;
+		};
+
 		clsBinaryTree::Node* ParentNode = NULL;
 		clsBinaryTree::Node* Temp1 = ParentNode;
 
@@ -339,6 +341,7 @@ template <class T> class clsBinaryTree
 
 			NewNode->Data > TempNode->Data ? TempNode->Right = NewNode : TempNode->Left = NewNode;
 			TempNode->Right == NULL ? TempNode->Left->Prev = TempNode : TempNode->Right->Prev = TempNode;
+			
 			_Size++;
 			//ReBalance();
 			//cout << NewNode->Data << " ";
@@ -456,6 +459,51 @@ template <class T> class clsBinaryTree
 			ParentNode = NULL;
 			_Size = 0;
 			_Height = 0;
+		}
+
+		T Previous(T Data)
+		{
+			Node* node = _Search(Data);
+
+			if (node == NULL)
+				return NULL;
+
+			node = node->Prev;
+
+			if (node == NULL)
+				return NULL;
+
+			return node->Data;
+		}
+
+		T Left(T Data)
+		{
+			Node* node = _Search(Data);
+
+			if (node == NULL)
+				return NULL;
+
+			node = node->Left;
+
+			if (node == NULL)
+				return NULL;
+
+			return node->Data;
+		}
+
+		T Right(T Data)
+		{
+			Node* node = _Search(Data);
+
+			if (node == NULL)
+				return NULL;
+
+			node = node->Right;
+
+			if (node == NULL)
+				return NULL;
+
+			return node->Data;
 		}
 
 		int Min()

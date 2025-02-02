@@ -22,6 +22,8 @@ int main()
     BST.Insert(1);
     BST.Insert(15);
     BST.Insert(20);
+    int x = BST.Previous(2);
+    cout << x;
     cout << endl << endl;
     //BST.Print();
     //cout << endl << endl << "after balance\n\n";

@@ -9,12 +9,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{66FE4446-BCA4-4953-AC81-7FF6F67B5FAB}|Binary Tree\\Binary Tree.vcxproj|C:\\Users\\omarh\\doom\\Binary Tree\\Binary Tree\\Binary Tree.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{66FE4446-BCA4-4953-AC81-7FF6F67B5FAB}|Binary Tree\\Binary Tree.vcxproj|solutionrelative:Binary Tree\\Binary Tree.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.39.33519\\crt\\src\\vcruntime\\delete_scalar.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.39.33519\\include\\ostream||{3B902123-F8A7-4915-9F01-361F908088D0}|"
     }
   ],
   "DocumentGroupContainers": [
@@ -24,39 +18,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "delete_scalar.cpp",
-              "DocumentMoniker": "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.39.33519\\crt\\src\\vcruntime\\delete_scalar.cpp",
-              "RelativeDocumentMoniker": "..\\..\\..\\..\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.39.33519\\crt\\src\\vcruntime\\delete_scalar.cpp",
-              "ToolTip": "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.39.33519\\crt\\src\\vcruntime\\delete_scalar.cpp",
-              "RelativeToolTip": "..\\..\\..\\..\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.39.33519\\crt\\src\\vcruntime\\delete_scalar.cpp",
-              "ViewState": "AQIAABcAAAAAAAAAAAAawCUAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-01-22T12:58:42.449Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "ostream",
-              "DocumentMoniker": "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.39.33519\\include\\ostream",
-              "RelativeDocumentMoniker": "..\\..\\..\\..\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.39.33519\\include\\ostream",
-              "ToolTip": "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.39.33519\\include\\ostream",
-              "RelativeToolTip": "..\\..\\..\\..\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.39.33519\\include\\ostream",
-              "ViewState": "AQIAAOUDAAAAAAAAAAAawPMDAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2025-01-02T03:08:47.168Z"
             },
             {
               "$type": "Document",
@@ -66,7 +32,7 @@
               "RelativeDocumentMoniker": "Binary Tree\\clsBinaryTree.h",
               "ToolTip": "C:\\Users\\omarh\\doom\\Binary Tree\\Binary Tree\\clsBinaryTree.h",
               "RelativeToolTip": "Binary Tree\\clsBinaryTree.h",
-              "ViewState": "AQIAAKsBAAAAAAAAAAAAAMIAAAAAAAAA",
+              "ViewState": "AQIAANgBAAAAAAAAAAAqwPQBAAAVAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2024-11-30T11:12:46.414Z",
               "EditorCaption": ""
@@ -79,9 +45,10 @@
               "RelativeDocumentMoniker": "Binary Tree\\Binary Tree.cpp",
               "ToolTip": "C:\\Users\\omarh\\doom\\Binary Tree\\Binary Tree\\Binary Tree.cpp",
               "RelativeToolTip": "Binary Tree\\Binary Tree.cpp",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABsAAAAEAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABgAAAAaAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-11-30T11:12:31.886Z"
+              "WhenOpened": "2024-11-30T11:12:31.886Z",
+              "EditorCaption": ""
             }
           ]
         }
