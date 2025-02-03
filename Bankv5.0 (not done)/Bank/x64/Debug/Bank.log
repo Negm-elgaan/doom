@@ -52,11 +52,55 @@ C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsInputValidate.h(301,35): warning
 C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsUtil.h(64,5): warning C4102: 'defualt': unreferenced label
   (compiling source file 'Bank.cpp')
   
-C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsUser.h(246,5): warning C4624: 'clsUser::Login': destructor was implicitly defined as deleted
+C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsUser.h(483,6): warning C4091: 'static ': ignored on left of 'clsUser::stLoginRegisterRecord' when no variable is declared
   (compiling source file 'Bank.cpp')
   
-C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsUser.h(482,6): warning C4091: 'static ': ignored on left of 'clsUser::stLoginRegisterRecord' when no variable is declared
+C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsUser.h(220,26): error C2440: 'initializing': cannot convert from 'int' to 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>'
   (compiling source file 'Bank.cpp')
+  C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsUser.h(220,26):
+  'std::basic_string<char,std::char_traits<char>,std::allocator<char>>::basic_string': no overloaded function could convert all the argument types
+  	C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.39.33519\include\xstring(2556,5):
+  	could be 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>::basic_string(const _Elem *const )'
+          with
+          [
+              _Elem=char
+          ]
+  		C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsUser.h(220,26):
+  		'std::basic_string<char,std::char_traits<char>,std::allocator<char>>::basic_string(const _Elem *const )': cannot convert argument 1 from 'int' to 'const _Elem *const '
+          with
+          [
+              _Elem=char
+          ]
+  			C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsUser.h(220,128):
+  			Conversion from integral type to pointer type requires reinterpret_cast, C-style cast or parenthesized function-style cast
+  	C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.39.33519\include\xstring(3134,5):
+  	or       'std::basic_string<char,std::char_traits<char>,std::allocator<char>>::basic_string(std::initializer_list<_Elem>,const _Alloc &)'
+          with
+          [
+              _Elem=char,
+              _Alloc=std::allocator<char>
+          ]
+  		C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsUser.h(220,26):
+  		'std::basic_string<char,std::char_traits<char>,std::allocator<char>>::basic_string(std::initializer_list<_Elem>,const _Alloc &)': cannot convert argument 1 from 'int' to 'std::initializer_list<_Elem>'
+          with
+          [
+              _Elem=char,
+              _Alloc=std::allocator<char>
+          ]
+          and
+          [
+              _Elem=char
+          ]
+  			C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsUser.h(220,128):
+  			Conversion requires a second user-defined-conversion operator or constructor
+  	C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.39.33519\include\xstring(2586,5):
+  	or       'std::basic_string<char,std::char_traits<char>,std::allocator<char>>::basic_string(_Iter,_Iter,const _Alloc &)'
+          with
+          [
+              _Alloc=std::allocator<char>
+          ]
+  	C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsUser.h(220,26):
+  	while trying to match the argument list '(int)'
   
 C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsAddNewClientScreen.h(30,66): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
   (compiling source file 'Bank.cpp')
@@ -155,6 +199,13 @@ C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsAddNewLoanClientScreen.h(66,51):
   (compiling source file 'Bank.cpp')
   C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsLoanClient.h(9,7):
   see declaration of 'clsLoanClient'
+  
+C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsRequestTokenScreen.h(54,16): error C2660: 'clsUser::RequestToken': function does not take 0 arguments
+  (compiling source file 'Bank.cpp')
+  C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsUser.h(586,10):
+  see declaration of 'clsUser::RequestToken'
+  C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsRequestTokenScreen.h(54,16):
+  while trying to match the argument list '()'
   
 C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsCurrency.h(27,17): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
   (compiling source file 'Bank.cpp')

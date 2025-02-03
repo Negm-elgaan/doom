@@ -76,7 +76,7 @@ template <class T> class clsBinaryTree
 			}
 
 			node->Data = _SortedList[_SortedList.size() / 2];
-			Insert(node->Data);
+			Insert(node->Data,true);
 
 			cout << endl;
 			int s = small.size();
@@ -84,7 +84,7 @@ template <class T> class clsBinaryTree
 			for (int i = 0; i < s; i++)
 			{
 				node->Data = small[small.size() / 2];
-				Insert(node->Data);
+				Insert(node->Data,true);
 				small[small.size() - 1] = small[small.size() - 1] ^ small[small.size() / 2];
 				small[small.size() / 2] = small[small.size() - 1] ^ small[small.size() / 2];
 				small[small.size() - 1] = small[small.size() - 1] ^ small[small.size() / 2];
@@ -94,7 +94,7 @@ template <class T> class clsBinaryTree
 			for (int i = 0; i < l; i++)
 			{
 				node->Data = large[large.size() / 2];
-				Insert(node->Data);
+				Insert(node->Data,true);
 				large[large.size() - 1] = large[large.size() - 1] ^ large[large.size() / 2];
 				large[large.size() / 2] = large[large.size() - 1] ^ large[large.size() / 2];
 				large[large.size() - 1] = large[large.size() - 1] ^ large[large.size() / 2];
@@ -163,6 +163,13 @@ template <class T> class clsBinaryTree
 			T2.join();*/
 
 			
+		}
+
+		void PrintHelperInsertionOrder()
+		{
+			for (int& i : _vlist)
+				cout << i << " ";
+			cout << endl;
 		}
 
 		void _GetIn(Node* node)
@@ -252,6 +259,14 @@ template <class T> class clsBinaryTree
 			
 			_GetHeight(node->Right);
 		}
+		
+		void _GETIN()
+		{
+			/*for (int i = 0; i < _vlist.size(); i++)
+				cout << _vlist[i] << " ";*/
+			cout << endl;
+			_SortedList = _vlist;
+		}
 
 	public:
 		
@@ -299,7 +314,7 @@ template <class T> class clsBinaryTree
 
 
 
-		void Insert(T Data)
+		void Insert(T Data , bool Re = false)
 		{
 			bool x = true;
 
@@ -317,6 +332,8 @@ template <class T> class clsBinaryTree
 				_Min = Data;
 				//cout << endl << ParentNode->Data << " ";
 				_vlist.push_back(Data);
+				if (!Re)
+					_SortedList.push_back(Data);
 				return;
 			}
 
@@ -346,6 +363,8 @@ template <class T> class clsBinaryTree
 			//ReBalance();
 			//cout << NewNode->Data << " ";
 			_vlist.push_back(Data);
+			if (!Re)
+				_SortedList.push_back(Data);
 			if (_Size > 3)
 			{
 				_GetHeight(ParentNode);
@@ -365,6 +384,7 @@ template <class T> class clsBinaryTree
 			cout << endl;
 			PrintHelperPost(ParentNode);
 			cout << endl;
+			PrintHelperInsertionOrder();
 			//PrintHelperPre(ParentNode);
 		}
 
@@ -447,7 +467,8 @@ template <class T> class clsBinaryTree
 
 		void ReBalance()
 		{	
-			_GetIn(ParentNode);
+			/*_GetIn(ParentNode);
+			_GETIN();*/
 			sort(_SortedList.begin(), _SortedList.end());
 			Clear();
 			_ReBalance();
@@ -459,6 +480,8 @@ template <class T> class clsBinaryTree
 			ParentNode = NULL;
 			_Size = 0;
 			_Height = 0;
+			_vlist.clear();
+			//_SortedList.clear();
 		}
 
 		T Previous(T Data)
@@ -504,6 +527,27 @@ template <class T> class clsBinaryTree
 				return NULL;
 
 			return node->Data;
+		}
+
+		T Successor(T Data)
+		{
+			if (Data == _Max)
+				return NULL;
+
+			/*Node* node = _Search(Data);
+
+			if (node->Right == NULL)
+			{
+
+			}*/
+			for (int i = 0; i < _SortedList.size(); i++)
+				cout << _SortedList[i] << " ";
+
+			cout << endl;
+
+			for (int i = 0; i < _SortedList.size(); i++)
+				if (_SortedList[i] == Data)
+					return _SortedList[i + 1];
 		}
 
 		int Min()

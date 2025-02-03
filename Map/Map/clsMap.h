@@ -55,6 +55,7 @@ private:
 		vector <Node*> large;
 		Node* node = new Node();
 		Node* TEMPO = new Node();
+
 		for (int i = 0; i < _SortedList.size() / 2; i++)
 		{
 			small.push_back(_SortedList[i]);
@@ -230,6 +231,20 @@ private:
 		}
 
 		return NULL;
+	}
+
+	void ClearHelper1(Node* node , int size = 0)
+	{
+		if (node == NULL)
+			return;
+
+		if (size == 0)
+			return;
+
+		ClearHelper1(node->Left, size - 1);
+		ClearHelper1(node->Right, size - 1);
+
+		node = NULL;
 	}
 
 	void DeleteHelper1(Node* node)
@@ -477,6 +492,8 @@ public:
 			_MaxKeyValue = node->KeyValue;
 			_MinKeyValue = node->KeyValue;
 			_vList.push_back(ParentNode);
+			_Size++;
+			return;
 		}
 
 		Node* TempNode = ParentNode;
@@ -573,7 +590,7 @@ public:
 
 	}
 
-	void Insert(Key KeyValue , Value Data = Value(), Value2 Data2 = Value2(), Value3 Data3 = Value3(), Value4 Data4 = Value4(), Value5 Data5 = Value5() , Value12 Data12 = Value12() , bool duplicate = false)
+	void Insert(Key KeyValue , Value Data = Value(), Value2 Data2 = Value2(), Value3 Data3 = Value3(), Value4 Data4 = Value4(), Value5 Data5 = Value5() , Value12 Data12 = Value12() , bool duplicate = false , bool Re = false)
 	{
 		bool x = true;
 		if (ParentNode == NULL)
@@ -591,6 +608,7 @@ public:
 			ParentNode->Prev = NULL;
 			Temp1 = ParentNode;
 			_vList.push_back(ParentNode);
+			_SortedList.push_back(ParentNode);
 			return;
 		}
 		
@@ -617,7 +635,7 @@ public:
 		TempNode->Right == NULL ? TempNode->Left->Prev = TempNode : TempNode->Right->Prev = TempNode;
 		_Size++;
 		_vList.push_back(NewNode);
-
+		_SortedList.push_back(NewNode);
 		/*if (_RightHeight - _LeftHeight != 0)
 		{
 			_GetIn(ParentNode);
@@ -672,16 +690,29 @@ public:
 
 	void Clear()
 	{
-		DeleteHelper(ParentNode);
-		_vList.~vector();
-		_vList = vector<Node*>();
-		ParentNode = NULL;
+		/*cout << "clear:\n\n";
+		for (Node* node : _SortedList)
+		{
+			cout << "Key : " << node->KeyValue << " { " << node->Data << " , " << node->Data2 << " , " << node->Data3 << " , " << node->Data4 << " , " << node->Data5 << " , ";
+			if (node->Data12 != NULL)
+			{
+				for (int i = 0; node->Data12[i] != '\0'; i++)
+					cout << node->Data12[i];
+			}
+			cout << " }" << endl;
+		}*/
+		ClearHelper1(ParentNode,_Size);
+		/*_vList.~vector();
+		_vList = vector<Node*>();*/
+		_vList.clear();
+		//ParentNode = NULL;
 		_Size = 0;
+		_Height = 0;
 	}
 
 	void ReBalance()
 	{
-		_GetIn(ParentNode);
+		//_GetIn(ParentNode);
 		sort(_SortedList.begin(), _SortedList.end());
 		Clear();
 		_ReBalance();

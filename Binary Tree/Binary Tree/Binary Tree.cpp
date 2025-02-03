@@ -22,6 +22,8 @@ int main()
     BST.Insert(1);
     BST.Insert(15);
     BST.Insert(20);
+    BST << BST;
+    cout << BST.Successor(15) << endl << endl;
     int x = BST.Previous(2);
     cout << x;
     cout << endl << endl;

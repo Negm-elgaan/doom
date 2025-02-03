@@ -44,12 +44,14 @@ int main()
     BinaryTree.PrintKeys();
     BinaryTree.Values();
     BinaryTree.Swap(50, 30);
-    BinaryTree.PrintByInsertionOrder();
+    //BinaryTree.PrintByInsertionOrder();
     cout << endl << endl;
     cout << endl << endl;
-    BinaryTree.PrintInOrder();
+    //BinaryTree.PrintInOrder();
     cout << endl << endl;
-    //BinaryTree.ReBalance();
+    BinaryTree.ReBalance();
+    cout << endl << endl;
+    BinaryTree << BinaryTree;
    // cout << endl << endl;
 
    // BinaryTree.Clear();

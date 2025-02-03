@@ -1,16 +1,35 @@
 ﻿  Map.cpp
-C:\Users\omarh\doom\Map\Map\clsMap.h(296,3): warning C4091: 'static ': ignored on left of 'clsMap<Key,Value,Value2,Value3,Value4,Value5,Value6,Value7,Value8,Value9,Value10,Value11,Value12,Value13,Value14,Value15,Value16,Value17,Value18...>::Node' when no variable is declared
+C:\Users\omarh\doom\Map\Map\clsMap.h(311,3): warning C4091: 'static ': ignored on left of 'clsMap<Key,Value,Value2,Value3,Value4,Value5,Value6,Value7,Value8,Value9,Value10,Value11,Value12,Value13,Value14,Value15,Value16,Value17,Value18...>::Node' when no variable is declared
   (compiling source file 'Map.cpp')
-  C:\Users\omarh\doom\Map\Map\clsMap.h(296,3):
+  C:\Users\omarh\doom\Map\Map\clsMap.h(311,3):
   the template instantiation context (the oldest one first) is
   	C:\Users\omarh\doom\Map\Map\clsMap.h(12,644):
   	while compiling class template 'clsMap'
   
-C:\Users\omarh\doom\Map\Map\clsMap.h(296,3): warning C4091: 'static ': ignored on left of 'clsMap<int,int,char,double,bool,std::string,clsDynamicArray<int>,clsDynamicArray<std::string>,clsDynamicArray<char>,clsDynamicArray<double>,const std::string *,const int *,const char *,const double *,std::string *,int *,char *,double *>::Node' when no variable is declared
+C:\Users\omarh\doom\Map\Map\clsMap.h(311,3): warning C4091: 'static ': ignored on left of 'clsMap<int,int,char,double,bool,std::string,clsDynamicArray<int>,clsDynamicArray<std::string>,clsDynamicArray<char>,clsDynamicArray<double>,const std::string *,const int *,const char *,const double *,std::string *,int *,char *,double *>::Node' when no variable is declared
   (compiling source file 'Map.cpp')
-  C:\Users\omarh\doom\Map\Map\clsMap.h(296,3):
+  C:\Users\omarh\doom\Map\Map\clsMap.h(311,3):
   the template instantiation context (the oldest one first) is
   	C:\Users\omarh\doom\Map\Map\Map.cpp(27,15):
   	see reference to class template instantiation 'clsMap<int,int,char,double,bool,std::string,clsDynamicArray<int>,clsDynamicArray<std::string>,clsDynamicArray<char>,clsDynamicArray<double>,const std::string *,const int *,const char *,const double *,std::string *,int *,char *,double *>' being compiled
+  
+C:\Users\omarh\doom\Map\Map\clsMap.h(64,14): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+  (compiling source file 'Map.cpp')
+  C:\Users\omarh\doom\Map\Map\clsMap.h(64,14):
+  the template instantiation context (the oldest one first) is
+  	C:\Users\omarh\doom\Map\Map\Map.cpp(27,15):
+  	see reference to class template instantiation 'clsMap<int,int,char,double,bool,std::string,clsDynamicArray<int>,clsDynamicArray<std::string>,clsDynamicArray<char>,clsDynamicArray<double>,const std::string *,const int *,const char *,const double *,std::string *,int *,char *,double *>' being compiled
+  	C:\Users\omarh\doom\Map\Map\clsMap.h(52,19):
+  	while compiling class template member function 'void clsMap<int,int,char,double,bool,std::string,clsDynamicArray<int>,clsDynamicArray<std::string>,clsDynamicArray<char>,clsDynamicArray<double>,const std::string *,const int *,const char *,const double *,std::string *,int *,char *,double *>::_ReBalance(void)'
+  		C:\Users\omarh\doom\Map\Map\clsMap.h(718,13):
+  		see the first reference to 'clsMap<int,int,char,double,bool,std::string,clsDynamicArray<int>,clsDynamicArray<std::string>,clsDynamicArray<char>,clsDynamicArray<double>,const std::string *,const int *,const char *,const double *,std::string *,int *,char *,double *>::_ReBalance' in 'clsMap<int,int,char,double,bool,std::string,clsDynamicArray<int>,clsDynamicArray<std::string>,clsDynamicArray<char>,clsDynamicArray<double>,const std::string *,const int *,const char *,const double *,std::string *,int *,char *,double *>::ReBalance'
+  		C:\Users\omarh\doom\Map\Map\Map.cpp(52,25):
+  		see the first reference to 'clsMap<int,int,char,double,bool,std::string,clsDynamicArray<int>,clsDynamicArray<std::string>,clsDynamicArray<char>,clsDynamicArray<double>,const std::string *,const int *,const char *,const double *,std::string *,int *,char *,double *>::ReBalance' in 'main'
+  
+C:\Users\omarh\doom\Map\Map\clsMap.h(73,9): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+  (compiling source file 'Map.cpp')
+  
+C:\Users\omarh\doom\Map\Map\clsMap.h(74,9): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+  (compiling source file 'Map.cpp')
   
   Map.vcxproj -> C:\Users\omarh\doom\Map\x64\Debug\Map.exe
