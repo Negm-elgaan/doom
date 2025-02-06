@@ -172,6 +172,14 @@ template <class T> class clsBinaryTree
 			cout << endl;
 		}
 
+		void PrintHelperLeveOrderTraversal(Node* node)
+		{
+			if (node == NULL)
+				return;
+
+			PrintHelperLeveOrderTraversal(node->Right)
+		}
+
 		void _GetIn(Node* node)
 		{
 			if (node == NULL)
@@ -278,6 +286,7 @@ template <class T> class clsBinaryTree
 			Node* Right;
 			Node* Left;
 			Node* Prev;
+			int Level;
 		};
 
 		clsBinaryTree::Node* ParentNode = NULL;
@@ -318,7 +327,7 @@ template <class T> class clsBinaryTree
 		{
 			bool x = true;
 
-			
+			int counter = 1;
 
 			if (ParentNode == NULL)
 			{
@@ -327,6 +336,7 @@ template <class T> class clsBinaryTree
 				ParentNode->Left = NULL;
 				ParentNode->Right = NULL;
 				ParentNode->Prev = NULL;
+				ParentNode->Level = 0;
 				Temp1 = ParentNode;
 				_Max = Data;
 				_Min = Data;
@@ -354,11 +364,13 @@ template <class T> class clsBinaryTree
 					return;
 				}
 				NewNode->Data > TempNode->Data ? TempNode->Right == NULL ? x = false : TempNode = TempNode->Right : TempNode->Left == NULL ? x = false : TempNode = TempNode->Left;
+				counter++;
 			}
 
+			NewNode->Level = counter;
 			NewNode->Data > TempNode->Data ? TempNode->Right = NewNode : TempNode->Left = NewNode;
 			TempNode->Right == NULL ? TempNode->Left->Prev = TempNode : TempNode->Right->Prev = TempNode;
-			
+	
 			_Size++;
 			//ReBalance();
 			//cout << NewNode->Data << " ";
@@ -550,6 +562,16 @@ template <class T> class clsBinaryTree
 					return _SortedList[i + 1];
 		}
 
+		T Predecessor(T Data)
+		{
+			if (Data == _Min)
+				return NULL;
+
+			for (int i = 0; i < _SortedList.size(); i++)
+				if (_SortedList[i] == Data)
+					return _SortedList[i - 1];
+		}
+
 		int Min()
 		{
 			return _Min;
@@ -558,6 +580,22 @@ template <class T> class clsBinaryTree
 		int Max()
 		{
 			return _Max;
+		}
+
+		int Levels()
+		{
+			Levels = Height - 1;
+			return Levels;
+		}
+
+		int Level(T Data)
+		{
+			Node* node = _Search(Data);
+			
+			if (node == NULL)
+				return -1;
+
+			return node->Level;
 		}
 
 		~clsBinaryTree()

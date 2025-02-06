@@ -134,6 +134,7 @@
     <ClInclude Include="clsAddNewUserScreen.h" />
     <ClInclude Include="clsBankClient.h" />
     <ClInclude Include="clsClientListScreen.h" />
+    <ClInclude Include="clsCreditCard.h" />
     <ClInclude Include="clsCurrency.h" />
     <ClInclude Include="clsCurrencyCalculatorScreen.h" />
     <ClInclude Include="clsCurrencyExchangeScreen.h" />

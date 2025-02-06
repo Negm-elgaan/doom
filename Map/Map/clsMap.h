@@ -301,6 +301,7 @@ public:
 		Node* Right;
 		Node* Left;
 		Node* Prev;
+		int Levels = 0;
 
 		template <class T> class Noder
 		{
@@ -890,7 +891,7 @@ public:
 			cout << "{ " << I->Data << " , " << I->Data2 << " , " << I->Data3 << " , " << I->Data4 << " , " << I->Data5  << " }" << endl;
 	}
 
-	bool Swap(Key Key1, Key Key2)
+	bool SwapValues(Key Key1, Key Key2)
 	{
 		Node* Node1 = _Search(Key1);
 
@@ -920,6 +921,67 @@ public:
 		Node2->Data5 = Temp->Data5;
 
 		return true;
+	}
+
+	int Levels()
+	{
+		return _Height - 1;
+	}
+
+	int KeysBetween(int From, int To , bool FromInclusive = false , bool ToInclusive = false)
+	{
+		int Counter = 0;
+
+		int Arr[_Size];
+
+		if (FromInclusive && ToInclusive)
+		{
+			for (Node*& I : _vList)
+				if (I->KeyValue >= FromInclusive && I->KeyValue <= ToInclusive)
+				{
+					Arr[Counter] = I->KeyValue;
+					Counter++;
+				}
+		}
+
+		else if (FromInclusive)
+		{
+			for (Node*& I : _vList)
+				if (I->KeyValue >= FromInclusive && I->KeyValue < ToInclusive)
+				{
+					Arr[Counter] = I->KeyValue;
+					Counter++;
+				}
+		}
+
+		else if (ToInclusive)
+		{
+			for (Node*& I : _vList)
+				if (I->KeyValue > FromInclusive && I->KeyValue <= ToInclusive)
+				{
+					Arr[Counter] = I->KeyValue;
+					Counter++;
+				}
+		}
+
+		else
+		{
+			for (Node*& I : _vList)
+				if (I->KeyValue > FromInclusive && I->KeyValue < ToInclusive)
+				{
+					Arr[Counter] = I->KeyValue;
+					Counter++;
+				}
+		}
+
+		return Arr;
+	}
+
+	int* KeysBetween2(int From, int To, bool FromInclusive = false, bool ToInclusive = false)
+	{
+		int Counter = 0, counter = 0;
+
+		int* ptr = new int[Counter];
 	}
 
 	void Print()
