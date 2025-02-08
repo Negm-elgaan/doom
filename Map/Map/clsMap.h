@@ -23,6 +23,7 @@ private:
 	int _Temp = 0;
 	int _MaxKeyValue = 0;
 	int _MinKeyValue = 0;
+	int _SumKeys = 0;
 
 	vector <Node*> _SortedList;
 	vector <Node*> _vList;
@@ -335,6 +336,28 @@ public:
 		obj.ParentNode = nullptr;
 	}
 
+	clsMap& operator++()
+	{
+		return *this;
+	}
+    
+	/*clsMap& operator->()
+	{
+		return *this;
+	}*/
+
+	clsMap& operator<<=(int Number)
+	{
+		for (int i = 0; i < Number; i++)
+		{
+			for (Node* node : this->_vList)
+			{
+				node->KeyValue <<= node->KeyValue;
+			}
+		}
+		return *this;
+	}
+
 	clsMap& operator^=(int Number)
 	{
 		for (Node* node : this->_vList)
@@ -448,6 +471,11 @@ public:
 		return *this;
 	}
 
+	int SumKeys()
+	{
+		return _SumKeys;
+	}
+
 	bool operator<(clsMap& obj)
 	{
 		return this->Size < obj.Size;
@@ -494,6 +522,7 @@ public:
 			_MinKeyValue = node->KeyValue;
 			_vList.push_back(ParentNode);
 			_Size++;
+			_SumKeys += node->KeyValue;
 			return;
 		}
 
@@ -522,6 +551,8 @@ public:
 			_MaxKeyValue = node->KeyValue;
 
 		_vList.push_back(node);
+
+		_SumKeys += node->KeyValue;
 
 		/*_GetHeight(ParentNode);
 
@@ -554,6 +585,7 @@ public:
 			ParentNode->Prev = NULL;
 			Temp1 = ParentNode;
 			_vList.push_back(ParentNode);
+			_SumKeys += ParentNode->KeyValue;
 			return;
 		}
 
@@ -586,7 +618,7 @@ public:
 		TempNode->Right == NULL ? TempNode->Left->Prev = TempNode : TempNode->Right->Prev = TempNode;
 		_Size++;
 		_vList.push_back(NewNode);
-
+		_SumKeys += NewNode->KeyValue;
 		return;
 
 	}
@@ -610,6 +642,7 @@ public:
 			Temp1 = ParentNode;
 			_vList.push_back(ParentNode);
 			_SortedList.push_back(ParentNode);
+			_SumKeys += ParentNode->KeyValue;
 			return;
 		}
 		
@@ -637,6 +670,7 @@ public:
 		_Size++;
 		_vList.push_back(NewNode);
 		_SortedList.push_back(NewNode);
+		_SumKeys += NewNode->KeyValue;
 		/*if (_RightHeight - _LeftHeight != 0)
 		{
 			_GetIn(ParentNode);

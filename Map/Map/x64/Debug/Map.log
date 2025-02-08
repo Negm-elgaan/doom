@@ -1,16 +1,22 @@
 ﻿  Map.cpp
-C:\Users\omarh\doom\Map\Map\clsMap.h(312,3): warning C4091: 'static ': ignored on left of 'clsMap<Key,Value,Value2,Value3,Value4,Value5,Value6,Value7,Value8,Value9,Value10,Value11,Value12,Value13,Value14,Value15,Value16,Value17,Value18...>::Node' when no variable is declared
+C:\Users\omarh\doom\Map\Map\clsMap.h(313,3): warning C4091: 'static ': ignored on left of 'clsMap<Key,Value,Value2,Value3,Value4,Value5,Value6,Value7,Value8,Value9,Value10,Value11,Value12,Value13,Value14,Value15,Value16,Value17,Value18...>::Node' when no variable is declared
   (compiling source file 'Map.cpp')
-  C:\Users\omarh\doom\Map\Map\clsMap.h(312,3):
+  C:\Users\omarh\doom\Map\Map\clsMap.h(313,3):
   the template instantiation context (the oldest one first) is
   	C:\Users\omarh\doom\Map\Map\clsMap.h(12,644):
   	while compiling class template 'clsMap'
   
-C:\Users\omarh\doom\Map\Map\clsMap.h(312,3): warning C4091: 'static ': ignored on left of 'clsMap<int,int,char,double,bool,std::string,clsDynamicArray<int>,clsDynamicArray<std::string>,clsDynamicArray<char>,clsDynamicArray<double>,const std::string *,const int *,const char *,const double *,std::string *,int *,char *,double *>::Node' when no variable is declared
+C:\Users\omarh\doom\Map\Map\clsMap.h(344,10): warning C4285: return type for 'clsMap<Key,Value,Value2,Value3,Value4,Value5,Value6,Value7,Value8,Value9,Value10,Value11,Value12,Value13,Value14,Value15,Value16,Value17,Value18...>::operator ->' is recursive if applied using infix notation
   (compiling source file 'Map.cpp')
-  C:\Users\omarh\doom\Map\Map\clsMap.h(312,3):
+  
+C:\Users\omarh\doom\Map\Map\clsMap.h(313,3): warning C4091: 'static ': ignored on left of 'clsMap<int,int,char,double,bool,std::string,clsDynamicArray<int>,clsDynamicArray<std::string>,clsDynamicArray<char>,clsDynamicArray<double>,const std::string *,const int *,const char *,const double *,std::string *,int *,char *,double *>::Node' when no variable is declared
+  (compiling source file 'Map.cpp')
+  C:\Users\omarh\doom\Map\Map\clsMap.h(313,3):
   the template instantiation context (the oldest one first) is
   	C:\Users\omarh\doom\Map\Map\Map.cpp(27,15):
   	see reference to class template instantiation 'clsMap<int,int,char,double,bool,std::string,clsDynamicArray<int>,clsDynamicArray<std::string>,clsDynamicArray<char>,clsDynamicArray<double>,const std::string *,const int *,const char *,const double *,std::string *,int *,char *,double *>' being compiled
+  
+C:\Users\omarh\doom\Map\Map\clsMap.h(344,10): warning C4285: return type for 'clsMap<int,int,char,double,bool,std::string,clsDynamicArray<int>,clsDynamicArray<std::string>,clsDynamicArray<char>,clsDynamicArray<double>,const std::string *,const int *,const char *,const double *,std::string *,int *,char *,double *>::operator ->' is recursive if applied using infix notation
+  (compiling source file 'Map.cpp')
   
   Map.vcxproj -> C:\Users\omarh\doom\Map\x64\Debug\Map.exe

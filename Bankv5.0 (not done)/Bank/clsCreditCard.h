@@ -20,5 +20,15 @@ class clsCreditCard
 			return;
 		}
 
+		clsCreditCard(int CardNumber , int Cvc , string CardHolderName , string ExpiryDate)
+		{
+			_CardNumber = CardNumber;
+			_Cvc = Cvc;
+			_CardHolderName = CardHolderName;
+			_ExpiryDate = ExpiryDate;
+		}
+
+
+
 };
 

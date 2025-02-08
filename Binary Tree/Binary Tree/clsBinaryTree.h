@@ -177,7 +177,7 @@ template <class T> class clsBinaryTree
 			if (node == NULL)
 				return;
 
-			PrintHelperLeveOrderTraversal(node->Right)
+			PrintHelperLeveOrderTraversal(node->Right);
 		}
 
 		void _GetIn(Node* node)
@@ -321,7 +321,79 @@ template <class T> class clsBinaryTree
 			return Tree;
 		}
 
+		clsBinaryTree& operator>>(clsBinaryTree& Tree)
+		{
+			Tree.Insert();
+			return Tree;
+		}
 
+		void Insert(bool Re = false)
+		{
+			bool x = true;
+
+			int counter = 1;
+
+			T Data;
+
+			cin >> Data;
+
+			if (ParentNode == NULL)
+			{
+				ParentNode = new Node();
+				ParentNode->Data = Data;
+				ParentNode->Left = NULL;
+				ParentNode->Right = NULL;
+				ParentNode->Prev = NULL;
+				ParentNode->Level = 0;
+				Temp1 = ParentNode;
+				_Max = Data;
+				_Min = Data;
+				//cout << endl << ParentNode->Data << " ";
+				_vlist.push_back(Data);
+				if (!Re)
+					_SortedList.push_back(Data);
+				return;
+			}
+
+			if (Data > _Max)
+				_Max = Data;
+
+			if (Data < _Min)
+				_Min = Data;
+
+			Node* TempNode = ParentNode;
+			Node* NewNode = new Node();
+			NewNode->Data = Data;
+			while (x)
+			{
+				if (NewNode->Data == TempNode->Data)
+				{
+					cout << "Key already exists!\n";
+					return;
+				}
+				NewNode->Data > TempNode->Data ? TempNode->Right == NULL ? x = false : TempNode = TempNode->Right : TempNode->Left == NULL ? x = false : TempNode = TempNode->Left;
+				counter++;
+			}
+
+			NewNode->Level = counter;
+			NewNode->Data > TempNode->Data ? TempNode->Right = NewNode : TempNode->Left = NewNode;
+			TempNode->Right == NULL ? TempNode->Left->Prev = TempNode : TempNode->Right->Prev = TempNode;
+
+			_Size++;
+			//ReBalance();
+			//cout << NewNode->Data << " ";
+			_vlist.push_back(Data);
+			if (!Re)
+				_SortedList.push_back(Data);
+			if (_Size > 3)
+			{
+				_GetHeight(ParentNode);
+				if (_Height == _Size)
+					ReBalance();
+			}
+			return;
+
+		}
 
 		void Insert(T Data , bool Re = false)
 		{

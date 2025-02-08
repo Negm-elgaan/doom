@@ -1,14 +1,14 @@
 ﻿  Binary Tree.cpp
-C:\Users\omarh\doom\Binary Tree\Binary Tree\clsBinaryTree.h(281,4): warning C4091: 'static ': ignored on left of 'clsBinaryTree<T>::Node' when no variable is declared
+C:\Users\omarh\doom\Binary Tree\Binary Tree\clsBinaryTree.h(290,4): warning C4091: 'static ': ignored on left of 'clsBinaryTree<T>::Node' when no variable is declared
   (compiling source file 'Binary%20Tree.cpp')
-  C:\Users\omarh\doom\Binary Tree\Binary Tree\clsBinaryTree.h(281,4):
+  C:\Users\omarh\doom\Binary Tree\Binary Tree\clsBinaryTree.h(290,4):
   the template instantiation context (the oldest one first) is
   	C:\Users\omarh\doom\Binary Tree\Binary Tree\clsBinaryTree.h(9,26):
   	while compiling class template 'clsBinaryTree'
   
-C:\Users\omarh\doom\Binary Tree\Binary Tree\clsBinaryTree.h(281,4): warning C4091: 'static ': ignored on left of 'clsBinaryTree<int>::Node' when no variable is declared
+C:\Users\omarh\doom\Binary Tree\Binary Tree\clsBinaryTree.h(290,4): warning C4091: 'static ': ignored on left of 'clsBinaryTree<int>::Node' when no variable is declared
   (compiling source file 'Binary%20Tree.cpp')
-  C:\Users\omarh\doom\Binary Tree\Binary Tree\clsBinaryTree.h(281,4):
+  C:\Users\omarh\doom\Binary Tree\Binary Tree\clsBinaryTree.h(290,4):
   the template instantiation context (the oldest one first) is
   	C:\Users\omarh\doom\Binary Tree\Binary Tree\Binary Tree.cpp(11,25):
   	see reference to class template instantiation 'clsBinaryTree<int>' being compiled
@@ -21,7 +21,7 @@ C:\Users\omarh\doom\Binary Tree\Binary Tree\clsBinaryTree.h(73,15): warning C426
   	see reference to class template instantiation 'clsBinaryTree<int>' being compiled
   	C:\Users\omarh\doom\Binary Tree\Binary Tree\clsBinaryTree.h(62,8):
   	while compiling class template member function 'void clsBinaryTree<int>::_ReBalance(void)'
-  		C:\Users\omarh\doom\Binary Tree\Binary Tree\clsBinaryTree.h(474,14):
+  		C:\Users\omarh\doom\Binary Tree\Binary Tree\clsBinaryTree.h(558,14):
   		see the first reference to 'clsBinaryTree<int>::_ReBalance' in 'clsBinaryTree<int>::ReBalance'
   		C:\Users\omarh\doom\Binary Tree\Binary Tree\Binary Tree.cpp(32,18):
   		see the first reference to 'clsBinaryTree<int>::ReBalance' in 'main'
@@ -32,5 +32,5 @@ C:\Users\omarh\doom\Binary Tree\Binary Tree\clsBinaryTree.h(82,10): warning C426
 C:\Users\omarh\doom\Binary Tree\Binary Tree\clsBinaryTree.h(83,10): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
   (compiling source file 'Binary%20Tree.cpp')
   
-C:\Users\omarh\doom\Binary Tree\Binary Tree\clsBinaryTree.h(551,1): warning C4715: 'clsBinaryTree<int>::Successor': not all control paths return a value
+C:\Users\omarh\doom\Binary Tree\Binary Tree\clsBinaryTree.h(635,1): warning C4715: 'clsBinaryTree<int>::Successor': not all control paths return a value
   Binary Tree.vcxproj -> C:\Users\omarh\doom\Binary Tree\x64\Debug\Binary Tree.exe
