@@ -19,6 +19,7 @@ template <class T> class clsBinaryTree
 		int _RightHeight = 0;
 		int _Height = 0;
 		int _Temp = 0;
+		int _SumKeys = 0;
 		vector <int> _SortedList;
 		vector <int> _vlist;
 
@@ -327,6 +328,18 @@ template <class T> class clsBinaryTree
 			return Tree;
 		}
 
+		clsBinaryTree& operator++()
+		{
+			this->Insert(_SumKeys / _Size);
+			return *this;
+		}
+
+		clsBinaryTree& operator--()
+		{
+			this->Remove(_vlist[_vlist.size() - 1]);
+			return *this;
+		}
+
 		void Insert(bool Re = false)
 		{
 			bool x = true;
@@ -352,6 +365,7 @@ template <class T> class clsBinaryTree
 				_vlist.push_back(Data);
 				if (!Re)
 					_SortedList.push_back(Data);
+				_SumKeys += Data;
 				return;
 			}
 
@@ -391,6 +405,7 @@ template <class T> class clsBinaryTree
 				if (_Height == _Size)
 					ReBalance();
 			}
+			_SumKeys += Data;
 			return;
 
 		}
@@ -416,6 +431,7 @@ template <class T> class clsBinaryTree
 				_vlist.push_back(Data);
 				if (!Re)
 					_SortedList.push_back(Data);
+				_SumKeys += Data;
 				return;
 			}
 
@@ -455,6 +471,7 @@ template <class T> class clsBinaryTree
 				if (_Height == _Size)
 					ReBalance();
 			}
+			_SumKeys += Data;
 			return;
 			
 		}

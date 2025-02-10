@@ -2,9 +2,12 @@
 //
 
 #include <iostream>
+#include "BTree.h"
 
 int main()
 {
+    BTree Tree(3);
+
     std::cout << "Hello World!\n";
 }
 

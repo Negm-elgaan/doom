@@ -338,6 +338,7 @@ public:
 
 	clsMap& operator++()
 	{
+		this->Insert(SumKeys / _Size, '\0', 0, NULL, "");
 		return *this;
 	}
     

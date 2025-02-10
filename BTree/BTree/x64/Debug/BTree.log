@@ -1,0 +1,12 @@
+﻿  BTree.cpp
+C:\Users\omarh\doom\BTree\BTree\BTree.h(20,9): warning C4200: nonstandard extension used: zero-sized array in struct/union
+  (compiling source file 'BTree.cpp')
+  C:\Users\omarh\doom\BTree\BTree\BTree.h(20,9):
+  This member will be ignored by a defaulted constructor or copy/move assignment operator
+  
+C:\Users\omarh\doom\BTree\BTree\BTree.h(21,11): error C2229: class 'BTree::Node' has an illegal zero-sized array
+  (compiling source file 'BTree.cpp')
+  
+C:\Users\omarh\doom\BTree\BTree\BTree.h(32,4): warning C4091: 'static ': ignored on left of 'BTree::Node' when no variable is declared
+  (compiling source file 'BTree.cpp')
+  

@@ -28,7 +28,15 @@ class clsCreditCard
 			_ExpiryDate = ExpiryDate;
 		}
 
+		int GetCardNumber()
+		{
+			return _CardNumber;
+		}
 
-
+		void SetCardNumber(int CardNumber)
+		{
+			_CardNumber = CardNumber;
+			return;
+		}
 };
 
