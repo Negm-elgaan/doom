@@ -1012,6 +1012,13 @@ public:
 		return Arr;
 	}
 
+	Node* Previous(Key KeyValue)
+	{
+		Node* node = _Search(KeyValue);
+
+		return node->Prev;
+	}
+
 	int* KeysBetween2(int From, int To, bool FromInclusive = false, bool ToInclusive = false)
 	{
 		int Counter = 0, counter = 0;

@@ -10,9 +10,16 @@ class BTree
 		int _NumOfNodes = 0;
 		bool _FirstFillPNode = true;
 
-		void _InsertAtParentNode(int Data)
+		bool _InsertAtParentNode(int Data)
 		{
-			
+			int pos = ParentNode->_BinarySearch(Data, 0, ParentNode->GetCurrentNumberElementsInNode());
+			ParentNode->_Shift(pos);
+			if (ParentNode->SetItem(pos, Data))
+			{
+				return true;
+			}
+
+			return false;
 		}
 
 	public:
@@ -30,38 +37,14 @@ class BTree
 				Node* Prev;
 
 
-				int _BinarySearch(int Data , int Start , int End)
-				{
-					int mid = Start + (End - Start) / 2;
-
-					if (End >= CurrentNumOfElementsInNode || Start < 0)
-						return -1;
-
-					if (ptr[mid] == Data)
-						return mid;
-
-					if (ptr[mid] > Data)
-						return _BinarySearch(Data , Start , mid - 1);
-
-					if (ptr[mid] < Data)
-						return _BinarySearch(Data , mid + 1 , End);
-					
-				}
-
-				void _Shift(int pos)
-				{
-					for (int i = pos; i < CurrentNumOfElementsInNode; i++)
-					{
-
-					}
-				}
+				
 
 			public:
 
 				Node(int Number) : NumOfKeysInNode(Number)
 				{
-					ptr = new int[NumOfKeysInNode];
-					Arr[NumOfKeysInNode];
+					ptr = new int[NumOfKeysInNode + 1];
+					Arr[NumOfKeysInNode + 1];
 				}
 
 				bool IsFull()
@@ -96,6 +79,55 @@ class BTree
 					}
 
 					return;
+				}
+
+				int _BinarySearch(int Data, int Start, int End)
+				{
+					int mid = Start + (End - Start) / 2;
+
+					if (End < Start)
+					{
+						if (End < 0)
+							return 0;
+
+						if (Start > CurrentNumOfElementsInNode)
+							return CurrentNumOfElementsInNode + 1;
+					}
+
+					if (ptr[mid] == Data)
+						return mid;
+
+					if (ptr[mid] > Data)
+						return _BinarySearch(Data, Start, mid - 1);
+
+					if (ptr[mid] < Data)
+						return _BinarySearch(Data, mid + 1, End);
+
+				}
+
+				void _Shift(int pos)
+				{
+					for (int i = CurrentNumOfElementsInNode - 1; i >= pos; i--)
+					{
+						ptr[i + 1] = ptr[i];
+					}
+
+					return;
+				}
+
+				int GetCurrentNumberElementsInNode()
+				{
+					return CurrentNumOfElementsInNode;
+				}
+
+				bool SetItem(int pos, int Data)
+				{
+					if (pos > NumOfKeysInNode + 1)
+						return false;
+
+					ptr[pos] = Data;
+
+					return true;
 				}
 
 		};
