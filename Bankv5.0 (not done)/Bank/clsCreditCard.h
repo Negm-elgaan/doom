@@ -8,7 +8,7 @@ class clsCreditCard
 	private:
 
 		int _CardNumber = 0;
-		int _Cvc = 0;
+		short _Cvc = 0;
 		string _CardHolderName;
 		string _ExpiryDate;
 
@@ -37,6 +37,27 @@ class clsCreditCard
 		{
 			_CardNumber = CardNumber;
 			return;
+		}
+
+		short GetCVC()
+		{
+			return _Cvc;
+		}
+
+		void SetCVC(short number)
+		{
+			_Cvc = number;
+			return;
+		}
+
+		string GetCardHolderName()
+		{
+			return _CardHolderName;
+		}
+
+		void SetCardHolderName(string Name)
+		{
+			_CardHolderName = Name;
 		}
 };
 
