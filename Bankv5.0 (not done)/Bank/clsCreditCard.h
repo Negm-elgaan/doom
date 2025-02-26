@@ -10,6 +10,7 @@ class clsCreditCard
 		int _CardNumber = 0;
 		short _Cvc = 0;
 		string _CardHolderName;
+		// Add Issue Date;
 		string _ExpiryDate;
 
 	public:
@@ -58,6 +59,17 @@ class clsCreditCard
 		void SetCardHolderName(string Name)
 		{
 			_CardHolderName = Name;
+			return;
+		}
+
+		string GetExpiryDate()
+		{
+			return _ExpiryDate;
+		}
+
+		void SetExpiryDate(string ExpiryDate)
+		{
+			_ExpiryDate = ExpiryDate;
 		}
 };
 
