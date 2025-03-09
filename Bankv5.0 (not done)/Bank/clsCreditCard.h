@@ -1,18 +1,11 @@
 #pragma once
 #include <iostream>
+#include "clsCard.h"
 
 using namespace std;
 
-class clsCreditCard
+class clsCreditCard : public clsCard
 {
-	private:
-
-		int _CardNumber = 0;
-		short _Cvc = 0;
-		string _CardHolderName;
-		// Add Issue Date;
-		string _ExpiryDate;
-
 	public:
 
 		clsCreditCard()

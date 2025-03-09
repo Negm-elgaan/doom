@@ -18,7 +18,7 @@ class BTree
 		/*not done*/bool _InsertAtParentNode(int Data)
 		{
 
-			if (!ParentNode->IsFull())
+			/*if (!ParentNode->IsFull())
 			{
 				int pos = ParentNode->_BinarySearch(Data, 0, ParentNode->GetCurrentNumberElementsInNode());
 
@@ -30,7 +30,18 @@ class BTree
 				}
 
 				return false;
+			}*/
+
+			int pos = ParentNode->_BinarySearch(Data, 0, ParentNode->GetCurrentNumberElementsInNode());
+
+			ParentNode->_Shift(pos);
+
+			if (ParentNode->SetItem(pos, Data))
+			{
+				return true;
 			}
+
+			return false;
 
 			/*if (ParentNode->IsFull())
 			{
@@ -55,7 +66,7 @@ class BTree
 				return true;
 			}*/
 
-			bool x = true;
+			/*bool x = true;
 
 			int counter = 1;
 
@@ -73,7 +84,7 @@ class BTree
 
 			ParentNode->Flush();
 
-			return true;
+			return true;*/
 
 			//if (!ParentNode->IsChildrenEmpty())
 			//{
@@ -97,11 +108,136 @@ class BTree
 				int Arr[1];
 				int CurrentNumOfElementsInNode = 0;
 				vector <Node*> VChildren;
-				Node** Children;
+				Node** Children = NULL;
+				int CurrentNumberOfChildrenInNode = 0;
 				Node* Prev;
 
+				void _ReturnValue(int Data, Node* node)
+				{
+					int pos = node->_BinarySearch(Data, 0, node->CurrentNumOfElementsInNode);
 
+					node->SetItem(pos , Data);
+
+					if (node->IsFull() && node->Prev != NULL)
+					{
+						Data = node->ptr[CurrentNumOfElementsInNode / 2];
+
+						_ReturnValue(Data , node->Prev);
+
+						return;
+					}
+
+					if (node->IsFull() && node->Prev == NULL)
+					{
+						Data = node->ptr[CurrentNumOfElementsInNode / 2];
+
+						int j = 0;
+						node->Prev = new Node(NumOfKeysInNode);
+						node->ptr[0] = Data;
+						node->Children = new Node * [NumOfKeysInNode];
+						node->Prev->Children[0] = new Node(NumOfKeysInNode);
+						node->Prev->Children[0] = node;
+						node->Prev->Children[0]->Prev = node->Prev;
+						node->Prev->Children[1] = new Node(NumOfKeysInNode);
+						node->Prev->Children[1]->Prev = node->Prev;
+						for (int i = (node->CurrentNumOfElementsInNode / 2) + 1; i < node->CurrentNumberOfChildrenInNode; i++)
+						{
+							node->Prev->Children[1]->ptr[j] = node->Prev->Children[0]->ptr[i];
+							node->Prev->Children[0]->ptr[i] = NULL;
+							j++;
+						}
+
+						return;
+					}
+				}
+
+				void _Split(int pos = -1)
+				{
+					int j = 0;
+
+					if (IsChildrenEmpty())
+					{
+						Children = new Node * [NumOfKeysInNode];
+						Children[0] = new Node(NumOfKeysInNode);
+						Children[0]->Prev = this;
+						Children[1] = new Node(NumOfKeysInNode);
+						Children[1]->Prev = this;
+						for (int i = 0; i < CurrentNumOfElementsInNode / 2; i++)
+						{
+							Children[0]->ptr[i] = ptr[i];
+							Children[0]->Arr[i] = Arr[i];
+						}
+
+						for (int i = (CurrentNumOfElementsInNode / 2) + 1; i < CurrentNumOfElementsInNode; i++) 
+						{
+							Children[1]->ptr[j] = ptr[i];
+							Children[1]->Arr[j] = Arr[i];
+							j++;
+						}
+
+						ptr[0] = ptr[CurrentNumOfElementsInNode / 2];
+						Arr[1] = Arr[CurrentNumOfElementsInNode / 2];
+
+						_Flush();
+
+						CurrentNumberOfChildrenInNode = 2;
+
+						return;
+
+					}
+
+					//not done
+
+					if (!IsChildrenFullFaster())
+					{
+						//to be continued
+						if (pos > -1)
+						{
+							if (pos < CurrentNumberOfChildrenInNode)
+							{
+								Children[CurrentNumOfElementsInNode] = new Node(NumOfKeysInNode);
+
+								for (int i = CurrentNumOfElementsInNode ; i > pos ; i--)
+								{
+									Children[i] = Children[i - 1];
+								}
+
+								Children[pos]->Clear();
+
+								Children[CurrentNumOfElementsInNode]->Prev = Children[CurrentNumberOfChildrenInNode]->Prev;
+
+								int mid = Children[pos - 1]->ptr[CurrentNumOfElementsInNode / 2]; // not sure about this one
+
+								for (int i = (CurrentNumOfElementsInNode / 2) + 1; i < NumOfKeysInNode; i++)
+								{
+									Children[pos]->ptr[j] = Children[pos - 1]->ptr[i];
+									Children[pos - 1]->ptr[i] = NULL;
+									Children[pos - 1]->CurrentNumOfElementsInNode--;
+								}
+
+								CurrentNumberOfChildrenInNode++;
+
+								Children[pos - 1]->_ReturnValue(mid, Children[pos - 1]->Prev);
+							}
+						}
+					}
+
+					return;
+
+				}
 				
+				bool _Flush()
+				{
+					int x = ptr[0];
+					int y = Arr[0];
+
+					delete[] ptr;
+
+					ptr = new int[NumOfKeysInNode + 1];
+					ptr[0] = x;
+
+					CurrentNumOfElementsInNode = 1;
+				}
 
 			public:
 
@@ -111,7 +247,20 @@ class BTree
 				{
 					ptr = new int[NumOfKeysInNode + 1];
 					Arr[NumOfKeysInNode + 1];
-					Children = new Node* [NumOfKeysInNode];
+					//Children = new Node* [NumOfKeysInNode];
+				}
+
+				bool InsertAtChildren(int Data)
+				{
+					// to be cont
+				}
+
+				bool Clear()
+				{
+					delete[] ptr;
+					ptr = new int[NumOfKeysInNode + 1];
+
+					return true;
 				}
 
 				bool IsFull()
@@ -124,44 +273,50 @@ class BTree
 					return Children == NULL;
 				}
 
-				bool Flush()
+				bool IsChildrenFull()
 				{
-					int x = ptr[0];
-					
-					delete[] ptr;
-
-					ptr = new int[NumOfKeysInNode + 1];
-					ptr[0] = x;
-				}
-
-				/*not done*/void Insert(int Data)
-				{
-
-					if (CurrentNumOfElementsInNode == NumOfKeysInNode)
-						return;
-
-					if (CurrentNumOfElementsInNode == 0)
+					for (int i = 0; i < NumOfKeysInNode; i++)
 					{
-						Arr[0] = Data;
-						ptr[0] = Data;
-
-						CurrentNumOfElementsInNode++;
-
-						return;
+						if (!Children[i]->IsFull())
+							return false;
 					}
 
-					for (int i = 0; i < CurrentNumOfElementsInNode; i++)
-					{
-						if (Data < ptr[i])
-						{
-							_Shift(i);
-							ptr[i] = Data;
-							return;
-						}
-					}
-
-					return;
+					return true;
 				}
+
+				bool IsChildrenFullFaster()
+				{
+					return CurrentNumberOfChildrenInNode == NumOfKeysInNode;
+				}
+
+				///*not done*/void Insert(int Data)
+				//{
+
+				//	if (CurrentNumOfElementsInNode == NumOfKeysInNode)
+				//		return;
+
+				//	if (CurrentNumOfElementsInNode == 0)
+				//	{
+				//		Arr[0] = Data;
+				//		ptr[0] = Data;
+
+				//		CurrentNumOfElementsInNode++;
+
+				//		return;
+				//	}
+
+				//	for (int i = 0; i < CurrentNumOfElementsInNode; i++)
+				//	{
+				//		if (Data < ptr[i])
+				//		{
+				//			_Shift(i);
+				//			ptr[i] = Data;
+				//			return;
+				//		}
+				//	}
+
+				//	return;
+				//}
 
 				int _BinarySearch(int Data, int Start, int End)
 				{
@@ -174,6 +329,9 @@ class BTree
 
 						if (Start > CurrentNumOfElementsInNode)
 							return CurrentNumOfElementsInNode + 1;
+
+						if (Start < CurrentNumOfElementsInNode)
+							return Start;
 					}
 
 					if (ptr[mid] == Data)
@@ -192,6 +350,7 @@ class BTree
 					for (int i = CurrentNumOfElementsInNode - 1; i >= pos; i--)
 					{
 						ptr[i + 1] = ptr[i];
+						Arr[i + 1] = Arr[i];
 					}
 
 					return;
@@ -208,6 +367,7 @@ class BTree
 						return false;
 
 					ptr[pos] = Data;
+					Arr[pos] = Data;
 
 					return true;
 				}
@@ -255,9 +415,70 @@ class BTree
 			{
 				_InsertAtParentNode(Data);
 
+				if (ParentNode->IsFull())
+				{
+					ParentNode->_Split();
+				}
+
 				return;
 			}
 
+			bool x = true;
+			Node* Temp = ParentNode;
+
+			//while (x)
+			//{
+			//	int pos = Temp->_BinarySearch(Data, 0, Temp->GetCurrentNumberElementsInNode());
+
+			//	if (pos == 0)
+			//	{
+			//		Temp = Temp->Children[0];
+			//		while (!Temp->IsChildrenEmpty())
+			//		{
+			//			//to be continued
+			//			pos = Temp->_BinarySearch(Data, 0, Temp->GetCurrentNumberElementsInNode());
+			//		}
+			//		//to be continued
+			//	}
+			//	else if (pos == Temp->CurrentNumOfElementsInNode + 1)
+			//	{
+			//		//to be continued
+			//	}
+			//	else
+			//	{
+
+			//	}
+
+			//}
+			
+			int pos = 0;
+
+			while (!Temp->IsChildrenEmpty())
+			{
+				//to be continued
+				pos = Temp->_BinarySearch(Data, 0, Temp->GetCurrentNumberElementsInNode());
+				if (pos > Temp->CurrentNumOfElementsInNode)
+				{
+					Temp = Temp->Children[pos - 1];
+				}
+				else if (pos == 0)
+				{
+					Temp = Temp->Children[0];
+				}
+				else
+				{
+					Temp = Temp->Children[pos];
+				}
+				
+			}
+			int pos2 = Temp->_BinarySearch(Data, 0, Temp->GetCurrentNumberElementsInNode());
+
+			Temp->SetItem(pos2, Data);
+
+			if (Temp->IsFull())
+			{
+				Temp->_Split(pos);
+			}
 
 
 		}

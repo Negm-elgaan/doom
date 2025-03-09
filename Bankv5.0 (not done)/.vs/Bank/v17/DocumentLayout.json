@@ -3,8 +3,20 @@
   "WorkspaceRootPath": "C:\\Users\\omarh\\doom\\Bankv5.0 (not done)\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{40830FAD-175E-4812-BA01-AE92D82A291F}|Bank\\Bank.vcxproj|C:\\Users\\omarh\\doom\\Bankv5.0 (not done)\\Bank\\clsCard.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{40830FAD-175E-4812-BA01-AE92D82A291F}|Bank\\Bank.vcxproj|solutionrelative:Bank\\clsCard.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{40830FAD-175E-4812-BA01-AE92D82A291F}|Bank\\Bank.vcxproj|C:\\Users\\omarh\\doom\\Bankv5.0 (not done)\\Bank\\clsCreditCard.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{40830FAD-175E-4812-BA01-AE92D82A291F}|Bank\\Bank.vcxproj|solutionrelative:Bank\\clsCreditCard.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{40830FAD-175E-4812-BA01-AE92D82A291F}|Bank\\Bank.vcxproj|C:\\Users\\omarh\\doom\\Bankv5.0 (not done)\\Bank\\clsLoanClient.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{40830FAD-175E-4812-BA01-AE92D82A291F}|Bank\\Bank.vcxproj|solutionrelative:Bank\\clsLoanClient.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{40830FAD-175E-4812-BA01-AE92D82A291F}|Bank\\Bank.vcxproj|C:\\Users\\omarh\\doom\\Bankv5.0 (not done)\\Bank\\clsBankClient.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{40830FAD-175E-4812-BA01-AE92D82A291F}|Bank\\Bank.vcxproj|solutionrelative:Bank\\clsBankClient.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{40830FAD-175E-4812-BA01-AE92D82A291F}|Bank\\Bank.vcxproj|C:\\Users\\omarh\\doom\\Bankv5.0 (not done)\\Bank\\clsUser.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
@@ -35,20 +47,12 @@
       "RelativeMoniker": "D:0:0:{40830FAD-175E-4812-BA01-AE92D82A291F}|Bank\\Bank.vcxproj|solutionrelative:Bank\\clsAddNewUserScreen.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{40830FAD-175E-4812-BA01-AE92D82A291F}|Bank\\Bank.vcxproj|C:\\Users\\omarh\\doom\\Bankv5.0 (not done)\\Bank\\clsLoanClient.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{40830FAD-175E-4812-BA01-AE92D82A291F}|Bank\\Bank.vcxproj|solutionrelative:Bank\\clsLoanClient.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{40830FAD-175E-4812-BA01-AE92D82A291F}|Bank\\Bank.vcxproj|C:\\Users\\omarh\\doom\\Bankv5.0 (not done)\\Bank\\clsListLoansScreen.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{40830FAD-175E-4812-BA01-AE92D82A291F}|Bank\\Bank.vcxproj|solutionrelative:Bank\\clsListLoansScreen.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{40830FAD-175E-4812-BA01-AE92D82A291F}|Bank\\Bank.vcxproj|C:\\Users\\omarh\\doom\\Bankv5.0 (not done)\\Bank\\clsFindCurrencyScreen.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{40830FAD-175E-4812-BA01-AE92D82A291F}|Bank\\Bank.vcxproj|solutionrelative:Bank\\clsFindCurrencyScreen.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{40830FAD-175E-4812-BA01-AE92D82A291F}|Bank\\Bank.vcxproj|C:\\Users\\omarh\\doom\\Bankv5.0 (not done)\\Bank\\clsBankClient.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{40830FAD-175E-4812-BA01-AE92D82A291F}|Bank\\Bank.vcxproj|solutionrelative:Bank\\clsBankClient.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{40830FAD-175E-4812-BA01-AE92D82A291F}|Bank\\Bank.vcxproj|C:\\Users\\omarh\\doom\\Bankv5.0 (not done)\\Bank\\clsLoanScreen.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
@@ -210,7 +214,7 @@
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 28,
+              "DocumentIndex": 29,
               "Title": "clsLoginScreen.h",
               "DocumentMoniker": "C:\\Users\\omarh\\doom\\Bankv5.0 (not done)\\Bank\\clsLoginScreen.h",
               "RelativeDocumentMoniker": "Bank\\clsLoginScreen.h",
@@ -223,7 +227,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 48,
+              "DocumentIndex": 49,
               "Title": "clsUtil.h",
               "DocumentMoniker": "C:\\Users\\omarh\\doom\\Bankv5.0 (not done)\\Bank\\clsUtil.h",
               "RelativeDocumentMoniker": "Bank\\clsUtil.h",
@@ -245,19 +249,31 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "clsCard.h",
+              "DocumentMoniker": "C:\\Users\\omarh\\doom\\Bankv5.0 (not done)\\Bank\\clsCard.h",
+              "RelativeDocumentMoniker": "Bank\\clsCard.h",
+              "ToolTip": "C:\\Users\\omarh\\doom\\Bankv5.0 (not done)\\Bank\\clsCard.h",
+              "RelativeToolTip": "Bank\\clsCard.h",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAAUAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-03-02T13:01:09.903Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "clsCreditCard.h",
               "DocumentMoniker": "C:\\Users\\omarh\\doom\\Bankv5.0 (not done)\\Bank\\clsCreditCard.h",
               "RelativeDocumentMoniker": "Bank\\clsCreditCard.h",
               "ToolTip": "C:\\Users\\omarh\\doom\\Bankv5.0 (not done)\\Bank\\clsCreditCard.h",
               "RelativeToolTip": "Bank\\clsCreditCard.h",
-              "ViewState": "AQIAAD0AAAAAAAAAAAAAAEsAAAAAAAAA",
+              "ViewState": "AQIAACUAAAAAAAAAAAAAACgAAAAbAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-02-06T03:38:54.162Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-06T03:38:54.162Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 5,
               "Title": "clsRequestTokenScreen.h",
               "DocumentMoniker": "C:\\Users\\omarh\\doom\\Bankv5.0 (not done)\\Bank\\clsRequestTokenScreen.h",
               "RelativeDocumentMoniker": "Bank\\clsRequestTokenScreen.h",
@@ -269,7 +285,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 17,
               "Title": "clsTakeLoanScreen.h",
               "DocumentMoniker": "C:\\Users\\omarh\\doom\\Bankv5.0 (not done)\\Bank\\clsTakeLoanScreen.h",
               "RelativeDocumentMoniker": "Bank\\clsTakeLoanScreen.h",
@@ -281,7 +297,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 27,
+              "DocumentIndex": 28,
               "Title": "clsShowAllMainMenueScreens.h",
               "DocumentMoniker": "C:\\Users\\omarh\\doom\\Bankv5.0 (not done)\\Bank\\clsShowAllMainMenueScreens.h",
               "RelativeDocumentMoniker": "Bank\\clsShowAllMainMenueScreens.h",
@@ -293,7 +309,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 30,
+              "DocumentIndex": 31,
               "Title": "clsMyQueue.h",
               "DocumentMoniker": "C:\\Users\\omarh\\doom\\Bankv5.0 (not done)\\Bank\\clsMyQueue.h",
               "RelativeDocumentMoniker": "Bank\\clsMyQueue.h",
@@ -305,7 +321,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 31,
+              "DocumentIndex": 32,
               "Title": "clsDblLinkedList.h",
               "DocumentMoniker": "C:\\Users\\omarh\\doom\\Bankv5.0 (not done)\\Bank\\clsDblLinkedList.h",
               "RelativeDocumentMoniker": "Bank\\clsDblLinkedList.h",
@@ -317,7 +333,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
+              "DocumentIndex": 22,
               "Title": "clsDynamicArray.h",
               "DocumentMoniker": "C:\\Users\\omarh\\doom\\Bankv5.0 (not done)\\Bank\\clsDynamicArray.h",
               "RelativeDocumentMoniker": "Bank\\clsDynamicArray.h",
@@ -329,7 +345,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 23,
+              "DocumentIndex": 24,
               "Title": "clsAddNewLoanClientScreen.h",
               "DocumentMoniker": "C:\\Users\\omarh\\doom\\Bankv5.0 (not done)\\Bank\\clsAddNewLoanClientScreen.h",
               "RelativeDocumentMoniker": "Bank\\clsAddNewLoanClientScreen.h",
@@ -341,7 +357,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 22,
+              "DocumentIndex": 23,
               "Title": "clsFindLoanClientScreen.h",
               "DocumentMoniker": "C:\\Users\\omarh\\doom\\Bankv5.0 (not done)\\Bank\\clsFindLoanClientScreen.h",
               "RelativeDocumentMoniker": "Bank\\clsFindLoanClientScreen.h",
@@ -353,7 +369,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 11,
               "Title": "clsListLoansScreen.h",
               "DocumentMoniker": "C:\\Users\\omarh\\doom\\Bankv5.0 (not done)\\Bank\\clsListLoansScreen.h",
               "RelativeDocumentMoniker": "Bank\\clsListLoansScreen.h",
@@ -365,7 +381,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 25,
+              "DocumentIndex": 26,
               "Title": "clsInputValidate.h",
               "DocumentMoniker": "C:\\Users\\omarh\\doom\\Bankv5.0 (not done)\\Bank\\clsInputValidate.h",
               "RelativeDocumentMoniker": "Bank\\clsInputValidate.h",
@@ -377,7 +393,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 39,
+              "DocumentIndex": 40,
               "Title": "clsCurrencyCalculatorScreen.h",
               "DocumentMoniker": "C:\\Users\\omarh\\doom\\Bankv5.0 (not done)\\Bank\\clsCurrencyCalculatorScreen.h",
               "RelativeDocumentMoniker": "Bank\\clsCurrencyCalculatorScreen.h",
@@ -389,7 +405,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 41,
+              "DocumentIndex": 42,
               "Title": "clsUpdateCurrencyRateScreen.h",
               "DocumentMoniker": "C:\\Users\\omarh\\doom\\Bankv5.0 (not done)\\Bank\\clsUpdateCurrencyRateScreen.h",
               "RelativeDocumentMoniker": "Bank\\clsUpdateCurrencyRateScreen.h",
@@ -401,19 +417,19 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 2,
               "Title": "clsLoanClient.h",
               "DocumentMoniker": "C:\\Users\\omarh\\doom\\Bankv5.0 (not done)\\Bank\\clsLoanClient.h",
               "RelativeDocumentMoniker": "Bank\\clsLoanClient.h",
               "ToolTip": "C:\\Users\\omarh\\doom\\Bankv5.0 (not done)\\Bank\\clsLoanClient.h",
               "RelativeToolTip": "Bank\\clsLoanClient.h",
-              "ViewState": "AQIAAAsAAAAAAAAAAAAAAAsAAAA+AAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABMAAAAKAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2024-09-21T20:59:29.638Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 12,
               "Title": "clsFindCurrencyScreen.h",
               "DocumentMoniker": "C:\\Users\\omarh\\doom\\Bankv5.0 (not done)\\Bank\\clsFindCurrencyScreen.h",
               "RelativeDocumentMoniker": "Bank\\clsFindCurrencyScreen.h",
@@ -425,7 +441,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 36,
+              "DocumentIndex": 37,
               "Title": "clsListCurrenciesScreen.h",
               "DocumentMoniker": "C:\\Users\\omarh\\doom\\Bankv5.0 (not done)\\Bank\\clsListCurrenciesScreen.h",
               "RelativeDocumentMoniker": "Bank\\clsListCurrenciesScreen.h",
@@ -437,7 +453,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 38,
+              "DocumentIndex": 39,
               "Title": "clsCurrencyExchangeScreen.h",
               "DocumentMoniker": "C:\\Users\\omarh\\doom\\Bankv5.0 (not done)\\Bank\\clsCurrencyExchangeScreen.h",
               "RelativeDocumentMoniker": "Bank\\clsCurrencyExchangeScreen.h",
@@ -449,7 +465,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 40,
+              "DocumentIndex": 41,
               "Title": "clsCurrency.h",
               "DocumentMoniker": "C:\\Users\\omarh\\doom\\Bankv5.0 (not done)\\Bank\\clsCurrency.h",
               "RelativeDocumentMoniker": "Bank\\clsCurrency.h",
@@ -461,7 +477,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 13,
               "Title": "clsLoanScreen.h",
               "DocumentMoniker": "C:\\Users\\omarh\\doom\\Bankv5.0 (not done)\\Bank\\clsLoanScreen.h",
               "RelativeDocumentMoniker": "Bank\\clsLoanScreen.h",
@@ -473,7 +489,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 44,
+              "DocumentIndex": 45,
               "Title": "clsTransferLogScreen.h",
               "DocumentMoniker": "C:\\Users\\omarh\\doom\\Bankv5.0 (not done)\\Bank\\clsTransferLogScreen.h",
               "RelativeDocumentMoniker": "Bank\\clsTransferLogScreen.h",
@@ -485,19 +501,19 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 3,
               "Title": "clsBankClient.h",
               "DocumentMoniker": "C:\\Users\\omarh\\doom\\Bankv5.0 (not done)\\Bank\\clsBankClient.h",
               "RelativeDocumentMoniker": "Bank\\clsBankClient.h",
               "ToolTip": "C:\\Users\\omarh\\doom\\Bankv5.0 (not done)\\Bank\\clsBankClient.h",
               "RelativeToolTip": "Bank\\clsBankClient.h",
-              "ViewState": "AQIAADIBAAAAAAAAAAAAAEEBAAAcAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABMAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2024-06-30T12:07:36.823Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 42,
+              "DocumentIndex": 43,
               "Title": "clsLoginRegisterScreen.h",
               "DocumentMoniker": "C:\\Users\\omarh\\doom\\Bankv5.0 (not done)\\Bank\\clsLoginRegisterScreen.h",
               "RelativeDocumentMoniker": "Bank\\clsLoginRegisterScreen.h",
@@ -509,7 +525,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 15,
               "Title": "Bank.cpp",
               "DocumentMoniker": "C:\\Users\\omarh\\doom\\Bankv5.0 (not done)\\Bank\\Bank.cpp",
               "RelativeDocumentMoniker": "Bank\\Bank.cpp",
@@ -521,7 +537,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 29,
+              "DocumentIndex": 30,
               "Title": "clsRegisterScreen.h",
               "DocumentMoniker": "C:\\Users\\omarh\\doom\\Bankv5.0 (not done)\\Bank\\clsRegisterScreen.h",
               "RelativeDocumentMoniker": "Bank\\clsRegisterScreen.h",
@@ -533,7 +549,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 47,
+              "DocumentIndex": 48,
               "Title": "Global.h",
               "DocumentMoniker": "C:\\Users\\omarh\\doom\\Bankv5.0 (not done)\\Bank\\Global.h",
               "RelativeDocumentMoniker": "Bank\\Global.h",
@@ -545,7 +561,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 9,
               "Title": "clsFindUserScreen.h",
               "DocumentMoniker": "C:\\Users\\omarh\\doom\\Bankv5.0 (not done)\\Bank\\clsFindUserScreen.h",
               "RelativeDocumentMoniker": "Bank\\clsFindUserScreen.h",
@@ -557,7 +573,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 33,
+              "DocumentIndex": 34,
               "Title": "clsUpdateUserScreen.h",
               "DocumentMoniker": "C:\\Users\\omarh\\doom\\Bankv5.0 (not done)\\Bank\\clsUpdateUserScreen.h",
               "RelativeDocumentMoniker": "Bank\\clsUpdateUserScreen.h",
@@ -569,7 +585,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 46,
+              "DocumentIndex": 47,
               "Title": "clsDeleteUserScreen.h",
               "DocumentMoniker": "C:\\Users\\omarh\\doom\\Bankv5.0 (not done)\\Bank\\clsDeleteUserScreen.h",
               "RelativeDocumentMoniker": "Bank\\clsDeleteUserScreen.h",
@@ -581,7 +597,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 10,
               "Title": "clsAddNewUserScreen.h",
               "DocumentMoniker": "C:\\Users\\omarh\\doom\\Bankv5.0 (not done)\\Bank\\clsAddNewUserScreen.h",
               "RelativeDocumentMoniker": "Bank\\clsAddNewUserScreen.h",
@@ -593,7 +609,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 34,
+              "DocumentIndex": 35,
               "Title": "clsListUsersScreen.h",
               "DocumentMoniker": "C:\\Users\\omarh\\doom\\Bankv5.0 (not done)\\Bank\\clsListUsersScreen.h",
               "RelativeDocumentMoniker": "Bank\\clsListUsersScreen.h",
@@ -605,7 +621,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 18,
               "Title": "clsManageUsersScreen.h",
               "DocumentMoniker": "C:\\Users\\omarh\\doom\\Bankv5.0 (not done)\\Bank\\clsManageUsersScreen.h",
               "RelativeDocumentMoniker": "Bank\\clsManageUsersScreen.h",
@@ -617,7 +633,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 4,
               "Title": "clsUser.h",
               "DocumentMoniker": "C:\\Users\\omarh\\doom\\Bankv5.0 (not done)\\Bank\\clsUser.h",
               "RelativeDocumentMoniker": "Bank\\clsUser.h",
@@ -629,7 +645,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 43,
+              "DocumentIndex": 44,
               "Title": "clsTransferScreen.h",
               "DocumentMoniker": "C:\\Users\\omarh\\doom\\Bankv5.0 (not done)\\Bank\\clsTransferScreen.h",
               "RelativeDocumentMoniker": "Bank\\clsTransferScreen.h",
@@ -641,7 +657,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 8,
               "Title": "clsTotalBalancesScreen.h",
               "DocumentMoniker": "C:\\Users\\omarh\\doom\\Bankv5.0 (not done)\\Bank\\clsTotalBalancesScreen.h",
               "RelativeDocumentMoniker": "Bank\\clsTotalBalancesScreen.h",
@@ -653,7 +669,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 19,
               "Title": "clsDepositScreen.h",
               "DocumentMoniker": "C:\\Users\\omarh\\doom\\Bankv5.0 (not done)\\Bank\\clsDepositScreen.h",
               "RelativeDocumentMoniker": "Bank\\clsDepositScreen.h",
@@ -665,7 +681,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 16,
               "Title": "clsTransactionsScreen.h",
               "DocumentMoniker": "C:\\Users\\omarh\\doom\\Bankv5.0 (not done)\\Bank\\clsTransactionsScreen.h",
               "RelativeDocumentMoniker": "Bank\\clsTransactionsScreen.h",
@@ -677,7 +693,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 35,
+              "DocumentIndex": 36,
               "Title": "clsFindClientScreen.h",
               "DocumentMoniker": "C:\\Users\\omarh\\doom\\Bankv5.0 (not done)\\Bank\\clsFindClientScreen.h",
               "RelativeDocumentMoniker": "Bank\\clsFindClientScreen.h",
@@ -689,7 +705,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 20,
               "Title": "clsMainScreen.h",
               "DocumentMoniker": "C:\\Users\\omarh\\doom\\Bankv5.0 (not done)\\Bank\\clsMainScreen.h",
               "RelativeDocumentMoniker": "Bank\\clsMainScreen.h",
@@ -701,7 +717,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 26,
+              "DocumentIndex": 27,
               "Title": "clsWithdrawScreen.h",
               "DocumentMoniker": "C:\\Users\\omarh\\doom\\Bankv5.0 (not done)\\Bank\\clsWithdrawScreen.h",
               "RelativeDocumentMoniker": "Bank\\clsWithdrawScreen.h",
@@ -713,7 +729,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 45,
+              "DocumentIndex": 46,
               "Title": "clsUpdateClientScreen.h",
               "DocumentMoniker": "C:\\Users\\omarh\\doom\\Bankv5.0 (not done)\\Bank\\clsUpdateClientScreen.h",
               "RelativeDocumentMoniker": "Bank\\clsUpdateClientScreen.h",
@@ -725,7 +741,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 24,
+              "DocumentIndex": 25,
               "Title": "clsAddNewClientScreen.h",
               "DocumentMoniker": "C:\\Users\\omarh\\doom\\Bankv5.0 (not done)\\Bank\\clsAddNewClientScreen.h",
               "RelativeDocumentMoniker": "Bank\\clsAddNewClientScreen.h",
@@ -737,7 +753,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 7,
               "Title": "clsDeleteClientScreen.h",
               "DocumentMoniker": "C:\\Users\\omarh\\doom\\Bankv5.0 (not done)\\Bank\\clsDeleteClientScreen.h",
               "RelativeDocumentMoniker": "Bank\\clsDeleteClientScreen.h",
@@ -749,7 +765,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 21,
               "Title": "clsClientListScreen.h",
               "DocumentMoniker": "C:\\Users\\omarh\\doom\\Bankv5.0 (not done)\\Bank\\clsClientListScreen.h",
               "RelativeDocumentMoniker": "Bank\\clsClientListScreen.h",
@@ -761,7 +777,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 6,
               "Title": "clsScreen.h",
               "DocumentMoniker": "C:\\Users\\omarh\\doom\\Bankv5.0 (not done)\\Bank\\clsScreen.h",
               "RelativeDocumentMoniker": "Bank\\clsScreen.h",
@@ -773,7 +789,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 14,
               "Title": "clsdate.h",
               "DocumentMoniker": "C:\\Users\\omarh\\doom\\Bankv5.0 (not done)\\Bank\\clsdate.h",
               "RelativeDocumentMoniker": "Bank\\clsdate.h",
@@ -785,7 +801,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 32,
+              "DocumentIndex": 33,
               "Title": "clsPerson.h",
               "DocumentMoniker": "C:\\Users\\omarh\\doom\\Bankv5.0 (not done)\\Bank\\clsPerson.h",
               "RelativeDocumentMoniker": "Bank\\clsPerson.h",
@@ -797,7 +813,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 37,
+              "DocumentIndex": 38,
               "Title": "clsString.h",
               "DocumentMoniker": "C:\\Users\\omarh\\doom\\Bankv5.0 (not done)\\Bank\\clsString.h",
               "RelativeDocumentMoniker": "Bank\\clsString.h",

@@ -1,10 +1,10 @@
 ﻿  BTree.cpp
-C:\Users\omarh\doom\BTree\BTree\BTree.h(70,16): warning C4240: nonstandard extension used: access to 'BTree::Node' now defined to be 'public', previously it was defined to be 'private'
+C:\Users\omarh\doom\BTree\BTree\BTree.h(102,16): warning C4240: nonstandard extension used: access to 'BTree::Node' now defined to be 'public', previously it was defined to be 'private'
   (compiling source file 'BTree.cpp')
   C:\Users\omarh\doom\BTree\BTree\BTree.h(11,9):
   see declaration of 'BTree::Node'
   
-C:\Users\omarh\doom\BTree\BTree\BTree.h(196,4): warning C4091: 'static ': ignored on left of 'BTree::Node' when no variable is declared
+C:\Users\omarh\doom\BTree\BTree\BTree.h(346,4): warning C4091: 'static ': ignored on left of 'BTree::Node' when no variable is declared
   (compiling source file 'BTree.cpp')
   
   BTree.vcxproj -> C:\Users\omarh\doom\BTree\x64\Debug\BTree.exe

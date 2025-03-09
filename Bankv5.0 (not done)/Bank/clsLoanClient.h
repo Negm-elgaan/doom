@@ -6,6 +6,8 @@
 #include "clsMyQueue.h"
 #include <math.h>
 #include <thread>
+#include "clsCreditCard.h"
+
 class clsLoanClient
 {
 	private:
@@ -15,7 +17,7 @@ class clsLoanClient
 		string _FullName;
         string _Phone;
         int _CreditScore = 0;
-
+        //clsCreditCard card;
         class clsLoan
         {
             double _Loan;

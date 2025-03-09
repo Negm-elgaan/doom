@@ -24,6 +24,7 @@ private:
 	int _MaxKeyValue = 0;
 	int _MinKeyValue = 0;
 	int _SumKeys = 0;
+	int _AvgKeyValue = 0;
 
 	vector <Node*> _SortedList;
 	vector <Node*> _vList;
@@ -244,6 +245,22 @@ private:
 
 		ClearHelper1(node->Left, size - 1);
 		ClearHelper1(node->Right, size - 1);
+
+		node = NULL;
+	}
+
+	void ClearHelper2(Node* node, int size = 0)
+	{
+		if (node == NULL)
+			return;
+
+		if (size == 0)
+			return;
+
+		thread T1(&clsMap::ClearHelper2 , this , node->Left , size - 1);
+		thread T2(&clsMap::ClearHelper2 , this , node->Right , size - 1);
+		T1.join();
+		T2.join(); 
 
 		node = NULL;
 	}
@@ -1024,6 +1041,13 @@ public:
 		int Counter = 0, counter = 0;
 
 		int* ptr = new int[Counter];
+	}
+
+	int AvgKeyValue()
+	{
+		_AvgKeyValue = _SumKeys / _Size;
+
+		return _AvgKeyValue;
 	}
 
 	void Print()
