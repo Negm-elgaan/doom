@@ -151,55 +151,90 @@ class BTree
 					}
 				}
 
-				void _Split(int pos = -1)
+				void _Split(int pos = -1 , bool IsParentNode = true)
 				{
 					int j = 0;
 
-					if (IsChildrenEmpty())
+
+					if (IsParentNode)
 					{
-						Children = new Node * [NumOfKeysInNode];
-						Children[0] = new Node(NumOfKeysInNode);
-						Children[0]->Prev = this;
-						Children[1] = new Node(NumOfKeysInNode);
-						Children[1]->Prev = this;
-						for (int i = 0; i < CurrentNumOfElementsInNode / 2; i++)
+
+						if (IsChildrenEmpty())
 						{
-							Children[0]->ptr[i] = ptr[i];
-							Children[0]->Arr[i] = Arr[i];
-						}
-
-						for (int i = (CurrentNumOfElementsInNode / 2) + 1; i < CurrentNumOfElementsInNode; i++) 
-						{
-							Children[1]->ptr[j] = ptr[i];
-							Children[1]->Arr[j] = Arr[i];
-							j++;
-						}
-
-						ptr[0] = ptr[CurrentNumOfElementsInNode / 2];
-						Arr[1] = Arr[CurrentNumOfElementsInNode / 2];
-
-						_Flush();
-
-						CurrentNumberOfChildrenInNode = 2;
-
-						return;
-
-					}
-
-					//not done
-
-					if (!IsChildrenFullFaster())
-					{
-						//to be continued
-						if (pos > -1)
-						{
-							if (pos < CurrentNumberOfChildrenInNode)
+							Children = new Node * [NumOfKeysInNode + 1];
+							Children[0] = new Node(NumOfKeysInNode);
+							Children[0]->Prev = this;
+							Children[1] = new Node(NumOfKeysInNode);
+							Children[1]->Prev = this;
+							for (int i = 0; i < CurrentNumOfElementsInNode / 2; i++)
 							{
-								Children[CurrentNumOfElementsInNode] = new Node(NumOfKeysInNode);
+								Children[0]->ptr[i] = ptr[i];
+								Children[0]->Arr[i] = Arr[i];
+							}
 
-								for (int i = CurrentNumOfElementsInNode ; i > pos ; i--)
+							for (int i = (CurrentNumOfElementsInNode / 2) + 1; i < CurrentNumOfElementsInNode; i++)
+							{
+								Children[1]->ptr[j] = ptr[i];
+								Children[1]->Arr[j] = Arr[i];
+								j++;
+							}
+
+							ptr[0] = ptr[CurrentNumOfElementsInNode / 2];
+							Arr[1] = Arr[CurrentNumOfElementsInNode / 2];
+
+							_Flush();
+
+							CurrentNumberOfChildrenInNode = 2;
+
+							return;
+
+						}
+
+						//not done
+
+						if (!IsChildrenFullFaster())
+						{
+							//to be continued
+							if (pos > -1)
+							{
+								//indexes are most likely wrong
+								if (pos < CurrentNumberOfChildrenInNode)
 								{
-									Children[i] = Children[i - 1];
+									Children[CurrentNumOfElementsInNode] = new Node(NumOfKeysInNode);
+
+									for (int i = CurrentNumOfElementsInNode; i > pos; i--)
+									{
+										Children[i] = Children[i - 1];
+									}
+
+									//Children[pos]->Clear();
+
+									//Children[CurrentNumOfElementsInNode]->Prev = Children[CurrentNumberOfChildrenInNode]->Prev;
+
+									//int mid = Children[pos - 1]->ptr[CurrentNumOfElementsInNode / 2]; // not sure about this one
+
+									//for (int i = (CurrentNumOfElementsInNode / 2) + 1; i < NumOfKeysInNode; i++)
+									//{
+									//	Children[pos]->ptr[j] = Children[pos - 1]->ptr[i];
+									//	Children[pos - 1]->ptr[i] = NULL;
+									//	Children[pos - 1]->CurrentNumOfElementsInNode--;
+									//} 
+
+									//CurrentNumberOfChildrenInNode++;
+
+									//Children[pos - 1]->_ReturnValue(mid, Children[pos - 1]->Prev);
+								}
+
+								else if (pos == CurrentNumberOfChildrenInNode + 1)
+								{
+									Children[CurrentNumOfElementsInNode] = new Node(NumOfKeysInNode);
+
+
+								}
+
+								else
+								{
+
 								}
 
 								Children[pos]->Clear();
@@ -219,10 +254,15 @@ class BTree
 
 								Children[pos - 1]->_ReturnValue(mid, Children[pos - 1]->Prev);
 							}
+
+
 						}
+
+						return;
+
 					}
 
-					return;
+					//to be cont
 
 				}
 				
@@ -275,7 +315,7 @@ class BTree
 
 				bool IsChildrenFull()
 				{
-					for (int i = 0; i < NumOfKeysInNode; i++)
+					for (int i = 0; i < NumOfKeysInNode + 1; i++)
 					{
 						if (!Children[i]->IsFull())
 							return false;
@@ -286,7 +326,19 @@ class BTree
 
 				bool IsChildrenFullFaster()
 				{
-					return CurrentNumberOfChildrenInNode == NumOfKeysInNode;
+					return CurrentNumberOfChildrenInNode == NumOfKeysInNode + 1;
+				}
+
+				bool AreAllChildrenIntialized()
+				{
+					for (int i = 0; i < NumOfKeysInNode + 1; i++)
+					{
+						if (Children[i] == NULL)
+							return false;
+					}
+
+					return true;
+
 				}
 
 				///*not done*/void Insert(int Data)
@@ -372,15 +424,17 @@ class BTree
 					return true;
 				}
 
-				/*bool IsRightEmpty()
+				void print()
 				{
-					return Right == NULL;
-				}
+					for (int i = 0; i < CurrentNumOfElementsInNode; i++)
+					{
+						cout << ptr[i] << " ";
+					}
 
-				bool IsLeftEmpty()
-				{
-					return Left == NULL;
-				}*/
+					cout << endl;
+
+					return;
+				}
 
 				friend class BTree;
 
@@ -486,6 +540,13 @@ class BTree
 		bool IsEmpty()
 		{
 			return ParentNode == NULL;
+		}
+
+		void print()
+		{
+			Node* Temp = ParentNode;
+
+			 
 		}
 };
 
