@@ -167,5 +167,11 @@
     <ClInclude Include="clsCard.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="clsPrePaidCard.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="clsDebitCard.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

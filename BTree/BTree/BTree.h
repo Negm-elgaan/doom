@@ -109,6 +109,7 @@ class BTree
 				int CurrentNumOfElementsInNode = 0;
 				vector <Node*> VChildren;
 				Node** Children = NULL;
+				Node** Children2 = NULL;
 				int CurrentNumberOfChildrenInNode = 0;
 				Node* Prev;
 
@@ -149,6 +150,11 @@ class BTree
 
 						return;
 					}
+
+					if (node->IsFull() && !node->IsChildrenEmpty())
+					{
+
+					}
 				}
 
 				void _Split(int pos = -1 , bool IsParentNode = true)
@@ -162,6 +168,7 @@ class BTree
 						if (IsChildrenEmpty())
 						{
 							Children = new Node * [NumOfKeysInNode + 1];
+							Children2 = new Node * [NumOfKeysInNode + 2];
 							Children[0] = new Node(NumOfKeysInNode);
 							Children[0]->Prev = this;
 							Children[1] = new Node(NumOfKeysInNode);
@@ -257,6 +264,39 @@ class BTree
 
 
 						}
+
+						if (!AreAllChildrenIntialized())
+						{
+							if (pos == -1)
+								return;
+
+							Children[CurrentNumberOfChildrenInNode] = new Node(NumOfKeysInNode);
+
+							for (int i = CurrentNumOfElementsInNode; i > pos; i--)
+							{
+								Children[i] = Children[i - 1];
+							}
+
+							Children[pos]->Clear();
+
+							Children[CurrentNumOfElementsInNode] = Children[CurrentNumberOfChildrenInNode];
+
+							int mid = Children[pos - 1]->ptr[CurrentNumOfElementsInNode / 2]; // not sure about this one
+
+							for (int i = (CurrentNumOfElementsInNode / 2) + 1; i < NumOfKeysInNode; i++)
+							{
+								Children[pos]->ptr[j] = Children[pos - 1]->ptr[i];
+								Children[pos - 1]->ptr[i] = NULL;
+								Children[pos - 1]->CurrentNumOfElementsInNode--;
+							}
+
+							CurrentNumberOfChildrenInNode++;
+
+							Children[pos - 1]->_ReturnValue(mid, Children[pos - 1]->Prev);
+							
+
+						}
+						
 
 						return;
 
@@ -531,7 +571,7 @@ class BTree
 
 			if (Temp->IsFull())
 			{
-				Temp->_Split(pos);
+				Temp->Prev->_Split(pos);
 			}
 
 
@@ -542,11 +582,23 @@ class BTree
 			return ParentNode == NULL;
 		}
 
+		Node* Prev(Node* node)
+		{
+			node = node->Prev;
+
+			return node;
+		}
+
 		void print()
 		{
 			Node* Temp = ParentNode;
 
 			 
+		}
+
+		~BTree()
+		{
+			delete ParentNode;
 		}
 };
 

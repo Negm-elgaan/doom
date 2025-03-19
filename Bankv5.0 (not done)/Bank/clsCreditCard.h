@@ -6,11 +6,25 @@ using namespace std;
 
 class clsCreditCard : public clsCard
 {
+	long long _RandomNumber(int From, int To)
+	{
+		//Function to generate a random number
+		long long randNum = rand() % (To - From + 1) + From;
+		return randNum;
+	}
+
+	int _MonthlyLimit = 0;
+
 	public:
 
 		clsCreditCard()
 		{
-			cin >> _CardNumber >> _Cvc >> _CardHolderName >> _ExpiryDate;
+			_CardNumber = _RandomNumber(10000000000000000, 999999999999999);
+
+			_Cvc = _RandomNumber(100, 999);
+			
+
+			//cin >> _CardNumber >> _Cvc >> _CardHolderName >> _ExpiryDate >> _MonthlyLimit ;
 			return;
 		}
 
@@ -63,6 +77,11 @@ class clsCreditCard : public clsCard
 		void SetExpiryDate(string ExpiryDate)
 		{
 			_ExpiryDate = ExpiryDate;
+		}
+
+		void PrintCardType()
+		{
+			cout << "\nCredit Card";
 		}
 };
 

@@ -4,6 +4,10 @@
 #include "clsPerson.h"
 #include "clsString.h"
 #include "clsdate.h"
+#include "clsCreditCard.h"
+#include "clsDebitCard.h"
+#include "clsPrePaidCard.h"
+#include "clsCard.h"
 #include <vector>
 #include <fstream>
 
@@ -14,6 +18,7 @@ class clsBankClient : public clsPerson
 private:
 
     enum enMode { EmptyMode = 0, UpdateMode = 1, AddNewMode = 2 };
+    enum enCardType { PrePaid = 1 , Debit = 2 , Credit = 3 , Cancel = 4};
 
     enMode _Mode;
 
@@ -22,6 +27,7 @@ private:
     string _PinCode;
     float _AccountBalance;
     bool _MarkedForDelete = false;
+    clsCard* Card = nullptr;
 
     static clsBankClient _ConvertLinetoClientObject(string Line, string Seperator = "#//#")
     {
@@ -51,6 +57,37 @@ private:
 
         return stClientRecord;
 
+    }
+
+    static short _ReadCardOption()
+    {
+        cout << setw(37) << left << "" << "Choose what do you want to do? [1 to 4]? ";
+        short Choice = clsInputValidate::ReadShortNumberBetween(1, 4, "Enter Number between 1 to 4? ");
+        return Choice;
+    }
+
+    void _PerfromCardOption(enCardType CardType)
+    {
+        switch (CardType)
+        {
+            case enCardType::PrePaid:
+                system("cls");
+                //Card = new clsPrePaidCard();
+                break;
+            case enCardType::Debit:
+                system("cls");
+                //Card = new clsDebitCard();
+                break;
+            case enCardType::Credit:
+                system("cls");
+                Card = new clsCreditCard();
+                break;
+            case enCardType::Cancel:
+                system("cls");
+                break;
+        }
+
+        return;
     }
 
     static  vector <clsBankClient> _LoadClientsDataFromFile()
@@ -201,6 +238,18 @@ private:
 
     }
 
+    void _ShowCardOptions()
+    {
+        cout << "\nCard option:";
+        cout << "\n___________________";
+        cout << "\n[1]PrePaid";
+        cout << "\n[2]Debit";
+        cout << "\n[3]Credit";
+        cout << "\n[4]Cancel";
+        cout << "\n___________________\n";
+        return;
+    }
+
 public:
 
     struct stTrnsferLogRecord
@@ -281,6 +330,14 @@ public:
 
     }
     
+    void CreateCard()
+    {
+        _ShowCardOptions();
+        
+        _PerfromCardOption((enCardType)_ReadCardOption());
+
+        return;
+    }
 
         static clsBankClient Find(string AccountNumber)
         {

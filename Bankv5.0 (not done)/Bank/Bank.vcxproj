@@ -141,6 +141,7 @@
     <ClInclude Include="clsCurrencyExchangeScreen.h" />
     <ClInclude Include="clsdate.h" />
     <ClInclude Include="clsDblLinkedList.h" />
+    <ClInclude Include="clsDebitCard.h" />
     <ClInclude Include="clsDeleteClientScreen.h" />
     <ClInclude Include="clsDeleteUserScreen.h" />
     <ClInclude Include="clsDepositScreen.h" />
@@ -161,6 +162,7 @@
     <ClInclude Include="clsManageUsersScreen.h" />
     <ClInclude Include="clsMyQueue.h" />
     <ClInclude Include="clsPerson.h" />
+    <ClInclude Include="clsPrePaidCard.h" />
     <ClInclude Include="clsRegisterScreen.h" />
     <ClInclude Include="clsRequestTokenScreen.h" />
     <ClInclude Include="clsScreen.h" />
