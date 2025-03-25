@@ -20,6 +20,8 @@ template <class T> class clsGraph
 
     Node* Nodes;
 
+    Node** DNodes;
+
 public:
     
     clsGraph()
@@ -36,6 +38,7 @@ public:
         }
 
         Nodes = new Node[size];
+        DNodes = new Node * [size];
     }
 
     void InsertNode(T Data)
@@ -71,11 +74,66 @@ public:
         return;
 
     }
-    
-    void PrintMatrix()
+
+    bool CheckNode(T Data)
     {
         for (int i = 0; i < size; i++)
         {
+            if (Nodes[i].Data == Data)
+                return true;
+        }
+
+        return false;
+    }
+
+    Node search(T Data)
+    {
+        for (int i = 0; i < size; i++)
+        {
+            if (Nodes[i].Data == Data)
+                return Nodes[i];
+        }
+
+        return NULL;
+    }
+    
+    Node* Search(T Data)
+    {
+        for (int i = 0; i < size; i++)
+        {
+            if (Nodes[i].Data == Data)
+                return Nodes[i];
+        }
+
+        return nullptr;
+    }
+
+    bool CheckEdge(T Data1, T Data2)
+    {
+
+    }
+
+    bool CheckEdge(Node node1, Node node2)
+    {
+
+    }
+
+    void PrintMatrix()
+    {
+        
+        cout << "  ";
+
+        for (int i = 0; i < size; i++)
+        {
+            cout << Nodes[i].Data << " ";
+        }
+
+        cout << endl ;
+
+        for (int i = 0; i < size; i++)
+        {
+            cout << Nodes[i].Data << " ";
+
             for (int j = 0; j < size; j++)
             {
                 cout << Edges[i][j] << " ";
@@ -86,9 +144,19 @@ public:
         return;
     }
 
+    void PrintNodes()
+    {
+
+    }
+
     ~clsGraph()
     {
         delete[] Nodes;
+
+        for (int i = 0; i < size; i++)
+            delete DNodes[i];
+
+        delete[] DNodes;
 
         for (int i = 0; i < size; i++)
             delete[] Edges[i];
@@ -98,13 +166,13 @@ public:
 };
 int main()
 {
-    clsGraph<int> g;  // Create a graph of integers
+    clsGraph<char> g;  // Create a graph of integers
 
     // Insert some nodes
-    g.InsertNode(1);  // Insert node with data 1
-    g.InsertNode(2);  // Insert node with data 2
-    g.InsertNode(3);  // Insert node with data 3
-    g.InsertNode(4);  // Insert node with data 4
+    g.InsertNode('A');  // Insert node with data 1
+    g.InsertNode('B');  // Insert node with data 2
+    g.InsertNode('C');  // Insert node with data 3
+    g.InsertNode('D');  // Insert node with data 4
 
     // Insert some edges
     g.InsertEdge(0, 1);  // Edge between node 0 and node 1
@@ -113,6 +181,8 @@ int main()
     g.InsertEdge(2, 3);  // Edge between node 2 and node 3
 
     g.PrintMatrix();
+
+    //cout << endl << g.CheckNode(5);
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu

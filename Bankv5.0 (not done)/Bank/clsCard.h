@@ -10,9 +10,15 @@ class clsCard
 		int _CardNumber = 0;
 		short _Cvc = 0;
 		string _CardHolderName;
-		// Add Issue Date;
 		string _IssueDate;
 		string _ExpiryDate;
+
+		long long _RandomNumber(int From, int To)
+		{
+			//Function to generate a random number
+			long long randNum = rand() % (To - From + 1) + From;
+			return randNum;
+		}
 
 	public:
 

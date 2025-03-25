@@ -1,18 +1,12 @@
 #pragma once
 #include <iostream>
+#include "clsdate.h"
 #include "clsCard.h"
 
 using namespace std;
 
 class clsCreditCard : public clsCard
 {
-	long long _RandomNumber(int From, int To)
-	{
-		//Function to generate a random number
-		long long randNum = rand() % (To - From + 1) + From;
-		return randNum;
-	}
-
 	int _MonthlyLimit = 0;
 
 	public:
@@ -23,6 +17,7 @@ class clsCreditCard : public clsCard
 
 			_Cvc = _RandomNumber(100, 999);
 			
+			_IssueDate = clsDate::GetSystemDateTimeString();
 
 			//cin >> _CardNumber >> _Cvc >> _CardHolderName >> _ExpiryDate >> _MonthlyLimit ;
 			return;
@@ -81,7 +76,7 @@ class clsCreditCard : public clsCard
 
 		void PrintCardType()
 		{
-			cout << "\nCredit Card";
+			cout << "\nCredit Card\n";
 		}
 };
 

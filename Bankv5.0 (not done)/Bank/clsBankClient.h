@@ -8,6 +8,7 @@
 #include "clsDebitCard.h"
 #include "clsPrePaidCard.h"
 #include "clsCard.h"
+#include "clsCardFactory.h"
 #include <vector>
 #include <fstream>
 
@@ -66,26 +67,39 @@ private:
         return Choice;
     }
 
-    void _PerfromCardOption(enCardType CardType)
+    void _PerfromCardOption(int CardType)
     {
-        switch (CardType)
+        //switch (CardType)
+        //{
+        //    case enCardType::PrePaid:
+        //        system("cls");
+        //        //Card = new clsPrePaidCard();
+        //        break;
+        //    case enCardType::Debit:
+        //        system("cls");
+        //        //Card = new clsDebitCard();
+        //        break;
+        //    case enCardType::Credit:
+        //        system("cls");
+        //        Card = new clsCreditCard();
+        //        break;
+        //    case enCardType::Cancel:
+        //        system("cls");
+        //        break;
+        //}
+
+        Card = clsCardFactory::CreateCard(clsCardFactory::enCardType(CardType));
+
+        if (Card) 
         {
-            case enCardType::PrePaid:
-                system("cls");
-                //Card = new clsPrePaidCard();
-                break;
-            case enCardType::Debit:
-                system("cls");
-                //Card = new clsDebitCard();
-                break;
-            case enCardType::Credit:
-                system("cls");
-                Card = new clsCreditCard();
-                break;
-            case enCardType::Cancel:
-                system("cls");
-                break;
+            cout << "Card created successfully!\n";
+            Card->PrintCardType();
         }
+        else 
+        {
+            cout << "Invalid card type selected.\n";
+        }
+    
 
         return;
     }

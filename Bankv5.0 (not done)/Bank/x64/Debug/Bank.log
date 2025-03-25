@@ -20,36 +20,180 @@ C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsString.h(376,22): warning C4267:
 C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsdate.h(21,24): warning C4267: '=': conversion from 'size_t' to 'short', possible loss of data
   (compiling source file 'Bank.cpp')
   
-C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsBankClient.h(206,12): warning C4240: nonstandard extension used: access to 'clsBankClient::stTrnsferLogRecord' now defined to be 'public', previously it was defined to be 'private'
+C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsCreditCard.h(15,51): warning C4305: 'argument': truncation from '__int64' to 'int'
   (compiling source file 'Bank.cpp')
-  C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsBankClient.h(153,12):
+  
+C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsCreditCard.h(15,51): warning C4309: 'argument': truncation of constant value
+  (compiling source file 'Bank.cpp')
+  
+C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsCreditCard.h(15,32): warning C4305: 'argument': truncation from '__int64' to 'int'
+  (compiling source file 'Bank.cpp')
+  
+C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsCreditCard.h(15,32): warning C4309: 'argument': truncation of constant value
+  (compiling source file 'Bank.cpp')
+  
+C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsCreditCard.h(15,31): warning C4244: '=': conversion from '__int64' to 'int', possible loss of data
+  (compiling source file 'Bank.cpp')
+  
+C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsCreditCard.h(17,24): warning C4244: '=': conversion from '__int64' to 'short', possible loss of data
+  (compiling source file 'Bank.cpp')
+  
+C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsCardFactory.h(14,63): warning C4091: 'static ': ignored on left of 'clsCardFactory::enCardType' when no variable is declared
+  (compiling source file 'Bank.cpp')
+  
+C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsCardFactory.h(22,28): error C2259: 'clsPrePaidCard': cannot instantiate abstract class
+  (compiling source file 'Bank.cpp')
+  C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsPrePaidCard.h(7,7):
+  see declaration of 'clsPrePaidCard'
+  C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsCardFactory.h(22,28):
+  due to following members:
+  C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsCardFactory.h(22,28):
+  'int clsCard::GetCardNumber(void)': is abstract
+  C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsCard.h(25,15):
+  see declaration of 'clsCard::GetCardNumber'
+  C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsCardFactory.h(22,28):
+  'void clsCard::SetCardNumber(int)': is abstract
+  C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsCard.h(26,16):
+  see declaration of 'clsCard::SetCardNumber'
+  C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsCardFactory.h(22,28):
+  'void clsCard::PrintCardType(void)': is abstract
+  C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsCard.h(27,16):
+  see declaration of 'clsCard::PrintCardType'
+  C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsCardFactory.h(22,28):
+  'short clsCard::GetCVC(void)': is abstract
+  C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsCard.h(28,17):
+  see declaration of 'clsCard::GetCVC'
+  C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsCardFactory.h(22,28):
+  'void clsCard::SetCVC(short)': is abstract
+  C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsCard.h(29,16):
+  see declaration of 'clsCard::SetCVC'
+  
+C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsCardFactory.h(22,42): error C2259: 'clsPrePaidCard': cannot instantiate abstract class
+  (compiling source file 'Bank.cpp')
+  C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsPrePaidCard.h(7,7):
+  see declaration of 'clsPrePaidCard'
+  C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsCardFactory.h(22,42):
+  due to following members:
+  C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsCardFactory.h(22,42):
+  'int clsCard::GetCardNumber(void)': is abstract
+  C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsCard.h(25,15):
+  see declaration of 'clsCard::GetCardNumber'
+  C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsCardFactory.h(22,42):
+  'void clsCard::SetCardNumber(int)': is abstract
+  C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsCard.h(26,16):
+  see declaration of 'clsCard::SetCardNumber'
+  C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsCardFactory.h(22,42):
+  'void clsCard::PrintCardType(void)': is abstract
+  C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsCard.h(27,16):
+  see declaration of 'clsCard::PrintCardType'
+  C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsCardFactory.h(22,42):
+  'short clsCard::GetCVC(void)': is abstract
+  C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsCard.h(28,17):
+  see declaration of 'clsCard::GetCVC'
+  C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsCardFactory.h(22,42):
+  'void clsCard::SetCVC(short)': is abstract
+  C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsCard.h(29,16):
+  see declaration of 'clsCard::SetCVC'
+  
+C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsCardFactory.h(22,42): error C2243: 'type cast': conversion from 'clsPrePaidCard *' to 'clsCard *' exists, but is inaccessible
+  (compiling source file 'Bank.cpp')
+  
+C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsCardFactory.h(26,40): error C2243: 'type cast': conversion from 'clsDebitCard *' to 'clsCard *' exists, but is inaccessible
+  (compiling source file 'Bank.cpp')
+  
+C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsBankClient.h(269,12): warning C4240: nonstandard extension used: access to 'clsBankClient::stTrnsferLogRecord' now defined to be 'public', previously it was defined to be 'private'
+  (compiling source file 'Bank.cpp')
+  C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsBankClient.h(204,12):
   see declaration of 'clsBankClient::stTrnsferLogRecord'
   
-C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsBankClient.h(32,65): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsBankClient.h(39,65): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
   (compiling source file 'Bank.cpp')
   
-C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsBankClient.h(163,39): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsBankClient.h(65,17): error C3861: 'setw': identifier not found
   (compiling source file 'Bank.cpp')
   
-C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsBankClient.h(164,48): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsBankClient.h(65,9): error C2593: 'operator <<' is ambiguous
+  (compiling source file 'Bank.cpp')
+  C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.39.33519\include\ostream(480,39):
+  could be 'std::basic_ostream<char,std::char_traits<char>> &std::basic_ostream<char,std::char_traits<char>>::operator <<(std::basic_streambuf<char,std::char_traits<char>> *)'
+  C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.39.33519\include\ostream(448,39):
+  or       'std::basic_ostream<char,std::char_traits<char>> &std::basic_ostream<char,std::char_traits<char>>::operator <<(const void *)'
+  C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.39.33519\include\ostream(430,39):
+  or       'std::basic_ostream<char,std::char_traits<char>> &std::basic_ostream<char,std::char_traits<char>>::operator <<(long double)'
+  C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.39.33519\include\ostream(412,39):
+  or       'std::basic_ostream<char,std::char_traits<char>> &std::basic_ostream<char,std::char_traits<char>>::operator <<(double)'
+  C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.39.33519\include\ostream(394,39):
+  or       'std::basic_ostream<char,std::char_traits<char>> &std::basic_ostream<char,std::char_traits<char>>::operator <<(float)'
+  C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.39.33519\include\ostream(376,39):
+  or       'std::basic_ostream<char,std::char_traits<char>> &std::basic_ostream<char,std::char_traits<char>>::operator <<(unsigned __int64)'
+  C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.39.33519\include\ostream(358,39):
+  or       'std::basic_ostream<char,std::char_traits<char>> &std::basic_ostream<char,std::char_traits<char>>::operator <<(__int64)'
+  C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.39.33519\include\ostream(340,39):
+  or       'std::basic_ostream<char,std::char_traits<char>> &std::basic_ostream<char,std::char_traits<char>>::operator <<(unsigned long)'
+  C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.39.33519\include\ostream(322,39):
+  or       'std::basic_ostream<char,std::char_traits<char>> &std::basic_ostream<char,std::char_traits<char>>::operator <<(long)'
+  C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.39.33519\include\ostream(303,39):
+  or       'std::basic_ostream<char,std::char_traits<char>> &std::basic_ostream<char,std::char_traits<char>>::operator <<(unsigned int)'
+  C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.39.33519\include\ostream(277,39):
+  or       'std::basic_ostream<char,std::char_traits<char>> &std::basic_ostream<char,std::char_traits<char>>::operator <<(int)'
+  C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.39.33519\include\ostream(258,39):
+  or       'std::basic_ostream<char,std::char_traits<char>> &std::basic_ostream<char,std::char_traits<char>>::operator <<(unsigned short)'
+  C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.39.33519\include\ostream(224,39):
+  or       'std::basic_ostream<char,std::char_traits<char>> &std::basic_ostream<char,std::char_traits<char>>::operator <<(short)'
+  C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.39.33519\include\ostream(206,39):
+  or       'std::basic_ostream<char,std::char_traits<char>> &std::basic_ostream<char,std::char_traits<char>>::operator <<(bool)'
+  C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.39.33519\include\ostream(200,39):
+  or       'std::basic_ostream<char,std::char_traits<char>> &std::basic_ostream<char,std::char_traits<char>>::operator <<(std::ios_base &(__cdecl *)(std::ios_base &))'
+  C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.39.33519\include\ostream(194,39):
+  or       'std::basic_ostream<char,std::char_traits<char>> &std::basic_ostream<char,std::char_traits<char>>::operator <<(std::basic_ios<char,std::char_traits<char>> &(__cdecl *)(std::basic_ios<char,std::char_traits<char>> &))'
+  C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.39.33519\include\ostream(189,39):
+  or       'std::basic_ostream<char,std::char_traits<char>> &std::basic_ostream<char,std::char_traits<char>>::operator <<(std::basic_ostream<char,std::char_traits<char>> &(__cdecl *)(std::basic_ostream<char,std::char_traits<char>> &))'
+  C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.39.33519\include\ostream(1080,32):
+  or       'std::basic_ostream<char,std::char_traits<char>> &std::operator <<<char,std::char_traits<char>>(std::basic_ostream<char,std::char_traits<char>> &,const std::error_code &)'
+  C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.39.33519\include\ostream(945,31):
+  or       'std::basic_ostream<char,std::char_traits<char>> &std::operator <<<std::char_traits<char>>(std::basic_ostream<char,std::char_traits<char>> &,unsigned char)'
+  C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.39.33519\include\ostream(939,31):
+  or       'std::basic_ostream<char,std::char_traits<char>> &std::operator <<<std::char_traits<char>>(std::basic_ostream<char,std::char_traits<char>> &,const unsigned char *)'
+  C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.39.33519\include\ostream(934,31):
+  or       'std::basic_ostream<char,std::char_traits<char>> &std::operator <<<std::char_traits<char>>(std::basic_ostream<char,std::char_traits<char>> &,signed char)'
+  C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.39.33519\include\ostream(928,31):
+  or       'std::basic_ostream<char,std::char_traits<char>> &std::operator <<<std::char_traits<char>>(std::basic_ostream<char,std::char_traits<char>> &,const signed char *)'
+  C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.39.33519\include\ostream(811,31):
+  or       'std::basic_ostream<char,std::char_traits<char>> &std::operator <<<std::char_traits<char>>(std::basic_ostream<char,std::char_traits<char>> &,char)'
+  C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.39.33519\include\ostream(766,31):
+  or       'std::basic_ostream<char,std::char_traits<char>> &std::operator <<<std::char_traits<char>>(std::basic_ostream<char,std::char_traits<char>> &,const char *)'
+  C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.39.33519\include\ostream(730,32):
+  or       'std::basic_ostream<char,std::char_traits<char>> &std::operator <<<char,std::char_traits<char>>(std::basic_ostream<char,std::char_traits<char>> &,char)'
+  C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.39.33519\include\ostream(686,32):
+  or       'std::basic_ostream<char,std::char_traits<char>> &std::operator <<<char,std::char_traits<char>>(std::basic_ostream<char,std::char_traits<char>> &,const char *)'
+  C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsBankClient.h(65,9):
+  while trying to match the argument list '(std::ostream, unknown-type)'
+  
+C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsBankClient.h(66,24): error C2653: 'clsInputValidate': is not a class or namespace name
   (compiling source file 'Bank.cpp')
   
-C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsBankClient.h(165,49): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsBankClient.h(66,42): error C3861: 'ReadShortNumberBetween': identifier not found
   (compiling source file 'Bank.cpp')
   
-C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsBankClient.h(446,32): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
+C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsBankClient.h(214,39): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
   (compiling source file 'Bank.cpp')
   
-C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsBankClient.h(458,36): warning C4244: '-=': conversion from 'double' to 'float', possible loss of data
+C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsBankClient.h(215,48): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+  (compiling source file 'Bank.cpp')
+  
+C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsBankClient.h(216,49): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+  (compiling source file 'Bank.cpp')
+  
+C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsBankClient.h(517,32): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
+  (compiling source file 'Bank.cpp')
+  
+C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsBankClient.h(529,36): warning C4244: '-=': conversion from 'double' to 'float', possible loss of data
   (compiling source file 'Bank.cpp')
   
 C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsInputValidate.h(297,22): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
   (compiling source file 'Bank.cpp')
   
 C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsInputValidate.h(301,35): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-  (compiling source file 'Bank.cpp')
-  
-C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsUtil.h(64,5): warning C4102: 'defualt': unreferenced label
   (compiling source file 'Bank.cpp')
   
 C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsUser.h(483,6): warning C4091: 'static ': ignored on left of 'clsUser::stLoginRegisterRecord' when no variable is declared
@@ -67,90 +211,90 @@ C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsTotalBalancesScreen.h(59,82): wa
 C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsTransferScreen.h(50,4): warning C4091: 'static ': ignored on left of 'clsTransferScreen::stTransferLogRecord' when no variable is declared
   (compiling source file 'Bank.cpp')
   
-C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsLoanClient.h(29,89): warning C4091: 'static ': ignored on left of 'clsLoanClient::clsLoan::enLoanMode' when no variable is declared
+C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsLoanClient.h(31,89): warning C4091: 'static ': ignored on left of 'clsLoanClient::clsLoan::enLoanMode' when no variable is declared
   (compiling source file 'Bank.cpp')
   
-C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsLoanClient.h(483,16): warning C4240: nonstandard extension used: access to 'clsLoanClient::stLoanLogRecord' now defined to be 'public', previously it was defined to be 'private'
+C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsLoanClient.h(485,16): warning C4240: nonstandard extension used: access to 'clsLoanClient::stLoanLogRecord' now defined to be 'public', previously it was defined to be 'private'
   (compiling source file 'Bank.cpp')
-  C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsLoanClient.h(387,16):
+  C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsLoanClient.h(389,16):
   see declaration of 'clsLoanClient::stLoanLogRecord'
   
-C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsLoanClient.h(930,21): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsLoanClient.h(932,21): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
   (compiling source file 'Bank.cpp')
   
 C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsFindLoanClientScreen.h(17,60): error C2039: 'Loan': is not a member of 'clsLoanClient'
   (compiling source file 'Bank.cpp')
-  C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsLoanClient.h(9,7):
+  C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsLoanClient.h(11,7):
   see declaration of 'clsLoanClient'
   
 C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsFindLoanClientScreen.h(18,60): error C2039: 'GetCurrentLoan': is not a member of 'clsLoanClient'
   (compiling source file 'Bank.cpp')
-  C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsLoanClient.h(9,7):
+  C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsLoanClient.h(11,7):
   see declaration of 'clsLoanClient'
   
 C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsFindLoanClientScreen.h(19,60): error C2039: 'LoanBeginDate': is not a member of 'clsLoanClient'
   (compiling source file 'Bank.cpp')
-  C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsLoanClient.h(9,7):
+  C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsLoanClient.h(11,7):
   see declaration of 'clsLoanClient'
   
 C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsFindLoanClientScreen.h(20,60): error C2039: 'LoanEndDate': is not a member of 'clsLoanClient'
   (compiling source file 'Bank.cpp')
-  C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsLoanClient.h(9,7):
+  C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsLoanClient.h(11,7):
   see declaration of 'clsLoanClient'
   
 C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsAddNewLoanClientScreen.h(35,11): error C2039: 'Loan': is not a member of 'clsLoanClient'
   (compiling source file 'Bank.cpp')
-  C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsLoanClient.h(9,7):
+  C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsLoanClient.h(11,7):
   see declaration of 'clsLoanClient'
   
 C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsAddNewLoanClientScreen.h(38,11): error C2039: 'EndDate': is not a member of 'clsLoanClient'
   (compiling source file 'Bank.cpp')
-  C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsLoanClient.h(9,7):
+  C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsLoanClient.h(11,7):
   see declaration of 'clsLoanClient'
   
 C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsAddNewLoanClientScreen.h(41,11): error C2039: 'InterestRate': is not a member of 'clsLoanClient'
   (compiling source file 'Bank.cpp')
-  C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsLoanClient.h(9,7):
+  C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsLoanClient.h(11,7):
   see declaration of 'clsLoanClient'
   
 C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsAddNewLoanClientScreen.h(46,17): error C2039: 'InterestRate': is not a member of 'clsLoanClient'
   (compiling source file 'Bank.cpp')
-  C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsLoanClient.h(9,7):
+  C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsLoanClient.h(11,7):
   see declaration of 'clsLoanClient'
   
 C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsAddNewLoanClientScreen.h(46,45): error C2039: 'InterestRate': is not a member of 'clsLoanClient'
   (compiling source file 'Bank.cpp')
-  C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsLoanClient.h(9,7):
+  C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsLoanClient.h(11,7):
   see declaration of 'clsLoanClient'
   
 C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsAddNewLoanClientScreen.h(47,20): error C2039: 'InterestRate': is not a member of 'clsLoanClient'
   (compiling source file 'Bank.cpp')
-  C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsLoanClient.h(9,7):
+  C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsLoanClient.h(11,7):
   see declaration of 'clsLoanClient'
   
 C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsAddNewLoanClientScreen.h(54,12): error C2039: 'InterestRate': is not a member of 'clsLoanClient'
   (compiling source file 'Bank.cpp')
-  C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsLoanClient.h(9,7):
+  C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsLoanClient.h(11,7):
   see declaration of 'clsLoanClient'
   
 C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsAddNewLoanClientScreen.h(63,51): error C2039: 'Loan': is not a member of 'clsLoanClient'
   (compiling source file 'Bank.cpp')
-  C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsLoanClient.h(9,7):
+  C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsLoanClient.h(11,7):
   see declaration of 'clsLoanClient'
   
 C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsAddNewLoanClientScreen.h(64,51): error C2039: 'GetCurrentLoan': is not a member of 'clsLoanClient'
   (compiling source file 'Bank.cpp')
-  C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsLoanClient.h(9,7):
+  C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsLoanClient.h(11,7):
   see declaration of 'clsLoanClient'
   
 C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsAddNewLoanClientScreen.h(65,51): error C2039: 'LoanBeginDate': is not a member of 'clsLoanClient'
   (compiling source file 'Bank.cpp')
-  C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsLoanClient.h(9,7):
+  C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsLoanClient.h(11,7):
   see declaration of 'clsLoanClient'
   
 C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsAddNewLoanClientScreen.h(66,51): error C2039: 'LoanEndDate': is not a member of 'clsLoanClient'
   (compiling source file 'Bank.cpp')
-  C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsLoanClient.h(9,7):
+  C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsLoanClient.h(11,7):
   see declaration of 'clsLoanClient'
   
 C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsRequestTokenScreen.h(54,16): error C2660: 'clsUser::RequestToken': function does not take 0 arguments
