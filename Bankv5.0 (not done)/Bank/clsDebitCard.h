@@ -1,5 +1,6 @@
 #pragma once
 #include <iostream>
+#include "clsdate.h"
 #include "clsCard.h"
 
 using namespace std;
@@ -15,6 +16,14 @@ class clsDebitCard : public clsCard
 			_CardNumber = _RandomNumber(10000000000000000, 999999999999999);
 
 			_Cvc = _RandomNumber(100, 999);
+
+			clsDate date = clsDate::GetSystemDate();
+
+			_IssueDate = date.DateToString();
+
+			date.Year += 3;
+
+			_ExpiryDate = date.DateToString();
 		}
 
 		int GetCardNumber()

@@ -17,7 +17,13 @@ class clsCreditCard : public clsCard
 
 			_Cvc = _RandomNumber(100, 999);
 			
-			_IssueDate = clsDate::GetSystemDateTimeString();
+			clsDate date = clsDate::GetSystemDate();
+
+			_IssueDate = date.DateToString();
+
+			date.Year += 3;
+
+			_ExpiryDate = date.DateToString();
 
 			//cin >> _CardNumber >> _Cvc >> _CardHolderName >> _ExpiryDate >> _MonthlyLimit ;
 			return;
@@ -77,6 +83,18 @@ class clsCreditCard : public clsCard
 		void PrintCardType()
 		{
 			cout << "\nCredit Card\n";
+		}
+
+		void PrintCardInfo()
+		{
+			PrintCardType();
+			cout << "\n____________________\n";
+			cout << "Card number : " << _CardNumber << endl;
+			cout << "Card Holder Name : " << _CardHolderName << endl;
+			cout << "Cvc : " << _Cvc << endl;
+			cout << "Issue Date : " << _IssueDate << endl;
+			cout << "Expiry Date : " << _ExpiryDate << endl;
+			cout << "\n____________________\n";
 		}
 };
 

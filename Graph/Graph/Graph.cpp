@@ -2,17 +2,16 @@
 //
 
 #include <iostream>
+#include <thread>
 
 using namespace std;
 
 template <class T> class clsGraph
 {
-    class Node
-    {
-        public:    
-            T Data;
-            int index;
-    };
+    class Node;
+
+    /*Node* node1 = nullptr;
+    Node* node2 = nullptr;*/
 
     int size = 0 , currentnodenum = 0;
 
@@ -22,8 +21,46 @@ template <class T> class clsGraph
 
     Node** DNodes;
 
+   /* void _Search(Node* node , T Data)
+    {
+        for (int i = 0; i < size; i++)
+        {
+            if (DNodes[i]->Data == Data)
+            {
+                node = DNodes[i];
+                return;
+            }
+        }
+
+    }*/
+
+    //bool _CheckEdge(T Data1, T Data2)
+    //{
+    //    /*Node* node1 = Search(Data1);
+    //    Node* node2 = Search(Data2);*/
+
+    //    thread t1(&clsGraph::_Search, this, node1, Data1);
+    //    thread t2(&clsGraph::_Search, this, node2, Data2);
+
+    //    t1.join();
+    //    t2.join();
+
+    //    if (node1 == nullptr || node2 == nullptr)
+    //        return false;
+
+    //    return Edges[node1->index][node2->index] == 1;
+
+    //}
+
 public:
     
+    class Node
+    {
+        public:
+            T Data;
+            int index;
+    };
+
     clsGraph()
     {
         cin >> size;
@@ -55,6 +92,12 @@ public:
 
         Nodes[currentnodenum] = node;
 
+        Node* Pnode = new Node;
+        Pnode->Data = Data;
+        Pnode->index = currentnodenum;
+
+        DNodes[currentnodenum] = Pnode;
+
         currentnodenum++;
 
         return;
@@ -85,24 +128,13 @@ public:
 
         return false;
     }
-
-    Node search(T Data)
-    {
-        for (int i = 0; i < size; i++)
-        {
-            if (Nodes[i].Data == Data)
-                return Nodes[i];
-        }
-
-        return NULL;
-    }
     
     Node* Search(T Data)
     {
         for (int i = 0; i < size; i++)
         {
-            if (Nodes[i].Data == Data)
-                return Nodes[i];
+            if (DNodes[i]->Data == Data)
+                return DNodes[i];
         }
 
         return nullptr;
@@ -110,7 +142,30 @@ public:
 
     bool CheckEdge(T Data1, T Data2)
     {
+        Node* node1 = Search(Data1);
+        Node* node2 = Search(Data2);
 
+        if (node1 == nullptr || node2 == nullptr)
+            return false;
+
+        return Edges[node1->index][node2->index] == 1;
+
+    }
+
+    void PrintEdge(T Data1, T Data2)
+    {
+        Node* node1 = Search(Data1);
+        Node* node2 = Search(Data2);
+
+        if (node1 == nullptr || node2 == nullptr)
+        {
+            cout << "\nElement not found!\n";
+            return;
+        }
+            
+        cout << Edges[node1->index][node2->index] << endl;
+
+        return; 
     }
 
     bool CheckEdge(Node node1, Node node2)
@@ -146,17 +201,27 @@ public:
 
     void PrintNodes()
     {
+        for (int i = 0; i < currentnodenum; i++)
+        {
+            cout << DNodes[i]->Data << " ";
+        }
+
+        cout << endl;
 
     }
 
     ~clsGraph()
     {
+
         delete[] Nodes;
 
         for (int i = 0; i < size; i++)
             delete DNodes[i];
 
         delete[] DNodes;
+
+        /*delete node1;
+        delete node2;*/
 
         for (int i = 0; i < size; i++)
             delete[] Edges[i];
@@ -181,6 +246,8 @@ int main()
     g.InsertEdge(2, 3);  // Edge between node 2 and node 3
 
     g.PrintMatrix();
+
+    cout << g.CheckEdge('A', 'D');
 
     //cout << endl << g.CheckNode(5);
 }

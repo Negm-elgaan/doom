@@ -20,85 +20,61 @@ C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsString.h(376,22): warning C4267:
 C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsdate.h(21,24): warning C4267: '=': conversion from 'size_t' to 'short', possible loss of data
   (compiling source file 'Bank.cpp')
   
-C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsCreditCard.h(15,51): warning C4305: 'argument': truncation from '__int64' to 'int'
+C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsCreditCard.h(16,51): warning C4305: 'argument': truncation from '__int64' to 'int'
   (compiling source file 'Bank.cpp')
   
-C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsCreditCard.h(15,51): warning C4309: 'argument': truncation of constant value
+C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsCreditCard.h(16,51): warning C4309: 'argument': truncation of constant value
   (compiling source file 'Bank.cpp')
   
-C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsCreditCard.h(15,32): warning C4305: 'argument': truncation from '__int64' to 'int'
+C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsCreditCard.h(16,32): warning C4305: 'argument': truncation from '__int64' to 'int'
   (compiling source file 'Bank.cpp')
   
-C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsCreditCard.h(15,32): warning C4309: 'argument': truncation of constant value
+C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsCreditCard.h(16,32): warning C4309: 'argument': truncation of constant value
   (compiling source file 'Bank.cpp')
   
-C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsCreditCard.h(15,31): warning C4244: '=': conversion from '__int64' to 'int', possible loss of data
+C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsCreditCard.h(16,31): warning C4244: '=': conversion from '__int64' to 'int', possible loss of data
   (compiling source file 'Bank.cpp')
   
-C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsCreditCard.h(17,24): warning C4244: '=': conversion from '__int64' to 'short', possible loss of data
+C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsCreditCard.h(18,24): warning C4244: '=': conversion from '__int64' to 'short', possible loss of data
+  (compiling source file 'Bank.cpp')
+  
+C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsDebitCard.h(16,51): warning C4305: 'argument': truncation from '__int64' to 'int'
+  (compiling source file 'Bank.cpp')
+  
+C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsDebitCard.h(16,51): warning C4309: 'argument': truncation of constant value
+  (compiling source file 'Bank.cpp')
+  
+C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsDebitCard.h(16,32): warning C4305: 'argument': truncation from '__int64' to 'int'
+  (compiling source file 'Bank.cpp')
+  
+C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsDebitCard.h(16,32): warning C4309: 'argument': truncation of constant value
+  (compiling source file 'Bank.cpp')
+  
+C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsDebitCard.h(16,31): warning C4244: '=': conversion from '__int64' to 'int', possible loss of data
+  (compiling source file 'Bank.cpp')
+  
+C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsDebitCard.h(18,24): warning C4244: '=': conversion from '__int64' to 'short', possible loss of data
+  (compiling source file 'Bank.cpp')
+  
+C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsPrePaidCard.h(16,51): warning C4305: 'argument': truncation from '__int64' to 'int'
+  (compiling source file 'Bank.cpp')
+  
+C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsPrePaidCard.h(16,51): warning C4309: 'argument': truncation of constant value
+  (compiling source file 'Bank.cpp')
+  
+C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsPrePaidCard.h(16,32): warning C4305: 'argument': truncation from '__int64' to 'int'
+  (compiling source file 'Bank.cpp')
+  
+C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsPrePaidCard.h(16,32): warning C4309: 'argument': truncation of constant value
+  (compiling source file 'Bank.cpp')
+  
+C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsPrePaidCard.h(16,31): warning C4244: '=': conversion from '__int64' to 'int', possible loss of data
+  (compiling source file 'Bank.cpp')
+  
+C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsPrePaidCard.h(18,24): warning C4244: '=': conversion from '__int64' to 'short', possible loss of data
   (compiling source file 'Bank.cpp')
   
 C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsCardFactory.h(14,63): warning C4091: 'static ': ignored on left of 'clsCardFactory::enCardType' when no variable is declared
-  (compiling source file 'Bank.cpp')
-  
-C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsCardFactory.h(22,28): error C2259: 'clsPrePaidCard': cannot instantiate abstract class
-  (compiling source file 'Bank.cpp')
-  C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsPrePaidCard.h(7,7):
-  see declaration of 'clsPrePaidCard'
-  C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsCardFactory.h(22,28):
-  due to following members:
-  C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsCardFactory.h(22,28):
-  'int clsCard::GetCardNumber(void)': is abstract
-  C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsCard.h(25,15):
-  see declaration of 'clsCard::GetCardNumber'
-  C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsCardFactory.h(22,28):
-  'void clsCard::SetCardNumber(int)': is abstract
-  C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsCard.h(26,16):
-  see declaration of 'clsCard::SetCardNumber'
-  C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsCardFactory.h(22,28):
-  'void clsCard::PrintCardType(void)': is abstract
-  C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsCard.h(27,16):
-  see declaration of 'clsCard::PrintCardType'
-  C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsCardFactory.h(22,28):
-  'short clsCard::GetCVC(void)': is abstract
-  C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsCard.h(28,17):
-  see declaration of 'clsCard::GetCVC'
-  C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsCardFactory.h(22,28):
-  'void clsCard::SetCVC(short)': is abstract
-  C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsCard.h(29,16):
-  see declaration of 'clsCard::SetCVC'
-  
-C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsCardFactory.h(22,42): error C2259: 'clsPrePaidCard': cannot instantiate abstract class
-  (compiling source file 'Bank.cpp')
-  C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsPrePaidCard.h(7,7):
-  see declaration of 'clsPrePaidCard'
-  C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsCardFactory.h(22,42):
-  due to following members:
-  C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsCardFactory.h(22,42):
-  'int clsCard::GetCardNumber(void)': is abstract
-  C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsCard.h(25,15):
-  see declaration of 'clsCard::GetCardNumber'
-  C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsCardFactory.h(22,42):
-  'void clsCard::SetCardNumber(int)': is abstract
-  C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsCard.h(26,16):
-  see declaration of 'clsCard::SetCardNumber'
-  C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsCardFactory.h(22,42):
-  'void clsCard::PrintCardType(void)': is abstract
-  C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsCard.h(27,16):
-  see declaration of 'clsCard::PrintCardType'
-  C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsCardFactory.h(22,42):
-  'short clsCard::GetCVC(void)': is abstract
-  C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsCard.h(28,17):
-  see declaration of 'clsCard::GetCVC'
-  C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsCardFactory.h(22,42):
-  'void clsCard::SetCVC(short)': is abstract
-  C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsCard.h(29,16):
-  see declaration of 'clsCard::SetCVC'
-  
-C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsCardFactory.h(22,42): error C2243: 'type cast': conversion from 'clsPrePaidCard *' to 'clsCard *' exists, but is inaccessible
-  (compiling source file 'Bank.cpp')
-  
-C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsCardFactory.h(26,40): error C2243: 'type cast': conversion from 'clsDebitCard *' to 'clsCard *' exists, but is inaccessible
   (compiling source file 'Bank.cpp')
   
 C:\Users\omarh\doom\Bankv5.0 (not done)\Bank\clsBankClient.h(269,12): warning C4240: nonstandard extension used: access to 'clsBankClient::stTrnsferLogRecord' now defined to be 'public', previously it was defined to be 'private'
