@@ -17,8 +17,6 @@ template <class T> class clsGraph
 
     int** Edges;
 
-    Node* Nodes;
-
     Node** DNodes;
 
    /* void _Search(Node* node , T Data)
@@ -74,8 +72,27 @@ public:
             }
         }
 
-        Nodes = new Node[size];
-        DNodes = new Node * [size];
+        DNodes = new Node * [size]();
+
+        return;
+    }
+
+    clsGraph(int Size)
+    {
+        size = Size;
+        Edges = new int* [size];
+        for (int i = 0; i < size; i++)
+        {
+            Edges[i] = new int[size];
+            for (int j = 0; j < size; j++)
+            {
+                Edges[i][j] = 0;
+            }
+        }
+
+        DNodes = new Node * [size]();
+
+        return;
     }
 
     void InsertNode(T Data)
@@ -85,12 +102,6 @@ public:
             cout << "\nsize is full!\n";
             return;
         }
-
-        Node node;
-        node.Data = Data;
-        node.index = currentnodenum;
-
-        Nodes[currentnodenum] = node;
 
         Node* Pnode = new Node;
         Pnode->Data = Data;
@@ -104,7 +115,7 @@ public:
         
     }
 
-    void InsertEdge(int Index1, int Index2)
+    void InsertEdge(int Index1 , int Index2 , int Weight = 1)
     {
         if (Index1 >= size || Index2 >= size)
         {
@@ -112,7 +123,7 @@ public:
             return;
         }
 
-        Edges[Index1][Index2] = 1;
+        Edges[Index1][Index2] = Weight;
 
         return;
 
@@ -120,9 +131,9 @@ public:
 
     bool CheckNode(T Data)
     {
-        for (int i = 0; i < size; i++)
+        for (int i = 0; i < currentnodenum; i++)
         {
-            if (Nodes[i].Data == Data)
+            if (DNodes[i]->Data == Data)
                 return true;
         }
 
@@ -148,7 +159,7 @@ public:
         if (node1 == nullptr || node2 == nullptr)
             return false;
 
-        return Edges[node1->index][node2->index] == 1;
+        return Edges[node1->index][node2->index] != 0;
 
     }
 
@@ -168,6 +179,19 @@ public:
         return; 
     }
 
+    bool RemoveEdge(int Index1 , int Index2)
+    {
+        if (Index1 >= size || Index2 >= size)
+        {
+            cout << "\nOut of Bounds\n";
+            return false;
+        }
+
+        Edges[Index1][Index2] = 0;
+
+        return true;
+    }
+
     bool CheckEdge(Node node1, Node node2)
     {
 
@@ -180,14 +204,14 @@ public:
 
         for (int i = 0; i < size; i++)
         {
-            cout << Nodes[i].Data << " ";
+            cout << DNodes[i]->Data << " ";
         }
 
         cout << endl ;
 
         for (int i = 0; i < size; i++)
         {
-            cout << Nodes[i].Data << " ";
+            cout << DNodes[i]->Data << " ";
 
             for (int j = 0; j < size; j++)
             {
@@ -213,8 +237,6 @@ public:
     ~clsGraph()
     {
 
-        delete[] Nodes;
-
         for (int i = 0; i < size; i++)
             delete DNodes[i];
 
@@ -237,13 +259,22 @@ int main()
     g.InsertNode('A');  // Insert node with data 1
     g.InsertNode('B');  // Insert node with data 2
     g.InsertNode('C');  // Insert node with data 3
-    g.InsertNode('D');  // Insert node with data 4
+    g.InsertNode('D');
+    g.InsertNode('E'); 
+    g.InsertNode('F'); // Insert node with data 4
 
     // Insert some edges
-    g.InsertEdge(0, 1);  // Edge between node 0 and node 1
-    g.InsertEdge(0, 2);  // Edge between node 0 and node 2
-    g.InsertEdge(1, 2);  // Edge between node 1 and node 2
-    g.InsertEdge(2, 3);  // Edge between node 2 and node 3
+    //g.InsertEdge(0, 1);  // Edge between node 0 and node 1
+    //g.InsertEdge(0, 2);  // Edge between node 0 and node 2
+    //g.InsertEdge(1, 2);  // Edge between node 1 and node 2
+    //g.InsertEdge(2, 3);  // Edge between node 2 and node 3
+
+    g.InsertEdge(0, 1);  
+    g.InsertEdge(0, 3);  
+    g.InsertEdge(1, 2);  
+    g.InsertEdge(2, 4);  
+    g.InsertEdge(3, 4);  
+    g.InsertEdge(4, 5);  
 
     g.PrintMatrix();
 
