@@ -20,7 +20,7 @@ template <class T> class clsBinaryTree
 		int _Height = 0;
 		int _Temp = 0;
 		int _SumKeys = 0;
-		int _BalanceFactor //BF = height left - height right // consider checking whether height is calculated correctly before proceding
+		//int _BalanceFactor //BF = height left - height right // consider checking whether height is calculated correctly before proceding
 		vector <int> _SortedList;
 		vector <int> _vlist;
 
@@ -690,7 +690,7 @@ template <class T> class clsBinaryTree
 
 		~clsBinaryTree()
 		{
-			delete ParentNode;
+			DeleteHelper(ParentNode);
 		}
 		
 };

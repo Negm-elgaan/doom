@@ -132,13 +132,111 @@ class BinaryHeap
 
         }
 
+        void Print()
+        {
+            cout << endl;
+
+            for (int i = 0; i < _CurrentNumber; i++)
+                cout << _BHptr[i] << " ";
+
+            cout << endl;
+        }
+
         ~BinaryHeap()
         {
             delete[] _BHptr;
         }
 };
 
-int main()
-{
-    std::cout << "Hello World!\n";
+int main() {
+    // Test case 1: Small heap (size 5)
+    {
+        cout << "Testing small heap (size 5):\n";
+        BinaryHeap bh;
+
+        // Insert elements in random order
+        bh.Insert(5);
+        bh.Insert(3);
+        bh.Insert(8);
+        bh.Insert(1);
+        bh.Insert(2);
+
+        bh.Print(); // Should show heap structure
+
+        cout << "Extracting min: " << bh.ExtractMin() << endl; // Should be 1
+        cout << "Extracting min: " << bh.ExtractMin() << endl; // Should be 2
+        cout << "Extracting min: " << bh.ExtractMin() << endl; // Should be 3
+        cout << "Extracting min: " << bh.ExtractMin() << endl; // Should be 5
+        cout << "Extracting min: " << bh.ExtractMin() << endl; // Should be 8
+
+        cout << "Is empty: " << boolalpha << bh.IsEmpty() << endl; // Should be true
+    }
+
+    // Test case 2: Edge cases
+    {
+        cout << "\nTesting edge cases (size 3):\n";
+        BinaryHeap bh;
+
+        // Test parent/child relationships
+        bh.Insert(2);
+        bh.Insert(1);
+        bh.Insert(3);
+
+        cout << "Parent of index 1: " << bh.BinaryHeapIndexParent(1) << endl; // Should be 1
+        cout << "Left child of index 0: " << bh.BinaryHeapIndexLeftChild(0) << endl; // Should be 1
+        cout << "Right child of index 0: " << bh.BinaryHeapIndexRightChild(0) << endl; // Should be 3
+
+        // Test invalid indices
+        cout << "Parent of index 0: " << bh.BinaryHeapIndexParent(0) << endl; // Should be -1
+        cout << "Right child of index 2: " << bh.BinaryHeapIndexRightChild(2) << endl; // Should be -1
+    }
+
+    // Test case 3: Duplicate values
+    {
+        cout << "\nTesting duplicate values (size 6):\n";
+        BinaryHeap bh;
+
+        bh.Insert(4);
+        bh.Insert(2);
+        bh.Insert(4);
+        bh.Insert(2);
+        bh.Insert(1);
+        bh.Insert(1);
+
+        bh.Print();
+
+        cout << "Extracting mins: ";
+        while (!bh.IsEmpty()) {
+            cout << bh.ExtractMin() << " "; // Should be 1, 1, 2, 2, 4, 4
+        }
+        cout << endl;
+    }
+
+    // Test case 4: Large heap
+    {
+        cout << "\nTesting large heap (size 10):\n";
+        BinaryHeap bh;
+
+        // Insert in descending order (worst case for heapify up)
+        bh.Insert(10);
+        bh.Insert(9);
+        bh.Insert(8);
+        bh.Insert(7);
+        bh.Insert(6);
+        bh.Insert(5);
+        bh.Insert(4);
+        bh.Insert(3);
+        bh.Insert(2);
+        bh.Insert(1);
+
+        bh.Print();
+
+        cout << "Extracting all elements: ";
+        while (!bh.IsEmpty()) {
+            cout << bh.ExtractMin() << " "; // Should be 1 to 10 in order
+        }
+        cout << endl;
+    }
+
+    return 0;
 }
