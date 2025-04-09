@@ -89,29 +89,52 @@ class clsTuple<T, Args...>
         }
 };
 
-//template <typename T, typename... Args> class clsTupleArray
-//{
-//    clsTuple<T , Args...>* _TuplePtr;
-//    int _Size = 0;
-//
-//    public:
-//
-//        clsTupleArray()
-//        {
-//            cout << "\nEnter Size:\n";
-//            cin >> _Size;
-//
-//            _TuplePtr = new clsTuple[_Size];
-//        }
-//
-//        void SetItem(int Index = 0 , T&& Data, Args&&... args)
-//        {
-//            _TuplePtr[i].Insert()
-//        }
-//
-//        void print()
-//        {
-//
-//        }
-//
-//};
+template <typename T, typename... Args> class clsTupleArray
+{
+    clsTuple<T , Args...>* _TuplePtr;
+    int _Size = 0;
+
+    public:
+
+        clsTupleArray()
+        {
+            cout << "\nEnter Size:\n";
+            cin >> _Size;
+
+            _TuplePtr = new clsTuple<T, Args...>[_Size];
+        }
+
+        clsTupleArray(int size)
+        {
+            _Size = size;
+            _TuplePtr = new clsTuple<T, Args...>[_Size];
+        }
+
+        int Size()
+        {
+            return _Size;
+        }
+
+        void SetItem(int Index, T&& Data, Args&&... args)
+        {
+            _TuplePtr[Index].Insert(forward<T>(Data), forward<Args>(args)...);
+        }
+
+        clsTuple<T, Args...> GetItem(int Index = 0)
+        {
+            return _TuplePtr[Index];
+        }
+
+        void print()
+        {
+            for (int i = 0; i < _Size; i++)
+            {
+                _TuplePtr[i].Print();
+            }
+        }
+
+        ~clsTupleArray()
+        {
+            delete[] _TuplePtr;
+        }
+};

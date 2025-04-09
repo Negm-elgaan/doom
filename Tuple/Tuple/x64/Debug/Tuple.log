@@ -1,11 +1,2 @@
 ﻿  Tuple.cpp
-C:\Users\omarh\doom\Tuple\Tuple\clsTuple.h(107,38): error C2059: syntax error: ')'
-  (compiling source file 'Tuple.cpp')
-  C:\Users\omarh\doom\Tuple\Tuple\clsTuple.h(107,38):
-  the template instantiation context (the oldest one first) is
-  	C:\Users\omarh\doom\Tuple\Tuple\clsTuple.h(92,47):
-  	while compiling class template 'clsTupleArray'
-  
-C:\Users\omarh\doom\Tuple\Tuple\clsTuple.h(108,9): error C2143: syntax error: missing ')' before '{'
-  (compiling source file 'Tuple.cpp')
-  
+  Tuple.vcxproj -> C:\Users\omarh\doom\Tuple\x64\Debug\Tuple.exe
