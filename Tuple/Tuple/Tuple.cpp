@@ -8,6 +8,9 @@ int main()
     MyTuple.Print();
     //char c = MyTuple.Get(1);
     //cout << c << endl;
+    clsTuple<int, char, double, string> MyTuple2(42, 'O', 3.14, "Hello Tuple");
+    MyTuple2.Insert();
+    MyTuple2.Print();
 
     clsTupleArray <int, char, double, string> MyTupleArr(5);
     MyTupleArr.SetItem(0, 21, 'O', 3.14, "Negm");
@@ -16,4 +19,8 @@ int main()
     MyTupleArr.SetItem(3, 12, 'Q', 0.9, "Israa");
     MyTupleArr.SetItem(4, 46, 'A', 11.27, "Mohamed");
     MyTupleArr.print();
+
+    clsTupleArray <int, char, double, string> NewTupleArray(3);
+    NewTupleArray >> NewTupleArray;
+    NewTupleArray << NewTupleArray;
 }

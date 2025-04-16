@@ -9,9 +9,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{72F0F753-AE1A-432E-8E3D-BC31D1D10EB1}|Tuple\\Tuple.vcxproj|C:\\Users\\omarh\\doom\\Tuple\\Tuple\\Tuple.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{72F0F753-AE1A-432E-8E3D-BC31D1D10EB1}|Tuple\\Tuple.vcxproj|solutionrelative:Tuple\\Tuple.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.39.33519\\include\\xstring||{3B902123-F8A7-4915-9F01-361F908088D0}|"
     }
   ],
   "DocumentGroupContainers": [
@@ -21,7 +18,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Bookmark",
@@ -33,25 +30,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "xstring",
-              "DocumentMoniker": "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.39.33519\\include\\xstring",
-              "RelativeDocumentMoniker": "..\\..\\..\\..\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.39.33519\\include\\xstring",
-              "ToolTip": "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.39.33519\\include\\xstring",
-              "RelativeToolTip": "..\\..\\..\\..\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.39.33519\\include\\xstring",
-              "ViewState": "AQIAAIUBAAAAAAAAAAAnwJIBAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2025-04-08T13:52:32.02Z"
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 0,
               "Title": "clsTuple.h",
               "DocumentMoniker": "C:\\Users\\omarh\\doom\\Tuple\\Tuple\\clsTuple.h",
               "RelativeDocumentMoniker": "Tuple\\clsTuple.h",
               "ToolTip": "C:\\Users\\omarh\\doom\\Tuple\\Tuple\\clsTuple.h",
               "RelativeToolTip": "Tuple\\clsTuple.h",
-              "ViewState": "AQIAAGAAAAAAAAAAAAAAAHsAAAAJAAAA",
+              "ViewState": "AQIAAKMAAAAAAAAAAAAAwLMAAAAUAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2025-04-08T11:08:19.198Z",
               "EditorCaption": ""
@@ -64,7 +49,7 @@
               "RelativeDocumentMoniker": "Tuple\\Tuple.cpp",
               "ToolTip": "C:\\Users\\omarh\\doom\\Tuple\\Tuple\\Tuple.cpp",
               "RelativeToolTip": "Tuple\\Tuple.cpp",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABEAAAAXAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABkAAAABAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-04-08T11:08:06.567Z",
               "EditorCaption": ""

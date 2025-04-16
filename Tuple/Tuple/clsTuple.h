@@ -16,7 +16,7 @@ class clsTuple<T>
 
     public:
 
-        clsTuple()
+        clsTuple() 
         {
             
         }
@@ -24,6 +24,11 @@ class clsTuple<T>
         clsTuple(T&& Data)
         {
             _Data = forward<T>(Data);
+        }
+
+        void Insert()
+        {
+            cin >> _Data;
         }
 
         void Insert(T&& Data)
@@ -66,6 +71,12 @@ class clsTuple<T, Args...>
             GlobalIndex++;
         }
 
+        void Insert()
+        {
+            cin >> _Data;
+            _Next.Insert();
+        }
+
         void Insert(T&& Data, Args&&... args)
         {
             _Data = forward<T>(Data); 
@@ -84,7 +95,7 @@ class clsTuple<T, Args...>
 
         void Print()
         {
-            cout << _Data << endl;
+            cout << _Data << " ";
             _Next.Print();
         }
 };
@@ -92,7 +103,9 @@ class clsTuple<T, Args...>
 template <typename T, typename... Args> class clsTupleArray
 {
     clsTuple<T , Args...>* _TuplePtr;
+    clsTupleArray<T, Args...>** _TuplePtrRef;
     int _Size = 0;
+    int _RefSize = 0;
 
     public:
 
@@ -110,9 +123,27 @@ template <typename T, typename... Args> class clsTupleArray
             _TuplePtr = new clsTuple<T, Args...>[_Size];
         }
 
+        void operator<< (clsTupleArray& TupleArray)
+        {
+            TupleArray.print();
+        }
+
+        void operator>> (clsTupleArray& TupleArray)
+        {
+            TupleArray.Insert();
+        }
+
         int Size()
         {
             return _Size;
+        }
+
+        void Insert()
+        {
+            for (int i = 0; i < _Size; i++)
+                _TuplePtr[i].Insert();
+
+            return;
         }
 
         void SetItem(int Index, T&& Data, Args&&... args)
@@ -125,16 +156,46 @@ template <typename T, typename... Args> class clsTupleArray
             return _TuplePtr[Index];
         }
 
+        bool InitializeRef(int RefSize)
+        {
+            if (RefSize <= 0)
+                return false;
+
+            _RefSize = RefSize;
+            _TuplePtrRef = new clsTupleArray<T, Args...>* [_RefSize];
+
+            return true;
+        }
+
+        bool SetRef(int Index, clsTupleArray<T, Args...>* TupleArray)
+        {
+            if (Index < 0 || Index >= _RefSize)
+                return false;
+
+            _TuplePtrRef[Index] = TupleArray;
+
+            return true;
+        }
+
         void print()
         {
             for (int i = 0; i < _Size; i++)
             {
                 _TuplePtr[i].Print();
             }
+
+            cout << endl;
+
         }
 
         ~clsTupleArray()
         {
             delete[] _TuplePtr;
+
+            for (int i = 0; i < _RefSize; i++)
+                delete[] _TuplePtrRef[i];
+
+            delete[] _TuplePtrRef;
+
         }
 };
