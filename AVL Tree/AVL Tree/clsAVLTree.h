@@ -41,6 +41,23 @@ class clsAVLTree
 
 		Node* ParentNode = nullptr;
 
+		void _Height(Node* node , int Temp = -1)
+		{
+			if (node == NULL)
+			{
+				if (Temp > TreeHeight)
+					TreeHeight = Temp;
+
+				return;
+			}
+
+			Temp++;
+
+			_Height(node->_Left , Temp);
+
+			_Height(node->_Right , Temp);
+		}
+
 	public:
 
 		void Insert(int Data, bool Re = false)
