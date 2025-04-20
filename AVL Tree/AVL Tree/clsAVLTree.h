@@ -32,6 +32,31 @@ class clsAVLTree
 					return _BalanceFactor;
 				}
 
+				int _HeightPostOrder(Node* node , int Temp = -1)
+				{
+					if (node == NULL)
+					{
+						/*if (Temp > _Height)
+							_Height = Temp;*/
+
+						return -1;
+					}
+
+					_HeightPostOrder(node->_Left, Temp);
+
+					_HeightPostOrder(node->_Right, Temp);
+
+					if (node->_Left == NULL && node->_Right == NULL)
+					{
+						_LeftSubTreeHeight = -1;
+						_RightSubTreeHeight = -1;
+						_GetBalanceFactor();
+						_Height = 0;
+						return;
+					}
+
+				}
+
 			friend class clsAVLTree;
 
 			
@@ -57,6 +82,8 @@ class clsAVLTree
 
 			_Height(node->_Right , Temp);
 		}
+
+		
 
 	public:
 
@@ -124,6 +151,7 @@ class clsAVLTree
 
 			_Size++;
 			
+			_Height(TempNode);
 			
 			return;
 

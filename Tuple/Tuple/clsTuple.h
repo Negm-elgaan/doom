@@ -146,13 +146,20 @@ template <typename T, typename... Args> class clsTupleArray
             return;
         }
 
-        void SetItem(int Index, T&& Data, Args&&... args)
+        bool SetItem(int Index, T&& Data, Args&&... args)
         {
+            if (Index < 0 || Index >= _Size)
+                return false;
+
             _TuplePtr[Index].Insert(forward<T>(Data), forward<Args>(args)...);
+            return true;
         }
 
         clsTuple<T, Args...> GetItem(int Index = 0)
         {
+            if (Index < 0 || Index >= _Size)
+                return false;
+
             return _TuplePtr[Index];
         }
 
@@ -175,6 +182,14 @@ template <typename T, typename... Args> class clsTupleArray
             _TuplePtrRef[Index] = TupleArray;
 
             return true;
+        }
+
+        bool DeleteItemAt(int Index = 0)
+        {
+            if (Index < 0 || Index >= _Size)
+                return false;
+
+            delete _TuplePtr[Index];
         }
 
         void print()
