@@ -18,12 +18,13 @@ class clsTuple<T>
 
         clsTuple() 
         {
-            
+       
         }
 
         clsTuple(T&& Data)
         {
             _Data = forward<T>(Data);
+            _Index = GlobalIndex;
         }
 
         void Insert()
@@ -136,6 +137,11 @@ template <typename T, typename... Args> class clsTupleArray
         int Size()
         {
             return _Size;
+        }
+
+        bool IsEmpty()
+        {
+            return _TuplePtr == nullptr;
         }
 
         void Insert()

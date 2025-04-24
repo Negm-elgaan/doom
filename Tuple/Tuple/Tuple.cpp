@@ -3,6 +3,7 @@
 
 int main()
 {
+    tuple <int, char> ttt;
     clsTuple<int, char, double, string> MyTuple(42, 'O', 3.14, "Hello Tuple");
     MyTuple.Insert(10, 'A', 3.94, "Hello world");
     MyTuple.Print();
