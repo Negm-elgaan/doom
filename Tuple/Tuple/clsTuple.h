@@ -134,6 +134,16 @@ template <typename T, typename... Args> class clsTupleArray
             TupleArray.Insert();
         }
 
+        clsTuple<T, Args...> Front()
+        {
+            return _TuplePtr[0];
+        }
+
+        clsTuple<T, Args...> Back()
+        {
+            return _TuplePtr[_Size - 1];
+        }
+
         int Size()
         {
             return _Size;
