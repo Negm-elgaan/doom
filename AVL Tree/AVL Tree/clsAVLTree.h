@@ -34,8 +34,6 @@ class clsAVLTree
 					return _BalanceFactor;
 				}
 
-				
-
 				void LeftSubTreeHeight(Node* node , int Temp = -1)
 				{
 					if (node == NULL)
@@ -95,6 +93,24 @@ class clsAVLTree
 			// add a way to calculate height after rotation
 		}
 
+		void _RightRotation(Node*& node)
+		{
+			Node* temp = node;
+			node = node->_Left;
+			node->_Prev = temp->_Prev;
+			temp->_Left = node->_Right;
+			node->_Right = temp;
+			if (temp != ParentNode)
+			{
+				if (temp->_Prev->_Right == temp)
+					temp->_Prev->_Right = node;
+				else
+					temp->_Prev->_Left = node;
+			}
+			temp->_Prev = node;
+			// add a way to calculate height after rotation
+		}
+
 		Node* ParentNode = nullptr;
 
 		void _Height(Node* node , int Temp = -1)
@@ -114,7 +130,46 @@ class clsAVLTree
 			_Height(node->_Right , Temp);
 		}
 
-		
+		int Height(Node* node)
+		{
+			if (node == nullptr)
+				return -1;
+
+			return 1 + max(Height(node->_Left), Height(node->_Right));
+		}
+
+		void _BackTrack(Node* node)
+		{
+			if (node == nullptr)
+				return;
+
+			if (node->_Left == nullptr && node->_Right == nullptr)
+			{
+				node->_Height = 0;
+			}
+
+			if (node->_Left == nullptr)
+			{
+				node->_Height = node->_Right->_Height + 1;
+			}
+
+			else if (node->_Right == nullptr)
+			{
+				node->_Height = node->_Left->_Height + 1;
+			}
+
+			else if (node->_Left->_Height > node->_Right->_Height)
+			{
+				node->_Height = node->_Left->_Height + 1;
+			}
+
+			else
+			{
+				node->_Height = node->_Right->_Height + 1;
+			}
+
+			_BackTrack(node->_Prev);
+		}
 
 	public:
 
@@ -147,7 +202,7 @@ class clsAVLTree
 					return;
 				}
 
-				TempNode->_Height++;
+				//TempNode->_Height++;
 
 				if (NewNode->_Data > TempNode->_Data)
 				{
@@ -181,8 +236,8 @@ class clsAVLTree
 			TempNode->_Height = 0;
 
 			_Size++;
-			
-			_Height(TempNode);
+			_BackTrack(NewNode->_Prev);
+			//_Height(TempNode);
 			
 			return;
 
