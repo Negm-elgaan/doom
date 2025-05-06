@@ -2,25 +2,48 @@
 //
 
 #include <iostream>
+#include <vector>
 #include "clsAVLTree.h"
 
-int main()
+int main() 
 {
-    clsAVLTree AVL;
+    clsAVLTree tree;
+    clsAVLTree tree2;
+    clsAVLTree tree3;
+    // Complex Bulk Insert Test (16 nodes)
+    // This sequence will force multiple rotations at various depths.
+    std::vector<int> seq = {
+        50, 20, 70, 10, 30, 25, 27, 26,
+        40, 60, 80, 65, 75, 85, 5, 15
+    };
+    std::vector<int> seq2 = { 50, 20, 70, 10, 30, 25 };
+    std::vector<int> seq3 = { 30, 20, 10};
+    std::vector<int> seq4 = { 10, 20, 30 };
+    for (int x : seq3) {
+        tree.Insert(x);
+    }
+    tree.PrintRootData();
+    tree.Print();
 
-    AVL.Insert(1);
-    AVL.Insert(2);
+    cout << "Tree2:";
+    for (int x : seq4) {
+        tree2.Insert(x);
+    }
+    tree2.PrintRootData();
+    tree2.Print();
 
-    cout << "Hello World!\n";
+    cout << "Final Test!:";
+    for (int x : seq) {
+         tree3.Insert(x);
+    }
+    tree3.PrintRootData();
+    tree3.Print();
+    // Expected output for a correctly?balanced AVL tree:
+    //
+    // InOrder:   5 10 15 20 25 26 27 30 40 50 60 65 70 75 80 85 
+    // PreOrder:  30 20 10 5 15 26 25 27 60 50 40 70 65 80 75 85 
+    // PostOrder: 5 15 10 25 27 26 20 40 50 65 75 85 80 70 60 30 
+    cout << endl;
+    
+    return 0;
 }
-
-// Run program: Ctrl + F5 or Debug > Start Without Debugging menu
-// Debug program: F5 or Debug > Start Debugging menu
-
-// Tips for Getting Started: 
-//   1. Use the Solution Explorer window to add/manage files
-//   2. Use the Team Explorer window to connect to source control
-//   3. Use the Output window to see build output and other messages
-//   4. Use the Error List window to view errors
-//   5. Go to Project > Add New Item to create new code files, or Project > Add Existing Item to add existing code files to the project
-//   6. In the future, to open this project again, go to File > Open > Project and select the .sln file

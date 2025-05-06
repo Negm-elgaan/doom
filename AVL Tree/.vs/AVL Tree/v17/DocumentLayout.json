@@ -9,6 +9,12 @@
     {
       "AbsoluteMoniker": "D:0:0:{2E348D0D-0508-4A86-B633-E841AFFC364E}|AVL Tree\\AVL Tree.vcxproj|C:\\Users\\omarh\\doom\\AVL Tree\\AVL Tree\\AVL Tree.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{2E348D0D-0508-4A86-B633-E841AFFC364E}|AVL Tree\\AVL Tree.vcxproj|solutionrelative:AVL Tree\\AVL Tree.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.39.33519\\include\\utility||{3B902123-F8A7-4915-9F01-361F908088D0}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.39.33519\\crt\\src\\vcruntime\\debugger_jmc.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,7 +24,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Bookmark",
@@ -30,13 +36,38 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "debugger_jmc.c",
+              "DocumentMoniker": "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.39.33519\\crt\\src\\vcruntime\\debugger_jmc.c",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.39.33519\\crt\\src\\vcruntime\\debugger_jmc.c",
+              "ToolTip": "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.39.33519\\crt\\src\\vcruntime\\debugger_jmc.c",
+              "RelativeToolTip": "..\\..\\..\\..\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.39.33519\\crt\\src\\vcruntime\\debugger_jmc.c",
+              "ViewState": "AQIAAAkAAAAAAAAAAADgvxYAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
+              "WhenOpened": "2025-05-06T02:59:31.37Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "utility",
+              "DocumentMoniker": "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.39.33519\\include\\utility",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.39.33519\\include\\utility",
+              "ToolTip": "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.39.33519\\include\\utility",
+              "RelativeToolTip": "..\\..\\..\\..\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.39.33519\\include\\utility",
+              "ViewState": "AQIAAD8AAAAAAAAAAAAnwEwAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2025-05-05T15:02:53.432Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 0,
               "Title": "clsAVLTree.h",
               "DocumentMoniker": "C:\\Users\\omarh\\doom\\AVL Tree\\AVL Tree\\clsAVLTree.h",
               "RelativeDocumentMoniker": "AVL Tree\\clsAVLTree.h",
               "ToolTip": "C:\\Users\\omarh\\doom\\AVL Tree\\AVL Tree\\clsAVLTree.h",
               "RelativeToolTip": "AVL Tree\\clsAVLTree.h",
-              "ViewState": "AQIAANYAAAAAAAAAAAAAwPMAAAADAAAA",
+              "ViewState": "AQIAAE4DAAAAAAAAAAAAwF0DAAAfAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2025-04-03T07:45:58.031Z",
               "EditorCaption": ""
@@ -49,9 +80,10 @@
               "RelativeDocumentMoniker": "AVL Tree\\AVL Tree.cpp",
               "ToolTip": "C:\\Users\\omarh\\doom\\AVL Tree\\AVL Tree\\AVL Tree.cpp",
               "RelativeToolTip": "AVL Tree\\AVL Tree.cpp",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAQAAAA",
+              "ViewState": "AQIAAA8AAAAAAAAAAAAAACMAAAAXAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-04-03T07:45:39.062Z"
+              "WhenOpened": "2025-04-03T07:45:39.062Z",
+              "EditorCaption": ""
             }
           ]
         }
