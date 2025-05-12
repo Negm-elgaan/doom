@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 #include <iostream>
 
 using namespace std;
@@ -77,7 +77,7 @@ class clsAVLTree
 				return;
 			}
 
-			cout << node->_Data << endl;
+			//cout << node->_Data << endl;
 			Node* x = node;       
 			Node* y = node->_Right;
 			Node* z = node->_Right->_Left;
@@ -127,7 +127,7 @@ class clsAVLTree
 				return;
 			}
 			
-			cout << node->_Data << endl;
+			//cout << node->_Data << endl;
 				Node* x = node;       
 				Node* y = node->_Left;
 				Node* z = node->_Left->_Right;
@@ -341,12 +341,12 @@ class clsAVLTree
 
 		}
 
-		void PrintRootData()
+		bool IsEmpty()
 		{
-			cout << ParentNode->_Data << endl;
-			cout << ParentNode->_Right->_Data << endl;
-			cout << ParentNode->_Left->_Data << endl;
+			return ParentNode == nullptr;
 		}
+
+		//int LowestCommonAncestor()
 
 		int Height()
 		{
@@ -356,6 +356,13 @@ class clsAVLTree
 		int Size()
 		{
 			return _Size;
+		}
+
+		void PrintRootData()
+		{
+			cout << ParentNode->_Data << endl;
+			cout << ParentNode->_Right->_Data << endl;
+			cout << ParentNode->_Left->_Data << endl;
 		}
 
 		void Print()
@@ -371,4 +378,5 @@ class clsAVLTree
 			cout << endl;
 		}
 
+		// ابقي زود ديستراكتور هنا
 };
