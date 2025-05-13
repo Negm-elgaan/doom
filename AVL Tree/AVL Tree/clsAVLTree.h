@@ -133,12 +133,14 @@ class clsAVLTree
 				Node* z = node->_Left->_Right;
 				node = y;            
 				y->_Right = x;
+
 				if (x == ParentNode)
 				{
 					cout << "yes";
 					y->_Prev = nullptr;
 					ParentNode = y;
 				}
+
 				else 
 				{  
 					y->_Prev = x->_Prev;
@@ -147,16 +149,20 @@ class clsAVLTree
 					else
 						x->_Prev->_Right = y;
 				}
+
 				x->_Prev = y;
+
 				if (z != nullptr)
 				{
 					x->_Left = z;
 					z->_Prev = x;
 				}
+
 				else
 				{
 					x->_Left = nullptr;
 				}
+
 				x->_Height = 1 + max(sh(x->_Left), sh(x->_Right));
 				y->_Height = 1 + max(sh(y->_Left), sh(y->_Right));
 
@@ -339,6 +345,27 @@ class clsAVLTree
 			
 			return;
 
+		}
+
+		Node* Search(int Data)
+		{
+			Node* node = ParentNode;
+
+			if (node == nullptr)
+				return nullptr;
+
+			while (node != nullptr)
+			{
+				if (node->_Data == Data)
+				{
+					cout << "\nfound: " << node->_Data;
+					return node;
+				}
+
+				node->_Data > Data ? node = node->_Left : node = node->_Right;
+			}
+
+			return nullptr;
 		}
 
 		bool IsEmpty()
