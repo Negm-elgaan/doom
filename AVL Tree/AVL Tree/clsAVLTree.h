@@ -3,7 +3,7 @@
 
 using namespace std;
 
-class clsAVLTree
+template <class T> class clsAVLTree
 {
 	private:
 
@@ -16,7 +16,7 @@ class clsAVLTree
 		{
 			private:
 
-				int _Data = 0;
+				T _Data = 0;
 				Node* _Right = nullptr;
 				Node* _Left = nullptr;
 				Node* _Prev = nullptr;
@@ -69,6 +69,18 @@ class clsAVLTree
 
 		}
 
+		void _DeleteHelper(Node* node)
+		{
+			if (node == nullptr)
+				return;
+
+			// Recursively delete the left and right subtrees
+			_DeleteHelper(node->_Left);
+			_DeleteHelper(node->_Right);
+
+			// Delete the current node
+			delete node;
+		}
 
 		void _LeftRotation(Node* &node)
 		{
@@ -107,15 +119,15 @@ class clsAVLTree
 			{
 				x->_Right = nullptr;
 			}
-			x->_Height = 1 + max(sh(x->_Left), sh(x->_Right));
-			y->_Height = 1 + max(sh(y->_Left), sh(y->_Right));
+			x->_Height = 1 + max(_FastHeight(x->_Left), _FastHeight(x->_Right));
+			y->_Height = 1 + max(_FastHeight(y->_Left), _FastHeight(y->_Right));
 
-			x->_BalanceFactor = sh(x->_Left) - sh(x->_Right);
-			y->_BalanceFactor = sh(y->_Left) - sh(y->_Right);
+			x->_BalanceFactor = _FastHeight(x->_Left) - _FastHeight(x->_Right);
+			y->_BalanceFactor = _FastHeight(y->_Left) - _FastHeight(y->_Right);
 
 		}
 
-		int sh(Node* node)
+		int _FastHeight(Node* node)
 		{ 
 			return node ? node->_Height : 0; 
 		}
@@ -163,11 +175,11 @@ class clsAVLTree
 					x->_Left = nullptr;
 				}
 
-				x->_Height = 1 + max(sh(x->_Left), sh(x->_Right));
-				y->_Height = 1 + max(sh(y->_Left), sh(y->_Right));
+				x->_Height = 1 + max(_FastHeight(x->_Left), _FastHeight(x->_Right));
+				y->_Height = 1 + max(_FastHeight(y->_Left), _FastHeight(y->_Right));
 
-				x->_BalanceFactor = sh(x->_Left) - sh(x->_Right);
-				y->_BalanceFactor = sh(y->_Left) - sh(y->_Right);
+				x->_BalanceFactor = _FastHeight(x->_Left) - _FastHeight(x->_Right);
+				y->_BalanceFactor = _FastHeight(y->_Left) - _FastHeight(y->_Right);
 		}
 
 		void _ReBalance(Node*& node , int BalanceFactor)
@@ -283,7 +295,7 @@ class clsAVLTree
 
 	public:
 
-		void Insert(int Data, bool Re = false)
+		void Insert(T Data, bool Re = false)
 		{
 
 			if (ParentNode == NULL)
@@ -347,7 +359,7 @@ class clsAVLTree
 
 		}
 
-		Node* Search(int Data)
+		Node* Search(T Data)
 		{
 			Node* node = ParentNode;
 
@@ -366,6 +378,88 @@ class clsAVLTree
 			}
 
 			return nullptr;
+		}
+
+		bool Remove(T Data)
+		{
+			if (!ParentNode)
+				return false;
+
+			Node* node = Search(Data);
+
+			if (node == nullptr)
+				return false;
+
+			if (node->_Right == nullptr && node->_Left == nullptr)
+			{
+				Node* Temper = node->_Prev;
+				node->_Prev->_Right == node ? node->_Prev->_Right = nullptr : node->_Prev->_Left = nullptr;
+				delete node;
+				_Size--;
+				_BackTrack(Temper);
+				return true;
+			}
+
+			if (node->_Right == nullptr && node->_Left != nullptr)
+			{
+				Node* Temper = node->_Left;
+				node->_Prev->_Right == node ? node->_Prev->_Right = node->_Left : node->_Prev->_Left = node->_Left;
+				node->_Left->_Prev = node->_Prev;
+				delete node;
+				_Size--;
+				_BackTrack(Temper);
+				return true;
+			}
+
+			if (node->_Right != nullptr && node->_Left == nullptr)
+			{
+				Node* Temper = node->_Right;
+				node->_Prev->_Right == node ? node->_Prev->_Right = node->_Right : node->_Prev->_Left = node->_Right;
+				node->_Right->_Prev = node->_Prev;
+				delete node;
+				_Size--;
+				_BackTrack(Temper);
+				return true;
+			}
+
+			Node* Temp = node;
+			Node* Temper = nullptr;
+			node = node->_Right;
+
+			if (!node->_Left)
+			{
+				node->_Prev->_Data = node->_Data;
+				Temper = node->_Prev;
+				delete node;
+				_BackTrack(Temper);
+				return true;
+			}
+
+			while (node->_Left != nullptr)
+			{
+				node = node->_Left;
+			}
+
+			if (node->_Right != nullptr)
+			{
+				node->_Prev->_Left = node->_Right;
+				node->_Right->_Prev = node->_Prev;
+				Temp->_Data = node->_Data;
+				Temper = node->_Right;
+			}
+
+			else
+			{
+				node->_Prev->_Left = nullptr;
+				Temp->_Data = node->_Data;
+				Temper = node->_Prev;
+			}
+
+			delete node;
+			_Size--;
+			_BackTrack(Temper);
+
+			return true;
 		}
 
 		bool IsEmpty()
@@ -406,4 +500,12 @@ class clsAVLTree
 		}
 
 		// ابقي زود ديستراكتور هنا
+		~clsAVLTree()
+		{
+			_DeleteHelper(ParentNode);
+			
+			cout << "\nAVl Tree Has Been Deleted\n";
+
+			return;
+		}
 };

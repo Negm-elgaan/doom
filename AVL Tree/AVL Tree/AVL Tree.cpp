@@ -7,10 +7,11 @@
 
 int main() 
 {
-    clsAVLTree tree;
-    clsAVLTree tree2;
-    clsAVLTree tree3;
-    clsAVLTree tree4;
+    clsAVLTree <int> tree;
+    clsAVLTree <int> tree2;
+    clsAVLTree <int> tree3;
+    clsAVLTree <int> tree4;
+    clsAVLTree <int> tree5;
     // Complex Bulk Insert Test (16 nodes)
     // This sequence will force multiple rotations at various depths.
     std::vector<int> seq = {
@@ -40,6 +41,12 @@ int main()
     }
     tree3.PrintRootData();
     tree3.Print();
+    tree3.PrintRootData();
+    cout << endl;
+    tree3.Remove(30);
+    cout << "tree3 after del:\n";
+    tree3.PrintRootData();
+    tree3.Print();
     // Expected output for a correctly?balanced AVL tree:
     //
     // InOrder:   5 10 15 20 25 26 27 30 40 50 60 65 70 75 80 85 
@@ -62,7 +69,7 @@ PostOrder: 5 12 10 20 15 28 33 30 45 40 35 25 52 58 55 63 70 65 60 85 80 92 97 9
     114, 116, 129, 131, 139, 141, 159, 161, 169, 171, 184, 186, 189, 191 
     };
 
-    clsAVLTree complexTree;
+    clsAVLTree <int> complexTree;
     for (int x : complexSeq) {
         complexTree.Insert(x);
     }
