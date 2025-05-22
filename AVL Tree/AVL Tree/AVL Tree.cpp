@@ -27,7 +27,7 @@ int main()
     }
     tree.PrintRootData();
     tree.Print();
-
+    
     cout << "Tree2:";
     for (int x : seq4) {
         tree2.Insert(x);
@@ -76,6 +76,16 @@ PostOrder: 5 12 10 20 15 28 33 30 45 40 35 25 52 58 55 63 70 65 60 85 80 92 97 9
     cout << endl << endl;
     complexTree.PrintRootData();
     complexTree.Print();
-    cout << endl;
+    cout << endl << endl;
+
+    clsAVLTree<int> tree7;
+    std::vector<int> seq100;
+    for (int i = 1; i <= 100; ++i) {
+        seq100.push_back(i);
+        tree7.Insert(i);
+    }
+
+    // After all inserts, the AVL property has rebalanced the tree.
+    tree7.Print(/*root*/);
     return 0;
 }

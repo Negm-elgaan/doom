@@ -7,10 +7,11 @@ template <class T> class clsAVLTree
 {
 	private:
 
-		int LTreeHeight = 0;
-		int RTreeHeight = 0;
-		int TreeHeight = 0;
-		int _Size = 0;
+		int LTreeHeight;
+		int RTreeHeight;
+		int TreeHeight;
+		int _Size;
+		T _Min;
 
 		class Node
 		{
@@ -97,7 +98,7 @@ template <class T> class clsAVLTree
 			y->_Left = x;
 			if (x == ParentNode)
 			{
-				cout << "yes";
+				//cout << "yes";
 				y->_Prev = nullptr;
 				ParentNode = y;
 			}
@@ -148,7 +149,7 @@ template <class T> class clsAVLTree
 
 				if (x == ParentNode)
 				{
-					cout << "yes";
+					//cout << "yes";
 					y->_Prev = nullptr;
 					ParentNode = y;
 				}
@@ -295,6 +296,21 @@ template <class T> class clsAVLTree
 
 	public:
 
+		clsAVLTree()
+		{
+			LTreeHeight = 0;
+			RTreeHeight = 0;
+			TreeHeight = 0;
+			_Size = 0;
+			_Min = 0;
+		}
+
+		clsAVLTree& operator<<(clsAVLTree& Tree)
+		{
+			Tree.Print();
+			return Tree;
+		}
+
 		void Insert(T Data, bool Re = false)
 		{
 
@@ -306,6 +322,7 @@ template <class T> class clsAVLTree
 				ParentNode->_Right = NULL;
 				ParentNode->_Prev = NULL;
 				ParentNode->_Height = 1;
+				_Min = Data;
 				_Size++;
 				return;
 			}
@@ -351,6 +368,11 @@ template <class T> class clsAVLTree
 			NewNode->_Data > TempNode->_Data ? TempNode->_Right = NewNode : TempNode->_Left = NewNode;
 			NewNode->_Prev = TempNode;
 			NewNode->_Height = 1;
+			
+			if (NewNode->_Data < _Min)
+			{
+				_Min = NewNode->_Data;
+			}
 
 			_Size++;
 			_BackTrack(NewNode->_Prev);
@@ -380,6 +402,32 @@ template <class T> class clsAVLTree
 			return nullptr;
 		}
 
+		bool Contains(T Data)
+		{
+			Node* node = Search(Data);
+
+			if (node)
+			{
+				return true;
+			}
+
+			return false;
+		}
+
+		bool Update(T Data1, T Data2)
+		{
+			Node* node = Search(Data1);
+
+			if (!node)
+				return false;
+
+			Remove(Data1);
+
+			Insert(Data2);
+
+			return true;
+		}
+
 		bool Remove(T Data)
 		{
 			if (!ParentNode)
@@ -389,6 +437,9 @@ template <class T> class clsAVLTree
 
 			if (node == nullptr)
 				return false;
+
+			if (Data == _Min)
+				_Min = node->_Prev->_Data;
 
 			if (node->_Right == nullptr && node->_Left == nullptr)
 			{
@@ -462,9 +513,22 @@ template <class T> class clsAVLTree
 			return true;
 		}
 
+		Node* GetRoot()
+		{
+			return ParentNode;
+		}
+
 		bool IsEmpty()
 		{
 			return ParentNode == nullptr;
+		}
+
+		T Min()
+		{
+			if (IsEmpty())
+				throw runtime_error("Tree is empty, no minimum value.");
+
+			return _Min;
 		}
 
 		//int LowestCommonAncestor()
@@ -499,7 +563,6 @@ template <class T> class clsAVLTree
 			cout << endl;
 		}
 
-		// ابقي زود ديستراكتور هنا
 		~clsAVLTree()
 		{
 			_DeleteHelper(ParentNode);
