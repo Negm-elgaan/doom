@@ -12,17 +12,18 @@ template <class T> class clsAVLTree
 		int TreeHeight;
 		int _Size;
 		T _Min;
+		T _Max;
 
 		class Node
 		{
 			private:
 
-				T _Data = 0;
-				Node* _Right = nullptr;
-				Node* _Left = nullptr;
-				Node* _Prev = nullptr;
-				int _Height = 0;
-				int _BalanceFactor = 0;
+				T _Data ;
+				Node* _Right ;
+				Node* _Left ;
+				Node* _Prev ;
+				int _Height ;
+				int _BalanceFactor ;
 
 				int _GetBalanceFactor()
 				{
@@ -30,7 +31,18 @@ template <class T> class clsAVLTree
 				}
 
 			friend class clsAVLTree;
-			
+
+			public:
+
+				Node()
+				{
+					_Right = nullptr;
+					_Left = nullptr;
+					_Prev = nullptr;
+					_Height = 0;
+					_BalanceFactor = 0;
+				}
+					
 		};
 
 		void PrintHelperPre(Node* node)
@@ -302,13 +314,43 @@ template <class T> class clsAVLTree
 			RTreeHeight = 0;
 			TreeHeight = 0;
 			_Size = 0;
-			_Min = 0;
 		}
 
-		clsAVLTree& operator<<(clsAVLTree& Tree)
+		/*clsAVLTree& operator<<(clsAVLTree<T>& Tree)
 		{
 			Tree.Print();
 			return Tree;
+		}*/
+
+		friend ostream& operator<<(ostream& os, const clsAVLTree<T>& tree)
+		{
+			tree.Print();
+			return os;
+		}
+
+		friend istream& operator>>(istream& is, clsAVLTree<T>& tree)
+		{
+			T data;
+			is >> data;
+			tree.Insert(data);
+			return is;
+		}
+
+		/*clsAVLTree& operator>>(clsAVLTree<T>& Tree)
+		{
+			Tree.Insert();
+			return Tree;
+		}*/
+
+		void Insert(bool Re = false)
+		{
+			T Data;
+
+			cin >> Data;
+
+			Insert(Data, Re);
+
+			return;
 		}
 
 		void Insert(T Data, bool Re = false)
@@ -323,6 +365,7 @@ template <class T> class clsAVLTree
 				ParentNode->_Prev = NULL;
 				ParentNode->_Height = 1;
 				_Min = Data;
+				_Max = Data;
 				_Size++;
 				return;
 			}
@@ -372,6 +415,12 @@ template <class T> class clsAVLTree
 			if (NewNode->_Data < _Min)
 			{
 				_Min = NewNode->_Data;
+			}
+
+			if (NewNode->_Data > _Max)
+			{
+				_Max = NewNode->_Data;
+
 			}
 
 			_Size++;
@@ -529,6 +578,67 @@ template <class T> class clsAVLTree
 				throw runtime_error("Tree is empty, no minimum value.");
 
 			return _Min;
+		}
+
+		T Max()
+		{
+			if (IsEmpty())
+				throw runtime_error("Tree is empty, no maximum value.");
+
+			return _Max;
+		}
+
+		T Previous(T Data)
+		{
+			Node* node = _Search(Data);
+
+			if (node == nullptr)
+				return nullptr;
+
+			node = node->_Prev;
+
+			if (node == nullptr)
+				return nullptr;
+
+			return node->_Data;
+		}
+
+		T Left(T Data)
+		{
+			Node* node = _Search(Data);
+
+			if (node == nullptr)
+				return nullptr;
+
+			node = node->_Left;
+
+			if (node == nullptr)
+				return nullptr;
+
+			return node->_Data;
+		}
+
+		T Right(T Data)
+		{
+			Node* node = _Search(Data);
+
+			if (node == nullptr)
+				return nullptr;
+
+			node = node->_Right;
+
+			if (node == nullptr)
+				return nullptr;
+
+			return node->_Data;
+		}
+
+		void Clear() 
+		{
+			_DeleteHelper(ParentNode);
+			ParentNode = nullptr;
+			_Size = 0;
+			TreeHeight = 0;
 		}
 
 		//int LowestCommonAncestor()
