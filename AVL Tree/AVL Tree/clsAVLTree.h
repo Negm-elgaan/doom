@@ -1,5 +1,7 @@
 ﻿#pragma once
 #include <iostream>
+#include <vector>
+#include <algorithm>
 
 using namespace std;
 
@@ -11,6 +13,7 @@ template <class T> class clsAVLTree
 		int RTreeHeight;
 		int TreeHeight;
 		int _Size;
+		vector <T> _SortedList;
 		T _Min;
 		T _Max;
 
@@ -44,6 +47,7 @@ template <class T> class clsAVLTree
 				}
 					
 		};
+
 
 		void PrintHelperPre(Node* node)
 		{
@@ -366,6 +370,7 @@ template <class T> class clsAVLTree
 				ParentNode->_Height = 1;
 				_Min = Data;
 				_Max = Data;
+				_SortedList.push_back(Data);
 				_Size++;
 				return;
 			}
@@ -423,6 +428,7 @@ template <class T> class clsAVLTree
 
 			}
 
+			_SortedList.push_back(Data);
 			_Size++;
 			_BackTrack(NewNode->_Prev);
 			
@@ -496,6 +502,7 @@ template <class T> class clsAVLTree
 				node->_Prev->_Right == node ? node->_Prev->_Right = nullptr : node->_Prev->_Left = nullptr;
 				delete node;
 				_Size--;
+				_SortedList.erase(std::find(_SortedList.begin(), _SortedList.end(), Data));
 				_BackTrack(Temper);
 				return true;
 			}
@@ -507,6 +514,7 @@ template <class T> class clsAVLTree
 				node->_Left->_Prev = node->_Prev;
 				delete node;
 				_Size--;
+				_SortedList.erase(std::find(_SortedList.begin(), _SortedList.end(), Data));
 				_BackTrack(Temper);
 				return true;
 			}
@@ -518,6 +526,7 @@ template <class T> class clsAVLTree
 				node->_Right->_Prev = node->_Prev;
 				delete node;
 				_Size--;
+				_SortedList.erase(std::find(_SortedList.begin(), _SortedList.end(), Data));
 				_BackTrack(Temper);
 				return true;
 			}
@@ -531,6 +540,7 @@ template <class T> class clsAVLTree
 				node->_Prev->_Data = node->_Data;
 				Temper = node->_Prev;
 				delete node;
+				_SortedList.erase(std::find(_SortedList.begin(), _SortedList.end(), Data));
 				_BackTrack(Temper);
 				return true;
 			}
@@ -554,7 +564,8 @@ template <class T> class clsAVLTree
 				Temp->_Data = node->_Data;
 				Temper = node->_Prev;
 			}
-
+			
+			_SortedList.erase(std::find(_SortedList.begin(), _SortedList.end(), Data));
 			delete node;
 			_Size--;
 			_BackTrack(Temper);
@@ -631,6 +642,40 @@ template <class T> class clsAVLTree
 				return nullptr;
 
 			return node->_Data;
+		}
+
+		T Successor(T Data)
+		{
+			if (Data == _Max)
+				return NULL;
+
+			sort(_SortedList.begin(), _SortedList.end());
+
+			cout << endl;
+
+			for (int i = 0; i < _SortedList.size(); i++)
+				if (_SortedList[i] == Data)
+					return _SortedList[i + 1];
+		}
+
+		T Predecessor(T Data)
+		{
+			if (Data == _Min)
+				return NULL;
+
+			sort(_SortedList.begin(), _SortedList.end());
+
+			for (int i = 0; i < _SortedList.size(); i++)
+				if (_SortedList[i] == Data)
+					return _SortedList[i - 1];
+		}
+
+		T Median()
+		{
+			if (_SortedList.size() % 2 == 0)
+				return (_SortedList[_SortedList.size() / 2] + _SortedList[(_SortedList.size() / 2) - 1]) / 2;
+
+			return _SortedList[_SortedList.size() / 2];
 		}
 
 		void Clear() 
