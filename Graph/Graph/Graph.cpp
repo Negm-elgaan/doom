@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <thread>
+#include <vector>
 
 using namespace std;
 
@@ -197,6 +198,34 @@ public:
 
     }
 
+    /*void BFS()
+    {
+        bool *visited = new bool[size];
+
+        for (int i = 0; i < size; i++)
+        {
+            visited[i] = false;
+        }
+
+        for (int i = 0 ; i < size ; i++)
+        {
+            if (i == 0)
+            {
+                cout << DNodes[i]->Data << " ";
+                visited[i] = true;
+            }
+
+            for (int j = i + 1 ; j < size ; j++)
+            {
+                if (CheckEdge(DNodes[i]->Data, DNodes[j]->Data) && !visited[j])
+                {
+                    cout << DNodes[j]->Data << " ";
+                    visited[j] = true;
+                }
+            }
+        }
+    }*/
+
     void PrintMatrix()
     {
         
@@ -275,8 +304,12 @@ int main()
     g.InsertEdge(2, 4);  
     g.InsertEdge(3, 4);  
     g.InsertEdge(4, 5);  
-
+    
     g.PrintMatrix();
+
+    g.BFS();
+
+    cout << endl;
 
     cout << g.CheckEdge('A', 'D');
 

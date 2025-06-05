@@ -2,6 +2,7 @@
 #include <iostream>
 #include <vector>
 #include <algorithm>
+#include <utility>
 
 using namespace std;
 
@@ -345,6 +346,21 @@ template <class T> class clsAVLTree
 			Tree.Insert();
 			return Tree;
 		}*/
+
+		clsAVLTree(clsAVLTree<T>&& tree)
+		{
+			this->ParentNode = tree.ParentNode;
+			this->_Min = tree._Min;
+			this->_Max = tree._Max;
+			this->_Size = tree._Size;
+			this->_SortedList = move(tree._SortedList);
+
+			tree.ParentNode = nullptr;
+			tree._Size = 0;
+			tree._Min = T();
+			tree._Max = T();
+			tree._SortedList = {};
+		}
 
 		void Insert(bool Re = false)
 		{
