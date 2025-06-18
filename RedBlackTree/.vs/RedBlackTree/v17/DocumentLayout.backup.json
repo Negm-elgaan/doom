@@ -18,34 +18,8 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 3,
           "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "clsRedBlackTree.h",
-              "DocumentMoniker": "C:\\Users\\omarh\\doom\\RedBlackTree\\RedBlackTree\\clsRedBlackTree.h",
-              "RelativeDocumentMoniker": "RedBlackTree\\clsRedBlackTree.h",
-              "ToolTip": "C:\\Users\\omarh\\doom\\RedBlackTree\\RedBlackTree\\clsRedBlackTree.h*",
-              "RelativeToolTip": "RedBlackTree\\clsRedBlackTree.h*",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAgAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-06-15T08:56:01.589Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "RedBlackTree.cpp",
-              "DocumentMoniker": "C:\\Users\\omarh\\doom\\RedBlackTree\\RedBlackTree\\RedBlackTree.cpp",
-              "RelativeDocumentMoniker": "RedBlackTree\\RedBlackTree.cpp",
-              "ToolTip": "C:\\Users\\omarh\\doom\\RedBlackTree\\RedBlackTree\\RedBlackTree.cpp*",
-              "RelativeToolTip": "RedBlackTree\\RedBlackTree.cpp*",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-06-15T07:57:07.028Z",
-              "EditorCaption": ""
-            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
@@ -57,6 +31,32 @@
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "clsRedBlackTree.h",
+              "DocumentMoniker": "C:\\Users\\omarh\\doom\\RedBlackTree\\RedBlackTree\\clsRedBlackTree.h",
+              "RelativeDocumentMoniker": "RedBlackTree\\clsRedBlackTree.h",
+              "ToolTip": "C:\\Users\\omarh\\doom\\RedBlackTree\\RedBlackTree\\clsRedBlackTree.h",
+              "RelativeToolTip": "RedBlackTree\\clsRedBlackTree.h",
+              "ViewState": "AgIAAAIAAAAAAAAAAAAQwBwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-06-15T08:56:01.589Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "RedBlackTree.cpp",
+              "DocumentMoniker": "C:\\Users\\omarh\\doom\\RedBlackTree\\RedBlackTree\\RedBlackTree.cpp",
+              "RelativeDocumentMoniker": "RedBlackTree\\RedBlackTree.cpp",
+              "ToolTip": "C:\\Users\\omarh\\doom\\RedBlackTree\\RedBlackTree\\RedBlackTree.cpp",
+              "RelativeToolTip": "RedBlackTree\\RedBlackTree.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-06-15T07:57:07.028Z",
+              "EditorCaption": ""
             }
           ]
         }
