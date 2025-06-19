@@ -87,6 +87,18 @@ template <class T> class clsAVLTree
 
 		}
 
+		void PrintHeightHelperIn(Node* node)
+		{
+			if (node == nullptr)
+				return;
+
+			PrintHeightHelperIn(node->_Left);
+
+			cout << node->_Height << " ";
+
+			PrintHeightHelperIn(node->_Right);
+		}
+
 		void _DeleteHelper(Node* node)
 		{
 			if (node == nullptr)
@@ -719,6 +731,14 @@ template <class T> class clsAVLTree
 			cout << ParentNode->_Data << endl;
 			cout << ParentNode->_Right->_Data << endl;
 			cout << ParentNode->_Left->_Data << endl;
+			cout << ParentNode->_Height << endl;
+		}
+
+		void PrintHeight()
+		{
+			cout << "InOrder: ";
+			PrintHeightHelperIn(ParentNode);
+			cout << endl;
 		}
 
 		void Print()

@@ -86,6 +86,23 @@ PostOrder: 5 12 10 20 15 28 33 30 45 40 35 25 52 58 55 63 70 65 60 85 80 92 97 9
     }
 
     // After all inserts, the AVL property has rebalanced the tree.
-    tree7.Print(/*root*/);
+    //tree7.Print(/*root*/);
+    cout << endl << endl << "Height";
+    tree7.PrintHeight();
+    cout << endl << endl;
+
+    clsAVLTree<int> tree8;
+    std::vector<int> seq10000;
+    for (int i = 1; i <= 10000; ++i) {
+        seq100.push_back(i);
+        tree8.Insert(i);
+    }
+
+    // After all inserts, the AVL property has rebalanced the tree.
+    tree8.Print(/*root*/);
+    cout << "Height:";
+    tree8.PrintHeight();
+    cout << endl;
+    tree8.PrintRootData();
     return 0;
 }
