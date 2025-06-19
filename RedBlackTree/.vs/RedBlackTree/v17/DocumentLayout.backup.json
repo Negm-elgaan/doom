@@ -38,9 +38,9 @@
               "Title": "clsRedBlackTree.h",
               "DocumentMoniker": "C:\\Users\\omarh\\doom\\RedBlackTree\\RedBlackTree\\clsRedBlackTree.h",
               "RelativeDocumentMoniker": "RedBlackTree\\clsRedBlackTree.h",
-              "ToolTip": "C:\\Users\\omarh\\doom\\RedBlackTree\\RedBlackTree\\clsRedBlackTree.h",
-              "RelativeToolTip": "RedBlackTree\\clsRedBlackTree.h",
-              "ViewState": "AgIAAAIAAAAAAAAAAAAQwBwAAAAAAAAAAAAAAA==",
+              "ToolTip": "C:\\Users\\omarh\\doom\\RedBlackTree\\RedBlackTree\\clsRedBlackTree.h*",
+              "RelativeToolTip": "RedBlackTree\\clsRedBlackTree.h*",
+              "ViewState": "AgIAABUAAAAAAAAAAAAAACcAAABHAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2025-06-15T08:56:01.589Z",
               "EditorCaption": ""
@@ -55,8 +55,7 @@
               "RelativeToolTip": "RedBlackTree\\RedBlackTree.cpp",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-06-15T07:57:07.028Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-15T07:57:07.028Z"
             }
           ]
         }

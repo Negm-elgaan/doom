@@ -35,6 +35,11 @@ template <class T> class clsRedBlackTree
 				}
 		};
 
+		bool CheckRedAdjacency(Node* node)
+		{
+			return node->_Color == enColor::Red && node->_Color == enColor::Red;
+		}
+
 		Node* _RootNode;
 
 	public:
