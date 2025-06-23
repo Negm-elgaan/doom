@@ -3,7 +3,10 @@
 
 #include <iostream>
 #include <vector>
+#include <chrono>
 #include "clsAVLTree.h"
+
+using namespace std::chrono;
 
 int main() 
 {
@@ -91,18 +94,25 @@ PostOrder: 5 12 10 20 15 28 33 30 45 40 35 25 52 58 55 63 70 65 60 85 80 92 97 9
     tree7.PrintHeight();
     cout << endl << endl;
 
-    clsAVLTree<int> tree8;
-    std::vector<int> seq10000;
-    for (int i = 1; i <= 10000; ++i) {
-        seq100.push_back(i);
+    clsAVLTree<long long> tree8;
+    std::vector<long long> seq10000;
+    for (long long i = 1; i <= 1000000; ++i) {
+        //seq10000.push_back(i);
         tree8.Insert(i);
     }
 
     // After all inserts, the AVL property has rebalanced the tree.
-    tree8.Print(/*root*/);
-    cout << "Height:";
+    //tree8.Print(/*root*/);
+    /*cout << "Height:";
     tree8.PrintHeight();
     cout << endl;
-    tree8.PrintRootData();
+    tree8.PrintRootData();*/
+    auto start = high_resolution_clock::now();
+    tree8.Search(1000000);
+    auto end = high_resolution_clock::now();
+    auto duration = duration_cast<microseconds>(end - start);
+    cout << endl << duration.count() << endl;
+    cout << "hi";
+
     return 0;
 }

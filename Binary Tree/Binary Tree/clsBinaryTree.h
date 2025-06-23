@@ -11,18 +11,18 @@ template <class T> class clsBinaryTree
 	private:
 		class Node;
 
-		int _Max = 0;
-		int _Min = 0;
-		int _Size = 0;
-		int _Levels = 0;
-		int _LeftHeight = 0;
-		int _RightHeight = 0;
-		int _Height = 0;
-		int _Temp = 0;
-		int _SumKeys = 0;
+		long long _Max = 0;
+		long long _Min = 0;
+		long long _Size = 0;
+		long long _Levels = 0;
+		long long _LeftHeight = 0;
+		long long _RightHeight = 0;
+		long long _Height = 0;
+		long long _Temp = 0;
+		long long _SumKeys = 0;
 		//int _BalanceFactor //BF = height left - height right // consider checking whether height is calculated correctly before proceding
-		vector <int> _SortedList;
-		vector <int> _vlist;
+		vector <long long> _SortedList;
+		vector <long long> _vlist;
 
 		void _GetHeightLeft(Node* node)
 		{
@@ -169,7 +169,7 @@ template <class T> class clsBinaryTree
 
 		void PrintHelperInsertionOrder()
 		{
-			for (int& i : _vlist)
+			for (long long& i : _vlist)
 				cout << i << " ";
 			cout << endl;
 		}
@@ -288,7 +288,7 @@ template <class T> class clsBinaryTree
 			Node* Right;
 			Node* Left;
 			Node* Prev;
-			int Level;
+			long long Level;
 		};
 
 		clsBinaryTree::Node* ParentNode = NULL;
@@ -363,9 +363,9 @@ template <class T> class clsBinaryTree
 				_Max = Data;
 				_Min = Data;
 				//cout << endl << ParentNode->Data << " ";
-				_vlist.push_back(Data);
+				/*_vlist.push_back(Data);
 				if (!Re)
-					_SortedList.push_back(Data);
+					_SortedList.push_back(Data);*/
 				_SumKeys += Data;
 				return;
 			}
@@ -397,7 +397,7 @@ template <class T> class clsBinaryTree
 			_Size++;
 			//ReBalance();
 			//cout << NewNode->Data << " ";
-			_vlist.push_back(Data);
+			/*_vlist.push_back(Data);
 			if (!Re)
 				_SortedList.push_back(Data);
 			if (_Size > 3)
@@ -405,8 +405,8 @@ template <class T> class clsBinaryTree
 				_GetHeight(ParentNode);
 				if (_Height == _Size)
 					ReBalance();
-			}
-			_SumKeys += Data;
+			}*/
+			//_SumKeys += Data;
 			return;
 
 		}
@@ -415,7 +415,7 @@ template <class T> class clsBinaryTree
 		{
 			bool x = true;
 
-			int counter = 1;
+			long long counter = 1;
 
 			if (ParentNode == NULL)
 			{
@@ -429,9 +429,9 @@ template <class T> class clsBinaryTree
 				_Max = Data;
 				_Min = Data;
 				//cout << endl << ParentNode->Data << " ";
-				_vlist.push_back(Data);
+				/*_vlist.push_back(Data);
 				if (!Re)
-					_SortedList.push_back(Data);
+					_SortedList.push_back(Data);*/
 				_SumKeys += Data;
 				return;
 			}
@@ -463,7 +463,7 @@ template <class T> class clsBinaryTree
 			_Size++;
 			//ReBalance();
 			//cout << NewNode->Data << " ";
-			_vlist.push_back(Data);
+		/*	_vlist.push_back(Data);
 			if (!Re)
 				_SortedList.push_back(Data);
 			if (_Size > 3)
@@ -472,7 +472,7 @@ template <class T> class clsBinaryTree
 				if (_Height == _Size)
 					ReBalance();
 			}
-			_SumKeys += Data;
+			_SumKeys += Data;*/
 			return;
 			
 		}

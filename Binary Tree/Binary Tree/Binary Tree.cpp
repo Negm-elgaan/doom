@@ -2,8 +2,10 @@
 //
 
 #include <iostream>
+#include <chrono>
 #include "clsBinaryTree.h"
 
+using namespace std::chrono;
 using namespace std;
 
 int main()
@@ -29,10 +31,30 @@ int main()
     cout << endl << endl;
     //BST.Print();
     //cout << endl << endl << "after balance\n\n";
-    BST.ReBalance();
-    cout << endl << endl << "after balance\n\n";
-    //BST.Print();
-    BST << BST;
+    //BST.ReBalance();
+    //cout << endl << endl << "after balance\n\n";
+    ////BST.Print();
+    //BST << BST;
+    clsBinaryTree <int> BST2;
+    std::vector<long long> seq10000;
+
+    auto start = high_resolution_clock::now();
+    for (int i = 1; i <= 1000000; ++i) 
+    {
+        //seq10000.push_back(i);
+        BST2.Insert(i);
+    }
+    auto end = high_resolution_clock::now();
+    auto duration = duration_cast<microseconds>(end - start);
+    cout << endl << duration.count() << endl;
+
+    //BST2.Print(/*root*/);
+    start = high_resolution_clock::now();
+    BST2.search(1000000);
+    end = high_resolution_clock::now();
+    duration = duration_cast<microseconds>(end - start);
+    cout << duration.count() << endl;
+    cout << "hi";
     //BST.Insert(50);
   //BST.Insert(30);
   //  BST.Insert(20);
