@@ -46,6 +46,16 @@ template <class T> class clsRedBlackTree
 			return node->_Color == enColor::Red && node->_Prev->_Color == enColor::Red;
 		}
 
+		void _LeftRotation(Node* &node)
+		{
+			//Not implemented yet
+		}
+
+		void _RightRotation(Node* &node)
+		{
+			//Not implemented yet
+		}
+
 		void _Recolor(Node* &node)
 		{
 			if (node->_Color == Black)
@@ -62,9 +72,49 @@ template <class T> class clsRedBlackTree
 
 			if (CheckRedAdjacency(node)) 
 			{
+
 				if (node->_Prev == node->_Prev->_Prev->_Right) // uncle is left of grandparent
 				{
-					if (node->_Prev->_Prev->_Left->_Color == Red) // Uncle is Red
+					if (!node->_Prev->_Prev->_Left || node->_Prev->_Prev->_Left->_Color == Black) // Uncle is NIL/Black
+					{
+						if (node == node->_Prev->_Right) // node is Right of parent
+						{
+							if (node->_Prev == node->_Prev->_prev->_Right) // parent is right of grandparent
+							{
+								_Recolor(node->_Prev);
+								_Recolor(node->_Prev->_Prev);
+								_LeftRotation(node->_Prev->_Prev);
+							}
+							
+							else // parent is Left of grandparent
+							{
+								_LeftRotation(node->_Prev);
+								_Recolor(node);
+								_Recolor(node->_Prev);
+								_RightRotation(node->_Prev);
+							}
+						}
+
+						else // node is Left of parent
+						{
+							if (node->_Prev == node->_Prev->_prev->_Left)// parent is Left of grandparent
+							{
+								_Recolor(node->_Prev);
+								_Recolor(node->_Prev->_Prev);
+								_RightRotation(node->_Prev->_Prev);
+							}
+							
+							else
+							{
+								_RightRotation(node->_Prev);
+								_Recolor(node);
+								_Recolor(node->_Prev);
+								_LeftRotation(node->_Prev);
+							}
+						}
+					}
+
+					else // Uncle is Red
 					{
 						_Recolor(node->_Prev);
 						_Recolor(node->_Prev->_Prev->_Left);
