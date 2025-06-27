@@ -3,12 +3,12 @@
   "WorkspaceRootPath": "C:\\Users\\omarh\\doom\\RedBlackTree\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{BB2CED9D-0186-45E4-8F71-29169C09B757}|RedBlackTree\\RedBlackTree.vcxproj|C:\\Users\\omarh\\doom\\RedBlackTree\\RedBlackTree\\clsRedBlackTree.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{BB2CED9D-0186-45E4-8F71-29169C09B757}|RedBlackTree\\RedBlackTree.vcxproj|solutionrelative:RedBlackTree\\clsRedBlackTree.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{BB2CED9D-0186-45E4-8F71-29169C09B757}|RedBlackTree\\RedBlackTree.vcxproj|C:\\Users\\omarh\\doom\\RedBlackTree\\RedBlackTree\\RedBlackTree.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{BB2CED9D-0186-45E4-8F71-29169C09B757}|RedBlackTree\\RedBlackTree.vcxproj|solutionrelative:RedBlackTree\\RedBlackTree.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BB2CED9D-0186-45E4-8F71-29169C09B757}|RedBlackTree\\RedBlackTree.vcxproj|C:\\Users\\omarh\\doom\\RedBlackTree\\RedBlackTree\\clsRedBlackTree.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{BB2CED9D-0186-45E4-8F71-29169C09B757}|RedBlackTree\\RedBlackTree.vcxproj|solutionrelative:RedBlackTree\\clsRedBlackTree.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,7 +18,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Bookmark",
@@ -34,28 +34,29 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "clsRedBlackTree.h",
               "DocumentMoniker": "C:\\Users\\omarh\\doom\\RedBlackTree\\RedBlackTree\\clsRedBlackTree.h",
               "RelativeDocumentMoniker": "RedBlackTree\\clsRedBlackTree.h",
               "ToolTip": "C:\\Users\\omarh\\doom\\RedBlackTree\\RedBlackTree\\clsRedBlackTree.h",
               "RelativeToolTip": "RedBlackTree\\clsRedBlackTree.h",
-              "ViewState": "AgIAADsAAAAAAAAAAAAAAEsAAABDAAAAAAAAAA==",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAAFkAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2025-06-15T08:56:01.589Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "RedBlackTree.cpp",
               "DocumentMoniker": "C:\\Users\\omarh\\doom\\RedBlackTree\\RedBlackTree\\RedBlackTree.cpp",
               "RelativeDocumentMoniker": "RedBlackTree\\RedBlackTree.cpp",
-              "ToolTip": "C:\\Users\\omarh\\doom\\RedBlackTree\\RedBlackTree\\RedBlackTree.cpp",
-              "RelativeToolTip": "RedBlackTree\\RedBlackTree.cpp",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "ToolTip": "C:\\Users\\omarh\\doom\\RedBlackTree\\RedBlackTree\\RedBlackTree.cpp*",
+              "RelativeToolTip": "RedBlackTree\\RedBlackTree.cpp*",
+              "ViewState": "AgIAABkAAAAAAAAAAAAAACQAAAARAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-06-15T07:57:07.028Z"
+              "WhenOpened": "2025-06-15T07:57:07.028Z",
+              "EditorCaption": ""
             }
           ]
         }
