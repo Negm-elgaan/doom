@@ -43,21 +43,159 @@ template <class T> class clsRedBlackTree
 
 		bool CheckRedAdjacency(Node* node)
 		{
+			if (node == _RootNode)
+			{
+				return false;
+			}
+
 			return node->_Color == enColor::Red && node->_Prev->_Color == enColor::Red;
+		}
+
+		void PrintHelperPre(Node* node)
+		{
+			if (node == NULL)
+				return;
+
+			cout << node->_Data << " ";
+			//cout << node->_Data << " " << node->_Color << " " << endl;
+
+			PrintHelperPre(node->_Left);
+
+			PrintHelperPre(node->_Right);
+		}
+
+		void PrintHelperPost(Node* node)
+		{
+			if (node == NULL)
+				return;
+
+			PrintHelperPost(node->_Left);
+
+			PrintHelperPost(node->_Right);
+
+			cout << node->_Data << " ";
+			//cout << node->_Data << " " << node->_Color << " " ;
+
+		}
+
+		void PrintHelperIn(Node* node)
+		{
+			if (node == nullptr)
+				return;
+
+			PrintHelperIn(node->_Left);
+
+			cout << node->_Data << " ";
+			//cout << node->_Data << " " << node->_Color << " " ;
+
+			PrintHelperIn(node->_Right);
+
 		}
 
 		void _LeftRotation(Node* &node)
 		{
-			//Not implemented yet
+			if (node == nullptr || node->_Right == nullptr)
+			{
+				return;
+			}
+
+			//cout << node->_Data << endl;
+			Node* x = node;
+			Node* y = node->_Right;
+			Node* z = node->_Right->_Left;
+			node = y;
+			y->_Left = x;
+			if (x == _RootNode)
+			{
+				//cout << "yes";
+				y->_Prev = nullptr;
+				_RootNode = y;
+				y->_Color = Black;
+			}
+			else
+			{
+				y->_Prev = x->_Prev;
+				if (x->_Prev->_Right == x)
+					x->_Prev->_Right = y;
+				else
+					x->_Prev->_Left = y;
+			}
+			x->_Prev = y;
+			if (z != nullptr)
+			{
+				x->_Right = z;
+				z->_Prev = x;
+			}
+			else
+			{
+				x->_Right = nullptr;
+			}
+			/*x->_Height = 1 + max(_FastHeight(x->_Left), _FastHeight(x->_Right));
+			y->_Height = 1 + max(_FastHeight(y->_Left), _FastHeight(y->_Right));
+
+			x->_BalanceFactor = _FastHeight(x->_Left) - _FastHeight(x->_Right);
+			y->_BalanceFactor = _FastHeight(y->_Left) - _FastHeight(y->_Right);*/
 		}
 
 		void _RightRotation(Node* &node)
 		{
-			//Not implemented yet
+			if (node == nullptr || node->_Left == nullptr)
+			{
+				return;
+			}
+
+			//cout << node->_Data << endl;
+			Node* x = node;
+			Node* y = node->_Left;
+			Node* z = node->_Left->_Right;
+			node = y;
+			y->_Right = x;
+
+			if (x == _RootNode)
+			{
+				//cout << "yes";
+				y->_Prev = nullptr;
+				_RootNode = y;
+				y->_Color = Black;
+			}
+
+			else
+			{
+				y->_Prev = x->_Prev;
+				if (x->_Prev->_Left == x)
+					x->_Prev->_Left = y;
+				else
+					x->_Prev->_Right = y;
+			}
+
+			x->_Prev = y;
+
+			if (z != nullptr)
+			{
+				x->_Left = z;
+				z->_Prev = x;
+			}
+
+			else
+			{
+				x->_Left = nullptr;
+			}
+
+			/*x->_Height = 1 + max(_FastHeight(x->_Left), _FastHeight(x->_Right));
+			y->_Height = 1 + max(_FastHeight(y->_Left), _FastHeight(y->_Right));
+
+			x->_BalanceFactor = _FastHeight(x->_Left) - _FastHeight(x->_Right);
+			y->_BalanceFactor = _FastHeight(y->_Left) - _FastHeight(y->_Right);*/
 		}
 
 		void _Recolor(Node* &node)
 		{
+			if (!node)
+				return;
+
+			/*if (node == _RootNode)
+				node->_Color = Black;*/
+
 			if (node->_Color == Black)
 				node->_Color = Red;
 			else
@@ -67,74 +205,110 @@ template <class T> class clsRedBlackTree
 		void _InsBackTrack(Node* node)
 		{
 
-			if (!node)
+			if (!node || node == _RootNode || node->_Prev == _RootNode)
 				return;
 
-			if (CheckRedAdjacency(node)) 
+			if (CheckRedAdjacency(node))
 			{
 
-				if (node->_Prev == node->_Prev->_Prev->_Right) // uncle is left of grandparent
-				{
-					if (!node->_Prev->_Prev->_Left || node->_Prev->_Prev->_Left->_Color == Black) // Uncle is NIL/Black
+					if (node->_Prev == node->_Prev->_Prev->_Right) // uncle is left of grandparent
 					{
-						if (node == node->_Prev->_Right) // node is Right of parent
+						if (!node->_Prev->_Prev->_Left || node->_Prev->_Prev->_Left->_Color == Black) // Uncle is NIL/Black
 						{
-							if (node->_Prev == node->_Prev->_prev->_Right) // parent is right of grandparent
+							if (node == node->_Prev->_Right) // node is Right of parent
 							{
-								_Recolor(node->_Prev);
-								_Recolor(node->_Prev->_Prev);
-								_LeftRotation(node->_Prev->_Prev);
+								if (node->_Prev == node->_Prev->_Prev->_Right) // parent is right of grandparent
+								{
+									_Recolor(node->_Prev);
+									_Recolor(node->_Prev->_Prev);
+									_LeftRotation(node->_Prev->_Prev);	
+								}
+
+								else // parent is Left of grandparent
+								{
+									_LeftRotation(node->_Prev);
+									_Recolor(node);
+									_Recolor(node->_Prev);
+									_RightRotation(node->_Prev);
+								}
 							}
-							
-							else // parent is Left of grandparent
+
+							else // node is Left of parent
 							{
-								_LeftRotation(node->_Prev);
-								_Recolor(node);
-								_Recolor(node->_Prev);
-								_RightRotation(node->_Prev);
+								if (node->_Prev == node->_Prev->_Prev->_Left)// parent is Left of grandparent
+								{
+									_Recolor(node->_Prev);
+									_Recolor(node->_Prev->_Prev);
+									_RightRotation(node->_Prev->_Prev);
+								}
+
+								else
+								{
+									_RightRotation(node->_Prev);
+									_Recolor(node);
+									_Recolor(node->_Prev);
+									_LeftRotation(node->_Prev);
+								}
 							}
 						}
 
-						else // node is Left of parent
+						else // Uncle is Red
 						{
-							if (node->_Prev == node->_Prev->_prev->_Left)// parent is Left of grandparent
-							{
-								_Recolor(node->_Prev);
-								_Recolor(node->_Prev->_Prev);
-								_RightRotation(node->_Prev->_Prev);
-							}
-							
-							else
-							{
-								_RightRotation(node->_Prev);
-								_Recolor(node);
-								_Recolor(node->_Prev);
-								_LeftRotation(node->_Prev);
-							}
+							_Recolor(node->_Prev);
+							_Recolor(node->_Prev->_Prev->_Left);
+							_Recolor(node->_Prev->_Prev);
 						}
 					}
-
-					else // Uncle is Red
+					else // uncle is Right of grandparent
 					{
-						_Recolor(node->_Prev);
-						_Recolor(node->_Prev->_Prev->_Left);
-						_Recolor(node->_Prev->_Prev);
+						if (!node->_Prev->_Prev->_Left || node->_Prev->_Prev->_Left->_Color == Black) // Uncle is NIL/Black
+						{
+							if (node == node->_Prev->_Right) // node is Right of parent
+							{
+								if (node->_Prev == node->_Prev->_Prev->_Right) // parent is right of grandparent
+								{
+									_Recolor(node->_Prev);
+									_Recolor(node->_Prev->_Prev);
+									_LeftRotation(node->_Prev->_Prev);
+								}
+
+								else // parent is Left of grandparent
+								{
+									_LeftRotation(node->_Prev);
+									_Recolor(node);
+									_Recolor(node->_Prev);
+									_RightRotation(node->_Prev);
+								}
+							}
+
+							else // node is Left of parent
+							{
+								if (node->_Prev == node->_Prev->_Prev->_Left)// parent is Left of grandparent
+								{
+									_Recolor(node->_Prev);
+									_Recolor(node->_Prev->_Prev);
+									_RightRotation(node->_Prev->_Prev);
+								}
+
+								else
+								{
+									_RightRotation(node->_Prev);
+									_Recolor(node);
+									_Recolor(node->_Prev);
+									_LeftRotation(node->_Prev);
+								}
+							}
+						}
+						else // Uncle is Red
+						{
+							_Recolor(node->_Prev);
+							_Recolor(node->_Prev->_Prev->_Right);
+							_Recolor(node->_Prev->_Prev);
+						}
 					}
 				}
-				else // uncle is Right of grandparent
-				{
-					if (node->_Prev->_Prev->_Right->_Color == Red) // Uncle is Red
-					{
-						_Recolor(node->_Prev);
-						_Recolor(node->_Prev->_Prev->_Right);
-						_Recolor(node->_Prev->_Prev);
-					}
-				}
-			}
-
-			_InsBackTrack(node->_Prev);
+				_InsBackTrack(node->_Prev);
 		}
-
 		Node* _RootNode;
 
 	public:
@@ -153,6 +327,7 @@ template <class T> class clsRedBlackTree
 				_RootNode->_Data = Data;
 				_RootNode->_Height = 0; // _RootNode->_Height = 1; if rotations don't work use this  as rotations are made for min height =  1
 				_RootNode->_Color = enColor::Black;
+				return;
 			}
 
 			Node* TempNode = _RootNode;
@@ -211,10 +386,56 @@ template <class T> class clsRedBlackTree
 
 			_Size++;
 			_InsBackTrack(NewNode);
-
+			if (_RootNode->_Color == Red)
+			{
+				_RootNode->_Color = Black;
+			}
 			return;
 
 
 		}
+
+		Node* Search(T Data)
+		{
+			Node* node = _RootNode;
+
+			if (node == nullptr)
+				return nullptr;
+
+			while (node != nullptr)
+			{
+				if (node->_Data == Data)
+				{
+					//cout << "\nfound: " << node->_Data;
+					return node;
+				}
+
+				node->_Data > Data ? node = node->_Left : node = node->_Right;
+			}
+
+			return nullptr;
+		}
+
+		void PrintRootData()
+		{
+			cout << _RootNode->_Data << endl;
+			cout << _RootNode->_Right->_Data << endl;
+			cout << _RootNode->_Left->_Data << endl;
+			//cout << _RootNode->_Height << endl;
+		}
+
+		void Print()
+		{
+			cout << "InOrder: ";
+			PrintHelperIn(_RootNode);
+			cout << endl;
+			cout << "PreOrder: ";
+			PrintHelperPre(_RootNode);
+			cout << endl;
+			cout << "PostOrder: ";
+			PrintHelperPost(_RootNode);
+			cout << endl;
+		}
+
 };
 

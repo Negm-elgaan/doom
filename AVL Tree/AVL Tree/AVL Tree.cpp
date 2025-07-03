@@ -112,6 +112,7 @@ PostOrder: 5 12 10 20 15 28 33 30 45 40 35 25 52 58 55 63 70 65 60 85 80 92 97 9
     auto end = high_resolution_clock::now();
     auto duration = duration_cast<microseconds>(end - start);
     cout << endl << duration.count() << endl;
+    tree8.PrintRootData();
     cout << "hi";
 
     return 0;

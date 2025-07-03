@@ -3,12 +3,12 @@
   "WorkspaceRootPath": "C:\\Users\\omarh\\doom\\AVL Tree\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{2E348D0D-0508-4A86-B633-E841AFFC364E}|AVL Tree\\AVL Tree.vcxproj|C:\\Users\\omarh\\doom\\AVL Tree\\AVL Tree\\clsAVLTree.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{2E348D0D-0508-4A86-B633-E841AFFC364E}|AVL Tree\\AVL Tree.vcxproj|solutionrelative:AVL Tree\\clsAVLTree.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{2E348D0D-0508-4A86-B633-E841AFFC364E}|AVL Tree\\AVL Tree.vcxproj|C:\\Users\\omarh\\doom\\AVL Tree\\AVL Tree\\AVL Tree.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{2E348D0D-0508-4A86-B633-E841AFFC364E}|AVL Tree\\AVL Tree.vcxproj|solutionrelative:AVL Tree\\AVL Tree.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2E348D0D-0508-4A86-B633-E841AFFC364E}|AVL Tree\\AVL Tree.vcxproj|C:\\Users\\omarh\\doom\\AVL Tree\\AVL Tree\\clsAVLTree.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{2E348D0D-0508-4A86-B633-E841AFFC364E}|AVL Tree\\AVL Tree.vcxproj|solutionrelative:AVL Tree\\clsAVLTree.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,7 +18,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Bookmark",
@@ -34,26 +34,26 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "clsAVLTree.h",
               "DocumentMoniker": "C:\\Users\\omarh\\doom\\AVL Tree\\AVL Tree\\clsAVLTree.h",
               "RelativeDocumentMoniker": "AVL Tree\\clsAVLTree.h",
               "ToolTip": "C:\\Users\\omarh\\doom\\AVL Tree\\AVL Tree\\clsAVLTree.h",
               "RelativeToolTip": "AVL Tree\\clsAVLTree.h",
-              "ViewState": "AgIAAA0BAAAAAAAAAAAAAPwCAAACAAAAAAAAAA==",
+              "ViewState": "AgIAAM4BAAAAAAAAAAAQwOUBAAADAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2025-04-03T07:45:58.031Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "AVL Tree.cpp",
               "DocumentMoniker": "C:\\Users\\omarh\\doom\\AVL Tree\\AVL Tree\\AVL Tree.cpp",
               "RelativeDocumentMoniker": "AVL Tree\\AVL Tree.cpp",
-              "ToolTip": "C:\\Users\\omarh\\doom\\AVL Tree\\AVL Tree\\AVL Tree.cpp",
-              "RelativeToolTip": "AVL Tree\\AVL Tree.cpp",
-              "ViewState": "AgIAAFkAAAAAAAAAAAAAAGcAAABDAAAAAAAAAA==",
+              "ToolTip": "C:\\Users\\omarh\\doom\\AVL Tree\\AVL Tree\\AVL Tree.cpp*",
+              "RelativeToolTip": "AVL Tree\\AVL Tree.cpp*",
+              "ViewState": "AgIAAF4AAAAAAAAAAAAAAHIAAAAaAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-04-03T07:45:39.062Z",
               "EditorCaption": ""

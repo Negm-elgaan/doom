@@ -1,2 +1,3 @@
 ﻿  RedBlackTree.cpp
+C:\Users\omarh\doom\RedBlackTree\RedBlackTree\RedBlackTree.cpp(28,24): warning C4101: 'rd': unreferenced local variable
   RedBlackTree.vcxproj -> C:\Users\omarh\doom\RedBlackTree\x64\Debug\RedBlackTree.exe
