@@ -1,3 +1,14 @@
 ﻿  RedBlackTree.cpp
 C:\Users\omarh\doom\RedBlackTree\RedBlackTree\RedBlackTree.cpp(28,24): warning C4101: 'rd': unreferenced local variable
+C:\Users\omarh\doom\RedBlackTree\RedBlackTree\clsRedBlackTree.h(423,11): warning C4244: 'return': conversion from '__int64' to 'int', possible loss of data
+  (compiling source file 'RedBlackTree.cpp')
+      C:\Users\omarh\doom\RedBlackTree\RedBlackTree\clsRedBlackTree.h(423,11):
+      the template instantiation context (the oldest one first) is
+          C:\Users\omarh\doom\RedBlackTree\RedBlackTree\RedBlackTree.cpp(34,30):
+          see reference to class template instantiation 'clsRedBlackTree<int>' being compiled
+          C:\Users\omarh\doom\RedBlackTree\RedBlackTree\clsRedBlackTree.h(421,7):
+          while compiling class template member function 'int clsRedBlackTree<int>::Size(void)'
+              C:\Users\omarh\doom\RedBlackTree\RedBlackTree\RedBlackTree.cpp(47,37):
+              see the first reference to 'clsRedBlackTree<int>::Size' in 'main'
+  
   RedBlackTree.vcxproj -> C:\Users\omarh\doom\RedBlackTree\x64\Debug\RedBlackTree.exe

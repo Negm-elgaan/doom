@@ -316,6 +316,7 @@ template <class T> class clsRedBlackTree
 		clsRedBlackTree()
 		{
 			_RootNode = nullptr;
+			_Size = 0;
 		}
 
 		void Insert(T Data)
@@ -327,6 +328,7 @@ template <class T> class clsRedBlackTree
 				_RootNode->_Data = Data;
 				_RootNode->_Height = 0; // _RootNode->_Height = 1; if rotations don't work use this  as rotations are made for min height =  1
 				_RootNode->_Color = enColor::Black;
+				_Size++;
 				return;
 			}
 
@@ -383,16 +385,16 @@ template <class T> class clsRedBlackTree
 
 			}
 
-
-			_Size++;
 			_InsBackTrack(NewNode);
+
 			if (_RootNode->_Color == Red)
 			{
 				_RootNode->_Color = Black;
 			}
+
+			_Size++;
+
 			return;
-
-
 		}
 
 		Node* Search(T Data)
@@ -414,6 +416,11 @@ template <class T> class clsRedBlackTree
 			}
 
 			return nullptr;
+		}
+
+		int Size()
+		{
+			return _Size;
 		}
 
 		void PrintRootData()

@@ -23,7 +23,7 @@ int main()
     auto duration = duration_cast<microseconds>(end - start);
     cout << "Search in sorted tree: " << duration.count() << " microseconds\n";
     TreeSorted.PrintRootData();
-
+    cout << TreeSorted.Size() << endl;
     // 2) Shuffled insertions for validation (repeat a few trials)
     std::random_device rd;
     // use fixed seed for reproducible shuffles
@@ -44,6 +44,7 @@ int main()
         cout << "\n--- Trial " << trial << " Traversals ---\n";
         cout << "In-order: ";
         TreeShuffled.Print();         // prints InOrder, PreOrder, PostOrder
+        cout << TreeShuffled.Size() << endl;
     }
 
     return 0;
