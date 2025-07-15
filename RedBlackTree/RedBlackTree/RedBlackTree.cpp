@@ -12,6 +12,21 @@ using namespace std::chrono;
 int main()
 {
     // 1) Sorted insertion for initial performance test
+    clsRedBlackTree<int> SimpleTree;
+
+    for (int i = 10; i <= 100; i += 10)
+    {
+        SimpleTree.Insert(i);
+    }
+
+    SimpleTree.Print();
+
+    SimpleTree.Remove(30);
+
+    SimpleTree.PrintRootData();
+
+    SimpleTree.Print();
+
     clsRedBlackTree<long long> TreeSorted;
     for (int i = 1; i <= 1000000; ++i)
     {
