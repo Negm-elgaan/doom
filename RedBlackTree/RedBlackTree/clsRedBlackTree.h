@@ -1,5 +1,6 @@
 #pragma once
 #include <iostream>
+#include <vector>
 
 using namespace std;
 
@@ -8,11 +9,13 @@ template <class T> class clsRedBlackTree
 	private:
 
 		long long _Size;
+		long long _Capacity;
 		long long _Max;
 		long long _Min;
+		bool _MemPool;
 
 		enum enColor { Red = 0 , Black = 1 , Orange = 2};
-		enum enInsertionRebalanceCases { UncleIsRed = 0 , UncleIsBlackOrNullAndOppositeOrientation = 1 , UncleIsBlackOrNullAndSameOrientation = 2};
+		
 		class Node
 		{
 			private:
@@ -40,6 +43,8 @@ template <class T> class clsRedBlackTree
 					_Color = enColor::Red;
 				}
 		};
+
+		Node* _MemoryNodeAllocatorArray[10000000];
 
 		bool CheckRedAdjacency(Node* node)
 		{
@@ -92,6 +97,19 @@ template <class T> class clsRedBlackTree
 
 		}
 
+		void DeleteHelper(Node* node)
+		{
+			if (node == nullptr)
+				return;
+
+			DeleteHelper(node->_Left);
+			DeleteHelper(node->_Right);
+
+			delete node;
+
+			return;
+		}
+
 		void _LeftRotation(Node* &node)
 		{
 			if (node == nullptr || node->_Right == nullptr)
@@ -130,11 +148,6 @@ template <class T> class clsRedBlackTree
 			{
 				x->_Right = nullptr;
 			}
-			/*x->_Height = 1 + max(_FastHeight(x->_Left), _FastHeight(x->_Right));
-			y->_Height = 1 + max(_FastHeight(y->_Left), _FastHeight(y->_Right));
-
-			x->_BalanceFactor = _FastHeight(x->_Left) - _FastHeight(x->_Right);
-			y->_BalanceFactor = _FastHeight(y->_Left) - _FastHeight(y->_Right);*/
 		}
 
 		void _RightRotation(Node* &node)
@@ -181,20 +194,12 @@ template <class T> class clsRedBlackTree
 				x->_Left = nullptr;
 			}
 
-			/*x->_Height = 1 + max(_FastHeight(x->_Left), _FastHeight(x->_Right));
-			y->_Height = 1 + max(_FastHeight(y->_Left), _FastHeight(y->_Right));
-
-			x->_BalanceFactor = _FastHeight(x->_Left) - _FastHeight(x->_Right);
-			y->_BalanceFactor = _FastHeight(y->_Left) - _FastHeight(y->_Right);*/
 		}
 
 		void _Recolor(Node* &node)
 		{
 			if (!node)
 				return;
-
-			/*if (node == _RootNode)
-				node->_Color = Black;*/
 
 			if (node->_Color == Black)
 				node->_Color = Red;
@@ -351,528 +356,145 @@ template <class T> class clsRedBlackTree
 
 			_BackTrack(node->_Prev);
 
-		}
+		}		
 
-		//void _DelBackTrack(Node* node , string deletednode) // old version
-		//{
-		//	if (!node)
-		//		return;
-
-		//	if (deletednode == "right") // sibling is left of parent
-		//	{
-		//		if (!node->_Left) // sibling is NIL
-		//		{
-		//			if (node->_Color == Red) // parent is red
-		//			{
-		//				_Recolor(node);
-		//				return;
-		//			}
-
-		//			//node->_Color = Orange;
-		//			_DelBackTrack(node->_Prev, "right");
-		//		}
-
-		//		else if (node->_Left->_Color == Black) // sibling is black
-		//		{
-		//			if (!node->_Left->_Right || node->_Left->_Right->_Color == Black) // Right child of sibling is NIL or Black
-		//			{
-		//				if (!node->_Left->_Left) // Left child of sibling is NIL
-		//				{
-		//					if (node->_Color == Red) // parent is red
-		//					{
-		//						_Recolor(node);
-		//						return;
-		//					}
-
-		//					_DelBackTrack(node->_Prev , "right");
-		//				}
-
-		//				else if (node->_Left->_Left->_Color == Black) // Left child of sibling is Black
-		//				{
-		//					if (node->_Color == Red) // parent is red
-		//					{
-		//						_Recolor(node);
-		//						return;
-		//					}
-
-		//					_DelBackTrack(node->_Prev , "right"); // Parent is Black
-		//				}
-
-		//				else // Left child of sibling is Red (far case)
-		//				{
-		//					node->_Left->_Color = node->_Color;
-		//					node->_Color = Black;
-		//					node->_Left->_Left->_Color = Black;
-		//					_RightRotation(node);
-		//					return;
-		//				}
-		//			}
-
-		//			else // Right child of sibling is Red
-		//			{
-		//				if (!node->_Left->_Left || node->_Left->_Left->_Color == Black) // Left child of sibling is NIL or Black
-		//				{
-		//					node->_Left->_Right->_Color = Black;
-		//					node->_Left->_Color = Red;
-		//					_LeftRotation(node->_Left);
-		//					return;
-		//				}
-		//				else // Left child of sibling is Red (far case)
-		//				{
-		//					node->_Left->_Color = node->_Color;
-		//					node->_Color = Black;
-		//					node->_Left->_Left->_Color = Black;
-		//					_RightRotation(node);
-		//					return;
-		//				}
-		//			}
-
-		//			//node->_Color = Orange;
-		//			//_DelBackTrack(node->_Prev);
-		//		}
-
-		//		else // sibling is red
-		//		{
-		//			node->_Left->_Color = Black;
-		//			node->_Color = Red;
-		//			_RightRotation(node);
-		//		}
-
-		//	}
-
-		//	else // sibling is Right of parent
-		//	{
-		//		if (!node->_Right) // sibling is NIL
-		//		{
-		//			if (node->_Color == Red) // parent is red
-		//			{
-		//				_Recolor(node);
-		//				return;
-		//			}
-
-		//			//node->_Color = Orange;
-		//			_DelBackTrack(node->_Prev , "left");
-		//		}
-
-		//		else if (node->_Right->_Color == Black) // sibling is black
-		//		{
-		//			if (!node->_Right->_Right || node->_Right->_Right->_Color == Black) // Right child of sibling is NIL or Black
-		//			{
-		//				if (!node->_Right->_Left) // Left child of sibling is NIL
-		//				{
-		//					if (node->_Color == Red) // parent is red
-		//					{
-		//						_Recolor(node);
-		//						return;
-		//					}
-
-		//					_DelBackTrack(node->_Prev , "left");
-		//				}
-
-		//				else if (node->_Right->_Left->_Color == Black) // Left child of sibling is Black
-		//				{
-		//					if (node->_Color == Red) // parent is red
-		//					{
-		//						_Recolor(node);
-		//						return;
-		//					}
-
-		//					_DelBackTrack(node->_Prev , "left"); // Parent is Black
-		//				}
-
-		//				else // Left child of sibling is Red (far case)
-		//				{
-		//					node->_Right->_Color = node->_Color;
-		//					node->_Color = Black;
-		//					node->_Right->_Right->_Color = Black;
-		//					_LeftRotation(node);
-		//					return;
-		//				}
-		//			}
-
-		//			else // Right child of sibling is Red
-		//			{
-		//				if (!node->_Right->_Right || node->_Right->_Right->_Color == Black) // Left child of sibling is NIL or Black
-		//				{
-		//					node->_Right->_Left->_Color = Black;
-		//					node->_Right->_Color = Red;
-		//					_RightRotation(node->_Left);
-		//					return;
-		//				}
-		//				else // Left child of sibling is Red (far case)
-		//				{
-		//					node->_Right->_Color = node->_Color;
-		//					node->_Color = Black;
-		//					node->_Right->_Right->_Color = Black;
-		//					_LeftRotation(node);
-		//					return;
-		//				}
-		//			}
-
-		//			//node->_Color = Orange;
-		//			//_DelBackTrack(node->_Prev);
-		//		}
-
-		//		else // sibling is red
-		//		{
-		//			node->_Right->_Color = Black;
-		//			node->_Color = Red;
-		//			_LeftRotation(node);
-		//			_DelBackTrack(node, "left");
-		//		}
-		//	}
-
-		//}
-
-void _DelBackTrack(Node*& node)
-{
-	if (!node)
-		return;
-
-	//if (deletednode == "right") // sibling is left of parent
-	//{
-	if (!node->_Left) // sibling is NIL and is Left
-	{
-		if (node->_Color == Red) // parent is red
+		void _DelBackTrack(Node*& node) // newest version/ current working on version
 		{
-			_Recolor(node);
-			return;
-		}
-
-		node->_Color = Orange;
-		_DelBackTrack(node->_Prev);
-		return;
-	}
-
-	else if (node->_Left) // sibling is left
-	{
-		if (node->_Left->_Color == Black) // sibling is black
-		{
-			if (!node->_Left->_Right || node->_Left->_Right->_Color == Black) // Right child of sibling is NIL or Black
+			// هنعتمد هنا علي اننا نبعت النود الي هنمسحها قبل ما تتمسح ويكون لونها برتقالي 
+			
+			if (!node->_Prev) //rootnode is the node to be deleted
 			{
-				if (!node->_Left->_Left) // Left child of sibling is NIL
-				{
-					if (node->_Color == Red) // parent is red
-					{
-						_Recolor(node);
-						return;
-					}
-
-					_DelBackTrack(node->_Prev);
-				}
-
-				else if (node->_Left->_Left->_Color == Black) // Left child of sibling is Black
-				{
-					if (node->_Color == Red) // parent is red
-					{
-						_Recolor(node);
-						return;
-					}
-
-					_DelBackTrack(node->_Prev); // Parent is Black
-				}
-
-				else // Left child of sibling is Red (far case)
-				{
-					node->_Left->_Color = node->_Color;
-					node->_Color = Black;
-					node->_Left->_Left->_Color = Black;
-					_RightRotation(node);
-					return;
-				}
-			}
-
-			else // Right child of sibling is Red
-			{
-				if (!node->_Left->_Left || node->_Left->_Left->_Color == Black) // Left child of sibling is NIL or Black
-				{
-					node->_Left->_Right->_Color = Black;
-					node->_Left->_Color = Red;
-					_LeftRotation(node->_Left);
-					return;
-				}
-				else // Left child of sibling is Red (far case)
-				{
-					node->_Left->_Color = node->_Color;
-					node->_Color = Black;
-					node->_Left->_Left->_Color = Black;
-					_RightRotation(node);
-					return;
-				}
-			}
-
-			//node->_Color = Orange;
-			//_DelBackTrack(node->_Prev);
-		}
-
-		else // sibling is red
-		{
-			node->_Left->_Color = Black;
-			node->_Color = Red;
-			_RightRotation(node);
-		}
-	}
-
-	//}
-
-	else // sibling is Right of parent
-	{
-		if (!node->_Right) // sibling is NIL
-		{
-			if (node->_Color == Red) // parent is red
-			{
-				_Recolor(node);
+				// some code
 				return;
 			}
 
-			//node->_Color = Orange;
-			_DelBackTrack(node->_Prev);
-		}
-
-		else if (node->_Right->_Color == Black) // sibling is black
-		{
-			if (!node->_Right->_Right || node->_Right->_Right->_Color == Black) // Right child of sibling is NIL or Black
+			if ((node->_Prev->_Right && node->_Prev->_Right->_Color == Orange) || !node->_Prev->_Left) // node to be deleted is right
 			{
-				if (!node->_Right->_Left) // Left child of sibling is NIL
+				if (!node->_Prev->_Left) // sibling is NIL
 				{
-					if (node->_Color == Red) // parent is red
+					if (node->_Prev->_Color == Red)
 					{
-						_Recolor(node);
+						_Recolor(node->_Prev);
 						return;
 					}
 
-					_DelBackTrack(node->_Prev);
-				}
-
-				else if (node->_Right->_Left->_Color == Black) // Left child of sibling is Black
-				{
-					if (node->_Color == Red) // parent is red
-					{
-						_Recolor(node);
-						return;
-					}
-
-					_DelBackTrack(node->_Prev); // Parent is Black
-				}
-
-				else // Left child of sibling is Red (far case)
-				{
-					node->_Right->_Color = node->_Color;
 					node->_Color = Black;
-					node->_Right->_Right->_Color = Black;
-					_LeftRotation(node);
-					return;
-				}
-			}
-
-			else // Right child of sibling is Red
-			{
-				if (!node->_Right->_Left || node->_Right->_Left->_Color == Black) // Left child of sibling is NIL or Black
-				{
-					node->_Right->_Left->_Color = Black;
-					node->_Right->_Color = Red;
-					_RightRotation(node->_Left);
-					return;
-				}
-				else // Left child of sibling is Red (far case)
-				{
-					node->_Right->_Color = node->_Color;
-					node->_Color = Black;
-					node->_Right->_Right->_Color = Black;
-					_LeftRotation(node);
-					return;
-				}
-			}
-
-			//node->_Color = Orange;
-			//_DelBackTrack(node->_Prev);
-		}
-
-		else // sibling is red
-		{
-			node->_Right->_Color = Black;
-			node->_Color = Red;
-			_LeftRotation(node);
-			_DelBackTrack(node->_Prev);
-		}
-	}
-
-}
-
-		/*void _DelBackTrack(Node* &node )
-		{
-			if (!node)
-				return;
-
-			//if (deletednode == "right") // sibling is left of parent
-			//{
-				if (!node->_Left && !node->_Right) // sibling is NIL
-				{
-					if (node->_Color == Red) // parent is red
-					{
-						_Recolor(node);
-						return;
-					}
-
-					//node->_Color = Orange;
+					node->_Prev->_Color = Orange;
 					_DelBackTrack(node->_Prev);
-					return;
+					
 				}
 
-				else if (node->_Left) // sibling is left
+				else if (node->_Prev->_Left->_Color == Black) //sibling is Black
 				{
-					if (node->_Left->_Color == Black) // sibling is black
+					if ((!node->_Prev->_Left->_Right && !node->_Prev->_Left->_Left) || (!node->_Prev->_Left->_Right && node->_Prev->_Left->_Left->_Color == Black)  || (!node->_Prev->_Left->_Left && node->_Prev->_Left->_Right->_Color == Black) || (node->_Prev->_Left->_Right->_Color == Black && node->_Prev->_Left->_Left->_Color == Black)  ) // siblings children are black or nil
 					{
-						if (!node->_Left->_Right || node->_Left->_Right->_Color == Black) // Right child of sibling is NIL or Black
+						_Recolor(node->_Prev->_Left);
+
+						if (node->_Prev->_Color == Red)
 						{
-							if (!node->_Left->_Left) // Left child of sibling is NIL
-							{
-								if (node->_Color == Red) // parent is red
-								{
-									_Recolor(node);
-									return;
-								}
-
-								_DelBackTrack(node->_Prev);
-							}
-
-							else if (node->_Left->_Left->_Color == Black) // Left child of sibling is Black
-							{
-								if (node->_Color == Red) // parent is red
-								{
-									_Recolor(node);
-									return;
-								}
-
-								_DelBackTrack(node->_Prev); // Parent is Black
-							}
-
-							else // Left child of sibling is Red (far case)
-							{
-								node->_Left->_Color = node->_Color;
-								node->_Color = Black;
-								node->_Left->_Left->_Color = Black;
-								_RightRotation(node);
-								return;
-							}
-						}
-
-						else // Right child of sibling is Red
-						{
-							if (!node->_Left->_Left || node->_Left->_Left->_Color == Black) // Left child of sibling is NIL or Black
-							{
-								node->_Left->_Right->_Color = Black;
-								node->_Left->_Color = Red;
-								_LeftRotation(node->_Left);
-								return;
-							}
-							else // Left child of sibling is Red (far case)
-							{
-								node->_Left->_Color = node->_Color;
-								node->_Color = Black;
-								node->_Left->_Left->_Color = Black;
-								_RightRotation(node);
-								return;
-							}
-						}
-
-						//node->_Color = Orange;
-						//_DelBackTrack(node->_Prev);
-					}
-
-					else // sibling is red
-					{
-						node->_Left->_Color = Black;
-						node->_Color = Red;
-						_RightRotation(node);
-					}
-				}
-
-			//}
-
-			else // sibling is Right of parent
-			{
-				if (!node->_Right) // sibling is NIL
-				{
-					if (node->_Color == Red) // parent is red
-					{
-						_Recolor(node);
-						return;
-					}
-
-					//node->_Color = Orange;
-					_DelBackTrack(node->_Prev);
-				}
-
-				else if (node->_Right->_Color == Black) // sibling is black
-				{
-					if (!node->_Right->_Right || node->_Right->_Right->_Color == Black) // Right child of sibling is NIL or Black
-					{
-						if (!node->_Right->_Left) // Left child of sibling is NIL
-						{
-							if (node->_Color == Red) // parent is red
-							{
-								_Recolor(node);
-								return;
-							}
-
-							_DelBackTrack(node->_Prev);
-						}
-
-						else if (node->_Right->_Left->_Color == Black) // Left child of sibling is Black
-						{
-							if (node->_Color == Red) // parent is red
-							{
-								_Recolor(node);
-								return;
-							}
-
-							_DelBackTrack(node->_Prev); // Parent is Black
-						}
-
-						else // Left child of sibling is Red (far case)
-						{
-							node->_Right->_Color = node->_Color;
-							node->_Color = Black;
-							node->_Right->_Right->_Color = Black;
-							_LeftRotation(node);
+							_Recolor(node->_Prev);
 							return;
 						}
+
+						node->_Color = Black;
+						node->_Prev->_Color = Orange;
+						_DelBackTrack(node->_Prev);
 					}
 
-					else // Right child of sibling is Red
+					else if (node->_Prev->_Left->_Left && node->_Prev->_Left->_Left->_Color == Red) // far child is red
 					{
-						if (!node->_Right->_Left || node->_Right->_Left->_Color == Black) // Left child of sibling is NIL or Black
-						{
-							node->_Right->_Left->_Color = Black;
-							node->_Right->_Color = Red;
-							_RightRotation(node->_Left);
-							return;
-						}
-						else // Left child of sibling is Red (far case)
-						{
-							node->_Right->_Color = node->_Color;
-							node->_Color = Black;
-							node->_Right->_Right->_Color = Black;
-							_LeftRotation(node);
-							return;
-						}
+						node->_Prev->_Left->_Color = node->_Prev->_Color;
+						node->_Prev->_Color = Black;
+						node->_Prev->_Left->_Left->_Color = Black;
+						_RightRotation(node->_Prev);
 					}
 
-					//node->_Color = Orange;
-					//_DelBackTrack(node->_Prev);
+					else
+					{
+						node->_Prev->_Left->_Right->_Color = Black;
+						node->_Prev->_Left->_Color = Red;
+						_LeftRotation(node->_Prev);
+						node->_Prev->_Left->_Color = node->_Prev->_Color;
+						node->_Prev->_Color = Black;
+						node->_Prev->_Left->_Left->_Color = Black;
+						_RightRotation(node->_Prev);
+					}
 				}
 
 				else // sibling is red
 				{
-					node->_Right->_Color = Black;
-					node->_Color = Red;
-					_LeftRotation(node);
-					_DelBackTrack(node->_Prev);
+					node->_Prev->_Left->_Color = Black;
+					node->_Prev->_Color = Red;
+					_LeftRotation(node->_Prev);
+					_DelBackTrack(node);
 				}
 			}
 
-		}*/
+			else // node to be deleted is left
+			{
+				if (!node->_Prev->_Right) // sibling is NIL
+				{
+					if (node->_Prev->_Color == Red)
+					{
+						_Recolor(node->_Prev);
+						return;
+					}
+
+					node->_Color = Black;
+					node->_Prev->_Color = Orange;
+					_DelBackTrack(node->_Prev);
+
+				}
+
+				else if (node->_Prev->_Right->_Color == Black) //sibling is Black
+				{
+					if ((!node->_Prev->_Right->_Right && !node->_Prev->_Right->_Left) || (!node->_Prev->_Right->_Right && node->_Prev->_Right->_Left->_Color == Black) || (!node->_Prev->_Right->_Left && node->_Prev->_Right->_Right->_Color == Black) || (node->_Prev->_Right->_Right->_Color == Black && node->_Prev->_Right->_Left->_Color == Black)) // siblings children are black or nil
+					{
+						_Recolor(node->_Prev->_Right);
+
+						if (node->_Prev->_Color == Red)
+						{
+							_Recolor(node->_Prev);
+							return;
+						}
+
+						node->_Color = Black;
+						node->_Prev->_Color = Orange;
+						_DelBackTrack(node->_Prev);
+					}
+
+					else if (node->_Prev->_Right->_Right && node->_Prev->_Right->_Right->_Color == Red) // far child is red
+					{
+						node->_Prev->_Right->_Color = node->_Prev->_Color;
+						node->_Prev->_Color = Black;
+						node->_Prev->_Right->_Right->_Color = Black;
+						_LeftRotation(node->_Prev);
+					}
+
+					else
+					{
+						node->_Prev->_Right->_Left->_Color = Black;
+						node->_Prev->_Right->_Color = Red;
+						_RightRotation(node->_Prev);
+						node->_Prev->_Right->_Color = node->_Prev->_Color;
+						node->_Prev->_Color = Black;
+						node->_Prev->_Right->_Right->_Color = Black;
+						_LeftRotation(node->_Prev);
+					}
+
+				}
+
+				else // sibling is red
+				{
+					node->_Prev->_Right->_Color = Black;
+					node->_Prev->_Color = Red;
+					_RightRotation(node->_Prev);
+					_DelBackTrack(node);
+				}
+			}
+
+
+		}
 
 		Node* _RootNode;
 
@@ -881,7 +503,19 @@ void _DelBackTrack(Node*& node)
 		clsRedBlackTree()
 		{
 			_RootNode = nullptr;
+			//_MemoryNodeAllocatorArray = nullptr;
 			_Size = 0;
+			_MemPool = false;
+			_Capacity = 0;
+		}
+
+		clsRedBlackTree(long long size)
+		{
+			_RootNode = nullptr;
+			//_MemoryPoolAllocator(size);
+			_Size = 0;
+			_MemPool = true;
+			_Capacity = size;
 		}
 
 		void Insert(T Data)
@@ -889,7 +523,14 @@ void _DelBackTrack(Node*& node)
 
 			if (!_RootNode)
 			{
-				_RootNode = new Node();
+				if (_MemPool)
+				{
+					_RootNode = _MemoryNodeAllocatorArray[_Size];
+				}
+				else
+				{
+					_RootNode = new Node();
+				}
 				_RootNode->_Data = Data;
 				_RootNode->_Height = 0; // _RootNode->_Height = 1; if rotations don't work use this  as rotations are made for min height =  1
 				_RootNode->_Color = enColor::Black;
@@ -898,7 +539,15 @@ void _DelBackTrack(Node*& node)
 			}
 
 			Node* TempNode = _RootNode;
-			Node* NewNode = new Node();
+			Node* NewNode;
+			if (_MemPool)
+			{
+				NewNode = _MemoryNodeAllocatorArray[_Size];
+			}
+			else
+			{
+				NewNode = new Node();
+			}
 			NewNode->_Data = Data;
 			while (true)
 			{
@@ -1000,41 +649,52 @@ void _DelBackTrack(Node*& node)
 			if (node->_Right == nullptr && node->_Left == nullptr)
 			{
 				
+				
+
+				if (node->_Color == Black)
+				{
+					node->_Color = Orange;
+					_DelBackTrack(node);
+				}
+
 				Node* Temper = node->_Prev;
-				//node->_Prev->_Right == node ? node->_Prev->_Right = nullptr : node->_Prev->_Left = nullptr;
-				if (node->_Prev->_Right == node)
-				{
-					test = "right";
-				}
-				else
-				{
-					test = "left";
-				}
+				node->_Prev->_Right == node ? node->_Prev->_Right = nullptr : node->_Prev->_Left = nullptr;
+
 				delete node;
 				_Size--;
-				_DelBackTrack(Temper , test);
+				
 				return true;
 			}
 
 			if (node->_Right == nullptr && node->_Left != nullptr)
 			{
+				
+				if (node->_Color == Black)
+				{
+					node->_Color = Orange;
+					_DelBackTrack(node);
+				}
 				Node* Temper = node->_Left;
 				node->_Prev->_Right == node ? node->_Prev->_Right = node->_Left : node->_Prev->_Left = node->_Left;
 				node->_Left->_Prev = node->_Prev;
 				delete node;
 				_Size--;
-				_DelBackTrack(Temper , test);
 				return true;
 			}
 
 			if (node->_Right != nullptr && node->_Left == nullptr)
 			{
+				
+				if (node->_Color == Black)
+				{
+					node->_Color = Orange;
+					_DelBackTrack(node);
+				}
 				Node* Temper = node->_Right;
 				node->_Prev->_Right == node ? node->_Prev->_Right = node->_Right : node->_Prev->_Left = node->_Right;
 				node->_Right->_Prev = node->_Prev;
 				delete node;
 				_Size--;
-				_DelBackTrack(Temper , test);
 				return true;
 			}
 
@@ -1044,10 +704,15 @@ void _DelBackTrack(Node*& node)
 
 			if (!node->_Left)
 			{
+				
+				if (node->_Color == Black)
+				{
+					node->_Color = Orange;
+					_DelBackTrack(node);
+				}
 				node->_Prev->_Data = node->_Data;
 				Temper = node->_Prev;
 				delete node;
-				_DelBackTrack(Temper , test);
 				return true;
 			}
 
@@ -1071,9 +736,14 @@ void _DelBackTrack(Node*& node)
 				Temper = node->_Prev;
 			}
 
+			if (node->_Color == Black)
+			{
+				node->_Color = Orange;
+				_DelBackTrack(node);
+			}
+
 			delete node;
 			_Size--;
-			_DelBackTrack(Temper , test);
 
 			return true;
 		}
@@ -1104,5 +774,11 @@ void _DelBackTrack(Node*& node)
 			cout << endl;
 		}
 
+		~clsRedBlackTree()
+		{
+			DeleteHelper(_RootNode);
+
+			return;
+		}
 };
 
