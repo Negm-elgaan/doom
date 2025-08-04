@@ -44,7 +44,7 @@ template <class T> class clsRedBlackTree
 				}
 		};
 
-		Node* _MemoryNodeAllocatorArray[10000000];
+		//Node* _MemoryNodeAllocatorArray[10000000];
 
 		bool CheckRedAdjacency(Node* node)
 		{
@@ -523,14 +523,14 @@ template <class T> class clsRedBlackTree
 
 			if (!_RootNode)
 			{
-				if (_MemPool)
-				{
-					_RootNode = _MemoryNodeAllocatorArray[_Size];
-				}
-				else
-				{
+				//if (_MemPool)
+				//{
+					//_RootNode = _MemoryNodeAllocatorArray[_Size];
+				//}
+				//else
+				//{
 					_RootNode = new Node();
-				}
+				//}
 				_RootNode->_Data = Data;
 				_RootNode->_Height = 0; // _RootNode->_Height = 1; if rotations don't work use this  as rotations are made for min height =  1
 				_RootNode->_Color = enColor::Black;
@@ -540,14 +540,14 @@ template <class T> class clsRedBlackTree
 
 			Node* TempNode = _RootNode;
 			Node* NewNode;
-			if (_MemPool)
-			{
-				NewNode = _MemoryNodeAllocatorArray[_Size];
-			}
-			else
-			{
+			//if (_MemPool)
+			//{
+				//NewNode = _MemoryNodeAllocatorArray[_Size];
+			//}
+			//else
+			//{
 				NewNode = new Node();
-			}
+			//}
 			NewNode->_Data = Data;
 			while (true)
 			{
@@ -751,6 +751,51 @@ template <class T> class clsRedBlackTree
 		int Size()
 		{
 			return _Size;
+		}
+
+		T Previous(T Data)
+		{
+			Node* node = _Search(Data);
+
+			if (node == nullptr)
+				return nullptr;
+
+			node = node->_Prev;
+
+			if (node == nullptr)
+				return nullptr;
+
+			return node->_Data;
+		}
+
+		T Left(T Data)
+		{
+			Node* node = _Search(Data);
+
+			if (node == nullptr)
+				return nullptr;
+
+			node = node->_Left;
+
+			if (node == nullptr)
+				return nullptr;
+
+			return node->_Data;
+		}
+
+		T Right(T Data)
+		{
+			Node* node = _Search(Data);
+
+			if (node == nullptr)
+				return nullptr;
+
+			node = node->_Right;
+
+			if (node == nullptr)
+				return nullptr;
+
+			return node->_Data;
 		}
 
 		void PrintRootData()
