@@ -748,6 +748,11 @@ template <class T> class clsRedBlackTree
 			return true;
 		}
 
+		bool IsEmpty()
+		{
+			return _RootNode == nullptr && _Size == 0;
+		}
+
 		int Size()
 		{
 			return _Size;
