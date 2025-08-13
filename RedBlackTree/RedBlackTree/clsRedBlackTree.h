@@ -600,6 +600,7 @@ template <class T> class clsRedBlackTree
 			}
 
 			_InsBackTrack(NewNode);
+			_BackTrack(NewNode);
 
 			if (_RootNode->_Color == Red)
 			{
@@ -660,6 +661,7 @@ template <class T> class clsRedBlackTree
 				Node* Temper = node->_Prev;
 				node->_Prev->_Right == node ? node->_Prev->_Right = nullptr : node->_Prev->_Left = nullptr;
 
+				_BackTrack(node->_Prev);
 				delete node;
 				_Size--;
 				
@@ -677,6 +679,8 @@ template <class T> class clsRedBlackTree
 				Node* Temper = node->_Left;
 				node->_Prev->_Right == node ? node->_Prev->_Right = node->_Left : node->_Prev->_Left = node->_Left;
 				node->_Left->_Prev = node->_Prev;
+
+				_BackTrack(node->_Prev);
 				delete node;
 				_Size--;
 				return true;
@@ -693,6 +697,8 @@ template <class T> class clsRedBlackTree
 				Node* Temper = node->_Right;
 				node->_Prev->_Right == node ? node->_Prev->_Right = node->_Right : node->_Prev->_Left = node->_Right;
 				node->_Right->_Prev = node->_Prev;
+
+				_BackTrack(node->_Prev);
 				delete node;
 				_Size--;
 				return true;
@@ -712,6 +718,8 @@ template <class T> class clsRedBlackTree
 				}
 				node->_Prev->_Data = node->_Data;
 				Temper = node->_Prev;
+
+				_BackTrack(node->_Prev);
 				delete node;
 				return true;
 			}
@@ -742,6 +750,7 @@ template <class T> class clsRedBlackTree
 				_DelBackTrack(node);
 			}
 
+			_BackTrack(node->_Prev);
 			delete node;
 			_Size--;
 
@@ -756,6 +765,19 @@ template <class T> class clsRedBlackTree
 		int Size()
 		{
 			return _Size;
+		}
+
+		void Height(T Data)
+		{
+			Node* node = Search(Data);
+
+			if (!node)
+			{
+				cout << "Node does not exist!\n";
+				return;
+			}
+
+			cout << node->_Height << endl;
 		}
 
 		T Previous(T Data)
