@@ -16,33 +16,7 @@ template <class T> class clsRedBlackTree
 
 		enum enColor { Red = 0 , Black = 1 , Orange = 2};
 		
-		class Node
-		{
-			private:
-
-				T _Data;
-				enColor _Color;
-				Node* _Right;
-				Node* _Left;
-				Node* _Prev;
-				int _Height;
-				int _BlackNodes;
-
-				friend class clsRedBlackTree;
-
-			public:
-
-				Node()
-				{
-					_Data = T();
-					_Right = nullptr;
-					_Left = nullptr;
-					_Prev = nullptr;
-					_Height = 0;
-					_BlackNodes = 1;
-					_Color = enColor::Red;
-				}
-		};
+		class Node;
 
 		//Node* _MemoryNodeAllocatorArray[10000000];
 
@@ -500,6 +474,34 @@ template <class T> class clsRedBlackTree
 
 	public:
 
+		class Node
+		{
+			private:
+
+				T _Data;
+				enColor _Color;
+				Node* _Right;
+				Node* _Left;
+				Node* _Prev;
+				int _Height;
+				int _BlackNodes;
+
+			friend class clsRedBlackTree;
+
+			public:
+
+			Node()
+			{
+				_Data = T();
+				_Right = nullptr;
+				_Left = nullptr;
+				_Prev = nullptr;
+				_Height = 0;
+				_BlackNodes = 1;
+				_Color = enColor::Red;
+			}
+		};
+
 		clsRedBlackTree()
 		{
 			_RootNode = nullptr;
@@ -823,6 +825,109 @@ template <class T> class clsRedBlackTree
 				return nullptr;
 
 			return node->_Data;
+		}
+
+		bool Exist(T Data)
+		{
+			Node* node = Search(Data);
+
+			if (!node)
+			{
+				return false;
+			}
+
+			return true;
+		}
+
+		bool IsSibling(Node* node1 , Node* node2)
+		{
+			if (!node1 || !node2 || !node1->_Prev || !node2->_Prev)
+			{
+				return false;
+			}
+
+			if (node1->_Prev == node2->_Prev)
+			{
+				return true;
+			}
+
+			return false;
+		}
+
+		bool IsParent(Node* node1, Node* node2)
+		{
+			if (!node1 || !node2 || !node2->_Prev)
+			{
+				return false;
+			}
+
+			if (node1 == node2->_Prev)
+			{
+				return true;
+			}
+
+			return false;
+		}
+
+		T LCA(T Data1, T Data2)
+		{
+			Node* node1 = Search(Data1);
+			Node* node2 = Search(Data2);
+
+			if (node1 == _RootNode || node2 == _RootNode)
+			{
+				return _RootNode->_Data;
+			}
+
+			if (!node1 || !node2 || !node1->_Prev || !node2->_Prev)
+			{
+				return T();
+			}
+
+			while (true)
+			{
+
+				/*if (node1->_Prev == _RootNode || node2->_Prev == _RootNode)
+				{
+					return _RootNode->_Data;
+				}*/
+
+				if (node1 == node2)
+				{
+					return node1->_Data;
+				}
+
+				if (node1->_Prev == node2->_Prev)
+				{
+					return node1->_Prev->_Data;
+				}
+
+				if (node1->_Prev == node2)
+				{
+					return node2->_Data;
+				}
+
+				if (node2->_Prev == node1)
+				{
+					return node1->_Data;
+				}
+
+				if (node1->_Height < node2->_Height)
+				{
+					node2 = node2->_Prev;
+				}
+
+				else if (node1->_Height > node2->_Height)
+				{
+					node1 = node1->_Prev;
+				}
+
+				else if (node1->_Height == node2->_Height)
+				{
+					node1 = node1->_Prev;
+					node2 = node2->_Prev;
+				}
+			}
 		}
 
 		void PrintRootData()
