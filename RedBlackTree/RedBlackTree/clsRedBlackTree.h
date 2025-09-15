@@ -10,8 +10,8 @@ template <class T> class clsRedBlackTree
 
 		long long _Size;
 		long long _Capacity;
-		long long _Max;
-		long long _Min;
+		T _Max;
+		T _Min;
 		bool _MemPool;
 
 		enum enColor { Red = 0 , Black = 1 , Orange = 2};
@@ -509,6 +509,8 @@ template <class T> class clsRedBlackTree
 			_Size = 0;
 			_MemPool = false;
 			_Capacity = 0;
+			_Min = T();
+			_Max = T();
 		}
 
 		clsRedBlackTree(long long size)
@@ -518,6 +520,8 @@ template <class T> class clsRedBlackTree
 			_Size = 0;
 			_MemPool = true;
 			_Capacity = size;
+			_Min = T();
+			_Max = T();
 		}
 
 		void Insert(T Data)
@@ -556,6 +560,7 @@ template <class T> class clsRedBlackTree
 				if (NewNode->_Data == TempNode->_Data)
 				{
 					cout << "Key already exists!\n";
+					delete NewNode;
 					return;
 				}
 
@@ -723,6 +728,7 @@ template <class T> class clsRedBlackTree
 
 				_BackTrack(node->_Prev);
 				delete node;
+				_Size;
 				return true;
 			}
 
@@ -784,7 +790,7 @@ template <class T> class clsRedBlackTree
 
 		T Previous(T Data)
 		{
-			Node* node = _Search(Data);
+			Node* node = Search(Data);
 
 			if (node == nullptr)
 				return nullptr;
@@ -799,7 +805,7 @@ template <class T> class clsRedBlackTree
 
 		T Left(T Data)
 		{
-			Node* node = _Search(Data);
+			Node* node = Search(Data);
 
 			if (node == nullptr)
 				return nullptr;
@@ -814,7 +820,7 @@ template <class T> class clsRedBlackTree
 
 		T Right(T Data)
 		{
-			Node* node = _Search(Data);
+			Node* node = Search(Data);
 
 			if (node == nullptr)
 				return nullptr;
@@ -928,6 +934,16 @@ template <class T> class clsRedBlackTree
 					node2 = node2->_Prev;
 				}
 			}
+		}
+
+		T Min()
+		{
+			return _Min;
+		}
+
+		T Max()
+		{
+			return _Max;
 		}
 
 		void PrintRootData()
