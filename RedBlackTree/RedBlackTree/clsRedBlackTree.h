@@ -30,20 +30,19 @@ template <class T> class clsRedBlackTree
 			return node->_Color == enColor::Red && node->_Prev->_Color == enColor::Red;
 		}
 
-		void PrintHelperPre(Node* node)
+		void PrintHelperPre(Node* node) const
 		{
 			if (node == NULL)
 				return;
 
 			cout << node->_Data << " ";
-			//cout << node->_Data << " " << node->_Color << " " << endl;
 
 			PrintHelperPre(node->_Left);
 
 			PrintHelperPre(node->_Right);
 		}
 
-		void PrintHelperPost(Node* node)
+		void PrintHelperPost(Node* node) const
 		{
 			if (node == NULL)
 				return;
@@ -53,11 +52,10 @@ template <class T> class clsRedBlackTree
 			PrintHelperPost(node->_Right);
 
 			cout << node->_Data << " ";
-			//cout << node->_Data << " " << node->_Color << " " ;
 
 		}
 
-		void PrintHelperIn(Node* node)
+		void PrintHelperIn(Node* node) const
 		{
 			if (node == nullptr)
 				return;
@@ -65,10 +63,45 @@ template <class T> class clsRedBlackTree
 			PrintHelperIn(node->_Left);
 
 			cout << node->_Data << " ";
-			//cout << node->_Data << " " << node->_Color << " " ;
 
 			PrintHelperIn(node->_Right);
 
+		}
+
+		void PrintColorsHelperPre(Node* node)
+		{
+			if (node == NULL)
+				return;
+
+			cout << node->_Data << " " << node->_Color << " " << endl;
+
+			PrintHelperPre(node->_Left);
+
+			PrintHelperPre(node->_Right);
+		}
+
+		void PrintColorsHelperPost(Node* node)
+		{
+			if (node == NULL)
+				return;
+
+			PrintHelperPost(node->_Left);
+
+			PrintHelperPost(node->_Right);
+
+			cout << node->_Data << " " << node->_Color << " " ;
+		}
+
+		void PrintColorsHelperIn(Node* node)
+		{
+			if (node == nullptr)
+				return;
+
+			PrintHelperIn(node->_Left);
+
+			cout << node->_Data << " " << node->_Color << " " ;
+
+			PrintHelperIn(node->_Right);
 		}
 
 		void DeleteHelper(Node* node)
@@ -524,6 +557,12 @@ template <class T> class clsRedBlackTree
 			_Max = T();
 		}
 
+		friend ostream& operator<<(ostream& os , const clsRedBlackTree& Tree)
+		{
+			Tree.Print();
+			return os;
+		}
+
 		void Insert(T Data)
 		{
 
@@ -655,9 +694,7 @@ template <class T> class clsRedBlackTree
 				_Min = node->_Prev->_Data;
 
 			if (node->_Right == nullptr && node->_Left == nullptr)
-			{
-				
-				
+			{	
 
 				if (node->_Color == Black)
 				{
@@ -954,7 +991,35 @@ template <class T> class clsRedBlackTree
 			//cout << _RootNode->_Height << endl;
 		}
 
-		void Print()
+		void PrintColor(T Data)
+		{
+			Node* node = Search(Data);
+
+			if (!node)
+			{
+				cout << "Node does not exist!\n";
+				return;
+			}
+
+			cout << node->_Color;
+
+			return;
+		}
+
+		void PrintColors()
+		{
+			cout << "InOrder: ";
+			PrintColorsHelperIn(_RootNode);
+			cout << endl;
+			cout << "PreOrder: ";
+			PrintColorsHelperPre(_RootNode);
+			cout << endl;
+			cout << "PostOrder: ";
+			PrintColorsHelperPost(_RootNode);
+			cout << endl;
+		}
+
+		void Print() const
 		{
 			cout << "InOrder: ";
 			PrintHelperIn(_RootNode);
