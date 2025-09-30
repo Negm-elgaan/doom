@@ -912,6 +912,22 @@ template <class T> class clsRedBlackTree
 			return false;
 		}
 
+		bool IsLeaf(Node* node)
+		{
+			if (!node)
+			{
+				return false;
+			}
+
+			if (!node->_Right && !node->_Left)
+			{
+				return true;
+			}
+
+			return false;
+
+		}
+
 		T LCA(T Data1, T Data2)
 		{
 			Node* node1 = Search(Data1);
@@ -983,6 +999,20 @@ template <class T> class clsRedBlackTree
 			return _Max;
 		}
 
+		void Clear()
+		{
+			DeleteHelper(_RootNode);
+			_RootNode = nullptr;
+			//_MemoryNodeAllocatorArray = nullptr;
+			_Size = 0;
+			_MemPool = false;
+			_Capacity = 0;
+			_Min = T();
+			_Max = T();
+
+			return;
+		}
+
 		void PrintRootData()
 		{
 			cout << _RootNode->_Data << endl;
@@ -1034,9 +1064,8 @@ template <class T> class clsRedBlackTree
 
 		~clsRedBlackTree()
 		{
-			DeleteHelper(_RootNode);
+			Clear();
 
 			return;
 		}
 };
-
