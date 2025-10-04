@@ -2,8 +2,6 @@
 
 #include <typeinfo>
 
-using namespace std;
-
 class IHolder
 {
 	virtual const type_info& info() const = 0;
@@ -64,7 +62,7 @@ class Any
 				return Hold->Data;
 			}
 
-			throw bad_cast();
+			throw std::bad_cast();
 		}
 
 		~Any()
