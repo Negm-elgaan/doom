@@ -2,16 +2,17 @@
 //
 #include "Any.h"
 #include <iostream>
+#include <any>
 
 int main()
-{
+{ 
     Any any;
     any = 10;
     any = 'O';
     any = 22.5;
-    any = string("Negm");
-    string S = any.Get<string>();
-    std::cout << S << endl;
+    any = std::string("Negm");
+    std::string S = any.Get<std::string>();
+    std::cout << S << std::endl;
     std::cout << "Hello World!\n";
 }
 
