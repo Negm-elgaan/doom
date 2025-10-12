@@ -419,7 +419,7 @@ class BTree
 						if (End < 0)
 							return 0;
 
-						if (Start > CurrentNumOfElementsInNode)
+						if (Start >= CurrentNumOfElementsInNode)
 							return CurrentNumOfElementsInNode + 1;
 
 						if (Start < CurrentNumOfElementsInNode)
