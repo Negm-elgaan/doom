@@ -13,5 +13,7 @@ class clsTrie
 
 		void Insert(std::string s);
 
-		void Search(std::string s);
+		bool Search(std::string s);
+
+		bool Delete(std::string s);
 };
