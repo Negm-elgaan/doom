@@ -8,8 +8,14 @@ int main()
 { 
     Any any;
     any = 10;
+    int X = any.Get<int>();
+    std::cout << X << std::endl;
     any = 'O';
+    char O = any.Get<char>();
+    std::cout << O << std::endl;
     any = 22.5;
+    double D = any.Get<double>();
+    std::cout << D << std::endl;
     any = std::string("Negm");
     std::string S = any.Get<std::string>();
     std::cout << S << std::endl;
