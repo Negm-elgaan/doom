@@ -44,11 +44,7 @@ class Any
 
 		template <class T> void operator=(T data)
 		{
-			if (ptr)
-			{
-				delete ptr;
-			}
-
+			Reset();
 			Holder <T>* Hold = new Holder<T>();
 			Hold->Data = data;
 			ptr = Hold;
@@ -63,6 +59,15 @@ class Any
 			}
 
 			throw std::bad_cast();
+		}
+
+		void Reset()
+		{
+			if (ptr)
+			{
+				delete ptr;
+				ptr = nullptr;
+			}
 		}
 
 		~Any()
