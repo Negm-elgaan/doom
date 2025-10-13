@@ -35,6 +35,15 @@ int main()
 
     std::cout << "Searching for 'cap' (after insertion): ";
     trie.Search("cap");
+
+
+    std::cout << "Searching for 'abcd' (after insertion): ";
+    trie.Insert("abcd");
+    trie.Search("abcd");
+
+    std::cout << "Searching for 'abcd' (after deletion): ";
+    trie.Delete("abcd");
+    trie.Search("abcd");
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
