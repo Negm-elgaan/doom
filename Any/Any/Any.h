@@ -61,6 +61,16 @@ class Any
 			throw std::bad_cast();
 		}
 
+		bool Has_Value()
+		{
+			if (ptr)
+			{
+				return true;
+			}
+
+			return false;
+		}
+
 		void Reset()
 		{
 			if (ptr)
