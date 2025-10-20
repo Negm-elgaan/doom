@@ -6,6 +6,8 @@ class IHolder
 {
 	virtual const type_info& info() const = 0;
 
+	virtual IHolder* clone() const = 0;
+
 	friend class Any;
 
 	public:
@@ -22,6 +24,13 @@ template <class T> class Holder : public IHolder
 	const type_info& info() const override
 	{
 		return typeid(T);
+	}
+
+	IHolder* clone() const override
+	{
+		Holder <T>* Hold = new Holder<T>();
+		Hold->Data = Data;
+		return Hold;
 	}
 
 	public:
@@ -42,7 +51,33 @@ class Any
 			ptr = nullptr;
 		}
 
-		template <class T> void operator=(T data)
+		Any(Any& any)
+		{	
+			this->ptr = any.ptr ? any.ptr->clone() : nullptr;
+		}
+
+		Any(Any&& any)
+		{
+			this->ptr = any.ptr;
+			any.ptr = nullptr;
+		}
+
+		Any& operator= (Any& any)
+		{
+			Reset();
+			this->ptr = any.ptr ? any.ptr->clone() : nullptr;
+			return *this;
+		}
+
+		Any& operator= (Any&& any)
+		{
+			Reset();
+			this->ptr = any.ptr;
+			any.ptr = nullptr;
+			return *this;
+		}
+
+		template <class T> void operator= (T data)
 		{
 			Reset();
 			Holder <T>* Hold = new Holder<T>();
