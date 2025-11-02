@@ -106,6 +106,31 @@ class Any
 			return false;
 		}
 
+		bool Has_Numeric()
+		{
+			if (!ptr)
+			{
+				return false;
+			}
+
+			if (ptr->info() == typeid(short) || ptr->info() == typeid(int) || ptr->info() == typeid(long) || ptr->info() == typeid(float) || ptr->info() == typeid(double) || ptr->info() == typeid(long long) || ptr->info() == typeid(long double) || ptr->info() == typeid(signed char) || ptr->info() == typeid(unsigned short) || ptr->info() == typeid(unsigned int) || ptr->info() == typeid(unsigned long) || ptr->info() == typeid(unsigned long long) || ptr->info() == typeid(unsigned char))
+			{
+				return true;
+			}
+
+			return false;
+		}
+
+		bool IsEmpty()
+		{
+			if (!ptr)
+			{
+				return true;
+			}
+
+			return false;
+		}
+
 		void Reset()
 		{
 			if (ptr)
