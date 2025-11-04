@@ -51,6 +51,13 @@ class Any
 			ptr = nullptr;
 		}
 
+		template <class T> Any(T data)
+		{
+			Holder <T>* Hold = new Holder<T>();
+			Hold->Data = data;
+			ptr = Hold;
+		}
+
 		Any(Any& any)
 		{	
 			this->ptr = any.ptr ? any.ptr->clone() : nullptr;
@@ -96,7 +103,7 @@ class Any
 			throw std::bad_cast();
 		}
 
-		bool Has_Value()
+		bool Has_Value() const
 		{
 			if (ptr)
 			{
@@ -106,7 +113,7 @@ class Any
 			return false;
 		}
 
-		bool Has_Numeric()
+		bool Has_Numeric() const
 		{
 			if (!ptr)
 			{
@@ -121,7 +128,33 @@ class Any
 			return false;
 		}
 
-		bool IsEmpty()
+		template <class T, class... Types> bool IsOneOf() const
+		{
+			if (IsEmpty())
+				return false;
+
+			if (ptr->info() == typeid(T))
+			{
+				return true;
+			}
+
+			if constexpr (sizeof...(Types) > 0)
+			{
+				return this->IsOneOf<Types...>();
+			}
+
+			return false;
+			
+		}
+
+		void Swap(Any& any)
+		{
+			IHolder* temp = ptr;
+			ptr = any.ptr;
+			any.ptr = temp;
+		}
+
+		bool IsEmpty() const
 		{
 			if (!ptr)
 			{
