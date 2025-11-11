@@ -4,6 +4,7 @@
 #include <iostream>
 #include <thread>
 #include <vector>
+#include "clsMyQueue.h"
 
 using namespace std;
 
@@ -18,7 +19,7 @@ template <class T> class clsGraph
 
     int** Edges;
 
-    Node** DNodes;
+    Node** DNodes; 
 
    /* void _Search(Node* node , T Data)
     {
@@ -141,6 +142,18 @@ public:
         return false;
     }
     
+    int GetIndex(T Data)
+    {
+        Node* node = Search(Data);
+
+        if (node)
+        {
+            return node->index;
+        }
+
+        return -1;
+    }
+
     Node* Search(T Data)
     {
         for (int i = 0; i < size; i++)
@@ -198,33 +211,44 @@ public:
 
     }
 
-    /*void BFS()
+    void BFS(T Data)
     {
-        bool *visited = new bool[size];
+        int start = GetIndex(Data);
 
-        for (int i = 0; i < size; i++)
+        if (start == -1)
         {
-            visited[i] = false;
+            cout << "Data not found!\n";
+            return;
         }
 
-        for (int i = 0 ; i < size ; i++)
-        {
-            if (i == 0)
-            {
-                cout << DNodes[i]->Data << " ";
-                visited[i] = true;
-            }
+        clsMyQueue <int> Queue;
+        Queue.Push(start);
+        bool* visited = new bool [ size ] ();
+        visited[start] = 1;
 
-            for (int j = i + 1 ; j < size ; j++)
+        //cout << DNodes[start]->Data << " -> ";
+
+        while (!Queue.IsEmpty())
+        {
+            int i = Queue.Front();
+            
+            for (int j = 0; j < size; j++)
             {
-                if (CheckEdge(DNodes[i]->Data, DNodes[j]->Data) && !visited[j])
+                if (Edges[i][j] != 0 && !visited[j])
                 {
-                    cout << DNodes[j]->Data << " ";
-                    visited[j] = true;
+                    Queue.Push(j);
+                    visited[j] = 1;
+                    //cout << DNodes[j]->Data << " -> ";
                 }
             }
+
+            Queue.Pop();
+            cout << DNodes[i]->Data << " -> ";
         }
-    }*/
+
+        delete[] visited;
+
+    }
 
     void PrintMatrix()
     {
@@ -282,6 +306,110 @@ public:
 };
 int main()
 {
+    cout << "===== Test 1: Simple Linear Graph =====\n";
+    {
+        clsGraph<char> g(4);
+        g.InsertNode('A');
+        g.InsertNode('B');
+        g.InsertNode('C');
+        g.InsertNode('D');
+
+        g.InsertEdge(0, 1);
+        g.InsertEdge(1, 2);
+        g.InsertEdge(2, 3);
+
+        g.PrintMatrix();
+        g.BFS('A');
+        cout << "NULL\n"; // Expected: A -> B -> C -> D -> NULL
+    }
+
+    cout << "\n===== Test 2: Branched Graph =====\n";
+    {
+        clsGraph<char> g(6);
+        g.InsertNode('A');
+        g.InsertNode('B');
+        g.InsertNode('C');
+        g.InsertNode('D');
+        g.InsertNode('E');
+        g.InsertNode('F');
+
+        g.InsertEdge(0, 1);
+        g.InsertEdge(0, 3);
+        g.InsertEdge(1, 2);
+        g.InsertEdge(2, 4);
+        g.InsertEdge(3, 4);
+        g.InsertEdge(4, 5);
+
+        g.PrintMatrix();
+        g.BFS('A');
+        cout << "NULL\n"; // Expected: A -> B -> D -> C -> E -> F -> NULL
+    }
+
+    cout << "\n===== Test 3: Graph with Cycle =====\n";
+    {
+        clsGraph<char> g(5);
+        g.InsertNode('A');
+        g.InsertNode('B');
+        g.InsertNode('C');
+        g.InsertNode('D');
+        g.InsertNode('E');
+
+        g.InsertEdge(0, 1);
+        g.InsertEdge(1, 2);
+        g.InsertEdge(2, 0); // cycle A-B-C-A
+        g.InsertEdge(2, 3);
+        g.InsertEdge(3, 4);
+
+        g.PrintMatrix();
+        g.BFS('A');
+        cout << "NULL\n"; // Expected: A -> B -> C -> D -> E -> NULL
+    }
+
+    cout << "\n===== Test 4: Disconnected Graph =====\n";
+    {
+        clsGraph<char> g(6);
+        g.InsertNode('A');
+        g.InsertNode('B');
+        g.InsertNode('C');
+        g.InsertNode('D');
+        g.InsertNode('E');
+        g.InsertNode('F');
+
+        // Component 1: A -> B -> C
+        g.InsertEdge(0, 1);
+        g.InsertEdge(1, 2);
+
+        // Component 2: D -> E
+        g.InsertEdge(3, 4);
+
+        g.PrintMatrix();
+        g.BFS('A');
+        cout << "NULL\n"; // Expected: A -> B -> C -> NULL
+        g.BFS('D');
+        cout << "NULL\n"; // Expected: D -> E -> NULL
+        g.BFS('F');
+        cout << "NULL\n"; // Expected: F -> NULL
+    }
+
+    cout << "\n===== Test 5: Dense Graph =====\n";
+    {
+        clsGraph<char> g(4);
+        g.InsertNode('A');
+        g.InsertNode('B');
+        g.InsertNode('C');
+        g.InsertNode('D');
+
+        // Fully connected
+        for (int i = 0; i < 4; ++i)
+            for (int j = 0; j < 4; ++j)
+                if (i != j)
+                    g.InsertEdge(i, j);
+
+        g.PrintMatrix();
+        g.BFS('A');
+        cout << "NULL\n"; // Expected: A -> B -> C -> D -> NULL
+    }
+
     clsGraph<char> g;  // Create a graph of integers
 
     // Insert some nodes
@@ -307,11 +435,13 @@ int main()
     
     g.PrintMatrix();
 
-    g.BFS();
+    g.BFS('A');
 
     cout << endl;
 
     cout << g.CheckEdge('A', 'D');
+
+    
 
     //cout << endl << g.CheckNode(5);
 }
