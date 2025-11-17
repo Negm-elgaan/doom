@@ -5,50 +5,79 @@
 
 using namespace std;
 
-template <class T , class F>
+template <class T , class F = int>
 
 class clsPriorityQueue
 {
 
 protected:
-    MinBinaryHeap <T , F> _MyHeap;
+    MinBinaryHeap <T , F>* _MyHeap = nullptr;
 
 public:
 
+    clsPriorityQueue()
+    {
+        int size = 0;
+
+        cin >> size;
+
+        if (size < 0)
+        {
+            size = 0;
+        }
+
+        _MyHeap = new MinBinaryHeap <T, F>(size);
+    }
+
+    clsPriorityQueue(int size)
+    {
+        if (size < 0)
+        {
+            size = 0;
+        }
+
+        _MyHeap = new MinBinaryHeap <T, F>(size);
+    }
+
+    void push(T Item)
+    {
+        _MyHeap->Insert(Item);
+    }
+
     void push(T Item , F Name)
     {
-        _MyHeap.Insert(Item , Name);
+        _MyHeap->Insert(Item , Name);
     }
 
     void pop()
     {
-        _MyHeap.Remove();
+        _MyHeap->Remove();
     }
 
    void Print()
     {
-       _MyHeap.Print();
+       _MyHeap->Print();
     }
 
     int Size()
     {
-        return _MyHeap.Size();
+        return _MyHeap->Size();
     }
 
     bool IsEmpty()
     {
-        return _MyHeap.IsEmpty();
+        return _MyHeap->IsEmpty();
     }
 
-    T front()
+    pair <T, F> front()
     {
-        return _MyHeap.Getitem(0);
+        return _MyHeap->Getitem(0);
     }
 
-    /*T back()
+    pair <T, F> back()
     {
-        return _MyHeap.Getitem(Size() - 1);
-    }*/
+        return _MyHeap->Getitem(Size() - 1);
+    }
 
    /* void Reverse()
     {
@@ -60,9 +89,9 @@ public:
         return _MyHeap.UpdateItem(index, newval);
     }*/
 
-    T GetItem(int index)
+    pair <T , F> GetItem(int index)
     {
-        _MyHeap.GetItem(index);
+        return _MyHeap->GetItem(index);
     }
 
     /*void InsertAtFront(T Data)
@@ -82,6 +111,11 @@ public:
 
     void Clear()
     {
-        _MyHeap.Clear();
+        _MyHeap->Clear();
+    }
+
+    ~clsPriorityQueue()
+    {
+        delete _MyHeap;
     }
 };
