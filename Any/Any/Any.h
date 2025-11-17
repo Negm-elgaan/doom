@@ -1,5 +1,5 @@
 #pragma once
-
+#include <iostream>
 #include <typeinfo>
 
 class IHolder
@@ -7,6 +7,8 @@ class IHolder
 	virtual const type_info& info() const = 0;
 
 	virtual IHolder* clone() const = 0;
+
+	virtual void Print() const = 0;
 
 	friend class Any;
 
@@ -31,6 +33,11 @@ template <class T> class Holder : public IHolder
 		Holder <T>* Hold = new Holder<T>();
 		Hold->Data = Data;
 		return Hold;
+	}
+
+	void Print() const override
+	{
+		std::cout << Data << std::endl;
 	}
 
 	public:
@@ -171,6 +178,17 @@ class Any
 				delete ptr;
 				ptr = nullptr;
 			}
+		}
+
+		bool Print()
+		{
+			if (ptr)
+			{
+				ptr->Print();
+				return true;
+			}
+
+			return false;
 		}
 
 		~Any()
