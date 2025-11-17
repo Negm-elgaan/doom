@@ -8,10 +8,6 @@ class MinBinaryHeap
 {
     pair<T, F>* _HeapPair  = nullptr;
     pair <T, F>* _TempPair = nullptr;
-    F* _NodeArray = nullptr;
-    T* _PtrArray = nullptr;
-    T* _TempArray = nullptr;
-    T* _RevArray = nullptr;
     int _Size = 0, _CurrentNumber = 0;
 
     void _HeapifyUp(int Index = 0)
@@ -71,8 +67,6 @@ public:
     {
         cin >> _Size;
 
-        _PtrArray = new T[_Size];
-        _NodeArray = new F[_Size];
         _HeapPair = new pair<T, F>[_Size];
     }
 
@@ -81,14 +75,24 @@ public:
         if (size < 0)
             size = 0;
         _Size = size;
-        _PtrArray = new T[_Size];
-        _RevArray = new T[_Size];
-        _NodeArray = new F[_Size];
+        _HeapPair = new pair<T, F>[_Size];
     }
 
     bool IsEmpty()
     {
         return _CurrentNumber == 0;
+    }
+
+    void Insert(T Data)
+    {
+        if (_CurrentNumber == _Size)
+            return;
+
+        _HeapPair[_CurrentNumber] = { Data , F()};
+
+        _HeapifyUp(_CurrentNumber);
+
+        _CurrentNumber++;
     }
 
     void Insert(T Data , F Node)
@@ -124,7 +128,7 @@ public:
     pair <T,F> BinaryHeapIndexParent(int Index)
     {
 
-        if (Index < 0 || Index >= _Size)
+        if (Index < 0 || Index >= _CurrentNumber)
         {
             return { T(), F() };
         }
@@ -134,12 +138,12 @@ public:
 
     pair <T,F> BinaryHeapIndexLeftChild(int Index)
     {
-        if (Index < 0 || Index >= _Size)
+        if (Index < 0 || Index >= _CurrentNumber)
         {
             return { T(), F() };
         }
 
-        if ((2 * Index) + 1 >= _Size)
+        if ((2 * Index) + 1 >= _CurrentNumber)
             return { T(), F() };
 
         return _HeapPair[(2 * Index) + 1];
@@ -147,12 +151,12 @@ public:
 
     pair <T,F> BinaryHeapIndexRightChild(int Index)
     {
-        if (Index < 0 || Index >= _Size)
+        if (Index < 0 || Index >= _CurrentNumber)
         {
             return { T(), F() };
         }
 
-        if ((2 * Index) + 2 >= _Size)
+        if ((2 * Index) + 2 >= _CurrentNumber)
             return { T(), F() };
 
         return _HeapPair[(2 * Index) + 2];
@@ -164,7 +168,7 @@ public:
         cout << endl;
 
         for (int i = 0; i < _CurrentNumber; i++)
-            cout << _HeapPair[i] << " ";
+            cout << _HeapPair[i].first << " " << _HeapPair[i].second;
 
         cout << endl;
     }
@@ -181,29 +185,12 @@ public:
 		_PtrArray[index] = Data;
 		_RevArray[_Size - index - 1] = Data;
 		return true;
-	}
-
-	bool IsEmpty()
-	{
-		return _Size == 0;
 	}*/
 
 	int Size()
 	{
 		return _Size;
 	}
-
-	/*void PrintList()
-	{
-		for (int i = 0; i < _Size; i++)
-		{
-			cout << _PtrArray[i] << " ";
-		}
-
-		cout << "\n";
-
-		return;
-	}*/
 
 	void Resize(int NewSize = 0)
 	{
@@ -213,28 +200,20 @@ public:
 		if (NewSize < 0)
 			NewSize = 0;
 
-		//_TempArray = new T[NewSize];
         _TempPair = new pair<T, F>[NewSize];
 
 		//limit the original size to the new size if it is less.
 		if (NewSize < _Size)
 			_Size = NewSize;
 
-		//delete[] _RevArray;
-		//_RevArray = new T[NewSize];
-		//copy all data from original array until the size
-		for (int i = 0; i < _Size; i++)
+		for (int i = 0; i < _CurrentNumber; i++)
 		{
-			//_TempArray[i] = _PtrArray[i];
-			//_RevArray[NewSize - i - 1] = _PtrArray[i];
             _TempPair[i] = _HeapPair[i];
 		}
 
 		_Size = NewSize;
 
-		//delete[] _PtrArray;
         delete[] _HeapPair;
-		//_PtrArray = _TempArray;
         _HeapPair = _TempPair;
 		return;
 
@@ -302,20 +281,10 @@ public:
             return false;
         }
 
-		//_TempArray = new T[_Size];
-
         pair<T,F> temper = _HeapPair[_CurrentNumber - 1];
         _HeapPair[_CurrentNumber - 1] = _HeapPair[0];
         _HeapPair[0] = temper;
 
-		// copy all before last
-		/*for (int i = 0; i < _CurrentNumber; i++)
-		{
-			_TempArray[i] = _PtrArray[i];
-		}*/
-
-		//delete[] _PtrArray;
-		//_PtrArray = _TempArray;
         _CurrentNumber--;
         
         _HeapifyDown(0);
@@ -325,7 +294,7 @@ public:
 
 	int Find(T Data)
 	{
-		for (int i = 0; i < _Size; i++)
+		for (int i = 0; i < _CurrentNumber; i++)
 		{
 			if (_HeapPair[i].first == Data)
 				return i;
@@ -353,46 +322,26 @@ public:
 
 	pair <T,F> Getitem(int Index = 0)
 	{
-		if (Index < 0 || Index >= _Size)
-			return NULL;
+		if (Index < 0 || Index >= _CurrentNumber)
+            return { T() , F() };
 
 		return _HeapPair[Index];
 	}
 
-	/*bool Reverse()
-	{
-		if (_PtrArray == nullptr)
-			return false;
-
-		_TempArray = _PtrArray;
-		_PtrArray = _RevArray;
-		_RevArray = _TempArray;
-
-		return true;
-	}*/
-
 	void Clear()
 	{
-		delete[] _PtrArray;
-		delete[] _RevArray;
         delete[] _HeapPair;
 	}
 
 	void Delete()
 	{
 		_Size = 0;
-		delete[] _PtrArray;
-		delete[] _RevArray;
         delete[] _HeapPair;
-		_PtrArray = new T[0];
-		_RevArray = new T[0];
         _HeapPair = new pair<T, F>[0];
 	}
 
     ~MinBinaryHeap()
     {
-        delete[] _PtrArray;
-        delete[] _RevArray;
         delete[] _HeapPair;
     }
 };
