@@ -72,5 +72,8 @@ int main()
     std::cout << "a8.IsOneOf<int, float, std::string>(): " << a8.IsOneOf<int, float, std::string>() << "\n";
     std::cout << "a8.IsOneOf<char, std::string>(): " << a8.IsOneOf<char, std::string>() << "\n\n";
 
+    Any A9("Testing new Print");
+    A9.Print();
+
     std::cout << "=== All Tests Completed ===\n";
 }
