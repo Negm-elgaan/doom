@@ -53,6 +53,6 @@ void ArenaDestroy(struct Arena* MyArena)
         free(Temp1);
         Temp1 = Temp2;
     }
-
+    free(MyArena);
     return;
 }
