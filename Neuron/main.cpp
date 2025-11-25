@@ -19,7 +19,17 @@ class Neuron
         WeightedSum = 0;
         for (int i = 0 ; i < PrevSize ; i++)
         {
-            WeightedSum += Prev[i]->OutputData * Weights[i];
+            WeightedSum += Prev[i].OutputData * Weights[i];
+        }
+        WeightedSum += Bias;
+    }
+
+    void Sum(const double* inputData)
+    {
+        WeightedSum = 0;
+        for (int i = 0 ; i < PrevSize ; i++)
+        {
+            WeightedSum += inputData[i] * Weights[i];
         }
         WeightedSum += Bias;
     }
@@ -28,6 +38,7 @@ class Neuron
     {
         OutputData = 1 / (1 + exp(-WeightedSum));
     }
+
 
     public:
 
@@ -44,9 +55,9 @@ class Neuron
             this->Bias = Bias;
         }
 
-        void Forward()
+        void Forward(const double* inputData)
         {
-            Sum();
+            Sum(inputData);
             Activation();
         }
 
@@ -54,6 +65,7 @@ class Neuron
 
 int main()
 {
+    Neuron *neuron = new Neuron(10,100,nullptr);
     cout << "Hello world!" << endl;
     return 0;
 }
