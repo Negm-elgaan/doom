@@ -163,6 +163,11 @@ public:
 		return _Capacity;
 	}
 
+	bool IsEmpty()
+	{
+		return _Capacity == 0;
+	}
+
 	int Size()
 	{
 		return _Size;
