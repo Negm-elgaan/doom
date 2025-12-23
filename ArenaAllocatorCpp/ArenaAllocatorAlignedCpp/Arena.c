@@ -130,7 +130,7 @@ void* ArenaAllocAligned(struct Arena* MyArena , size_t Capacity , size_t Alignme
         return vptr;
     }
 
-    struct Region* NewRegion = CreateRegion(Capacity < _Default_Capacity ? _Default_Capacity : Capacity);
+    struct Region* NewRegion = CreateRegion(Capacity < _Default_Capacity ? _Default_Capacity  + (Alignment - 1 ) : Capacity + (Alignment - 1 ));
     MyArena->_End->_Next = NewRegion;
     NewRegion->_Prev = MyArena->_End;
     MyArena->_End = NewRegion;
