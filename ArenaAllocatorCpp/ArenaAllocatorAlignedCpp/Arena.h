@@ -31,6 +31,8 @@ void* ArenaAlloc(struct Arena* MyArena , size_t Capacity);
 
 void* ArenaAllocAligned(struct Arena* MyArena , size_t Capacity , size_t Alignment);
 
+void ArenaReset(struct Arena* MyArena);
+
 void ArenaDestroy(struct Arena* MyArena);
 
 #endif // ARENA_H_INCLUDED
