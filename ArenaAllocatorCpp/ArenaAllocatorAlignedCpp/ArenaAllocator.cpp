@@ -32,6 +32,18 @@ void* ArenaAllocater::Alloc(size_t Size , size_t Alignment)
     return ArenaAllocAligned(MyArena , Size , Alignment);
 }
 
+void ArenaAllocater::ArenaAllocaterReset()
+{
+    while (CurrentNode != nullptr)
+    {
+        CurrentNode->DestructorPtr(CurrentNode->Objectptr);
+        CurrentNode = CurrentNode->Prev;
+    }
+
+    ArenaReset(MyDestructorListArena);
+    ArenaReset(MyArena);
+}
+
 ArenaAllocater::~ArenaAllocater()
 {
     while (CurrentNode != nullptr)
