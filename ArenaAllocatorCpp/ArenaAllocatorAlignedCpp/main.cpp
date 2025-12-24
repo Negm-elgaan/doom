@@ -121,7 +121,7 @@ void Benchmark() {
     g_SilenceLogs = false;
 }
 void BenchmarkPure() {
-    const int ITERATIONS = 10000000; // 10 Million!
+    const int ITERATIONS = 20000000; // 10 Million!
     g_SilenceLogs = true;
 
     std::cout << "\n=== BENCHMARK PURE: Raw Allocation (10 Million Items) ===\n";
@@ -169,8 +169,85 @@ void BenchmarkPure() {
         std::cout << "Arena Allocator:      " << elapsed.count() << " ms\n";
     }
 }
+// A "Loud" class to track life and death
+struct Phoenix {
+    int id;
+    static int ConstructCount;
+    static int DestructCount;
+
+    Phoenix(int i) : id(i) { ConstructCount++; }
+    ~Phoenix() { DestructCount++; }
+};
+
+int Phoenix::ConstructCount = 0;
+int Phoenix::DestructCount = 0;
+
+void ResetStressTest() {
+    std::cout << "\n=== STARTING RESET STRESS TEST ===\n";
+
+    ArenaAllocater arena;
+
+    // We will allocate a batch, check addresses, reset, and repeat.
+    const int CYCLES = 100;         // Reset 100 times
+    const int BATCH_SIZE = 5000;    // 5,000 objects per cycle
+
+    void* FirstRunAddress = nullptr;
+    void* SecondRunAddress = nullptr;
+
+    for (int cycle = 0; cycle < CYCLES; cycle++) {
+
+        // 1. Allocate a batch of objects
+        for (int i = 0; i < BATCH_SIZE; i++) {
+            Phoenix* p = arena.ObjectAlloc<Phoenix>(alignof(Phoenix), i);
+
+            // Capture the address of the VERY FIRST object in the cycle
+            if (i == 0) {
+                if (cycle == 0) FirstRunAddress = (void*)p;
+                if (cycle == 1) SecondRunAddress = (void*)p;
+            }
+        }
+
+        // 2. CHECK: Did we construct correctly?
+        // Expected: Total Constructed = (cycle + 1) * BATCH_SIZE
+        if (Phoenix::ConstructCount != (cycle + 1) * BATCH_SIZE) {
+            std::cout << "CRASH: Construction count mismatch on cycle " << cycle << "!\n";
+            exit(-1);
+        }
+
+        // 3. THE RESET (The moment of truth)
+        arena.ArenaAllocaterReset();
+
+        // 4. CHECK: Did destructors run for THIS batch?
+        // Expected: Total Destroyed = (cycle + 1) * BATCH_SIZE
+        if (Phoenix::DestructCount != (cycle + 1) * BATCH_SIZE) {
+            std::cout << "CRASH: Destructors failed to run on cycle " << cycle << "!\n";
+            std::cout << "Constructed: " << Phoenix::ConstructCount << "\n";
+            std::cout << "Destroyed:   " << Phoenix::DestructCount << "\n";
+            exit(-1);
+        }
+    }
+
+    std::cout << "--- Address Reuse Check ---\n";
+    std::cout << "Cycle 0 Address: " << FirstRunAddress << "\n";
+    std::cout << "Cycle 1 Address: " << SecondRunAddress << "\n";
+
+    if (FirstRunAddress == SecondRunAddress) {
+        std::cout << "SUCCESS: Memory addresses are identical. Reuse verified.\n";
+    } else {
+        std::cout << "FAILURE: Memory addresses drifted. Leak detected!\n";
+    }
+
+    std::cout << "--- Final Stats ---\n";
+    std::cout << "Total Objects Created: " << Phoenix::ConstructCount << "\n";
+    std::cout << "Total Objects Destroyed: " << Phoenix::DestructCount << "\n";
+    std::cout << "=== STRESS TEST PASSED ===\n";
+}
 int main() {
     // 0. Run the PURE Benchmark first to see the 100x speed
+    std::cout << "Pointer Size: " << sizeof(void*) << " bytes\n";
+
+    //system("pause");
+    ResetStressTest();
     BenchmarkPure();
 
     // 1. Run the Benchmark first
