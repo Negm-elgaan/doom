@@ -91,6 +91,8 @@ class ArenaAllocater
             return ptr;
         }
 
+        void ArenaAllocaterReset();
+
         ~ArenaAllocater();
 
 };
