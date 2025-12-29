@@ -32,6 +32,11 @@ void* ArenaAllocater::Alloc(size_t Size , size_t Alignment)
     return ArenaAllocAligned(MyArena , Size , Alignment);
 }
 
+size_t ArenaAllocater::ByteUse()
+{
+    return BytesUsed(MyArena);
+}
+
 void ArenaAllocater::ArenaAllocaterReset()
 {
     while (CurrentNode != nullptr)
