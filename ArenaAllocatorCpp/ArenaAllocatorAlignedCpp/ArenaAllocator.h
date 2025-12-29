@@ -91,6 +91,8 @@ class ArenaAllocater
             return ptr;
         }
 
+        size_t ByteUse();
+
         void ArenaAllocaterReset();
 
         ~ArenaAllocater();
