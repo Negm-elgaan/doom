@@ -22,6 +22,7 @@ struct Arena
     struct Region* _End;
     struct Region* _Current;
     size_t _Total_Bytes_Used;
+    //size_t _Total_Bytes_Allocated;
 };
 
 struct Region* CreateRegion(size_t Capacity);
@@ -33,6 +34,8 @@ void* ArenaAlloc(struct Arena* MyArena , size_t Capacity);
 void* ArenaAllocAligned(struct Arena* MyArena , size_t Capacity , size_t Alignment);
 
 size_t BytesUsed(struct Arena* MyArena);
+
+size_t BytesAlloc(struct Arena* MyArena);
 
 void ArenaReset(struct Arena* MyArena);
 
