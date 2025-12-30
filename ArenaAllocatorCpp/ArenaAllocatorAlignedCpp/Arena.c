@@ -221,6 +221,19 @@ size_t BytesUsed(struct Arena* MyArena)
     return MyArena->_Total_Bytes_Used;
 }
 
+size_t BytesAlloc(struct Arena* MyArena)
+{
+    size_t Bytes = 0;
+    struct Region* Temp = MyArena->_Start;
+    while (Temp != MyArena->_End)
+    {
+        Bytes += Temp->_Capacity;
+        Temp = Temp->_Next;
+    }
+    Bytes += Temp->_Capacity;
+    return Bytes;
+}
+
 void ArenaReset(struct Arena* MyArena)
 {
     struct Region* Temp = MyArena->_Start;
