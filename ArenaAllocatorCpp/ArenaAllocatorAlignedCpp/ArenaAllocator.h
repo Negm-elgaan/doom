@@ -93,6 +93,8 @@ class ArenaAllocater
 
         size_t ByteUse();
 
+        size_t BytesAllocated();
+
         void ArenaAllocaterReset();
 
         ~ArenaAllocater();
