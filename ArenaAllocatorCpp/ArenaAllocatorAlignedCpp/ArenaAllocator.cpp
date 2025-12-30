@@ -37,6 +37,11 @@ size_t ArenaAllocater::ByteUse()
     return BytesUsed(MyArena);
 }
 
+size_t ArenaAllocater::BytesAllocated()
+{
+    return BytesAlloc(MyArena);
+}
+
 void ArenaAllocater::ArenaAllocaterReset()
 {
     while (CurrentNode != nullptr)
