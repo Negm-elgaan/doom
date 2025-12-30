@@ -10,6 +10,14 @@
 // Global flag to silence spammy constructor logs during benchmark
 bool g_SilenceLogs = false;
 
+void PrintArenaStats(const char* label, ArenaAllocater& arena)
+{
+    std::cout << std::left << std::setw(30) << label
+              << " | Used: " << std::setw(12) << arena.ByteUse()
+              << " | Reserved: " << arena.BytesAllocated()
+              << "\n";
+}
+
 struct alignas(64) Aligned64 {
     char data[64];
     static int destructor_counter;
@@ -162,6 +170,7 @@ void BenchmarkPure() {
                 // We assume 8-byte alignment for fair comparison with malloc
                 arena.Alloc(32, 8);
             }
+            PrintArenaStats("After Pure Arena Alloc", arena);
         }
 
         auto end = std::chrono::high_resolution_clock::now();
@@ -213,10 +222,15 @@ void ResetStressTest() {
             std::cout << "CRASH: Construction count mismatch on cycle " << cycle << "!\n";
             exit(-1);
         }
+        if (cycle == 0) {
+    PrintArenaStats("Before Reset (cycle 0)", arena);
+}
 
         // 3. THE RESET (The moment of truth)
         arena.ArenaAllocaterReset();
-
+        if (cycle == 0) {
+    PrintArenaStats("After Reset (cycle 0)", arena);
+}
         // 4. CHECK: Did destructors run for THIS batch?
         // Expected: Total Destroyed = (cycle + 1) * BATCH_SIZE
         if (Phoenix::DestructCount != (cycle + 1) * BATCH_SIZE) {
