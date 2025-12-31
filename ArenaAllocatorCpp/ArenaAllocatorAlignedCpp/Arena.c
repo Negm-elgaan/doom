@@ -57,18 +57,47 @@ void ArenaDestroy(struct Arena* MyArena)
     return;
 }*/
 
+
+
 #include <stddef.h>
 #include <stdint.h>
 #include <stdlib.h>
 #include <stdalign.h>
-#include <windows.h>
+//#include <windows.h>
+#if defined(_WIN32) || defined(_WIN64)
+        #include <windows.h>
+    #else
+        #include <unistd.h>
+    #endif
 #include "Arena.h"
+
+void* MY_ALLOC(size_t Capacity)
+{
+    #if defined(_WIN32) || defined(_WIN64)
+        void* ptr = VirtualAlloc(NULL ,  Capacity , MEM_RESERVE | MEM_COMMIT , PAGE_READWRITE);
+        return ptr;
+    #else
+        void* ptr = mmap(NULL , Capacity , PROT_READ | PROT_WRITE , MAP_PRIVATE | MAP_ANONYMOUS , -1 , 0);
+        return ptr;
+    #endif // defined
+}
+
+void MY_FREE(void* Address , size_t Capacity)
+{
+    #if defined(_WIN32) || defined(_WIN64)
+        VirtualFree(Address , 0 , MEM_RELEASE);
+        return;
+    #else
+        munmap(Address , Capacity);
+        return;
+    #endif // defined
+}
 
 const size_t _Default_Capacity = 4 * 1024 * 1024;
 
 struct Region* CreateRegion(size_t Capacity)
 {
-    struct Region* NewRegion = (struct Region *)VirtualAlloc(NULL , (sizeof(struct Region) + Capacity) , MEM_RESERVE | MEM_COMMIT , PAGE_READWRITE);
+    struct Region* NewRegion = (struct Region *)MY_ALLOC(sizeof(struct Region) + Capacity);
 
     /*if (NewRegion == NULL) {
         return NULL; // Out of Memory!
@@ -83,7 +112,7 @@ struct Region* CreateRegion(size_t Capacity)
 
 struct Arena* ArenaCreator(struct Arena* MyArena , size_t Capacity)
 {
-    MyArena = (struct Arena *)VirtualAlloc(NULL , sizeof(struct Arena) , MEM_RESERVE | MEM_COMMIT , PAGE_READWRITE);
+    MyArena = (struct Arena *)MY_ALLOC(sizeof(struct Arena));
     MyArena->_Start = CreateRegion(Capacity);
     MyArena->_End = MyArena->_Start;
     MyArena->_Current = MyArena->_Start;
@@ -254,11 +283,12 @@ void ArenaDestroy(struct Arena* MyArena)
     while(Temp1 != NULL)
     {
         struct Region* Temp2 = Temp1->_Next;
-        VirtualFree(Temp1 , 0 , MEM_RELEASE);
+        MY_FREE(Temp1 , Temp1->_Capacity + sizeof(struct Region));
         Temp1 = Temp2;
     }
 
-    VirtualFree(MyArena , 0 , MEM_RELEASE);
+    MY_FREE(MyArena , sizeof(struct Arena));
+    //VirtualFree(MyArena , 0 , MEM_RELEASE);
 
     return;
 }
