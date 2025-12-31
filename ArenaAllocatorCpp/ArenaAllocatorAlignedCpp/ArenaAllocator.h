@@ -95,6 +95,10 @@ class ArenaAllocater
 
         size_t BytesAllocated();
 
+        size_t TotalBytesAllocated();
+
+        size_t FreeSpace();
+
         void ArenaAllocaterReset();
 
         ~ArenaAllocater();
