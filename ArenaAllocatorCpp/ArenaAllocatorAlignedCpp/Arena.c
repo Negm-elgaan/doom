@@ -68,6 +68,7 @@ void ArenaDestroy(struct Arena* MyArena)
         #include <windows.h>
     #else
         #include <unistd.h>
+        #include <sys/mman.h>
     #endif
 #include "Arena.h"
 
