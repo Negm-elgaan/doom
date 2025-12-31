@@ -1,0 +1,2 @@
+g++ -Wall -O2 Main.cpp Arena.c ArenaAllocater.cpp -o test_arena
+./test_arena
