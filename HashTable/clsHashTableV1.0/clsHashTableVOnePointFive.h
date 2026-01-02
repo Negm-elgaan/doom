@@ -11,6 +11,7 @@ template <class T , class F> class clsHashTable
 private:
 
 	uLL (*HashFunc)(T) = nullptr;
+	bool (*CompareFunc)(T, T) = nullptr;
 	//static int FirstSeedComponent;
 	//static int SecondSeedComponent;
 
@@ -101,6 +102,11 @@ private:
 		return  HashValue;
 	}
 
+	static bool Compare(T first  , T Key)
+	{
+		return first == Key;
+	}
+
 	uLL _Hasher(T Key)
 	{
 		uLL HashValue = HashFunc(Key);
@@ -145,9 +151,10 @@ public:
 		//_ValueArray = new * optional<T>[100];
 		_PtrArray = new Node [100];
 		HashFunc = &clsHashTable<T, F>::_HashFunction;
+		CompareFunc = &clsHashTable<T, F>::Compare;
 	}
 
-	clsHashTable(int n , uLL(*HashFun)(T) = nullptr)
+	clsHashTable(int n , uLL(*HashFun)(T) = nullptr , bool (*CompareFun)(T , T) = nullptr)
 	{
 		if (n <= 0)
 		{
@@ -159,9 +166,14 @@ public:
 		//_ValueArray = new * optional<T>[n];
 		_PtrArray = new Node [_Size];
 		HashFunc = HashFun;
+		CompareFunc = CompareFun;
 		if (!HashFunc)
 		{
 			HashFunc = &clsHashTable<T, F>::_HashFunction;
+		}
+		if (!CompareFunc)
+		{
+			CompareFunc = &clsHashTable<T, F>::Compare;
 		}
 	}
 
@@ -171,7 +183,7 @@ public:
 
 		for (std::pair <T, F>& Tuple : _PtrArray[HashKey]._VTuple)
 		{
-			if (Tuple.first == Key)
+			if (CompareFunc(Tuple.first , Key))
 			{
 				Tuple.second = Value;
 				return;
@@ -194,7 +206,7 @@ public:
 		int HashKey = _Hasher(Key);
 		for (std::pair <T , F>& Tuple : _PtrArray[HashKey]._VTuple)
 		{
-			if (Tuple.first == Key)
+			if (CompareFunc(Tuple.first, Key))
 			{
 				return Tuple.second;
 			}
@@ -202,6 +214,20 @@ public:
 
 		return F();
 	}
+
+	bool Contains(T Key)
+	{
+		uLL HashKey = _Hasher(Key);
+		for (std::pair<T, F>& Tuple : _PtrArray[HashKey]._VTuple)
+		{
+			if (CompareFunc(Tuple.first, Key))
+			{
+				return true;
+			}
+		}
+		return false;
+	}
+
 
 	int Capacity()
 	{
