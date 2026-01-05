@@ -3,7 +3,7 @@
 
 #include <stddef.h>
 #include <stdlib.h>
-
+#include <stdbool.h>
 
 struct Region
 {
@@ -25,6 +25,12 @@ struct Arena
     //size_t _Total_Bytes_Allocated;
 };
 
+struct Arena_Snap
+{
+    struct Region* _Region;
+    size_t _Count;
+};
+
 void* MY_ALLOC(size_t Capacity);
 
 void MY_FREE(void* Address, size_t Capacity);
@@ -35,7 +41,17 @@ struct Arena* ArenaCreator(struct Arena* MyArena , size_t Capacity);
 
 void* ArenaAlloc(struct Arena* MyArena , size_t Capacity);
 
+void* ArenaAllocAlignedWithoutMask(struct Arena* MyArena , size_t Capacity , size_t Alignment);
+
 void* ArenaAllocAligned(struct Arena* MyArena , size_t Capacity , size_t Alignment);
+
+void* MonotonicArenaAllocAligned(struct Arena* MyArena , size_t Capacity , size_t Alignment);
+
+struct Arena_Snap SnapByValue(struct Arena* MyArena);
+
+struct Arena_Snap* Snap(struct Arena* MyArena);
+
+struct Arena* Rewind(struct Arena* MyArena , struct Arena_Snap* _Arena_Snap);
 
 size_t BytesUsed(struct Arena* MyArena);
 
