@@ -22,6 +22,7 @@ class ArenaAllocater
         DestructorNode* Prev;
     };
 
+    DestructorNode* SnapNode = nullptr;
     DestructorNode* CurrentNode = nullptr;
 
     void* DestructorAlloc(size_t Size);
@@ -37,6 +38,8 @@ class ArenaAllocater
         void* Alloc(size_t Size);
 
         void* Alloc(size_t Size , size_t Alignment);
+
+        void* MonoAlloc(size_t Size , size_t Alignment);
 
         template <class T , class... Args> T* ObjectAlloc(Args&&... args)
         {
@@ -77,7 +80,7 @@ class ArenaAllocater
             {
                 return ptr;
             }
-            
+
             if (!CurrentNode)
             {
                 CurrentNode = (DestructorNode*)DestructorAlloc(sizeof(DestructorNode));
@@ -99,6 +102,41 @@ class ArenaAllocater
 
             return ptr;
         }
+
+        template <class T , class... Args> T* MonotonicObjectAllocAligned(size_t Capacity , size_t Alignment , Args&&... args)
+        {
+            void* memory = MonoAlloc(sizeof(T) , Alignment);
+            T* ptr = new (memory) T(std::forward<Args>(args)...);
+            if constexpr (std::is_trivially_destructible_v<T>)
+            {
+                return ptr;
+            }
+
+            if (!CurrentNode)
+            {
+                CurrentNode = (DestructorNode*)DestructorAlloc(sizeof(DestructorNode));
+                CurrentNode->Objectptr = ptr;
+                CurrentNode->DestructorPtr = [](void* objptr){static_cast<T*>(objptr)->~T();};
+                CurrentNode->Prev = nullptr;
+                CurrentNode->Next = nullptr;
+            }
+            else
+            {
+                DestructorNode* NewNode = (DestructorNode*)DestructorAlloc(sizeof(DestructorNode));
+                NewNode->Objectptr = ptr;
+                NewNode->DestructorPtr = [](void* objptr){static_cast<T*>(objptr)->~T();};
+                NewNode->Prev = CurrentNode;
+                NewNode->Next = nullptr;
+                CurrentNode->Next = NewNode;
+                CurrentNode = NewNode;
+            }
+
+            return ptr;
+        }
+
+        Arena_Snap* SnapShot();
+
+        void Rewinder(Arena_Snap* Snap);
 
         size_t ByteUse();
 
