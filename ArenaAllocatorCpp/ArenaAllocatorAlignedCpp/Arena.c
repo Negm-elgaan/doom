@@ -387,7 +387,7 @@ void* ArenaAlloc(struct Arena* MyArena, size_t Capacity)
     return vptr;
 }
 
-void* ArenaAllocAligned(struct Arena* MyArena, size_t Capacity, size_t Alignment)
+void* ArenaAllocAlignedWithoutMask(struct Arena* MyArena, size_t Capacity, size_t Alignment)
 {
     uintptr_t Address =
         (uintptr_t)MyArena->_Current->_Data +
@@ -474,6 +474,186 @@ void* ArenaAllocAligned(struct Arena* MyArena, size_t Capacity, size_t Alignment
 
     return vptr;
 }
+
+void* ArenaAllocAligned(struct Arena* MyArena, size_t Capacity, size_t Alignment)
+{
+    uintptr_t mask = (Alignment - 1);
+    uintptr_t Address =
+        (uintptr_t)MyArena->_Current->_Data +
+        (uintptr_t)MyArena->_Current->_Count;
+
+    uintptr_t Drift = Address & mask;
+    uintptr_t padding = (Alignment - Drift) & mask;
+
+    if (MyArena->_Current->_Capacity - MyArena->_Current->_Count >= Capacity + padding)
+    {
+        void* vptr;
+        if ((Address & mask) != 0)
+        {
+            vptr = (void*)(Address + (Alignment - (Address & mask)));
+            MyArena->_Current->_Count += Capacity + (Alignment - (Address & mask));
+            MyArena->_Total_Bytes_Used += Capacity + (Alignment - (Address & mask));
+        }
+        else
+        {
+            vptr = (void*)Address;
+            MyArena->_Current->_Count += Capacity;
+            MyArena->_Total_Bytes_Used += Capacity;
+        }
+        return vptr;
+    }
+
+    while (MyArena->_Current->_Next)
+    {
+        MyArena->_Current = MyArena->_Current->_Next;
+
+        Address =
+            (uintptr_t)MyArena->_Current->_Data +
+            (uintptr_t)MyArena->_Current->_Count;
+
+        Drift = Address & mask;
+        padding = (Alignment - Drift) & mask;
+
+        if (MyArena->_Current->_Capacity - MyArena->_Current->_Count >= Capacity + padding)
+        {
+            void* vptr;
+            if ((Address & mask) != 0)
+            {
+                vptr = (void*)(Address + (Alignment - (Address & mask)));
+                MyArena->_Current->_Count += Capacity + (Alignment - (Address & mask));
+                MyArena->_Total_Bytes_Used += Capacity + (Alignment - (Address & mask));
+            }
+            else
+            {
+                vptr = (void*)Address;
+                MyArena->_Current->_Count += Capacity;
+                MyArena->_Total_Bytes_Used += Capacity;
+            }
+            return vptr;
+        }
+    }
+
+    struct Region* NewRegion =
+        CreateRegion(Capacity < _Default_Capacity
+            ? _Default_Capacity + (Alignment - 1)
+            : Capacity + (Alignment - 1));
+
+    MyArena->_End->_Next = NewRegion;
+    NewRegion->_Prev = MyArena->_End;
+    MyArena->_End = NewRegion;
+    MyArena->_Current = NewRegion;
+
+    Address =
+        (uintptr_t)MyArena->_Current->_Data +
+        (uintptr_t)MyArena->_Current->_Count;
+
+    void* vptr;
+    if ((Address & mask) != 0)
+    {
+        vptr = (void*)(Address + (Alignment - (Address & mask)));
+        MyArena->_Current->_Count += Capacity + (Alignment - (Address & mask));
+        MyArena->_Total_Bytes_Used += Capacity + (Alignment - (Address & mask));
+    }
+    else
+    {
+        vptr = (void*)Address;
+        MyArena->_Current->_Count += Capacity;
+        MyArena->_Total_Bytes_Used += Capacity;
+    }
+
+    return vptr;
+}
+
+void* MonotonicArenaAllocAligned(struct Arena* MyArena , size_t Capacity , size_t Alignment)
+{
+    uintptr_t mask = (Alignment - 1);
+    uintptr_t Address =
+        (uintptr_t)MyArena->_Current->_Data +
+        (uintptr_t)MyArena->_Current->_Count;
+
+    uintptr_t Drift = Address & mask;
+    uintptr_t padding = (Alignment - Drift) & mask;
+
+    if (MyArena->_Current->_Capacity - MyArena->_Current->_Count >= Capacity + padding)
+    {
+        void* vptr;
+        if ((Address & mask) != 0)
+        {
+            vptr = (void*)(Address + (Alignment - (Address & mask)));
+            MyArena->_Current->_Count += Capacity + (Alignment - (Address & mask));
+            MyArena->_Total_Bytes_Used += Capacity + (Alignment - (Address & mask));
+        }
+        else
+        {
+            vptr = (void*)Address;
+            MyArena->_Current->_Count += Capacity;
+            MyArena->_Total_Bytes_Used += Capacity;
+        }
+        return vptr;
+    }
+
+    struct Region* NewRegion =
+        CreateRegion(Capacity < _Default_Capacity
+            ? _Default_Capacity + (Alignment - 1)
+            : Capacity + (Alignment - 1));
+
+    MyArena->_End->_Next = NewRegion;
+    NewRegion->_Prev = MyArena->_End;
+    MyArena->_End = NewRegion;
+    MyArena->_Current = NewRegion;
+
+    Address =
+        (uintptr_t)MyArena->_Current->_Data +
+        (uintptr_t)MyArena->_Current->_Count;
+
+    void* vptr;
+    if ((Address & mask) != 0)
+    {
+        vptr = (void*)(Address + (Alignment - (Address & mask)));
+        MyArena->_Current->_Count += Capacity + (Alignment - (Address & mask));
+        MyArena->_Total_Bytes_Used += Capacity + (Alignment - (Address & mask));
+    }
+    else
+    {
+        vptr = (void*)Address;
+        MyArena->_Current->_Count += Capacity;
+        MyArena->_Total_Bytes_Used += Capacity;
+    }
+
+    return vptr;
+}
+
+struct Arena_Snap SnapByValue(struct Arena* MyArena)
+{
+    struct Arena_Snap _Arena_Snap;
+    _Arena_Snap._Region = MyArena->_Current;
+    _Arena_Snap._Count = MyArena->_Current->_Count;
+    return _Arena_Snap;
+};
+
+struct Arena_Snap* Snap(struct Arena* MyArena)
+{
+    struct Arena_Snap* _Arena_Snap = (struct Arena_Snap*)MY_ALLOC(sizeof(struct Arena_Snap));
+    _Arena_Snap->_Region = MyArena->_Current;
+    _Arena_Snap->_Count = MyArena->_Current->_Count;
+    return _Arena_Snap;
+};
+
+struct Arena* Rewind(struct Arena* MyArena , struct Arena_Snap* _Arena_Snap)
+{
+    struct Region* Temp1 = MyArena->_Current;
+
+    while (Temp1 != _Arena_Snap->_Region)
+    {
+        struct Region* Temp2 = Temp1->_Prev;
+        MY_FREE(Temp1, Temp1->_Capacity + sizeof(struct Region));
+        Temp1 = Temp2;
+    }
+
+    MyArena->_Current = _Arena_Snap->_Region;
+    MyArena->_Current->_Count = _Arena_Snap->_Count;
+    return MyArena;
+};
 
 size_t BytesUsed(struct Arena* MyArena)
 {
