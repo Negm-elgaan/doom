@@ -32,6 +32,28 @@ void* ArenaAllocater::Alloc(size_t Size , size_t Alignment)
     return ArenaAllocAligned(MyArena , Size , Alignment);
 }
 
+void* ArenaAllocater::MonoAlloc(size_t Size , size_t Alignment)
+{
+    return MonotonicArenaAllocAligned(MyArena , Size , Alignment);
+}
+
+Arena_Snap* ArenaAllocater::SnapShot()
+{
+    Arena_Snap* ArenaSnap = Snap(MyArena);
+    SnapNode = CurrentNode;
+    return ArenaSnap;
+}
+
+void ArenaAllocater::Rewinder(Arena_Snap* Snap) // Only One snap at a time before rewinding
+{
+    while (CurrentNode != SnapNode)
+    {
+        CurrentNode->DestructorPtr(CurrentNode->Objectptr);
+        CurrentNode = CurrentNode->Prev;
+    }
+    MyArena = Rewind(MyArena , Snap);
+}
+
 size_t ArenaAllocater::ByteUse()
 {
     return BytesUsed(MyArena);
