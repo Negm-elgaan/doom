@@ -2,6 +2,7 @@
 #define ARENAALLOCATOR_H_INCLUDED
 
 #include <utility>
+#include <type_traits>
 
 extern "C"
 {
@@ -41,6 +42,10 @@ class ArenaAllocater
         {
             void* memory = Alloc(sizeof(T));
             T* ptr = new (memory) T(std::forward<Args>(args)...);
+            if constexpr (std::is_trivially_destructible_v<T>)
+            {
+                return ptr;
+            }
 
             if (!CurrentNode)
             {
@@ -68,7 +73,11 @@ class ArenaAllocater
         {
             void* memory = Alloc(sizeof(T) , Alignment);
             T* ptr = new (memory) T(std::forward<Args>(args)...);
-
+            if constexpr (std::is_trivially_destructible_v<T>)
+            {
+                return ptr;
+            }
+            
             if (!CurrentNode)
             {
                 CurrentNode = (DestructorNode*)DestructorAlloc(sizeof(DestructorNode));
