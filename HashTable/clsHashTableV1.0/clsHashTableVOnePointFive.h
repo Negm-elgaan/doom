@@ -201,18 +201,18 @@ public:
 		return;
 	}
 
-	F GetValue(T Key)
+	F* GetValue(T Key)
 	{
 		int HashKey = _Hasher(Key);
 		for (std::pair <T , F>& Tuple : _PtrArray[HashKey]._VTuple)
 		{
 			if (CompareFunc(Tuple.first, Key))
 			{
-				return Tuple.second;
+				return &Tuple.second;
 			}
 		}
 
-		return F();
+		return nullptr;
 	}
 
 	bool Contains(T Key)
@@ -228,6 +228,21 @@ public:
 		return false;
 	}
 
+	bool Remove(T Key)
+	{
+		
+		uLL HashKey = _Hasher(Key);
+		for (int i = 0 ; i < _PtrArray[HashKey]._VTuple.size() ; i++)
+		{
+			if (CompareFunc(_PtrArray[HashKey]._VTuple[i].first, Key))
+			{
+				_PtrArray[HashKey]._VTuple.erase(_PtrArray[HashKey]._VTuple.begin() + i);
+				_Capacity--;
+				return true;
+			}
+		}
+		return false;
+	}
 
 	int Capacity()
 	{
