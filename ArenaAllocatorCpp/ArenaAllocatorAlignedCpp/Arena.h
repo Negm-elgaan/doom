@@ -28,6 +28,7 @@ struct Arena
 struct Arena_Snap
 {
     struct Region* _Region;
+    size_t Bytes;
     size_t _Count;
 };
 
