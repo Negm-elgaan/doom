@@ -628,14 +628,16 @@ struct Arena_Snap SnapByValue(struct Arena* MyArena)
     struct Arena_Snap _Arena_Snap;
     _Arena_Snap._Region = MyArena->_Current;
     _Arena_Snap._Count = MyArena->_Current->_Count;
+    _Arena_Snap.Bytes = MyArena->_Total_Bytes_Used;
     return _Arena_Snap;
 };
 
-struct Arena_Snap* Snap(struct Arena* MyArena)
+struct Arena_Snap* Snap(struct Arena* MyArena) //Allocates a pointer struct of type Arena_Snap and returns it to user it's user responsibility to FREE IT
 {
     struct Arena_Snap* _Arena_Snap = (struct Arena_Snap*)MY_ALLOC(sizeof(struct Arena_Snap));
     _Arena_Snap->_Region = MyArena->_Current;
     _Arena_Snap->_Count = MyArena->_Current->_Count;
+    _Arena_Snap->Bytes = MyArena->_Total_Bytes_Used;
     return _Arena_Snap;
 };
 
@@ -652,6 +654,28 @@ struct Arena* Rewind(struct Arena* MyArena , struct Arena_Snap* _Arena_Snap)
 
     MyArena->_Current = _Arena_Snap->_Region;
     MyArena->_Current->_Count = _Arena_Snap->_Count;
+    MyArena->_End = MyArena->_Current;
+    MyArena->_Total_Bytes_Used = _Arena_Snap->Bytes;
+    MyArena->_Current->_Next = NULL;
+    return MyArena;
+};
+
+struct Arena* RewindByValue(struct Arena* MyArena , struct Arena_Snap _Arena_Snap)
+{
+    struct Region* Temp1 = MyArena->_Current;
+
+    while (Temp1 != _Arena_Snap._Region)
+    {
+        struct Region* Temp2 = Temp1->_Prev;
+        MY_FREE(Temp1, Temp1->_Capacity + sizeof(struct Region));
+        Temp1 = Temp2;
+    }
+
+    MyArena->_Current = _Arena_Snap._Region;
+    MyArena->_Current->_Count = _Arena_Snap._Count;
+    MyArena->_End = MyArena->_Current;
+    MyArena->_Total_Bytes_Used = _Arena_Snap.Bytes;
+    MyArena->_Current->_Next = NULL;
     return MyArena;
 };
 
