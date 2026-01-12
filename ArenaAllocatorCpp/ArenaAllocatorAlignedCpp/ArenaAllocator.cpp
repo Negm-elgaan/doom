@@ -37,21 +37,49 @@ void* ArenaAllocater::MonoAlloc(size_t Size , size_t Alignment)
     return MonotonicArenaAllocAligned(MyArena , Size , Alignment);
 }
 
-Arena_Snap* ArenaAllocater::SnapShot()
+ArenaSnap* ArenaAllocater::SnapShot()
 {
-    Arena_Snap* ArenaSnap = Snap(MyArena);
-    SnapNode = CurrentNode;
-    return ArenaSnap;
+    ArenaSnap* ArenaSnapper = new ArenaSnap{};
+    ArenaSnapper->Snappy = Snap(MyArena);
+    ArenaSnapper->DestructorArenaSnappy = Snap(MyDestructorListArena);
+    ArenaSnapper->SnapDestructorNode = CurrentNode;
+    return ArenaSnapper;
 }
 
-void ArenaAllocater::Rewinder(Arena_Snap* Snap) // Only One snap at a time before rewinding
+ArenaSnap ArenaAllocater::SnapShotByValue()
 {
-    while (CurrentNode != SnapNode)
+    ArenaSnap ArenaSnapper;
+    ArenaSnapper.Snappy = Snap(MyArena);
+    ArenaSnapper.DestructorArenaSnappy = Snap(MyDestructorListArena);
+    ArenaSnapper.SnapDestructorNode = CurrentNode;
+    return ArenaSnapper;
+}
+
+void ArenaAllocater::Rewinder(ArenaSnap* Snap)
+{
+    while (CurrentNode != Snap->SnapDestructorNode)
     {
         CurrentNode->DestructorPtr(CurrentNode->Objectptr);
         CurrentNode = CurrentNode->Prev;
     }
-    MyArena = Rewind(MyArena , Snap);
+    MyArena = Rewind(MyArena , Snap->Snappy);
+    MyDestructorListArena = Rewind(MyDestructorListArena , Snap->DestructorArenaSnappy);
+    MY_FREE(Snap->Snappy, sizeof(Arena_Snap));
+    MY_FREE(Snap->DestructorArenaSnappy, sizeof(Arena_Snap));
+    delete Snap;
+}
+
+void ArenaAllocater::RewinderByValue(ArenaSnap Snap)
+{
+    while (CurrentNode != Snap.SnapDestructorNode)
+    {
+        CurrentNode->DestructorPtr(CurrentNode->Objectptr);
+        CurrentNode = CurrentNode->Prev;
+    }
+    MyArena = Rewind(MyArena , Snap.Snappy);
+    MyDestructorListArena = Rewind(MyDestructorListArena , Snap.DestructorArenaSnappy);
+    MY_FREE(Snap.Snappy, sizeof(Arena_Snap));
+    MY_FREE(Snap.DestructorArenaSnappy, sizeof(Arena_Snap));
 }
 
 size_t ArenaAllocater::ByteUse()
