@@ -9,18 +9,25 @@ extern "C"
         #include "Arena.h"
 }
 
+struct DestructorNode
+{
+    void* Objectptr;
+    void (*DestructorPtr)(void* objptr);
+    DestructorNode* Next;
+    DestructorNode* Prev;
+};
+
+struct ArenaSnap
+{
+    Arena_Snap* Snappy = nullptr;
+    Arena_Snap* DestructorArenaSnappy = nullptr;
+    DestructorNode* SnapDestructorNode = nullptr;
+};
+
 class ArenaAllocater
 {
     Arena* MyArena = nullptr;
     Arena* MyDestructorListArena = nullptr;
-
-    struct DestructorNode
-    {
-        void* Objectptr;
-        void (*DestructorPtr)(void* objptr);
-        DestructorNode* Next;
-        DestructorNode* Prev;
-    };
 
     DestructorNode* SnapNode = nullptr;
     DestructorNode* CurrentNode = nullptr;
@@ -134,9 +141,13 @@ class ArenaAllocater
             return ptr;
         }
 
-        Arena_Snap* SnapShot();
+        ArenaSnap* SnapShot();
 
-        void Rewinder(Arena_Snap* Snap);
+        ArenaSnap SnapShotByValue();
+
+        void Rewinder(ArenaSnap* Snap);
+
+        void RewinderByValue(ArenaSnap Snap);
 
         size_t ByteUse();
 
