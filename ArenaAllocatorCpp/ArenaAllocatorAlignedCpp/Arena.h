@@ -66,6 +66,10 @@ _Bool Isempty(struct Arena* MyArena);
 
 void ArenaReset(struct Arena* MyArena);
 
+struct Arena* DestroyLastRegion (struct Arena* MyArena , size_t TotalBytesAfterDeletion);
+
+struct Arena* DestroyFirstRegion(struct Arena* MyArena , size_t TotalBytesAfterDeletion);
+
 void ArenaDestroy(struct Arena* MyArena);
 
 #endif // ARENA_H_INCLUDED
