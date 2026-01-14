@@ -157,6 +157,8 @@ class ArenaAllocater
 
         size_t FreeSpace();
 
+        bool IsEmpty();
+
         void ArenaAllocaterReset();
 
         ~ArenaAllocater();
