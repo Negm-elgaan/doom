@@ -102,6 +102,11 @@ size_t ArenaAllocater::FreeSpace()
     return FreeBytes(MyArena);
 }
 
+bool ArenaAllocater::IsEmpty()
+{
+    return Isempty(MyArena);
+}
+
 void ArenaAllocater::ArenaAllocaterReset()
 {
     while (CurrentNode != nullptr)
