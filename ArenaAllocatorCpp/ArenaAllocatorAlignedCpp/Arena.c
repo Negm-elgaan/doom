@@ -341,9 +341,9 @@ struct Region* CreateRegion(size_t Capacity)
     return NewRegion;
 }
 
-struct Arena* ArenaCreator(struct Arena* MyArena, size_t Capacity)
+struct Arena* ArenaCreator(size_t Capacity)
 {
-    MyArena = (struct Arena*)MY_ALLOC(sizeof(struct Arena));
+    struct Arena* MyArena = (struct Arena*)MY_ALLOC(sizeof(struct Arena));
     MyArena->_Start = CreateRegion(Capacity);
     MyArena->_End = MyArena->_Start;
     MyArena->_Current = MyArena->_Start;
@@ -713,6 +713,11 @@ size_t TotalBytes(struct Arena* MyArena)
 size_t FreeBytes(struct Arena* MyArena)
 {
     return BytesAlloc(MyArena) - MyArena->_Total_Bytes_Used;
+}
+
+_Bool Isempty(struct Arena* MyArena)
+{
+    return MyArena->_Total_Bytes_Used == 0;
 }
 
 void ArenaReset(struct Arena* MyArena)
