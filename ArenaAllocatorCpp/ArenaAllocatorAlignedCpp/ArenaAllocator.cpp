@@ -12,13 +12,13 @@ void* ArenaAllocater::DestructorAllocAligned(size_t Size , size_t Alignment)
 
 ArenaAllocater::ArenaAllocater()
 {
-    MyArena = ArenaCreator(MyArena , 1024);
+    MyArena = ArenaCreator(1024);
     MyDestructorListArena = ArenaCreator(MyDestructorListArena , 1024);
 }
 
 ArenaAllocater::ArenaAllocater(size_t Size)
 {
-    MyArena = ArenaCreator(MyArena , Size);
+    MyArena = ArenaCreator(Size);
     MyDestructorListArena = ArenaCreator(MyDestructorListArena , Size);
 }
 
