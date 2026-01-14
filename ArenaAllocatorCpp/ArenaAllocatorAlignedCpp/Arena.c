@@ -733,6 +733,56 @@ void ArenaReset(struct Arena* MyArena)
     MyArena->_Total_Bytes_Used = 0;
 }
 
+struct Arena* DestroyLastRegion(struct Arena* MyArena , size_t TotalBytesAfterDeletion) // Doesn't track total bytes
+{
+    if (MyArena->_End == MyArena->_Start)
+    {
+        return NULL;
+    }
+
+    struct Region* Temp = MyArena->_End;
+    
+    if (MyArena->_Current == MyArena->_End)
+    {
+        MyArena->_Current = MyArena->_End->_Prev;
+    }
+    
+    MyArena->_End = MyArena->_End->_Prev;
+    MyArena->_End->_Next = NULL;
+    MY_FREE(Temp , Temp->_Capacity + sizeof(struct Region));
+    MyArena->_Total_Bytes_Used = TotalBytesAfterDeletion;
+    return MyArena;
+}
+
+struct Arena* DestroyFirstRegion(struct Arena* MyArena , size_t TotalBytesAfterDeletion)
+{
+    if (MyArena->_Start == NULL)
+    {
+        return NULL;
+    }
+
+    struct Region* Temp = MyArena->_Start;
+
+    if (MyArena->_Start->_Next == NULL)
+    {
+        return NULL;
+    }
+    
+    if (MyArena->_Current == MyArena->_Start)
+    {
+        MyArena->_Current = MyArena->_Start->_Next;
+    }
+    
+    MyArena->_Start = MyArena->_Start->_Next;
+    
+    MyArena->_Start->_Prev = NULL;
+    
+    MY_FREE(Temp , Temp->_Capacity + sizeof(struct Region));
+    MyArena->_Total_Bytes_Used = TotalBytesAfterDeletion;
+
+    return MyArena;
+}
+
 void ArenaDestroy(struct Arena* MyArena)
 {
     struct Region* Temp1 = MyArena->_Start;
