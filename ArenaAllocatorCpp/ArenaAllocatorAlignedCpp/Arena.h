@@ -62,6 +62,8 @@ size_t TotalBytes(struct Arena* MyArena);
 
 size_t FreeBytes(struct Arena* MyArena);
 
+_Bool Isempty(struct Arena* MyArena);
+
 void ArenaReset(struct Arena* MyArena);
 
 void ArenaDestroy(struct Arena* MyArena);
