@@ -6,6 +6,10 @@ Unique_Ptr()
 {
 ptr = nullptr;
 }
+Unique_Ptr(T* Data)
+{
+ptr = Data;
+}
 Unique_Ptr(const Unique_Ptr& other) = delete;
 
 Unique_Ptr& operator=(Unique_Ptr& other) = delete;
