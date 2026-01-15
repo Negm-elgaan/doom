@@ -20,6 +20,7 @@ Unique_Ptr& operator=(Unique_Ptr&& other)
 delete this->ptr;
 this->ptr = other.ptr;
 other.ptr = nullptr;
+return *this;
 }
 Unique_Ptr(const Unique_Ptr& other) = delete;
 
