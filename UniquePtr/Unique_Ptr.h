@@ -1,3 +1,4 @@
+Like this?
 template <class T> class Unique_Ptr 
 { 
 T* ptr; 
@@ -17,9 +18,12 @@ other.ptr = nullptr;
 }
 Unique_Ptr& operator=(Unique_Ptr&& other)
 {
+if(this != &other)
+{
 delete this->ptr;
 this->ptr = other.ptr;
 other.ptr = nullptr;
+}
 return *this;
 }
 Unique_Ptr(const Unique_Ptr& other) = delete;
