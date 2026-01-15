@@ -1,4 +1,3 @@
-Like this?
 template <class T> class Unique_Ptr 
 { 
 T* ptr; 
