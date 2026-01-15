@@ -31,7 +31,7 @@ void MY_FREE(void* Address, size_t Capacity);
 
 struct Region* CreateRegion(size_t Capacity);
 
-struct Arena* ArenaCreator(struct Arena* MyArena , size_t Capacity);
+struct Arena* ArenaCreator(size_t Capacity);
 
 void* ArenaAlloc(struct Arena* MyArena , size_t Capacity);
 
@@ -52,3 +52,4 @@ void ArenaReset(struct Arena* MyArena);
 void ArenaDestroy(struct Arena* MyArena);
 
 #endif // ARENA_H_INCLUDED
+
