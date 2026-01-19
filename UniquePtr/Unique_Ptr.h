@@ -1,5 +1,7 @@
 #include <iostream>
 
+using namespace std;
+
 template <class T> class Unique_Ptr
 {
     T* ptr;
@@ -41,7 +43,23 @@ template <class T> class Unique_Ptr
         {
             return ptr;
         }
-
+        
+        explicit operator bool() const noexcept
+        {
+            return ptr != nullptr;
+        }
+        
+        T* Get() const noexcept
+        {
+            return ptr;
+        }
+        
+        void Reset(T* newptr = nullptr)
+        {
+            delete ptr;
+            ptr = newptr;
+        }
+        
         Unique_Ptr(const Unique_Ptr& other) = delete;
 
         Unique_Ptr& operator=(const Unique_Ptr& other) = delete;
