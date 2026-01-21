@@ -79,9 +79,48 @@ class ArenaAllocater
             return ptr;
         }
 
+        template <class T , class... Args> T* ObjectAllocDestructorTracking(size_t Alignment , Args&&... args)
+        {
+            void* memory = Alloc(sizeof(T) , Alignment);
+            T* ptr = new (memory) T(std::forward<Args>(args)...);
+            if constexpr (std::is_trivially_destructible_v<T>)
+            {
+                return ptr;
+            }
+
+            if (!CurrentNode)
+            {
+                CurrentNode = (DestructorNode*)DestructorAlloc(sizeof(DestructorNode));
+                CurrentNode->Objectptr = ptr;
+                CurrentNode->DestructorPtr = [](void* objptr){static_cast<T*>(objptr)->~T();};
+                CurrentNode->Prev = nullptr;
+                CurrentNode->Next = nullptr;
+            }
+            else
+            {
+                DestructorNode* NewNode = (DestructorNode*)DestructorAlloc(sizeof(DestructorNode));
+                NewNode->Objectptr = ptr;
+                NewNode->DestructorPtr = [](void* objptr){static_cast<T*>(objptr)->~T();};
+                NewNode->Prev = CurrentNode;
+                NewNode->Next = nullptr;
+                CurrentNode->Next = NewNode;
+                CurrentNode = NewNode;
+            }
+
+            return ptr;
+        }
+
         template <class T , class... Args> T* ObjectAlloc(size_t Alignment , Args&&... args)
         {
             void* memory = Alloc(sizeof(T) , Alignment);
+            T* ptr = new (memory) T(std::forward<Args>(args)...);
+            return ptr;
+        }
+
+
+        template <class T , class... Args> T* MonotonicObjectAllocAlignedDestructorTracking(size_t Capacity , size_t Alignment , Args&&... args)
+        {
+            void* memory = MonoAlloc(sizeof(T) , Alignment);
             T* ptr = new (memory) T(std::forward<Args>(args)...);
             if constexpr (std::is_trivially_destructible_v<T>)
             {
@@ -114,30 +153,6 @@ class ArenaAllocater
         {
             void* memory = MonoAlloc(sizeof(T) , Alignment);
             T* ptr = new (memory) T(std::forward<Args>(args)...);
-            if constexpr (std::is_trivially_destructible_v<T>)
-            {
-                return ptr;
-            }
-
-            if (!CurrentNode)
-            {
-                CurrentNode = (DestructorNode*)DestructorAlloc(sizeof(DestructorNode));
-                CurrentNode->Objectptr = ptr;
-                CurrentNode->DestructorPtr = [](void* objptr){static_cast<T*>(objptr)->~T();};
-                CurrentNode->Prev = nullptr;
-                CurrentNode->Next = nullptr;
-            }
-            else
-            {
-                DestructorNode* NewNode = (DestructorNode*)DestructorAlloc(sizeof(DestructorNode));
-                NewNode->Objectptr = ptr;
-                NewNode->DestructorPtr = [](void* objptr){static_cast<T*>(objptr)->~T();};
-                NewNode->Prev = CurrentNode;
-                NewNode->Next = nullptr;
-                CurrentNode->Next = NewNode;
-                CurrentNode = NewNode;
-            }
-
             return ptr;
         }
 
@@ -158,6 +173,10 @@ class ArenaAllocater
         size_t FreeSpace();
 
         bool IsEmpty();
+
+        bool IsFull();
+
+        bool CanAllocWithoutAlignCheck(size_t Capacity);
 
         void ArenaAllocaterReset();
 
