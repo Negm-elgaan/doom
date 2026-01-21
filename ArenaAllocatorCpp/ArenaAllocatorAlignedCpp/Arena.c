@@ -720,6 +720,16 @@ _Bool Isempty(struct Arena* MyArena)
     return MyArena->_Total_Bytes_Used == 0;
 }
 
+_Bool Isfull(struct Arena* MyArena) //No free Bytes in Arena
+{
+    return BytesAlloc(MyArena) - MyArena->_Total_Bytes_Used == 0;
+}
+
+_Bool Canallocwithoutaligncheck(struct Arena* MyArena , size_t Capacity) // Note doesn't check if there is enough with alignment padding
+{
+    return BytesAlloc(MyArena) - MyArena->_Total_Bytes_Used >= Capacity ;
+}
+
 void ArenaReset(struct Arena* MyArena)
 {
     struct Region* Temp = MyArena->_Start;
@@ -741,12 +751,12 @@ struct Arena* DestroyLastRegion(struct Arena* MyArena , size_t TotalBytesAfterDe
     }
 
     struct Region* Temp = MyArena->_End;
-    
+
     if (MyArena->_Current == MyArena->_End)
     {
         MyArena->_Current = MyArena->_End->_Prev;
     }
-    
+
     MyArena->_End = MyArena->_End->_Prev;
     MyArena->_End->_Next = NULL;
     MY_FREE(Temp , Temp->_Capacity + sizeof(struct Region));
@@ -767,16 +777,16 @@ struct Arena* DestroyFirstRegion(struct Arena* MyArena , size_t TotalBytesAfterD
     {
         return NULL;
     }
-    
+
     if (MyArena->_Current == MyArena->_Start)
     {
         MyArena->_Current = MyArena->_Start->_Next;
     }
-    
+
     MyArena->_Start = MyArena->_Start->_Next;
-    
+
     MyArena->_Start->_Prev = NULL;
-    
+
     MY_FREE(Temp , Temp->_Capacity + sizeof(struct Region));
     MyArena->_Total_Bytes_Used = TotalBytesAfterDeletion;
 
