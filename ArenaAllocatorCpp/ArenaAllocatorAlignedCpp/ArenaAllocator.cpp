@@ -13,13 +13,13 @@ void* ArenaAllocater::DestructorAllocAligned(size_t Size , size_t Alignment)
 ArenaAllocater::ArenaAllocater()
 {
     MyArena = ArenaCreator(1024);
-    MyDestructorListArena = ArenaCreator(MyDestructorListArena , 1024);
+    MyDestructorListArena = ArenaCreator(1024);
 }
 
 ArenaAllocater::ArenaAllocater(size_t Size)
 {
     MyArena = ArenaCreator(Size);
-    MyDestructorListArena = ArenaCreator(MyDestructorListArena , Size);
+    MyDestructorListArena = ArenaCreator(Size);
 }
 
 void* ArenaAllocater::Alloc(size_t Size)
@@ -105,6 +105,16 @@ size_t ArenaAllocater::FreeSpace()
 bool ArenaAllocater::IsEmpty()
 {
     return Isempty(MyArena);
+}
+
+bool ArenaAllocater::IsFull()
+{
+    return Isfull(MyArena);
+}
+
+bool ArenaAllocater::CanAllocWithoutAlignCheck(size_t Capacity)
+{
+    return Canallocwithoutaligncheck(MyArena , Capacity);
 }
 
 void ArenaAllocater::ArenaAllocaterReset()
