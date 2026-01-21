@@ -38,7 +38,7 @@ void MY_FREE(void* Address, size_t Capacity);
 
 struct Region* CreateRegion(size_t Capacity);
 
-struct Arena* ArenaCreator(struct Arena* MyArena , size_t Capacity);
+struct Arena* ArenaCreator(size_t Capacity);
 
 void* ArenaAlloc(struct Arena* MyArena , size_t Capacity);
 
@@ -63,6 +63,10 @@ size_t TotalBytes(struct Arena* MyArena);
 size_t FreeBytes(struct Arena* MyArena);
 
 _Bool Isempty(struct Arena* MyArena);
+
+_Bool Isfull(struct Arena* MyArena);
+
+_Bool Canallocwithoutaligncheck(struct Arena* MyArena , size_t Capacity);
 
 void ArenaReset(struct Arena* MyArena);
 
