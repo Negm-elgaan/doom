@@ -13,7 +13,7 @@ struct Region
     size_t _Capacity;
 
     //uintptr_t _Data[];
-    unsigned char _Data[];
+    alignas(max_align_t) /*allows compiler to assume (uintptr_t)_Data % alignof(max_align_t) == 0*/ unsigned char _Data[];
 };
 
 struct Arena
