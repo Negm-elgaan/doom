@@ -48,7 +48,7 @@ class ArenaAllocater
 
         void* MonoAlloc(size_t Size , size_t Alignment);
 
-        template <class T , class... Args> T* ObjectAlloc(Args&&... args)
+        template <class T , class... Args> T* ObjectAllocDestructorTrackingNoAlign(Args&&... args)
         {
             void* memory = Alloc(sizeof(T));
             T* ptr = new (memory) T(std::forward<Args>(args)...);
@@ -110,7 +110,14 @@ class ArenaAllocater
             return ptr;
         }
 
-        template <class T , class... Args> T* ObjectAlloc(size_t Alignment , Args&&... args)
+        template <class T , class... Args> T* ObjectAlloc(Args&&... args)
+        {
+            void* memory = Alloc(sizeof(T));
+            T* ptr = new (memory) T(std::forward<Args>(args)...);
+            return ptr;
+        }
+
+        template <class T , class... Args> T* ObjectAllocAligned(size_t Alignment , Args&&... args)
         {
             void* memory = Alloc(sizeof(T) , Alignment);
             T* ptr = new (memory) T(std::forward<Args>(args)...);
@@ -183,6 +190,8 @@ class ArenaAllocater
         ~ArenaAllocater();
 
 };
+//extern thread_local ArenaAllocater ThreadArena;
 
+thread_local inline ArenaAllocater* ThreadArenaPtr;
 
 #endif // ARENAALLOCATOR_H_INCLUDED
