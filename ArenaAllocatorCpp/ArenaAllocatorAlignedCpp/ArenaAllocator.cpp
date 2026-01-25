@@ -141,3 +141,5 @@ ArenaAllocater::~ArenaAllocater()
 
     ArenaDestroy(MyArena);
 }
+
+//thread_local ArenaAllocater ThreadArena(4 * 1024 * 1024);
