@@ -54,6 +54,10 @@ struct Arena_Snap* Snap(struct Arena* MyArena);
 
 struct Arena* Rewind(struct Arena* MyArena , struct Arena_Snap* _Arena_Snap);
 
+struct Arena ArenaCopyShallow(struct Arena* MyArena);
+
+struct Arena* ArenaConcat(struct Arena* Arena1 , struct Arena** Arena2);
+
 size_t BytesUsed(struct Arena* MyArena);
 
 size_t BytesAlloc(struct Arena* MyArena);
