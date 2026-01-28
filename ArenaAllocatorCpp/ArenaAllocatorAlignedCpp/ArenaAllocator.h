@@ -163,6 +163,8 @@ class ArenaAllocater
             return ptr;
         }
 
+        void ArenaConcat(ArenaAllocater Allocator);
+
         ArenaSnap* SnapShot();
 
         ArenaSnap SnapShotByValue();
