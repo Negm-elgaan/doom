@@ -335,6 +335,17 @@ void* MonotonicArenaAllocAligned(struct Arena* MyArena , size_t Capacity , size_
     return vptr;
 }
 
+struct Arena* ArenaConcat(struct Arena* Arena1 , struct Arena** Arena2)
+{
+    Arena1->_End->_Next = (*Arena2)->_Start;
+    (*Arena2)->_Start->_Prev = Arena1->_End;
+    Arena1->_Total_Bytes_Used += (*Arena2)->_Total_Bytes_Used;
+    Arena1->_Current = (*Arena2)->_Current;
+    Arena1->_End = (*Arena2)->_End;
+    *Arena2 = NULL;
+    return Arena1;
+};
+
 struct Arena_Snap SnapByValue(struct Arena* MyArena)
 {
     struct Arena_Snap _Arena_Snap;
@@ -389,6 +400,11 @@ struct Arena* RewindByValue(struct Arena* MyArena , struct Arena_Snap _Arena_Sna
     MyArena->_Total_Bytes_Used = _Arena_Snap.Bytes;
     MyArena->_Current->_Next = NULL;
     return MyArena;
+};
+
+struct Arena ArenaCopyShallow(struct Arena* MyArena)
+{
+    return *MyArena;
 };
 
 size_t BytesUsed(struct Arena* MyArena)
