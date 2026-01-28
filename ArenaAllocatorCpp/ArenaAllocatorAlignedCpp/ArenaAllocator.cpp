@@ -37,6 +37,11 @@ void* ArenaAllocater::MonoAlloc(size_t Size , size_t Alignment)
     return MonotonicArenaAllocAligned(MyArena , Size , Alignment);
 }
 
+void ArenaAllocater::ArenaConcat(ArenaAllocater Allocator)
+{
+    MyArena = ::ArenaConcat(MyArena , &Allocator.MyArena);
+}
+
 ArenaSnap* ArenaAllocater::SnapShot()
 {
     ArenaSnap* ArenaSnapper = new ArenaSnap{};
